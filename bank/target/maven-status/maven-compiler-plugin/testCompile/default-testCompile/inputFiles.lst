@@ -1,0 +1,13 @@
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/services/local/BankInterfaceGetOperationDataMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/OperationConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/AccountWithdrawMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/ClientContructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/BankPersistenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/services/local/BankInterfaceProcessPaymentMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/OperationRevertMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/RollbackTestAbstractClass.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/services/local/BankInterfaceCancelPaymentTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/AccountDepositMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/AccountContructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/BankConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/bank/src/test/java/pt/ulisboa/tecnico/softeng/bank/domain/BankGetAccountMethodTest.java

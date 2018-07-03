@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Account_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bank</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.bank.domain</a> &gt; <span class="el_source">Account_Base.java</span></div><h1>Account_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.bank.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Account_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Client&gt; role$$client = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Client&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.bank.domain.Client getValue(pt.ulisboa.tecnico.softeng.bank.domain.Account o1) {
+<span class="fc" id="L14">            return ((Account_Base.DO_State)o1.get$obj$state(false)).client;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.bank.domain.Account o1, pt.ulisboa.tecnico.softeng.bank.domain.Client o2) {
+<span class="fc" id="L18">            ((Account_Base.DO_State)o1.get$obj$state(true)).client = o2;</span>
+<span class="fc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.bank.domain.Client,pt.ulisboa.tecnico.softeng.bank.domain.Account&gt; getInverseRole() {
+<span class="nc" id="L21">            return pt.ulisboa.tecnico.softeng.bank.domain.Client.role$$account;</span>
+        }
+        
+    };
+<span class="fc" id="L25">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt; role$$operation = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt; getSet(pt.ulisboa.tecnico.softeng.bank.domain.Account o1) {
+<span class="fc" id="L27">            return ((Account_Base)o1).get$rl$operation();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.bank.domain.Operation,pt.ulisboa.tecnico.softeng.bank.domain.Account&gt; getInverseRole() {
+<span class="nc" id="L30">            return pt.ulisboa.tecnico.softeng.bank.domain.Operation.role$$account;</span>
+        }
+        
+    };
+<span class="fc" id="L34">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Bank&gt; role$$bank = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Bank&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.bank.domain.Bank getValue(pt.ulisboa.tecnico.softeng.bank.domain.Account o1) {
+<span class="fc" id="L37">            return ((Account_Base.DO_State)o1.get$obj$state(false)).bank;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.bank.domain.Account o1, pt.ulisboa.tecnico.softeng.bank.domain.Bank o2) {
+<span class="fc" id="L41">            ((Account_Base.DO_State)o1.get$obj$state(true)).bank = o2;</span>
+<span class="fc" id="L42">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.bank.domain.Bank,pt.ulisboa.tecnico.softeng.bank.domain.Account&gt; getInverseRole() {
+<span class="nc" id="L44">            return pt.ulisboa.tecnico.softeng.bank.domain.Bank.role$$account;</span>
+        }
+        
+    };
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.bank.domain.Client,pt.ulisboa.tecnico.softeng.bank.domain.Account&gt; getRelationClientHasAccounts() {
+<span class="fc" id="L50">        return pt.ulisboa.tecnico.softeng.bank.domain.Client.getRelationClientHasAccounts();</span>
+    }
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.bank.domain.Operation,pt.ulisboa.tecnico.softeng.bank.domain.Account&gt; getRelationAccountHasOperation() {
+<span class="fc" id="L54">        return pt.ulisboa.tecnico.softeng.bank.domain.Operation.getRelationAccountHasOperation();</span>
+    }
+<span class="pc" id="L56">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt; keyFunction$$operation = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.bank.domain.Operation value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.bank.domain.Bank,pt.ulisboa.tecnico.softeng.bank.domain.Account&gt; getRelationBankHasAccounts() {
+<span class="fc" id="L59">        return pt.ulisboa.tecnico.softeng.bank.domain.Bank.getRelationBankHasAccounts();</span>
+    }
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.bank.domain.Account,pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt; get$rl$operation() {
+<span class="fc" id="L66">        return get$$relationList(&quot;operation&quot;, getRelationAccountHasOperation().getInverseRelation());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L73">        init$Instance(true);</span>
+<span class="nc" id="L74">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L78">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L80">    }</span>
+    
+    // Constructors
+    protected  Account_Base() {
+<span class="fc" id="L84">        super();</span>
+<span class="fc" id="L85">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getIBAN() {
+<span class="fc" id="L90">        return ((DO_State)this.get$obj$state(false)).IBAN;</span>
+    }
+    
+    public void setIBAN(java.lang.String IBAN) {
+<span class="fc" id="L94">        ((DO_State)this.get$obj$state(true)).IBAN = IBAN;</span>
+<span class="fc" id="L95">    }</span>
+    
+    private java.lang.String get$IBAN() {
+<span class="fc" id="L98">        java.lang.String value = ((DO_State)this.get$obj$state(false)).IBAN;</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$IBAN(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        ((DO_State)obj$state).IBAN = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L104">    }</span>
+    
+    public double getBalance() {
+<span class="fc" id="L107">        return ((DO_State)this.get$obj$state(false)).balance;</span>
+    }
+    
+    public void setBalance(double balance) {
+<span class="fc" id="L111">        ((DO_State)this.get$obj$state(true)).balance = balance;</span>
+<span class="fc" id="L112">    }</span>
+    
+    private double get$balance() {
+<span class="fc" id="L115">        double value = ((DO_State)this.get$obj$state(false)).balance;</span>
+<span class="fc" id="L116">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueFordouble(value);</span>
+    }
+    
+    private final void set$balance(double value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L120">        ((DO_State)obj$state).balance = (double)(value);</span>
+<span class="nc" id="L121">    }</span>
+    
+    // Role Methods
+    
+    public pt.ulisboa.tecnico.softeng.bank.domain.Client getClient() {
+<span class="fc" id="L126">        return ((DO_State)this.get$obj$state(false)).client;</span>
+    }
+    
+    public void setClient(pt.ulisboa.tecnico.softeng.bank.domain.Client client) {
+<span class="fc" id="L130">        getRelationClientHasAccounts().add(client, (pt.ulisboa.tecnico.softeng.bank.domain.Account)this);</span>
+<span class="fc" id="L131">    }</span>
+    
+    private java.lang.Long get$oidClient() {
+<span class="fc" id="L134">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).client;</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfClient() {
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">        if (getClient() == null) return false;</span>
+<span class="fc" id="L141">        return true;</span>
+    }
+    
+    public void addOperation(pt.ulisboa.tecnico.softeng.bank.domain.Operation operation) {
+<span class="nc" id="L145">        getRelationAccountHasOperation().add(operation, (pt.ulisboa.tecnico.softeng.bank.domain.Account)this);</span>
+<span class="nc" id="L146">    }</span>
+    
+    public void removeOperation(pt.ulisboa.tecnico.softeng.bank.domain.Operation operation) {
+<span class="nc" id="L149">        getRelationAccountHasOperation().remove(operation, (pt.ulisboa.tecnico.softeng.bank.domain.Account)this);</span>
+<span class="nc" id="L150">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt; getOperationSet() {
+<span class="fc" id="L153">        return get$rl$operation();</span>
+    }
+    
+    public void set$operation(OJBFunctionalSetWrapper operation) {
+<span class="nc" id="L157">        get$rl$operation().setFromOJB(this, &quot;operation&quot;, operation);</span>
+<span class="nc" id="L158">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.bank.domain.Operation&gt; getOperation() {
+<span class="nc" id="L162">        return getOperationSet();</span>
+    }
+    
+    @Deprecated
+    public int getOperationCount() {
+<span class="nc" id="L167">        return getOperationSet().size();</span>
+    }
+    
+    public pt.ulisboa.tecnico.softeng.bank.domain.Bank getBank() {
+<span class="fc" id="L171">        return ((DO_State)this.get$obj$state(false)).bank;</span>
+    }
+    
+    public void setBank(pt.ulisboa.tecnico.softeng.bank.domain.Bank bank) {
+<span class="fc" id="L175">        getRelationBankHasAccounts().add(bank, (pt.ulisboa.tecnico.softeng.bank.domain.Account)this);</span>
+<span class="fc" id="L176">    }</span>
+    
+    private java.lang.Long get$oidBank() {
+<span class="fc" id="L179">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).bank;</span>
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfBank() {
+<span class="pc bpc" id="L185" title="1 of 2 branches missed.">        if (getBank() == null) return false;</span>
+<span class="fc" id="L186">        return true;</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L191">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">        if (castedState.client != null) handleAttemptToDeleteConnectedObject(&quot;Client&quot;);</span>
+<span class="pc bpc" id="L193" title="1 of 2 branches missed.">        if (get$rl$operation().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;Operation&quot;);</span>
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        if (castedState.bank != null) handleAttemptToDeleteConnectedObject(&quot;Bank&quot;);</span>
+        
+<span class="fc" id="L196">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L199">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L200">        set$IBAN(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;I_B_A_N&quot;), state);</span>
+<span class="nc" id="L201">        set$balance(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readdouble(rs, &quot;BALANCE&quot;), state);</span>
+<span class="nc" id="L202">        castedState.client = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_CLIENT&quot;);</span>
+<span class="nc" id="L203">        castedState.bank = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_BANK&quot;);</span>
+<span class="nc" id="L204">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L206" title="All 2 branches missed.">        if (attrName.equals(&quot;operation&quot;)) return getRelationAccountHasOperation().getInverseRelation();</span>
+<span class="nc" id="L207">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L211">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L215">        super.create$allLists();</span>
+<span class="fc" id="L216">        get$$relationList(&quot;operation&quot;, getRelationAccountHasOperation().getInverseRelation());</span>
+        
+<span class="fc" id="L218">    }</span>
+<span class="fc" id="L219">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String IBAN;
+        private double balance;
+        private pt.ulisboa.tecnico.softeng.bank.domain.Client client;
+        private pt.ulisboa.tecnico.softeng.bank.domain.Bank bank;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L225">            super.copyTo(newState);</span>
+<span class="fc" id="L226">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L227">            newCasted.IBAN = this.IBAN;</span>
+<span class="fc" id="L228">            newCasted.balance = this.balance;</span>
+<span class="fc" id="L229">            newCasted.client = this.client;</span>
+<span class="fc" id="L230">            newCasted.bank = this.bank;</span>
+            
+<span class="fc" id="L232">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

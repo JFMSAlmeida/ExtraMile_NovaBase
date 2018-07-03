@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Activity_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.activity.domain</a> &gt; <span class="el_source">Activity_Base.java</span></div><h1>Activity_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.activity.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Activity_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.activity.domain.Activity,pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt; role$$activityOffer = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.activity.domain.Activity,pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt; getSet(pt.ulisboa.tecnico.softeng.activity.domain.Activity o1) {
+<span class="fc" id="L13">            return ((Activity_Base)o1).get$rl$activityOffer();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer,pt.ulisboa.tecnico.softeng.activity.domain.Activity&gt; getInverseRole() {
+<span class="nc" id="L16">            return pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer.role$$activity;</span>
+        }
+        
+    };
+<span class="fc" id="L20">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.activity.domain.Activity,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt; role$$activityProvider = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.activity.domain.Activity,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider getValue(pt.ulisboa.tecnico.softeng.activity.domain.Activity o1) {
+<span class="fc" id="L23">            return ((Activity_Base.DO_State)o1.get$obj$state(false)).activityProvider;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.activity.domain.Activity o1, pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider o2) {
+<span class="fc" id="L27">            ((Activity_Base.DO_State)o1.get$obj$state(true)).activityProvider = o2;</span>
+<span class="fc" id="L28">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider,pt.ulisboa.tecnico.softeng.activity.domain.Activity&gt; getInverseRole() {
+<span class="nc" id="L30">            return pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider.role$$activity;</span>
+        }
+        
+    };
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer,pt.ulisboa.tecnico.softeng.activity.domain.Activity&gt; getRelationActivityHasActivityOffers() {
+<span class="fc" id="L36">        return pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer.getRelationActivityHasActivityOffers();</span>
+    }
+<span class="pc" id="L38">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt; keyFunction$$activityOffer = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider,pt.ulisboa.tecnico.softeng.activity.domain.Activity&gt; getRelationActivityProviderHasActivities() {
+<span class="fc" id="L41">        return pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider.getRelationActivityProviderHasActivities();</span>
+    }
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.activity.domain.Activity,pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt; get$rl$activityOffer() {
+<span class="fc" id="L48">        return get$$relationList(&quot;activityOffer&quot;, getRelationActivityHasActivityOffers().getInverseRelation());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L55">        init$Instance(true);</span>
+<span class="nc" id="L56">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L60">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L62">    }</span>
+    
+    // Constructors
+    protected  Activity_Base() {
+<span class="fc" id="L66">        super();</span>
+<span class="fc" id="L67">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getName() {
+<span class="fc" id="L72">        return ((DO_State)this.get$obj$state(false)).name;</span>
+    }
+    
+    public void setName(java.lang.String name) {
+<span class="fc" id="L76">        ((DO_State)this.get$obj$state(true)).name = name;</span>
+<span class="fc" id="L77">    }</span>
+    
+    private java.lang.String get$name() {
+<span class="fc" id="L80">        java.lang.String value = ((DO_State)this.get$obj$state(false)).name;</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$name(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        ((DO_State)obj$state).name = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L86">    }</span>
+    
+    public java.lang.String getCode() {
+<span class="fc" id="L89">        return ((DO_State)this.get$obj$state(false)).code;</span>
+    }
+    
+    public void setCode(java.lang.String code) {
+<span class="fc" id="L93">        ((DO_State)this.get$obj$state(true)).code = code;</span>
+<span class="fc" id="L94">    }</span>
+    
+    private java.lang.String get$code() {
+<span class="fc" id="L97">        java.lang.String value = ((DO_State)this.get$obj$state(false)).code;</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$code(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        ((DO_State)obj$state).code = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L103">    }</span>
+    
+    public int getMinAge() {
+<span class="fc" id="L106">        return ((DO_State)this.get$obj$state(false)).minAge;</span>
+    }
+    
+    public void setMinAge(int minAge) {
+<span class="fc" id="L110">        ((DO_State)this.get$obj$state(true)).minAge = minAge;</span>
+<span class="fc" id="L111">    }</span>
+    
+    private int get$minAge() {
+<span class="fc" id="L114">        int value = ((DO_State)this.get$obj$state(false)).minAge;</span>
+<span class="fc" id="L115">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForint(value);</span>
+    }
+    
+    private final void set$minAge(int value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L119">        ((DO_State)obj$state).minAge = (int)(value);</span>
+<span class="nc" id="L120">    }</span>
+    
+    public int getMaxAge() {
+<span class="fc" id="L123">        return ((DO_State)this.get$obj$state(false)).maxAge;</span>
+    }
+    
+    public void setMaxAge(int maxAge) {
+<span class="fc" id="L127">        ((DO_State)this.get$obj$state(true)).maxAge = maxAge;</span>
+<span class="fc" id="L128">    }</span>
+    
+    private int get$maxAge() {
+<span class="fc" id="L131">        int value = ((DO_State)this.get$obj$state(false)).maxAge;</span>
+<span class="fc" id="L132">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForint(value);</span>
+    }
+    
+    private final void set$maxAge(int value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L136">        ((DO_State)obj$state).maxAge = (int)(value);</span>
+<span class="nc" id="L137">    }</span>
+    
+    public int getCapacity() {
+<span class="fc" id="L140">        return ((DO_State)this.get$obj$state(false)).capacity;</span>
+    }
+    
+    public void setCapacity(int capacity) {
+<span class="fc" id="L144">        ((DO_State)this.get$obj$state(true)).capacity = capacity;</span>
+<span class="fc" id="L145">    }</span>
+    
+    private int get$capacity() {
+<span class="fc" id="L148">        int value = ((DO_State)this.get$obj$state(false)).capacity;</span>
+<span class="fc" id="L149">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForint(value);</span>
+    }
+    
+    private final void set$capacity(int value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L153">        ((DO_State)obj$state).capacity = (int)(value);</span>
+<span class="nc" id="L154">    }</span>
+    
+    // Role Methods
+    
+    public void addActivityOffer(pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer activityOffer) {
+<span class="nc" id="L159">        getRelationActivityHasActivityOffers().add(activityOffer, (pt.ulisboa.tecnico.softeng.activity.domain.Activity)this);</span>
+<span class="nc" id="L160">    }</span>
+    
+    public void removeActivityOffer(pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer activityOffer) {
+<span class="nc" id="L163">        getRelationActivityHasActivityOffers().remove(activityOffer, (pt.ulisboa.tecnico.softeng.activity.domain.Activity)this);</span>
+<span class="nc" id="L164">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt; getActivityOfferSet() {
+<span class="fc" id="L167">        return get$rl$activityOffer();</span>
+    }
+    
+    public void set$activityOffer(OJBFunctionalSetWrapper activityOffer) {
+<span class="nc" id="L171">        get$rl$activityOffer().setFromOJB(this, &quot;activityOffer&quot;, activityOffer);</span>
+<span class="nc" id="L172">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer&gt; getActivityOffer() {
+<span class="nc" id="L176">        return getActivityOfferSet();</span>
+    }
+    
+    @Deprecated
+    public int getActivityOfferCount() {
+<span class="nc" id="L181">        return getActivityOfferSet().size();</span>
+    }
+    
+    public pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider getActivityProvider() {
+<span class="fc" id="L185">        return ((DO_State)this.get$obj$state(false)).activityProvider;</span>
+    }
+    
+    public void setActivityProvider(pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider activityProvider) {
+<span class="fc" id="L189">        getRelationActivityProviderHasActivities().add(activityProvider, (pt.ulisboa.tecnico.softeng.activity.domain.Activity)this);</span>
+<span class="fc" id="L190">    }</span>
+    
+    private java.lang.Long get$oidActivityProvider() {
+<span class="fc" id="L193">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).activityProvider;</span>
+<span class="pc bpc" id="L194" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfActivityProvider() {
+<span class="pc bpc" id="L199" title="1 of 2 branches missed.">        if (getActivityProvider() == null) return false;</span>
+<span class="fc" id="L200">        return true;</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L205">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L206" title="1 of 2 branches missed.">        if (get$rl$activityOffer().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;ActivityOffer&quot;);</span>
+<span class="pc bpc" id="L207" title="1 of 2 branches missed.">        if (castedState.activityProvider != null) handleAttemptToDeleteConnectedObject(&quot;ActivityProvider&quot;);</span>
+        
+<span class="fc" id="L209">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L212">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L213">        set$name(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;NAME&quot;), state);</span>
+<span class="nc" id="L214">        set$code(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;CODE&quot;), state);</span>
+<span class="nc" id="L215">        set$minAge(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readint(rs, &quot;MIN_AGE&quot;), state);</span>
+<span class="nc" id="L216">        set$maxAge(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readint(rs, &quot;MAX_AGE&quot;), state);</span>
+<span class="nc" id="L217">        set$capacity(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readint(rs, &quot;CAPACITY&quot;), state);</span>
+<span class="nc" id="L218">        castedState.activityProvider = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_ACTIVITY_PROVIDER&quot;);</span>
+<span class="nc" id="L219">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L221" title="All 2 branches missed.">        if (attrName.equals(&quot;activityOffer&quot;)) return getRelationActivityHasActivityOffers().getInverseRelation();</span>
+<span class="nc" id="L222">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L226">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L230">        super.create$allLists();</span>
+<span class="fc" id="L231">        get$$relationList(&quot;activityOffer&quot;, getRelationActivityHasActivityOffers().getInverseRelation());</span>
+        
+<span class="fc" id="L233">    }</span>
+<span class="fc" id="L234">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String name;
+        private java.lang.String code;
+        private int minAge;
+        private int maxAge;
+        private int capacity;
+        private pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider activityProvider;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L242">            super.copyTo(newState);</span>
+<span class="fc" id="L243">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L244">            newCasted.name = this.name;</span>
+<span class="fc" id="L245">            newCasted.code = this.code;</span>
+<span class="fc" id="L246">            newCasted.minAge = this.minAge;</span>
+<span class="fc" id="L247">            newCasted.maxAge = this.maxAge;</span>
+<span class="fc" id="L248">            newCasted.capacity = this.capacity;</span>
+<span class="fc" id="L249">            newCasted.activityProvider = this.activityProvider;</span>
+            
+<span class="fc" id="L251">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

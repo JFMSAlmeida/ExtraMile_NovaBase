@@ -1,0 +1,15 @@
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentACarRentTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentACarConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/VehicleRentTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentACarGetRentingDataTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentACarCancelRentingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/InvoiceProcessorSubmitRentingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RollbackTestAbstractClass.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/VehicleIsFreeTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentACarGetRentingTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentingCheckoutTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/VehicleConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentACarGetAllAvailableVehiclesTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentingConflictTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/RentingConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/car/src/test/java/pt/ulisboa/tecnico/softeng/car/domain/CarPersistenceTest.java

@@ -44,7 +44,12 @@ public class ClientController {
 				clientData.getAge(), clientData.getNif(), clientData.getIban(), clientData.getDrivingLicense());
 
 		try {
-			BrokerInterface.createClient(brokerCode, clientData);
+			ClientData cd = new ClientData();
+			cd.setAge(30);
+			cd.setDrivingLicense("dvl123456789");
+			cd.setIban("BC987654321");
+			cd.setNif("333333333");
+			BrokerInterface.createClient("bk123", cd);
 		} catch (BrokerException be) {
 			model.addAttribute("error", "Error: it was not possible to create the client");
 			model.addAttribute("client", clientData);

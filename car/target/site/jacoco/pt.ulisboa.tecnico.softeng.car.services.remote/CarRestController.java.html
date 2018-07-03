@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CarRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">car</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.car.services.remote</a> &gt; <span class="el_source">CarRestController.java</span></div><h1>CarRestController.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.car.services.remote;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import pt.ulisboa.tecnico.softeng.car.exception.CarException;
+import pt.ulisboa.tecnico.softeng.car.services.local.RentACarInterface;
+import pt.ulisboa.tecnico.softeng.car.services.remote.dataobjects.RestRentingData;
+
+@RestController
+@RequestMapping(value = &quot;/rest/rentacars&quot;)
+<span class="nc" id="L19">public class CarRestController {</span>
+<span class="nc" id="L20">	private static Logger logger = LoggerFactory.getLogger(CarRestController.class);</span>
+
+	@RequestMapping(value = &quot;/rent&quot;, method = RequestMethod.POST)
+	public ResponseEntity&lt;String&gt; rent(@RequestBody RestRentingData rentingData) {
+<span class="nc" id="L24">		logger.info(&quot;rent type:{}, license:{}, nif:{}, iban:{}, begin:{}, end:{}, adventureId:{}&quot;,</span>
+<span class="nc" id="L25">				rentingData.getTypeValue(), rentingData.getDrivingLicense(), rentingData.getBuyerNIF(),</span>
+<span class="nc" id="L26">				rentingData.getBuyerIBAN(), rentingData.getBegin(), rentingData.getEnd(), rentingData.getAdventureId());</span>
+		try {
+<span class="nc" id="L28">			return new ResponseEntity&lt;&gt;(RentACarInterface.rent(rentingData.getTypeValue(),</span>
+<span class="nc" id="L29">					rentingData.getDrivingLicense(), rentingData.getBuyerNIF(), rentingData.getBuyerIBAN(),</span>
+<span class="nc" id="L30">					rentingData.getBegin(), rentingData.getEnd(), rentingData.getAdventureId()), HttpStatus.OK);</span>
+
+<span class="nc" id="L32">		} catch (CarException be) {</span>
+<span class="nc" id="L33">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+	@RequestMapping(value = &quot;/cancel&quot;, method = RequestMethod.POST)
+	public ResponseEntity&lt;String&gt; cancel(@RequestParam String reference) {
+<span class="nc" id="L39">		logger.info(&quot;cancel reference:{}&quot;, reference);</span>
+		try {
+<span class="nc" id="L41">			return new ResponseEntity&lt;&gt;(RentACarInterface.cancelRenting(reference), HttpStatus.OK);</span>
+<span class="nc" id="L42">		} catch (CarException be) {</span>
+<span class="nc" id="L43">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+	@RequestMapping(value = &quot;/renting&quot;, method = RequestMethod.GET)
+	public ResponseEntity&lt;RestRentingData&gt; renting(@RequestParam String reference) {
+<span class="nc" id="L49">		logger.info(&quot;renting reference:{}&quot;, reference);</span>
+		try {
+<span class="nc" id="L51">			RestRentingData rentingData = RentACarInterface.getRentingData(reference);</span>
+<span class="nc" id="L52">			return new ResponseEntity&lt;RestRentingData&gt;(rentingData, HttpStatus.OK);</span>
+<span class="nc" id="L53">		} catch (CarException be) {</span>
+<span class="nc" id="L54">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

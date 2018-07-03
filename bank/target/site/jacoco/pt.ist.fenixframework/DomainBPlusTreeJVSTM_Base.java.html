@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DomainBPlusTreeJVSTM_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bank</a> &gt; <a href="index.source.html" class="el_package">pt.ist.fenixframework</a> &gt; <span class="el_source">DomainBPlusTreeJVSTM_Base.java</span></div><h1>DomainBPlusTreeJVSTM_Base.java</h1><pre class="source lang-java linenums">package pt.ist.fenixframework;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class DomainBPlusTreeJVSTM_Base extends pt.ist.fenixframework.adt.bplustree.DomainBPlusTree {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainBPlusTreeJVSTM,pt.ist.fenixframework.DomainBPlusTreeData&gt; role$$treeData = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainBPlusTreeJVSTM,pt.ist.fenixframework.DomainBPlusTreeData&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainBPlusTreeData getValue(pt.ist.fenixframework.DomainBPlusTreeJVSTM o1) {
+<span class="nc" id="L14">            return ((DomainBPlusTreeJVSTM_Base.DO_State)o1.get$obj$state(false)).treeData;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.DomainBPlusTreeJVSTM o1, pt.ist.fenixframework.DomainBPlusTreeData o2) {
+<span class="nc" id="L18">            ((DomainBPlusTreeJVSTM_Base.DO_State)o1.get$obj$state(true)).treeData = o2;</span>
+<span class="nc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainBPlusTreeData,pt.ist.fenixframework.DomainBPlusTreeJVSTM&gt; getInverseRole() {
+<span class="nc" id="L21">            return pt.ist.fenixframework.DomainBPlusTreeData.role$$tree;</span>
+        }
+        
+    };
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainBPlusTreeData,pt.ist.fenixframework.DomainBPlusTreeJVSTM&gt; getRelationDomainBPlusTreeJVSTMData() {
+<span class="nc" id="L27">        return pt.ist.fenixframework.DomainBPlusTreeData.getRelationDomainBPlusTreeJVSTMData();</span>
+    }
+    
+    // Slots
+    
+    // Role Slots
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L37">        init$Instance(true);</span>
+<span class="nc" id="L38">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="nc" id="L42">        super.init$Instance(allocateOnly);</span>
+        
+<span class="nc" id="L44">    }</span>
+    
+    // Constructors
+    protected  DomainBPlusTreeJVSTM_Base() {
+<span class="nc" id="L48">        super();</span>
+<span class="nc" id="L49">    }</span>
+    
+    // Getters and Setters
+    
+    // Role Methods
+    
+    public pt.ist.fenixframework.DomainBPlusTreeData getTreeData() {
+<span class="nc" id="L56">        return ((DO_State)this.get$obj$state(false)).treeData;</span>
+    }
+    
+    public void setTreeData(pt.ist.fenixframework.DomainBPlusTreeData treeData) {
+<span class="nc" id="L60">        getRelationDomainBPlusTreeJVSTMData().add(treeData, (pt.ist.fenixframework.DomainBPlusTreeJVSTM)this);</span>
+<span class="nc" id="L61">    }</span>
+    
+    private java.lang.Long get$oidTreeData() {
+<span class="nc" id="L64">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).treeData;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="nc" id="L70">        super.checkDisconnected();</span>
+<span class="nc" id="L71">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (castedState.treeData != null) handleAttemptToDeleteConnectedObject(&quot;TreeData&quot;);</span>
+        
+<span class="nc" id="L74">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L77">        super.readStateFromResultSet(rs, state);</span>
+<span class="nc" id="L78">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L79">        castedState.treeData = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_TREE_DATA&quot;);</span>
+<span class="nc" id="L80">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc" id="L82">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L86">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="nc" id="L90">        super.create$allLists();</span>
+        
+<span class="nc" id="L92">    }</span>
+<span class="nc" id="L93">    protected static class DO_State extends pt.ist.fenixframework.adt.bplustree.DomainBPlusTree.DO_State {</span>
+        private pt.ist.fenixframework.DomainBPlusTreeData treeData;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="nc" id="L96">            super.copyTo(newState);</span>
+<span class="nc" id="L97">            DO_State newCasted = (DO_State)newState;</span>
+<span class="nc" id="L98">            newCasted.treeData = this.treeData;</span>
+            
+<span class="nc" id="L100">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

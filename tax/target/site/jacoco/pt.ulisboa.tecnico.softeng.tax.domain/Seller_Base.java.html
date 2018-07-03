@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Seller_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tax</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.tax.domain</a> &gt; <span class="el_source">Seller_Base.java</span></div><h1>Seller_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.tax.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Seller_Base extends pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.Seller,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; role$$invoice = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.Seller,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getSet(pt.ulisboa.tecnico.softeng.tax.domain.Seller o1) {
+<span class="fc" id="L13">            return ((Seller_Base)o1).get$rl$invoice();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice,pt.ulisboa.tecnico.softeng.tax.domain.Seller&gt; getInverseRole() {
+<span class="fc" id="L16">            return pt.ulisboa.tecnico.softeng.tax.domain.Invoice.role$$seller;</span>
+        }
+        
+    };
+    
+    private final static class SellerHasInvoices {
+<span class="fc" id="L22">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.Seller,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.Seller,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt;(role$$invoice, &quot;SellerHasInvoices&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.Seller,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getRelationSellerHasInvoices() {
+<span class="fc" id="L25">        return SellerHasInvoices.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L29">        SellerHasInvoices.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.tax.domain.Seller.SellerHasInvoices&quot;);</span>
+    }
+<span class="pc" id="L31">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; keyFunction$$invoice = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.tax.domain.Invoice value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.tax.domain.Seller,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; get$rl$invoice() {
+<span class="fc" id="L37">        return get$$relationList(&quot;invoice&quot;, getRelationSellerHasInvoices());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L44">        init$Instance(true);</span>
+<span class="nc" id="L45">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L49">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L51">    }</span>
+    
+    // Constructors
+    protected  Seller_Base() {
+<span class="fc" id="L55">        super();</span>
+<span class="fc" id="L56">    }</span>
+    
+    // Getters and Setters
+    
+    // Role Methods
+    
+    public void addInvoice(pt.ulisboa.tecnico.softeng.tax.domain.Invoice invoice) {
+<span class="nc" id="L63">        getRelationSellerHasInvoices().add((pt.ulisboa.tecnico.softeng.tax.domain.Seller)this, invoice);</span>
+<span class="nc" id="L64">    }</span>
+    
+    public void removeInvoice(pt.ulisboa.tecnico.softeng.tax.domain.Invoice invoice) {
+<span class="nc" id="L67">        getRelationSellerHasInvoices().remove((pt.ulisboa.tecnico.softeng.tax.domain.Seller)this, invoice);</span>
+<span class="nc" id="L68">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getInvoiceSet() {
+<span class="fc" id="L71">        return get$rl$invoice();</span>
+    }
+    
+    public void set$invoice(OJBFunctionalSetWrapper invoice) {
+<span class="nc" id="L75">        get$rl$invoice().setFromOJB(this, &quot;invoice&quot;, invoice);</span>
+<span class="nc" id="L76">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getInvoice() {
+<span class="nc" id="L80">        return getInvoiceSet();</span>
+    }
+    
+    @Deprecated
+    public int getInvoiceCount() {
+<span class="nc" id="L85">        return getInvoiceSet().size();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L90">        super.checkDisconnected();</span>
+<span class="fc" id="L91">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">        if (get$rl$invoice().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;Invoice&quot;);</span>
+        
+<span class="fc" id="L94">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L97">        super.readStateFromResultSet(rs, state);</span>
+<span class="nc" id="L98">        DO_State castedState = (DO_State)state;</span>
+        
+<span class="nc" id="L100">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (attrName.equals(&quot;invoice&quot;)) return getRelationSellerHasInvoices();</span>
+<span class="nc" id="L103">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L107">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L111">        super.create$allLists();</span>
+<span class="fc" id="L112">        get$$relationList(&quot;invoice&quot;, getRelationSellerHasInvoices());</span>
+        
+<span class="fc" id="L114">    }</span>
+<span class="fc" id="L115">    protected static class DO_State extends pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer.DO_State {</span>
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L117">            super.copyTo(newState);</span>
+<span class="fc" id="L118">            DO_State newCasted = (DO_State)newState;</span>
+            
+<span class="fc" id="L120">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

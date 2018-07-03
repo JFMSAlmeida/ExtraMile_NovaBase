@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Booking.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.activity.domain</a> &gt; <span class="el_source">Booking.java</span></div><h1>Booking.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.activity.domain;
+
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+
+import pt.ulisboa.tecnico.softeng.activity.exception.ActivityException;
+
+public class Booking extends Booking_Base {
+	private static final String SPORT_TYPE = &quot;SPORT&quot;;
+
+<span class="fc" id="L11">	public Booking(ActivityProvider provider, ActivityOffer offer, int age, String buyerNif, String buyerIban) {</span>
+<span class="fc" id="L12">		checkArguments(provider, offer, age, buyerNif, buyerIban);</span>
+
+<span class="fc" id="L14">		setReference(offer.getActivity().getActivityProvider().getCode() + Integer.toString(provider.getCounter()));</span>
+<span class="fc" id="L15">		setActivityOffer(offer);</span>
+<span class="fc" id="L16">		setProviderNif(provider.getNif());</span>
+<span class="fc" id="L17">		setBuyerNif(buyerNif);</span>
+<span class="fc" id="L18">		setIban(buyerIban);</span>
+<span class="fc" id="L19">		setAge(age);</span>
+<span class="fc" id="L20">		setAmount(offer.getPrice());</span>
+<span class="fc" id="L21">		setDate(offer.getBegin());</span>
+<span class="fc" id="L22">		setType(SPORT_TYPE);</span>
+<span class="fc" id="L23">		setCancelledInvoice(false);</span>
+<span class="fc" id="L24">		setTime(DateTime.now());</span>
+
+<span class="fc" id="L26">		offer.addBooking(this);</span>
+<span class="fc" id="L27">	}</span>
+
+	public Booking(ActivityProvider provider, ActivityOffer offer, String buyerNif, String buyerIban) {
+<span class="fc" id="L30">		this(provider, offer, 0, buyerNif, buyerIban);</span>
+<span class="fc" id="L31">	}</span>
+
+	private void checkArguments(ActivityProvider provider, ActivityOffer offer, int age, String buyerNIF,
+			String buyerIban) {
+<span class="pc bpc" id="L35" title="4 of 12 branches missed.">		if (provider == null || offer == null || age &lt; 0 || buyerNIF == null || buyerNIF.trim().length() == 0</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">				|| buyerIban == null || buyerIban.trim().length() == 0) {</span>
+<span class="fc" id="L37">			throw new ActivityException();</span>
+		}
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		if (offer.getCapacity() == offer.getNumberActiveOfBookings()) {</span>
+<span class="fc" id="L41">			throw new ActivityException();</span>
+		}
+<span class="fc" id="L43">	}</span>
+
+	public void delete() {
+<span class="fc" id="L46">		setActivityOffer(null);</span>
+
+<span class="fc" id="L48">		setProcessor(null);</span>
+
+<span class="fc" id="L50">		deleteDomainObject();</span>
+<span class="fc" id="L51">	}</span>
+
+	public String cancel() {
+<span class="fc" id="L54">		setCancel(&quot;CANCEL&quot; + getReference());</span>
+<span class="fc" id="L55">		setCancellationDate(new LocalDate());</span>
+
+<span class="fc" id="L57">		getActivityOffer().getActivity().getActivityProvider().getProcessor().submitBooking(this);</span>
+
+<span class="fc" id="L59">		return getCancel();</span>
+	}
+
+	public boolean isCancelled() {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		return getCancel() != null;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaxPayer_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tax</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.tax.domain</a> &gt; <span class="el_source">TaxPayer_Base.java</span></div><h1>TaxPayer_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.tax.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class TaxPayer_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; role$$irs = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.tax.domain.IRS getValue(pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer o1) {
+<span class="fc" id="L14">            return ((TaxPayer_Base.DO_State)o1.get$obj$state(false)).irs;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer o1, pt.ulisboa.tecnico.softeng.tax.domain.IRS o2) {
+<span class="fc" id="L18">            ((TaxPayer_Base.DO_State)o1.get$obj$state(true)).irs = o2;</span>
+<span class="fc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; getInverseRole() {
+<span class="fc" id="L21">            return pt.ulisboa.tecnico.softeng.tax.domain.IRS.role$$taxPayer;</span>
+        }
+        
+    };
+    
+    private final static class IRSHasTaxPayers {
+<span class="fc" id="L27">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt;(role$$irs, &quot;IRSHasTaxPayers&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getRelationIRSHasTaxPayers() {
+<span class="fc" id="L30">        return IRSHasTaxPayers.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L34">        IRSHasTaxPayers.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer.IRSHasTaxPayers&quot;);</span>
+<span class="fc" id="L35">    }</span>
+    
+    // Slots
+    
+    // Role Slots
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L44">        init$Instance(true);</span>
+<span class="nc" id="L45">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L49">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L51">    }</span>
+    
+    // Constructors
+    protected  TaxPayer_Base() {
+<span class="fc" id="L55">        super();</span>
+<span class="fc" id="L56">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getNif() {
+<span class="fc" id="L61">        return ((DO_State)this.get$obj$state(false)).nif;</span>
+    }
+    
+    public void setNif(java.lang.String nif) {
+<span class="fc" id="L65">        ((DO_State)this.get$obj$state(true)).nif = nif;</span>
+<span class="fc" id="L66">    }</span>
+    
+    private java.lang.String get$nif() {
+<span class="fc" id="L69">        java.lang.String value = ((DO_State)this.get$obj$state(false)).nif;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$nif(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        ((DO_State)obj$state).nif = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L75">    }</span>
+    
+    public java.lang.String getName() {
+<span class="fc" id="L78">        return ((DO_State)this.get$obj$state(false)).name;</span>
+    }
+    
+    public void setName(java.lang.String name) {
+<span class="fc" id="L82">        ((DO_State)this.get$obj$state(true)).name = name;</span>
+<span class="fc" id="L83">    }</span>
+    
+    private java.lang.String get$name() {
+<span class="fc" id="L86">        java.lang.String value = ((DO_State)this.get$obj$state(false)).name;</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$name(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        ((DO_State)obj$state).name = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L92">    }</span>
+    
+    public java.lang.String getAddress() {
+<span class="fc" id="L95">        return ((DO_State)this.get$obj$state(false)).address;</span>
+    }
+    
+    public void setAddress(java.lang.String address) {
+<span class="fc" id="L99">        ((DO_State)this.get$obj$state(true)).address = address;</span>
+<span class="fc" id="L100">    }</span>
+    
+    private java.lang.String get$address() {
+<span class="fc" id="L103">        java.lang.String value = ((DO_State)this.get$obj$state(false)).address;</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$address(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        ((DO_State)obj$state).address = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L109">    }</span>
+    
+    // Role Methods
+    
+    public pt.ulisboa.tecnico.softeng.tax.domain.IRS getIrs() {
+<span class="fc" id="L114">        return ((DO_State)this.get$obj$state(false)).irs;</span>
+    }
+    
+    public void setIrs(pt.ulisboa.tecnico.softeng.tax.domain.IRS irs) {
+<span class="fc" id="L118">        getRelationIRSHasTaxPayers().add((pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer)this, irs);</span>
+<span class="fc" id="L119">    }</span>
+    
+    private java.lang.Long get$oidIrs() {
+<span class="fc" id="L122">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).irs;</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfIrs() {
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">        if (getIrs() == null) return false;</span>
+<span class="fc" id="L129">        return true;</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L134">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        if (castedState.irs != null) handleAttemptToDeleteConnectedObject(&quot;Irs&quot;);</span>
+        
+<span class="fc" id="L137">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L140">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L141">        set$nif(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;NIF&quot;), state);</span>
+<span class="nc" id="L142">        set$name(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;NAME&quot;), state);</span>
+<span class="nc" id="L143">        set$address(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;ADDRESS&quot;), state);</span>
+<span class="nc" id="L144">        castedState.irs = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_IRS&quot;);</span>
+<span class="nc" id="L145">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc" id="L147">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L151">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L155">        super.create$allLists();</span>
+        
+<span class="fc" id="L157">    }</span>
+<span class="fc" id="L158">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String nif;
+        private java.lang.String name;
+        private java.lang.String address;
+        private pt.ulisboa.tecnico.softeng.tax.domain.IRS irs;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L164">            super.copyTo(newState);</span>
+<span class="fc" id="L165">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L166">            newCasted.nif = this.nif;</span>
+<span class="fc" id="L167">            newCasted.name = this.name;</span>
+<span class="fc" id="L168">            newCasted.address = this.address;</span>
+<span class="fc" id="L169">            newCasted.irs = this.irs;</span>
+            
+<span class="fc" id="L171">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,0 +1,17 @@
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/BrokerConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/BaseTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/CancelledStateProcessMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/integration/CompleteProcessOfAnAdventureTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/RollbackTestAbstractClass.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/AdventureConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/BulkRoomBookingProcessBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/ReserveActivityStateProcessMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/BrokerPersistenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/AdventureSequenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/ConfirmedStateProcessMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/BulkRoomBookingGetReferenceMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/BookRoomStateMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/UndoStateProcessMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/ProcessPaymentStateProcessMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/RentVehicleStateMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/broker/src/test/java/pt/ulisboa/tecnico/softeng/broker/domain/ClientConstructorMethodTest.java

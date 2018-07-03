@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Renting_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">car</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.car.domain</a> &gt; <span class="el_source">Renting_Base.java</span></div><h1>Renting_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.car.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Renting_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Vehicle&gt; role$$vehicle = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Vehicle&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.car.domain.Vehicle getValue(pt.ulisboa.tecnico.softeng.car.domain.Renting o1) {
+<span class="fc" id="L14">            return ((Renting_Base.DO_State)o1.get$obj$state(false)).vehicle;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.car.domain.Renting o1, pt.ulisboa.tecnico.softeng.car.domain.Vehicle o2) {
+<span class="fc" id="L18">            ((Renting_Base.DO_State)o1.get$obj$state(true)).vehicle = o2;</span>
+<span class="fc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getInverseRole() {
+<span class="nc" id="L21">            return pt.ulisboa.tecnico.softeng.car.domain.Vehicle.role$$renting;</span>
+        }
+        
+    };
+<span class="fc" id="L25">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Processor&gt; role$$processor = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Processor&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.car.domain.Processor getValue(pt.ulisboa.tecnico.softeng.car.domain.Renting o1) {
+<span class="fc" id="L28">            return ((Renting_Base.DO_State)o1.get$obj$state(false)).processor;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.car.domain.Renting o1, pt.ulisboa.tecnico.softeng.car.domain.Processor o2) {
+<span class="fc" id="L32">            ((Renting_Base.DO_State)o1.get$obj$state(true)).processor = o2;</span>
+<span class="fc" id="L33">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.car.domain.Processor,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getInverseRole() {
+<span class="fc" id="L35">            return pt.ulisboa.tecnico.softeng.car.domain.Processor.role$$renting;</span>
+        }
+        
+    };
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getRelationVehicleHasRentings() {
+<span class="fc" id="L41">        return pt.ulisboa.tecnico.softeng.car.domain.Vehicle.getRelationVehicleHasRentings();</span>
+    }
+    
+    private final static class ProcessorManagesRentings {
+<span class="fc" id="L45">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Processor&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Processor&gt;(role$$processor, &quot;ProcessorManagesRentings&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Processor&gt; getRelationProcessorManagesRentings() {
+<span class="fc" id="L48">        return ProcessorManagesRentings.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L52">        ProcessorManagesRentings.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.car.domain.Renting.ProcessorManagesRentings&quot;);</span>
+<span class="fc" id="L53">    }</span>
+    
+    // Slots
+    
+    // Role Slots
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L62">        init$Instance(true);</span>
+<span class="nc" id="L63">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L67">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L69">    }</span>
+    
+    // Constructors
+    protected  Renting_Base() {
+<span class="fc" id="L73">        super();</span>
+<span class="fc" id="L74">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getReference() {
+<span class="fc" id="L79">        return ((DO_State)this.get$obj$state(false)).reference;</span>
+    }
+    
+    public void setReference(java.lang.String reference) {
+<span class="fc" id="L83">        ((DO_State)this.get$obj$state(true)).reference = reference;</span>
+<span class="fc" id="L84">    }</span>
+    
+    private java.lang.String get$reference() {
+<span class="fc" id="L87">        java.lang.String value = ((DO_State)this.get$obj$state(false)).reference;</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$reference(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        ((DO_State)obj$state).reference = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L93">    }</span>
+    
+    public java.lang.String getCancellationReference() {
+<span class="fc" id="L96">        return ((DO_State)this.get$obj$state(false)).cancellationReference;</span>
+    }
+    
+    public void setCancellationReference(java.lang.String cancellationReference) {
+<span class="fc" id="L100">        ((DO_State)this.get$obj$state(true)).cancellationReference = cancellationReference;</span>
+<span class="fc" id="L101">    }</span>
+    
+    private java.lang.String get$cancellationReference() {
+<span class="fc" id="L104">        java.lang.String value = ((DO_State)this.get$obj$state(false)).cancellationReference;</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$cancellationReference(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L109" title="All 2 branches missed.">        ((DO_State)obj$state).cancellationReference = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L110">    }</span>
+    
+    public java.lang.String getDrivingLicense() {
+<span class="fc" id="L113">        return ((DO_State)this.get$obj$state(false)).drivingLicense;</span>
+    }
+    
+    public void setDrivingLicense(java.lang.String drivingLicense) {
+<span class="fc" id="L117">        ((DO_State)this.get$obj$state(true)).drivingLicense = drivingLicense;</span>
+<span class="fc" id="L118">    }</span>
+    
+    private java.lang.String get$drivingLicense() {
+<span class="fc" id="L121">        java.lang.String value = ((DO_State)this.get$obj$state(false)).drivingLicense;</span>
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$drivingLicense(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        ((DO_State)obj$state).drivingLicense = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L127">    }</span>
+    
+    public org.joda.time.LocalDate getBegin() {
+<span class="fc" id="L130">        return ((DO_State)this.get$obj$state(false)).begin;</span>
+    }
+    
+    public void setBegin(org.joda.time.LocalDate begin) {
+<span class="fc" id="L134">        ((DO_State)this.get$obj$state(true)).begin = begin;</span>
+<span class="fc" id="L135">    }</span>
+    
+    private java.lang.String get$begin() {
+<span class="fc" id="L138">        org.joda.time.LocalDate value = ((DO_State)this.get$obj$state(false)).begin;</span>
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForLocalDate(value);</span>
+    }
+    
+    private final void set$begin(org.joda.time.LocalDate value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L143" title="All 2 branches missed.">        ((DO_State)obj$state).begin = (org.joda.time.LocalDate)((value == null) ? null : value);</span>
+<span class="nc" id="L144">    }</span>
+    
+    public org.joda.time.LocalDate getEnd() {
+<span class="fc" id="L147">        return ((DO_State)this.get$obj$state(false)).end;</span>
+    }
+    
+    public void setEnd(org.joda.time.LocalDate end) {
+<span class="fc" id="L151">        ((DO_State)this.get$obj$state(true)).end = end;</span>
+<span class="fc" id="L152">    }</span>
+    
+    private java.lang.String get$end() {
+<span class="fc" id="L155">        org.joda.time.LocalDate value = ((DO_State)this.get$obj$state(false)).end;</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForLocalDate(value);</span>
+    }
+    
+    private final void set$end(org.joda.time.LocalDate value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        ((DO_State)obj$state).end = (org.joda.time.LocalDate)((value == null) ? null : value);</span>
+<span class="nc" id="L161">    }</span>
+    
+    public int getKilometers() {
+<span class="fc" id="L164">        return ((DO_State)this.get$obj$state(false)).kilometers;</span>
+    }
+    
+    public void setKilometers(int kilometers) {
+<span class="fc" id="L168">        ((DO_State)this.get$obj$state(true)).kilometers = kilometers;</span>
+<span class="fc" id="L169">    }</span>
+    
+    private int get$kilometers() {
+<span class="fc" id="L172">        int value = ((DO_State)this.get$obj$state(false)).kilometers;</span>
+<span class="fc" id="L173">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForint(value);</span>
+    }
+    
+    private final void set$kilometers(int value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L177">        ((DO_State)obj$state).kilometers = (int)(value);</span>
+<span class="nc" id="L178">    }</span>
+    
+    public java.lang.String getClientNif() {
+<span class="fc" id="L181">        return ((DO_State)this.get$obj$state(false)).clientNif;</span>
+    }
+    
+    public void setClientNif(java.lang.String clientNif) {
+<span class="fc" id="L185">        ((DO_State)this.get$obj$state(true)).clientNif = clientNif;</span>
+<span class="fc" id="L186">    }</span>
+    
+    private java.lang.String get$clientNif() {
+<span class="fc" id="L189">        java.lang.String value = ((DO_State)this.get$obj$state(false)).clientNif;</span>
+<span class="pc bpc" id="L190" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$clientNif(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L194" title="All 2 branches missed.">        ((DO_State)obj$state).clientNif = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L195">    }</span>
+    
+    public java.lang.String getClientIban() {
+<span class="fc" id="L198">        return ((DO_State)this.get$obj$state(false)).clientIban;</span>
+    }
+    
+    public void setClientIban(java.lang.String clientIban) {
+<span class="fc" id="L202">        ((DO_State)this.get$obj$state(true)).clientIban = clientIban;</span>
+<span class="fc" id="L203">    }</span>
+    
+    private java.lang.String get$clientIban() {
+<span class="fc" id="L206">        java.lang.String value = ((DO_State)this.get$obj$state(false)).clientIban;</span>
+<span class="pc bpc" id="L207" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$clientIban(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        ((DO_State)obj$state).clientIban = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L212">    }</span>
+    
+    public double getPrice() {
+<span class="fc" id="L215">        return ((DO_State)this.get$obj$state(false)).price;</span>
+    }
+    
+    public void setPrice(double price) {
+<span class="fc" id="L219">        ((DO_State)this.get$obj$state(true)).price = price;</span>
+<span class="fc" id="L220">    }</span>
+    
+    private double get$price() {
+<span class="fc" id="L223">        double value = ((DO_State)this.get$obj$state(false)).price;</span>
+<span class="fc" id="L224">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueFordouble(value);</span>
+    }
+    
+    private final void set$price(double value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L228">        ((DO_State)obj$state).price = (double)(value);</span>
+<span class="nc" id="L229">    }</span>
+    
+    public java.lang.String getPaymentReference() {
+<span class="fc" id="L232">        return ((DO_State)this.get$obj$state(false)).paymentReference;</span>
+    }
+    
+    public void setPaymentReference(java.lang.String paymentReference) {
+<span class="fc" id="L236">        ((DO_State)this.get$obj$state(true)).paymentReference = paymentReference;</span>
+<span class="fc" id="L237">    }</span>
+    
+    private java.lang.String get$paymentReference() {
+<span class="fc" id="L240">        java.lang.String value = ((DO_State)this.get$obj$state(false)).paymentReference;</span>
+<span class="pc bpc" id="L241" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$paymentReference(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L245" title="All 2 branches missed.">        ((DO_State)obj$state).paymentReference = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L246">    }</span>
+    
+    public java.lang.String getInvoiceReference() {
+<span class="fc" id="L249">        return ((DO_State)this.get$obj$state(false)).invoiceReference;</span>
+    }
+    
+    public void setInvoiceReference(java.lang.String invoiceReference) {
+<span class="fc" id="L253">        ((DO_State)this.get$obj$state(true)).invoiceReference = invoiceReference;</span>
+<span class="fc" id="L254">    }</span>
+    
+    private java.lang.String get$invoiceReference() {
+<span class="fc" id="L257">        java.lang.String value = ((DO_State)this.get$obj$state(false)).invoiceReference;</span>
+<span class="pc bpc" id="L258" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$invoiceReference(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L262" title="All 2 branches missed.">        ((DO_State)obj$state).invoiceReference = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L263">    }</span>
+    
+    public org.joda.time.LocalDate getCancellationDate() {
+<span class="fc" id="L266">        return ((DO_State)this.get$obj$state(false)).cancellationDate;</span>
+    }
+    
+    public void setCancellationDate(org.joda.time.LocalDate cancellationDate) {
+<span class="fc" id="L270">        ((DO_State)this.get$obj$state(true)).cancellationDate = cancellationDate;</span>
+<span class="fc" id="L271">    }</span>
+    
+    private java.lang.String get$cancellationDate() {
+<span class="fc" id="L274">        org.joda.time.LocalDate value = ((DO_State)this.get$obj$state(false)).cancellationDate;</span>
+<span class="pc bpc" id="L275" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForLocalDate(value);</span>
+    }
+    
+    private final void set$cancellationDate(org.joda.time.LocalDate value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L279" title="All 2 branches missed.">        ((DO_State)obj$state).cancellationDate = (org.joda.time.LocalDate)((value == null) ? null : value);</span>
+<span class="nc" id="L280">    }</span>
+    
+    public boolean getCancelledInvoice() {
+<span class="nc" id="L283">        return ((DO_State)this.get$obj$state(false)).cancelledInvoice;</span>
+    }
+    
+    public void setCancelledInvoice(boolean cancelledInvoice) {
+<span class="fc" id="L287">        ((DO_State)this.get$obj$state(true)).cancelledInvoice = cancelledInvoice;</span>
+<span class="fc" id="L288">    }</span>
+    
+    private boolean get$cancelledInvoice() {
+<span class="fc" id="L291">        boolean value = ((DO_State)this.get$obj$state(false)).cancelledInvoice;</span>
+<span class="fc" id="L292">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForboolean(value);</span>
+    }
+    
+    private final void set$cancelledInvoice(boolean value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L296">        ((DO_State)obj$state).cancelledInvoice = (boolean)(value);</span>
+<span class="nc" id="L297">    }</span>
+    
+    public java.lang.String getCancelledPaymentReference() {
+<span class="fc" id="L300">        return ((DO_State)this.get$obj$state(false)).cancelledPaymentReference;</span>
+    }
+    
+    public void setCancelledPaymentReference(java.lang.String cancelledPaymentReference) {
+<span class="fc" id="L304">        ((DO_State)this.get$obj$state(true)).cancelledPaymentReference = cancelledPaymentReference;</span>
+<span class="fc" id="L305">    }</span>
+    
+    private java.lang.String get$cancelledPaymentReference() {
+<span class="fc" id="L308">        java.lang.String value = ((DO_State)this.get$obj$state(false)).cancelledPaymentReference;</span>
+<span class="pc bpc" id="L309" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$cancelledPaymentReference(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L313" title="All 2 branches missed.">        ((DO_State)obj$state).cancelledPaymentReference = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L314">    }</span>
+    
+    public java.lang.String getAdventureId() {
+<span class="fc" id="L317">        return ((DO_State)this.get$obj$state(false)).adventureId;</span>
+    }
+    
+    public void setAdventureId(java.lang.String adventureId) {
+<span class="fc" id="L321">        ((DO_State)this.get$obj$state(true)).adventureId = adventureId;</span>
+<span class="fc" id="L322">    }</span>
+    
+    private java.lang.String get$adventureId() {
+<span class="fc" id="L325">        java.lang.String value = ((DO_State)this.get$obj$state(false)).adventureId;</span>
+<span class="pc bpc" id="L326" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$adventureId(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L330" title="All 2 branches missed.">        ((DO_State)obj$state).adventureId = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L331">    }</span>
+    
+    public org.joda.time.DateTime getTime() {
+<span class="fc" id="L334">        return ((DO_State)this.get$obj$state(false)).time;</span>
+    }
+    
+    public void setTime(org.joda.time.DateTime time) {
+<span class="fc" id="L338">        ((DO_State)this.get$obj$state(true)).time = time;</span>
+<span class="fc" id="L339">    }</span>
+    
+    private java.sql.Timestamp get$time() {
+<span class="fc" id="L342">        org.joda.time.DateTime value = ((DO_State)this.get$obj$state(false)).time;</span>
+<span class="pc bpc" id="L343" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForDateTime(value);</span>
+    }
+    
+    private final void set$time(org.joda.time.DateTime value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L347" title="All 2 branches missed.">        ((DO_State)obj$state).time = (org.joda.time.DateTime)((value == null) ? null : value);</span>
+<span class="nc" id="L348">    }</span>
+    
+    // Role Methods
+    
+    public pt.ulisboa.tecnico.softeng.car.domain.Vehicle getVehicle() {
+<span class="fc" id="L353">        return ((DO_State)this.get$obj$state(false)).vehicle;</span>
+    }
+    
+    public void setVehicle(pt.ulisboa.tecnico.softeng.car.domain.Vehicle vehicle) {
+<span class="fc" id="L357">        getRelationVehicleHasRentings().add(vehicle, (pt.ulisboa.tecnico.softeng.car.domain.Renting)this);</span>
+<span class="fc" id="L358">    }</span>
+    
+    private java.lang.Long get$oidVehicle() {
+<span class="fc" id="L361">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).vehicle;</span>
+<span class="pc bpc" id="L362" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfVehicle() {
+<span class="pc bpc" id="L367" title="1 of 2 branches missed.">        if (getVehicle() == null) return false;</span>
+<span class="fc" id="L368">        return true;</span>
+    }
+    
+    public pt.ulisboa.tecnico.softeng.car.domain.Processor getProcessor() {
+<span class="fc" id="L372">        return ((DO_State)this.get$obj$state(false)).processor;</span>
+    }
+    
+    public void setProcessor(pt.ulisboa.tecnico.softeng.car.domain.Processor processor) {
+<span class="fc" id="L376">        getRelationProcessorManagesRentings().add((pt.ulisboa.tecnico.softeng.car.domain.Renting)this, processor);</span>
+<span class="fc" id="L377">    }</span>
+    
+    private java.lang.Long get$oidProcessor() {
+<span class="fc" id="L380">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).processor;</span>
+<span class="pc bpc" id="L381" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L386">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L387" title="1 of 2 branches missed.">        if (castedState.vehicle != null) handleAttemptToDeleteConnectedObject(&quot;Vehicle&quot;);</span>
+<span class="pc bpc" id="L388" title="1 of 2 branches missed.">        if (castedState.processor != null) handleAttemptToDeleteConnectedObject(&quot;Processor&quot;);</span>
+        
+<span class="fc" id="L390">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L393">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L394">        set$reference(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;REFERENCE&quot;), state);</span>
+<span class="nc" id="L395">        set$cancellationReference(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;CANCELLATION_REFERENCE&quot;), state);</span>
+<span class="nc" id="L396">        set$drivingLicense(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;DRIVING_LICENSE&quot;), state);</span>
+<span class="nc" id="L397">        set$begin(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readLocalDate(rs, &quot;BEGIN&quot;), state);</span>
+<span class="nc" id="L398">        set$end(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readLocalDate(rs, &quot;END&quot;), state);</span>
+<span class="nc" id="L399">        set$kilometers(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readint(rs, &quot;KILOMETERS&quot;), state);</span>
+<span class="nc" id="L400">        set$clientNif(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;CLIENT_NIF&quot;), state);</span>
+<span class="nc" id="L401">        set$clientIban(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;CLIENT_IBAN&quot;), state);</span>
+<span class="nc" id="L402">        set$price(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readdouble(rs, &quot;PRICE&quot;), state);</span>
+<span class="nc" id="L403">        set$paymentReference(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;PAYMENT_REFERENCE&quot;), state);</span>
+<span class="nc" id="L404">        set$invoiceReference(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;INVOICE_REFERENCE&quot;), state);</span>
+<span class="nc" id="L405">        set$cancellationDate(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readLocalDate(rs, &quot;CANCELLATION_DATE&quot;), state);</span>
+<span class="nc" id="L406">        set$cancelledInvoice(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readboolean(rs, &quot;CANCELLED_INVOICE&quot;), state);</span>
+<span class="nc" id="L407">        set$cancelledPaymentReference(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;CANCELLED_PAYMENT_REFERENCE&quot;), state);</span>
+<span class="nc" id="L408">        set$adventureId(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;ADVENTURE_ID&quot;), state);</span>
+<span class="nc" id="L409">        set$time(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDateTime(rs, &quot;TIME&quot;), state);</span>
+<span class="nc" id="L410">        castedState.vehicle = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_VEHICLE&quot;);</span>
+<span class="nc" id="L411">        castedState.processor = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_PROCESSOR&quot;);</span>
+<span class="nc" id="L412">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc" id="L414">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L418">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L422">        super.create$allLists();</span>
+        
+<span class="fc" id="L424">    }</span>
+<span class="fc" id="L425">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String reference;
+        private java.lang.String cancellationReference;
+        private java.lang.String drivingLicense;
+        private org.joda.time.LocalDate begin;
+        private org.joda.time.LocalDate end;
+        private int kilometers;
+        private java.lang.String clientNif;
+        private java.lang.String clientIban;
+        private double price;
+        private java.lang.String paymentReference;
+        private java.lang.String invoiceReference;
+        private org.joda.time.LocalDate cancellationDate;
+        private boolean cancelledInvoice;
+        private java.lang.String cancelledPaymentReference;
+        private java.lang.String adventureId;
+        private org.joda.time.DateTime time;
+        private pt.ulisboa.tecnico.softeng.car.domain.Vehicle vehicle;
+        private pt.ulisboa.tecnico.softeng.car.domain.Processor processor;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L445">            super.copyTo(newState);</span>
+<span class="fc" id="L446">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L447">            newCasted.reference = this.reference;</span>
+<span class="fc" id="L448">            newCasted.cancellationReference = this.cancellationReference;</span>
+<span class="fc" id="L449">            newCasted.drivingLicense = this.drivingLicense;</span>
+<span class="fc" id="L450">            newCasted.begin = this.begin;</span>
+<span class="fc" id="L451">            newCasted.end = this.end;</span>
+<span class="fc" id="L452">            newCasted.kilometers = this.kilometers;</span>
+<span class="fc" id="L453">            newCasted.clientNif = this.clientNif;</span>
+<span class="fc" id="L454">            newCasted.clientIban = this.clientIban;</span>
+<span class="fc" id="L455">            newCasted.price = this.price;</span>
+<span class="fc" id="L456">            newCasted.paymentReference = this.paymentReference;</span>
+<span class="fc" id="L457">            newCasted.invoiceReference = this.invoiceReference;</span>
+<span class="fc" id="L458">            newCasted.cancellationDate = this.cancellationDate;</span>
+<span class="fc" id="L459">            newCasted.cancelledInvoice = this.cancelledInvoice;</span>
+<span class="fc" id="L460">            newCasted.cancelledPaymentReference = this.cancelledPaymentReference;</span>
+<span class="fc" id="L461">            newCasted.adventureId = this.adventureId;</span>
+<span class="fc" id="L462">            newCasted.time = this.time;</span>
+<span class="fc" id="L463">            newCasted.vehicle = this.vehicle;</span>
+<span class="fc" id="L464">            newCasted.processor = this.processor;</span>
+            
+<span class="fc" id="L466">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

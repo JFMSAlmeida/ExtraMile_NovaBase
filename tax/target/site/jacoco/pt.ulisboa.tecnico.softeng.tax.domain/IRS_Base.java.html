@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IRS_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tax</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.tax.domain</a> &gt; <span class="el_source">IRS_Base.java</span></div><h1>IRS_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.tax.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class IRS_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; role$$taxPayer = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; getSet(pt.ulisboa.tecnico.softeng.tax.domain.IRS o1) {
+<span class="fc" id="L13">            return ((IRS_Base)o1).get$rl$taxPayer();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getInverseRole() {
+<span class="nc" id="L16">            return pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer.role$$irs;</span>
+        }
+        
+    };
+<span class="fc" id="L20">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; role$$invoice = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getSet(pt.ulisboa.tecnico.softeng.tax.domain.IRS o1) {
+<span class="fc" id="L22">            return ((IRS_Base)o1).get$rl$invoice();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getInverseRole() {
+<span class="fc" id="L25">            return pt.ulisboa.tecnico.softeng.tax.domain.Invoice.role$$irs;</span>
+        }
+        
+    };
+<span class="fc" id="L29">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ist.fenixframework.DomainRoot&gt; role$$root = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ist.fenixframework.DomainRoot&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainRoot getValue(pt.ulisboa.tecnico.softeng.tax.domain.IRS o1) {
+<span class="fc" id="L32">            return ((IRS_Base.DO_State)o1.get$obj$state(false)).root;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.tax.domain.IRS o1, pt.ist.fenixframework.DomainRoot o2) {
+<span class="fc" id="L36">            ((IRS_Base.DO_State)o1.get$obj$state(true)).root = o2;</span>
+<span class="fc" id="L37">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainRoot,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getInverseRole() {
+<span class="nc" id="L39">            return pt.ist.fenixframework.DomainRoot.role$$irs;</span>
+        }
+        
+    };
+<span class="fc" id="L43">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt; role$$itemType = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt; getSet(pt.ulisboa.tecnico.softeng.tax.domain.IRS o1) {
+<span class="fc" id="L45">            return ((IRS_Base)o1).get$rl$itemType();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.tax.domain.ItemType,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getInverseRole() {
+<span class="nc" id="L48">            return pt.ulisboa.tecnico.softeng.tax.domain.ItemType.role$$irs;</span>
+        }
+        
+    };
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getRelationIRSHasTaxPayers() {
+<span class="fc" id="L54">        return pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer.getRelationIRSHasTaxPayers();</span>
+    }
+<span class="pc" id="L56">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; keyFunction$$taxPayer = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    private final static class IRSHasInvoices {
+<span class="fc" id="L59">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt;(role$$invoice, &quot;IRSHasInvoices&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getRelationIRSHasInvoices() {
+<span class="fc" id="L62">        return IRSHasInvoices.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L66">        IRSHasInvoices.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.tax.domain.IRS.IRSHasInvoices&quot;);</span>
+    }
+<span class="pc" id="L68">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; keyFunction$$invoice = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.tax.domain.Invoice value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainRoot,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getRelationDomainRootHasIRSApplication() {
+<span class="fc" id="L71">        return pt.ist.fenixframework.DomainRoot.getRelationDomainRootHasIRSApplication();</span>
+    }
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.tax.domain.ItemType,pt.ulisboa.tecnico.softeng.tax.domain.IRS&gt; getRelationIRSHasItemTypes() {
+<span class="fc" id="L75">        return pt.ulisboa.tecnico.softeng.tax.domain.ItemType.getRelationIRSHasItemTypes();</span>
+    }
+<span class="pc" id="L77">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt; keyFunction$$itemType = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.tax.domain.ItemType value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; get$rl$taxPayer() {
+<span class="fc" id="L83">        return get$$relationList(&quot;taxPayer&quot;, getRelationIRSHasTaxPayers().getInverseRelation());</span>
+        
+    }
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; get$rl$invoice() {
+<span class="fc" id="L87">        return get$$relationList(&quot;invoice&quot;, getRelationIRSHasInvoices());</span>
+        
+    }
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.tax.domain.IRS,pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt; get$rl$itemType() {
+<span class="fc" id="L91">        return get$$relationList(&quot;itemType&quot;, getRelationIRSHasItemTypes().getInverseRelation());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L98">        init$Instance(true);</span>
+<span class="nc" id="L99">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L103">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L105">    }</span>
+    
+    // Constructors
+    protected  IRS_Base() {
+<span class="fc" id="L109">        super();</span>
+<span class="fc" id="L110">    }</span>
+    
+    // Getters and Setters
+    
+    public int getCounter() {
+<span class="fc" id="L115">        return ((DO_State)this.get$obj$state(false)).counter;</span>
+    }
+    
+    public void setCounter(int counter) {
+<span class="fc" id="L119">        ((DO_State)this.get$obj$state(true)).counter = counter;</span>
+<span class="fc" id="L120">    }</span>
+    
+    private int get$counter() {
+<span class="fc" id="L123">        int value = ((DO_State)this.get$obj$state(false)).counter;</span>
+<span class="fc" id="L124">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForint(value);</span>
+    }
+    
+    private final void set$counter(int value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L128">        ((DO_State)obj$state).counter = (int)(value);</span>
+<span class="nc" id="L129">    }</span>
+    
+    // Role Methods
+    
+    public void addTaxPayer(pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer taxPayer) {
+<span class="fc" id="L134">        getRelationIRSHasTaxPayers().add(taxPayer, (pt.ulisboa.tecnico.softeng.tax.domain.IRS)this);</span>
+<span class="fc" id="L135">    }</span>
+    
+    public void removeTaxPayer(pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer taxPayer) {
+<span class="nc" id="L138">        getRelationIRSHasTaxPayers().remove(taxPayer, (pt.ulisboa.tecnico.softeng.tax.domain.IRS)this);</span>
+<span class="nc" id="L139">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; getTaxPayerSet() {
+<span class="fc" id="L142">        return get$rl$taxPayer();</span>
+    }
+    
+    public void set$taxPayer(OJBFunctionalSetWrapper taxPayer) {
+<span class="nc" id="L146">        get$rl$taxPayer().setFromOJB(this, &quot;taxPayer&quot;, taxPayer);</span>
+<span class="nc" id="L147">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.TaxPayer&gt; getTaxPayer() {
+<span class="nc" id="L151">        return getTaxPayerSet();</span>
+    }
+    
+    @Deprecated
+    public int getTaxPayerCount() {
+<span class="nc" id="L156">        return getTaxPayerSet().size();</span>
+    }
+    
+    public void addInvoice(pt.ulisboa.tecnico.softeng.tax.domain.Invoice invoice) {
+<span class="nc" id="L160">        getRelationIRSHasInvoices().add((pt.ulisboa.tecnico.softeng.tax.domain.IRS)this, invoice);</span>
+<span class="nc" id="L161">    }</span>
+    
+    public void removeInvoice(pt.ulisboa.tecnico.softeng.tax.domain.Invoice invoice) {
+<span class="nc" id="L164">        getRelationIRSHasInvoices().remove((pt.ulisboa.tecnico.softeng.tax.domain.IRS)this, invoice);</span>
+<span class="nc" id="L165">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getInvoiceSet() {
+<span class="fc" id="L168">        return get$rl$invoice();</span>
+    }
+    
+    public void set$invoice(OJBFunctionalSetWrapper invoice) {
+<span class="nc" id="L172">        get$rl$invoice().setFromOJB(this, &quot;invoice&quot;, invoice);</span>
+<span class="nc" id="L173">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.Invoice&gt; getInvoice() {
+<span class="nc" id="L177">        return getInvoiceSet();</span>
+    }
+    
+    @Deprecated
+    public int getInvoiceCount() {
+<span class="nc" id="L182">        return getInvoiceSet().size();</span>
+    }
+    
+    public pt.ist.fenixframework.DomainRoot getRoot() {
+<span class="fc" id="L186">        return ((DO_State)this.get$obj$state(false)).root;</span>
+    }
+    
+    public void setRoot(pt.ist.fenixframework.DomainRoot root) {
+<span class="fc" id="L190">        getRelationDomainRootHasIRSApplication().add(root, (pt.ulisboa.tecnico.softeng.tax.domain.IRS)this);</span>
+<span class="fc" id="L191">    }</span>
+    
+    private java.lang.Long get$oidRoot() {
+<span class="fc" id="L194">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).root;</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfRoot() {
+<span class="pc bpc" id="L200" title="1 of 2 branches missed.">        if (getRoot() == null) return false;</span>
+<span class="fc" id="L201">        return true;</span>
+    }
+    
+    public void addItemType(pt.ulisboa.tecnico.softeng.tax.domain.ItemType itemType) {
+<span class="fc" id="L205">        getRelationIRSHasItemTypes().add(itemType, (pt.ulisboa.tecnico.softeng.tax.domain.IRS)this);</span>
+<span class="fc" id="L206">    }</span>
+    
+    public void removeItemType(pt.ulisboa.tecnico.softeng.tax.domain.ItemType itemType) {
+<span class="nc" id="L209">        getRelationIRSHasItemTypes().remove(itemType, (pt.ulisboa.tecnico.softeng.tax.domain.IRS)this);</span>
+<span class="nc" id="L210">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt; getItemTypeSet() {
+<span class="fc" id="L213">        return get$rl$itemType();</span>
+    }
+    
+    public void set$itemType(OJBFunctionalSetWrapper itemType) {
+<span class="nc" id="L217">        get$rl$itemType().setFromOJB(this, &quot;itemType&quot;, itemType);</span>
+<span class="nc" id="L218">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.tax.domain.ItemType&gt; getItemType() {
+<span class="nc" id="L222">        return getItemTypeSet();</span>
+    }
+    
+    @Deprecated
+    public int getItemTypeCount() {
+<span class="nc" id="L227">        return getItemTypeSet().size();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L232">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L233" title="1 of 2 branches missed.">        if (get$rl$taxPayer().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;TaxPayer&quot;);</span>
+<span class="pc bpc" id="L234" title="1 of 2 branches missed.">        if (get$rl$invoice().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;Invoice&quot;);</span>
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">        if (castedState.root != null) handleAttemptToDeleteConnectedObject(&quot;Root&quot;);</span>
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">        if (get$rl$itemType().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;ItemType&quot;);</span>
+        
+<span class="fc" id="L238">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L241">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L242">        set$counter(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readint(rs, &quot;COUNTER&quot;), state);</span>
+<span class="nc" id="L243">        castedState.root = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_ROOT&quot;);</span>
+<span class="nc" id="L244">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L246" title="All 2 branches missed.">        if (attrName.equals(&quot;taxPayer&quot;)) return getRelationIRSHasTaxPayers().getInverseRelation();</span>
+<span class="nc bnc" id="L247" title="All 2 branches missed.">        if (attrName.equals(&quot;invoice&quot;)) return getRelationIRSHasInvoices();</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">        if (attrName.equals(&quot;itemType&quot;)) return getRelationIRSHasItemTypes().getInverseRelation();</span>
+<span class="nc" id="L249">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L253">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L257">        super.create$allLists();</span>
+<span class="fc" id="L258">        get$$relationList(&quot;taxPayer&quot;, getRelationIRSHasTaxPayers().getInverseRelation());</span>
+<span class="fc" id="L259">        get$$relationList(&quot;invoice&quot;, getRelationIRSHasInvoices());</span>
+<span class="fc" id="L260">        get$$relationList(&quot;itemType&quot;, getRelationIRSHasItemTypes().getInverseRelation());</span>
+        
+<span class="fc" id="L262">    }</span>
+<span class="fc" id="L263">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private int counter;
+        private pt.ist.fenixframework.DomainRoot root;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L267">            super.copyTo(newState);</span>
+<span class="fc" id="L268">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L269">            newCasted.counter = this.counter;</span>
+<span class="fc" id="L270">            newCasted.root = this.root;</span>
+            
+<span class="fc" id="L272">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

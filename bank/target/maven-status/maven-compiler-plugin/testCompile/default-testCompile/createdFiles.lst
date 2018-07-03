@@ -1,0 +1,13 @@
+pt/ulisboa/tecnico/softeng/bank/services/local/BankInterfaceCancelPaymentTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/AccountDepositMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/RollbackTestAbstractClass.class
+pt/ulisboa/tecnico/softeng/bank/services/local/BankInterfaceProcessPaymentMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/BankGetAccountMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/ClientContructorMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/OperationRevertMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/AccountWithdrawMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/services/local/BankInterfaceGetOperationDataMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/AccountContructorMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/BankPersistenceTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/OperationConstructorMethodTest.class
+pt/ulisboa/tecnico/softeng/bank/domain/BankConstructorTest.class

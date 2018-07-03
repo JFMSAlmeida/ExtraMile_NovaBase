@@ -1,0 +1,15 @@
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityPersistenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/RollbackTestAbstractClass.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityOfferConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityProviderConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/services/local/ActivityInterfaceCancelReservationMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityOfferMatchDateMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/services/local/ActivityInterfaceReserveActivityMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/services/local/ActivityInterfaceGetActivityReservationDataMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityMatchAgeMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityOfferGetBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityProviderFindOfferMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/ActivityOfferHasVacancyMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/InvoiceProcessorSubmitBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/activity/src/test/java/pt/ulisboa/tecnico/softeng/activity/domain/BookingContructorMethodTest.java

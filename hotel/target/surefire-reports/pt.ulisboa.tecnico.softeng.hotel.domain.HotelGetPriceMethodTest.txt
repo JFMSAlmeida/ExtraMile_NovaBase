@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pt.ulisboa.tecnico.softeng.hotel.domain.HotelGetPriceMethodTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec - in pt.ulisboa.tecnico.softeng.hotel.domain.HotelGetPriceMethodTest

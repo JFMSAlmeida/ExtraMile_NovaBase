@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DomainMetaClass_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hotel</a> &gt; <a href="index.source.html" class="el_package">pt.ist.fenixframework</a> &gt; <span class="el_source">DomainMetaClass_Base.java</span></div><h1>DomainMetaClass_Base.java</h1><pre class="source lang-java linenums">package pt.ist.fenixframework;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class DomainMetaClass_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; role$$domainFenixFrameworkRoot = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainFenixFrameworkRoot getValue(pt.ist.fenixframework.DomainMetaClass o1) {
+<span class="nc" id="L14">            return ((DomainMetaClass_Base.DO_State)o1.get$obj$state(false)).domainFenixFrameworkRoot;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.DomainMetaClass o1, pt.ist.fenixframework.DomainFenixFrameworkRoot o2) {
+<span class="nc" id="L18">            ((DomainMetaClass_Base.DO_State)o1.get$obj$state(true)).domainFenixFrameworkRoot = o2;</span>
+<span class="nc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainFenixFrameworkRoot,pt.ist.fenixframework.DomainMetaClass&gt; getInverseRole() {
+<span class="nc" id="L21">            return pt.ist.fenixframework.DomainFenixFrameworkRoot.role$$domainMetaClass;</span>
+        }
+        
+    };
+<span class="fc" id="L25">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.adt.bplustree.DomainBPlusTree&gt; role$$existingDomainMetaObjects = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.adt.bplustree.DomainBPlusTree&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.adt.bplustree.DomainBPlusTree getValue(pt.ist.fenixframework.DomainMetaClass o1) {
+<span class="nc" id="L28">            return ((DomainMetaClass_Base.DO_State)o1.get$obj$state(false)).existingDomainMetaObjects;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.DomainMetaClass o1, pt.ist.fenixframework.adt.bplustree.DomainBPlusTree o2) {
+<span class="nc" id="L32">            ((DomainMetaClass_Base.DO_State)o1.get$obj$state(true)).existingDomainMetaObjects = o2;</span>
+<span class="nc" id="L33">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.adt.bplustree.DomainBPlusTree,pt.ist.fenixframework.DomainMetaClass&gt; getInverseRole() {
+<span class="nc" id="L35">            return new pt.ist.fenixframework.dml.runtime.RoleEmpty&lt;pt.ist.fenixframework.adt.bplustree.DomainBPlusTree,pt.ist.fenixframework.DomainMetaClass&gt;(this);</span>
+        }
+        
+    };
+<span class="fc" id="L39">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; role$$declaredConsistencyPredicate = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; getSet(pt.ist.fenixframework.DomainMetaClass o1) {
+<span class="nc" id="L41">            return ((DomainMetaClass_Base)o1).get$rl$declaredConsistencyPredicate();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate,pt.ist.fenixframework.DomainMetaClass&gt; getInverseRole() {
+<span class="nc" id="L44">            return pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate.role$$domainMetaClass;</span>
+        }
+        
+    };
+<span class="fc" id="L48">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; role$$domainMetaSuperclass = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainMetaClass getValue(pt.ist.fenixframework.DomainMetaClass o1) {
+<span class="nc" id="L51">            return ((DomainMetaClass_Base.DO_State)o1.get$obj$state(false)).domainMetaSuperclass;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.DomainMetaClass o1, pt.ist.fenixframework.DomainMetaClass o2) {
+<span class="nc" id="L55">            ((DomainMetaClass_Base.DO_State)o1.get$obj$state(true)).domainMetaSuperclass = o2;</span>
+<span class="nc" id="L56">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; getInverseRole() {
+<span class="nc" id="L58">            return pt.ist.fenixframework.DomainMetaClass.role$$domainMetaSubclass;</span>
+        }
+        
+    };
+<span class="fc" id="L62">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; role$$domainMetaSubclass = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ist.fenixframework.DomainMetaClass&gt; getSet(pt.ist.fenixframework.DomainMetaClass o1) {
+<span class="nc" id="L64">            return ((DomainMetaClass_Base)o1).get$rl$domainMetaSubclass();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; getInverseRole() {
+<span class="nc" id="L67">            return pt.ist.fenixframework.DomainMetaClass.role$$domainMetaSuperclass;</span>
+        }
+        
+    };
+    
+    private final static class DomainFenixFrameworkRootDomainMetaClasses {
+<span class="fc" id="L73">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt;(role$$domainFenixFrameworkRoot, &quot;DomainFenixFrameworkRootDomainMetaClasses&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; getRelationDomainFenixFrameworkRootDomainMetaClasses() {
+<span class="fc" id="L76">        return DomainFenixFrameworkRootDomainMetaClasses.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L80">        DomainFenixFrameworkRootDomainMetaClasses.relation.setRelationName(&quot;pt.ist.fenixframework.DomainMetaClass.DomainFenixFrameworkRootDomainMetaClasses&quot;);</span>
+    }
+    
+    private final static class DomainMetaClassExistingDomainMetaObjects {
+<span class="fc" id="L84">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.adt.bplustree.DomainBPlusTree&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.adt.bplustree.DomainBPlusTree&gt;(role$$existingDomainMetaObjects, &quot;DomainMetaClassExistingDomainMetaObjects&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.adt.bplustree.DomainBPlusTree&gt; getRelationDomainMetaClassExistingDomainMetaObjects() {
+<span class="nc" id="L87">        return DomainMetaClassExistingDomainMetaObjects.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L91">        DomainMetaClassExistingDomainMetaObjects.relation.setRelationName(&quot;pt.ist.fenixframework.DomainMetaClass.DomainMetaClassExistingDomainMetaObjects&quot;);</span>
+    }
+    
+    private final static class DomainMetaClassDeclaredConsistencyPredicates {
+<span class="fc" id="L95">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt;(role$$declaredConsistencyPredicate, &quot;DomainMetaClassDeclaredConsistencyPredicates&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; getRelationDomainMetaClassDeclaredConsistencyPredicates() {
+<span class="nc" id="L98">        return DomainMetaClassDeclaredConsistencyPredicates.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L102">        DomainMetaClassDeclaredConsistencyPredicates.relation.setRelationName(&quot;pt.ist.fenixframework.DomainMetaClass.DomainMetaClassDeclaredConsistencyPredicates&quot;);</span>
+    }
+<span class="pc" id="L104">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; keyFunction$$declaredConsistencyPredicate = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt;() { public Comparable&lt;?&gt; getKey(pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    
+    private final static class DomainMetaSuperclassDomainMetaSubclasses {
+<span class="fc" id="L108">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt;(role$$domainMetaSubclass, &quot;DomainMetaSuperclassDomainMetaSubclasses&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; getRelationDomainMetaSuperclassDomainMetaSubclasses() {
+<span class="nc" id="L111">        return DomainMetaSuperclassDomainMetaSubclasses.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L115">        DomainMetaSuperclassDomainMetaSubclasses.relation.setRelationName(&quot;pt.ist.fenixframework.DomainMetaClass.DomainMetaSuperclassDomainMetaSubclasses&quot;);</span>
+    }
+<span class="pc" id="L117">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.DomainMetaClass&gt; keyFunction$$domainMetaSubclass = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.DomainMetaClass&gt;() { public Comparable&lt;?&gt; getKey(pt.ist.fenixframework.DomainMetaClass value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; get$rl$declaredConsistencyPredicate() {
+<span class="nc" id="L123">        return get$$relationList(&quot;declaredConsistencyPredicate&quot;, getRelationDomainMetaClassDeclaredConsistencyPredicates());</span>
+        
+    }
+    private RelationList&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainMetaClass&gt; get$rl$domainMetaSubclass() {
+<span class="nc" id="L127">        return get$$relationList(&quot;domainMetaSubclass&quot;, getRelationDomainMetaSuperclassDomainMetaSubclasses());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L134">        init$Instance(true);</span>
+<span class="nc" id="L135">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="nc" id="L139">        super.init$Instance(allocateOnly);</span>
+        
+<span class="nc" id="L141">    }</span>
+    
+    // Constructors
+    protected  DomainMetaClass_Base() {
+<span class="nc" id="L145">        super();</span>
+<span class="nc" id="L146">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getDomainClassName() {
+<span class="nc" id="L151">        return ((DO_State)this.get$obj$state(false)).domainClassName;</span>
+    }
+    
+    public void setDomainClassName(java.lang.String domainClassName) {
+<span class="nc" id="L155">        ((DO_State)this.get$obj$state(true)).domainClassName = domainClassName;</span>
+<span class="nc" id="L156">    }</span>
+    
+    private java.lang.String get$domainClassName() {
+<span class="nc" id="L159">        java.lang.String value = ((DO_State)this.get$obj$state(false)).domainClassName;</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$domainClassName(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L164" title="All 2 branches missed.">        ((DO_State)obj$state).domainClassName = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L165">    }</span>
+    
+    public java.lang.Boolean getInitialized() {
+<span class="nc" id="L168">        return ((DO_State)this.get$obj$state(false)).initialized;</span>
+    }
+    
+    public void setInitialized(java.lang.Boolean initialized) {
+<span class="nc" id="L172">        ((DO_State)this.get$obj$state(true)).initialized = initialized;</span>
+<span class="nc" id="L173">    }</span>
+    
+    private java.lang.Boolean get$initialized() {
+<span class="nc" id="L176">        java.lang.Boolean value = ((DO_State)this.get$obj$state(false)).initialized;</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForBoolean(value);</span>
+    }
+    
+    private final void set$initialized(java.lang.Boolean value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        ((DO_State)obj$state).initialized = (java.lang.Boolean)((value == null) ? null : value);</span>
+<span class="nc" id="L182">    }</span>
+    
+    // Role Methods
+    
+    public pt.ist.fenixframework.DomainFenixFrameworkRoot getDomainFenixFrameworkRoot() {
+<span class="nc" id="L187">        return ((DO_State)this.get$obj$state(false)).domainFenixFrameworkRoot;</span>
+    }
+    
+    public void setDomainFenixFrameworkRoot(pt.ist.fenixframework.DomainFenixFrameworkRoot domainFenixFrameworkRoot) {
+<span class="nc" id="L191">        getRelationDomainFenixFrameworkRootDomainMetaClasses().add((pt.ist.fenixframework.DomainMetaClass)this, domainFenixFrameworkRoot);</span>
+<span class="nc" id="L192">    }</span>
+    
+    private java.lang.Long get$oidDomainFenixFrameworkRoot() {
+<span class="nc" id="L195">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).domainFenixFrameworkRoot;</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    public pt.ist.fenixframework.adt.bplustree.DomainBPlusTree getExistingDomainMetaObjects() {
+<span class="nc" id="L200">        return ((DO_State)this.get$obj$state(false)).existingDomainMetaObjects;</span>
+    }
+    
+    public void setExistingDomainMetaObjects(pt.ist.fenixframework.adt.bplustree.DomainBPlusTree existingDomainMetaObjects) {
+<span class="nc" id="L204">        getRelationDomainMetaClassExistingDomainMetaObjects().add((pt.ist.fenixframework.DomainMetaClass)this, existingDomainMetaObjects);</span>
+<span class="nc" id="L205">    }</span>
+    
+    private java.lang.Long get$oidExistingDomainMetaObjects() {
+<span class="nc" id="L208">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).existingDomainMetaObjects;</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    public void addDeclaredConsistencyPredicate(pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate declaredConsistencyPredicate) {
+<span class="nc" id="L213">        getRelationDomainMetaClassDeclaredConsistencyPredicates().add((pt.ist.fenixframework.DomainMetaClass)this, declaredConsistencyPredicate);</span>
+<span class="nc" id="L214">    }</span>
+    
+    public void removeDeclaredConsistencyPredicate(pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate declaredConsistencyPredicate) {
+<span class="nc" id="L217">        getRelationDomainMetaClassDeclaredConsistencyPredicates().remove((pt.ist.fenixframework.DomainMetaClass)this, declaredConsistencyPredicate);</span>
+<span class="nc" id="L218">    }</span>
+    
+    public java.util.Set&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; getDeclaredConsistencyPredicateSet() {
+<span class="nc" id="L221">        return get$rl$declaredConsistencyPredicate();</span>
+    }
+    
+    public void set$declaredConsistencyPredicate(OJBFunctionalSetWrapper declaredConsistencyPredicate) {
+<span class="nc" id="L225">        get$rl$declaredConsistencyPredicate().setFromOJB(this, &quot;declaredConsistencyPredicate&quot;, declaredConsistencyPredicate);</span>
+<span class="nc" id="L226">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; getDeclaredConsistencyPredicate() {
+<span class="nc" id="L230">        return getDeclaredConsistencyPredicateSet();</span>
+    }
+    
+    @Deprecated
+    public int getDeclaredConsistencyPredicateCount() {
+<span class="nc" id="L235">        return getDeclaredConsistencyPredicateSet().size();</span>
+    }
+    
+    public pt.ist.fenixframework.DomainMetaClass getDomainMetaSuperclass() {
+<span class="nc" id="L239">        return ((DO_State)this.get$obj$state(false)).domainMetaSuperclass;</span>
+    }
+    
+    public void setDomainMetaSuperclass(pt.ist.fenixframework.DomainMetaClass domainMetaSuperclass) {
+<span class="nc" id="L243">        getRelationDomainMetaSuperclassDomainMetaSubclasses().add(domainMetaSuperclass, (pt.ist.fenixframework.DomainMetaClass)this);</span>
+<span class="nc" id="L244">    }</span>
+    
+    private java.lang.Long get$oidDomainMetaSuperclass() {
+<span class="nc" id="L247">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).domainMetaSuperclass;</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    public void addDomainMetaSubclass(pt.ist.fenixframework.DomainMetaClass domainMetaSubclass) {
+<span class="nc" id="L252">        getRelationDomainMetaSuperclassDomainMetaSubclasses().add((pt.ist.fenixframework.DomainMetaClass)this, domainMetaSubclass);</span>
+<span class="nc" id="L253">    }</span>
+    
+    public void removeDomainMetaSubclass(pt.ist.fenixframework.DomainMetaClass domainMetaSubclass) {
+<span class="nc" id="L256">        getRelationDomainMetaSuperclassDomainMetaSubclasses().remove((pt.ist.fenixframework.DomainMetaClass)this, domainMetaSubclass);</span>
+<span class="nc" id="L257">    }</span>
+    
+    public java.util.Set&lt;pt.ist.fenixframework.DomainMetaClass&gt; getDomainMetaSubclassSet() {
+<span class="nc" id="L260">        return get$rl$domainMetaSubclass();</span>
+    }
+    
+    public void set$domainMetaSubclass(OJBFunctionalSetWrapper domainMetaSubclass) {
+<span class="nc" id="L264">        get$rl$domainMetaSubclass().setFromOJB(this, &quot;domainMetaSubclass&quot;, domainMetaSubclass);</span>
+<span class="nc" id="L265">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ist.fenixframework.DomainMetaClass&gt; getDomainMetaSubclass() {
+<span class="nc" id="L269">        return getDomainMetaSubclassSet();</span>
+    }
+    
+    @Deprecated
+    public int getDomainMetaSubclassCount() {
+<span class="nc" id="L274">        return getDomainMetaSubclassSet().size();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="nc" id="L279">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="nc bnc" id="L280" title="All 2 branches missed.">        if (castedState.domainFenixFrameworkRoot != null) handleAttemptToDeleteConnectedObject(&quot;DomainFenixFrameworkRoot&quot;);</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">        if (castedState.existingDomainMetaObjects != null) handleAttemptToDeleteConnectedObject(&quot;ExistingDomainMetaObjects&quot;);</span>
+<span class="nc bnc" id="L282" title="All 2 branches missed.">        if (get$rl$declaredConsistencyPredicate().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;DeclaredConsistencyPredicate&quot;);</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">        if (castedState.domainMetaSuperclass != null) handleAttemptToDeleteConnectedObject(&quot;DomainMetaSuperclass&quot;);</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">        if (get$rl$domainMetaSubclass().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;DomainMetaSubclass&quot;);</span>
+        
+<span class="nc" id="L286">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L289">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L290">        set$domainClassName(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;DOMAIN_CLASS_NAME&quot;), state);</span>
+<span class="nc" id="L291">        set$initialized(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readBoolean(rs, &quot;INITIALIZED&quot;), state);</span>
+<span class="nc" id="L292">        castedState.domainFenixFrameworkRoot = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_DOMAIN_FENIX_FRAMEWORK_ROOT&quot;);</span>
+<span class="nc" id="L293">        castedState.existingDomainMetaObjects = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_EXISTING_DOMAIN_META_OBJECTS&quot;);</span>
+<span class="nc" id="L294">        castedState.domainMetaSuperclass = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_DOMAIN_META_SUPERCLASS&quot;);</span>
+<span class="nc" id="L295">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L297" title="All 2 branches missed.">        if (attrName.equals(&quot;declaredConsistencyPredicate&quot;)) return getRelationDomainMetaClassDeclaredConsistencyPredicates();</span>
+<span class="nc bnc" id="L298" title="All 2 branches missed.">        if (attrName.equals(&quot;domainMetaSubclass&quot;)) return getRelationDomainMetaSuperclassDomainMetaSubclasses();</span>
+<span class="nc" id="L299">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L303">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="nc" id="L307">        super.create$allLists();</span>
+<span class="nc" id="L308">        get$$relationList(&quot;declaredConsistencyPredicate&quot;, getRelationDomainMetaClassDeclaredConsistencyPredicates());</span>
+<span class="nc" id="L309">        get$$relationList(&quot;domainMetaSubclass&quot;, getRelationDomainMetaSuperclassDomainMetaSubclasses());</span>
+        
+<span class="nc" id="L311">    }</span>
+<span class="nc" id="L312">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String domainClassName;
+        private java.lang.Boolean initialized;
+        private pt.ist.fenixframework.DomainFenixFrameworkRoot domainFenixFrameworkRoot;
+        private pt.ist.fenixframework.adt.bplustree.DomainBPlusTree existingDomainMetaObjects;
+        private pt.ist.fenixframework.DomainMetaClass domainMetaSuperclass;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="nc" id="L319">            super.copyTo(newState);</span>
+<span class="nc" id="L320">            DO_State newCasted = (DO_State)newState;</span>
+<span class="nc" id="L321">            newCasted.domainClassName = this.domainClassName;</span>
+<span class="nc" id="L322">            newCasted.initialized = this.initialized;</span>
+<span class="nc" id="L323">            newCasted.domainFenixFrameworkRoot = this.domainFenixFrameworkRoot;</span>
+<span class="nc" id="L324">            newCasted.existingDomainMetaObjects = this.existingDomainMetaObjects;</span>
+<span class="nc" id="L325">            newCasted.domainMetaSuperclass = this.domainMetaSuperclass;</span>
+            
+<span class="nc" id="L327">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

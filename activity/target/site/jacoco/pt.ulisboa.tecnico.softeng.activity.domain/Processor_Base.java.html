@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Processor_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.activity.domain</a> &gt; <span class="el_source">Processor_Base.java</span></div><h1>Processor_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.activity.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Processor_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt; role$$activityProvider = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider getValue(pt.ulisboa.tecnico.softeng.activity.domain.Processor o1) {
+<span class="fc" id="L14">            return ((Processor_Base.DO_State)o1.get$obj$state(false)).activityProvider;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.activity.domain.Processor o1, pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider o2) {
+<span class="fc" id="L18">            ((Processor_Base.DO_State)o1.get$obj$state(true)).activityProvider = o2;</span>
+<span class="fc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider,pt.ulisboa.tecnico.softeng.activity.domain.Processor&gt; getInverseRole() {
+<span class="fc" id="L21">            return pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider.role$$processor;</span>
+        }
+        
+    };
+<span class="fc" id="L25">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; role$$booking = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; getSet(pt.ulisboa.tecnico.softeng.activity.domain.Processor o1) {
+<span class="fc" id="L27">            return ((Processor_Base)o1).get$rl$booking();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.activity.domain.Booking,pt.ulisboa.tecnico.softeng.activity.domain.Processor&gt; getInverseRole() {
+<span class="fc" id="L30">            return pt.ulisboa.tecnico.softeng.activity.domain.Booking.role$$processor;</span>
+        }
+        
+    };
+    
+    private final static class ActivityProviderHasProcessor {
+<span class="fc" id="L36">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt;(role$$activityProvider, &quot;ActivityProviderHasProcessor&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider&gt; getRelationActivityProviderHasProcessor() {
+<span class="fc" id="L39">        return ActivityProviderHasProcessor.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L43">        ActivityProviderHasProcessor.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.activity.domain.Processor.ActivityProviderHasProcessor&quot;);</span>
+    }
+    
+    private final static class ProcessorManagesActivityBookings {
+<span class="fc" id="L47">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt;(role$$booking, &quot;ProcessorManagesActivityBookings&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; getRelationProcessorManagesActivityBookings() {
+<span class="fc" id="L50">        return ProcessorManagesActivityBookings.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L54">        ProcessorManagesActivityBookings.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.activity.domain.Processor.ProcessorManagesActivityBookings&quot;);</span>
+    }
+<span class="pc" id="L56">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; keyFunction$$booking = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.activity.domain.Booking value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.activity.domain.Processor,pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; get$rl$booking() {
+<span class="fc" id="L62">        return get$$relationList(&quot;booking&quot;, getRelationProcessorManagesActivityBookings());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L69">        init$Instance(true);</span>
+<span class="nc" id="L70">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L74">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L76">    }</span>
+    
+    // Constructors
+    protected  Processor_Base() {
+<span class="fc" id="L80">        super();</span>
+<span class="fc" id="L81">    }</span>
+    
+    // Getters and Setters
+    
+    // Role Methods
+    
+    public pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider getActivityProvider() {
+<span class="fc" id="L88">        return ((DO_State)this.get$obj$state(false)).activityProvider;</span>
+    }
+    
+    public void setActivityProvider(pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider activityProvider) {
+<span class="fc" id="L92">        getRelationActivityProviderHasProcessor().add((pt.ulisboa.tecnico.softeng.activity.domain.Processor)this, activityProvider);</span>
+<span class="fc" id="L93">    }</span>
+    
+    private java.lang.Long get$oidActivityProvider() {
+<span class="fc" id="L96">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).activityProvider;</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfActivityProvider() {
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        if (getActivityProvider() == null) return false;</span>
+<span class="fc" id="L103">        return true;</span>
+    }
+    
+    public void addBooking(pt.ulisboa.tecnico.softeng.activity.domain.Booking booking) {
+<span class="fc" id="L107">        getRelationProcessorManagesActivityBookings().add((pt.ulisboa.tecnico.softeng.activity.domain.Processor)this, booking);</span>
+<span class="fc" id="L108">    }</span>
+    
+    public void removeBooking(pt.ulisboa.tecnico.softeng.activity.domain.Booking booking) {
+<span class="fc" id="L111">        getRelationProcessorManagesActivityBookings().remove((pt.ulisboa.tecnico.softeng.activity.domain.Processor)this, booking);</span>
+<span class="fc" id="L112">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; getBookingSet() {
+<span class="fc" id="L115">        return get$rl$booking();</span>
+    }
+    
+    public void set$booking(OJBFunctionalSetWrapper booking) {
+<span class="nc" id="L119">        get$rl$booking().setFromOJB(this, &quot;booking&quot;, booking);</span>
+<span class="nc" id="L120">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.activity.domain.Booking&gt; getBooking() {
+<span class="nc" id="L124">        return getBookingSet();</span>
+    }
+    
+    @Deprecated
+    public int getBookingCount() {
+<span class="nc" id="L129">        return getBookingSet().size();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L134">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        if (castedState.activityProvider != null) handleAttemptToDeleteConnectedObject(&quot;ActivityProvider&quot;);</span>
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">        if (get$rl$booking().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;Booking&quot;);</span>
+        
+<span class="fc" id="L138">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L141">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L142">        castedState.activityProvider = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_ACTIVITY_PROVIDER&quot;);</span>
+<span class="nc" id="L143">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        if (attrName.equals(&quot;booking&quot;)) return getRelationProcessorManagesActivityBookings();</span>
+<span class="nc" id="L146">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L150">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L154">        super.create$allLists();</span>
+<span class="fc" id="L155">        get$$relationList(&quot;booking&quot;, getRelationProcessorManagesActivityBookings());</span>
+        
+<span class="fc" id="L157">    }</span>
+<span class="fc" id="L158">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private pt.ulisboa.tecnico.softeng.activity.domain.ActivityProvider activityProvider;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L161">            super.copyTo(newState);</span>
+<span class="fc" id="L162">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L163">            newCasted.activityProvider = this.activityProvider;</span>
+            
+<span class="fc" id="L165">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

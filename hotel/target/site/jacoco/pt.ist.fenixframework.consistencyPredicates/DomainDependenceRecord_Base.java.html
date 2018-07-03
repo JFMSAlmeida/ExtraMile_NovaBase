@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DomainDependenceRecord_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hotel</a> &gt; <a href="index.source.html" class="el_package">pt.ist.fenixframework.consistencyPredicates</a> &gt; <span class="el_source">DomainDependenceRecord_Base.java</span></div><h1>DomainDependenceRecord_Base.java</h1><pre class="source lang-java linenums">package pt.ist.fenixframework.consistencyPredicates;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class DomainDependenceRecord_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; role$$dependentDomainMetaObject = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainMetaObject getValue(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1) {
+<span class="nc" id="L14">            return ((DomainDependenceRecord_Base.DO_State)o1.get$obj$state(false)).dependentDomainMetaObject;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1, pt.ist.fenixframework.DomainMetaObject o2) {
+<span class="nc" id="L18">            ((DomainDependenceRecord_Base.DO_State)o1.get$obj$state(true)).dependentDomainMetaObject = o2;</span>
+<span class="nc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainMetaObject,pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord&gt; getInverseRole() {
+<span class="nc" id="L21">            return pt.ist.fenixframework.DomainMetaObject.role$$ownDependenceRecord;</span>
+        }
+        
+    };
+<span class="fc" id="L25">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; role$$domainConsistencyPredicate = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate getValue(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1) {
+<span class="nc" id="L28">            return ((DomainDependenceRecord_Base.DO_State)o1.get$obj$state(false)).domainConsistencyPredicate;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1, pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate o2) {
+<span class="nc" id="L32">            ((DomainDependenceRecord_Base.DO_State)o1.get$obj$state(true)).domainConsistencyPredicate = o2;</span>
+<span class="nc" id="L33">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord&gt; getInverseRole() {
+<span class="nc" id="L35">            return pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate.role$$domainDependenceRecord;</span>
+        }
+        
+    };
+<span class="fc" id="L39">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; role$$inconsistentPredicate = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate getValue(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1) {
+<span class="nc" id="L42">            return ((DomainDependenceRecord_Base.DO_State)o1.get$obj$state(false)).inconsistentPredicate;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1, pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate o2) {
+<span class="nc" id="L46">            ((DomainDependenceRecord_Base.DO_State)o1.get$obj$state(true)).inconsistentPredicate = o2;</span>
+<span class="nc" id="L47">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord&gt; getInverseRole() {
+<span class="nc" id="L49">            return pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate.role$$inconsistentDependenceRecord;</span>
+        }
+        
+    };
+<span class="fc" id="L53">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; role$$dependedDomainMetaObject = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ist.fenixframework.DomainMetaObject&gt; getSet(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord o1) {
+<span class="nc" id="L55">            return ((DomainDependenceRecord_Base)o1).get$rl$dependedDomainMetaObject();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainMetaObject,pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord&gt; getInverseRole() {
+<span class="nc" id="L58">            return pt.ist.fenixframework.DomainMetaObject.role$$dependingDependenceRecord;</span>
+        }
+        
+    };
+    
+    private final static class DependentDomainMetaObjectOwnDependenceRecords {
+<span class="fc" id="L64">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt;(role$$dependentDomainMetaObject, &quot;DependentDomainMetaObjectOwnDependenceRecords&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; getRelationDependentDomainMetaObjectOwnDependenceRecords() {
+<span class="nc" id="L67">        return DependentDomainMetaObjectOwnDependenceRecords.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L71">        DependentDomainMetaObjectOwnDependenceRecords.relation.setRelationName(&quot;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord.DependentDomainMetaObjectOwnDependenceRecords&quot;);</span>
+    }
+    
+    private final static class DomainConsistencyPredicateDomainDependenceRecords {
+<span class="fc" id="L75">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt;(role$$domainConsistencyPredicate, &quot;DomainConsistencyPredicateDomainDependenceRecords&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate&gt; getRelationDomainConsistencyPredicateDomainDependenceRecords() {
+<span class="nc" id="L78">        return DomainConsistencyPredicateDomainDependenceRecords.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L82">        DomainConsistencyPredicateDomainDependenceRecords.relation.setRelationName(&quot;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord.DomainConsistencyPredicateDomainDependenceRecords&quot;);</span>
+    }
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord&gt; getRelationDomainConsistencyPredicateInconsistentDependenceRecords() {
+<span class="nc" id="L86">        return pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate.getRelationDomainConsistencyPredicateInconsistentDependenceRecords();</span>
+    }
+    
+    private final static class DependedDomainMetaObjectsDependingDependenceRecords {
+<span class="fc" id="L90">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt;(role$$dependedDomainMetaObject, &quot;DependedDomainMetaObjectsDependingDependenceRecords&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; getRelationDependedDomainMetaObjectsDependingDependenceRecords() {
+<span class="nc" id="L93">        return DependedDomainMetaObjectsDependingDependenceRecords.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L97">        DependedDomainMetaObjectsDependingDependenceRecords.relation.setRelationName(&quot;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord.DependedDomainMetaObjectsDependingDependenceRecords&quot;);</span>
+<span class="fc" id="L98">        DependedDomainMetaObjectsDependingDependenceRecords.relation.addListener(new pt.ist.fenixframework.dml.runtime.RelationAdapter&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt;() {</span>
+            @Override
+            public void beforeAdd(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord arg0, pt.ist.fenixframework.DomainMetaObject arg1) {
+<span class="nc" id="L101">                pt.ist.fenixframework.backend.jvstmojb.pstm.TransactionSupport.addRelationTuple(&quot;DependedDomainMetaObjectsDependingDependenceRecords&quot;, arg1, &quot;dependingDependenceRecord&quot;, arg0, &quot;dependedDomainMetaObject&quot;);</span>
+<span class="nc" id="L102">            }</span>
+            @Override
+            public void beforeRemove(pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord arg0, pt.ist.fenixframework.DomainMetaObject arg1) {
+<span class="nc" id="L105">                pt.ist.fenixframework.backend.jvstmojb.pstm.TransactionSupport.removeRelationTuple(&quot;DependedDomainMetaObjectsDependingDependenceRecords&quot;, arg1, &quot;dependingDependenceRecord&quot;, arg0, &quot;dependedDomainMetaObject&quot;);</span>
+<span class="nc" id="L106">            }</span>
+            
+        }
+        );
+    }
+<span class="pc" id="L111">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.DomainMetaObject&gt; keyFunction$$dependedDomainMetaObject = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.DomainMetaObject&gt;() { public Comparable&lt;?&gt; getKey(pt.ist.fenixframework.DomainMetaObject value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord,pt.ist.fenixframework.DomainMetaObject&gt; get$rl$dependedDomainMetaObject() {
+<span class="nc" id="L117">        return get$$relationList(&quot;dependedDomainMetaObject&quot;, getRelationDependedDomainMetaObjectsDependingDependenceRecords());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L124">        init$Instance(true);</span>
+<span class="nc" id="L125">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="nc" id="L129">        super.init$Instance(allocateOnly);</span>
+        
+<span class="nc" id="L131">    }</span>
+    
+    // Constructors
+    protected  DomainDependenceRecord_Base() {
+<span class="nc" id="L135">        super();</span>
+<span class="nc" id="L136">    }</span>
+    
+    // Getters and Setters
+    
+    // Role Methods
+    
+    public pt.ist.fenixframework.DomainMetaObject getDependentDomainMetaObject() {
+<span class="nc" id="L143">        return ((DO_State)this.get$obj$state(false)).dependentDomainMetaObject;</span>
+    }
+    
+    public void setDependentDomainMetaObject(pt.ist.fenixframework.DomainMetaObject dependentDomainMetaObject) {
+<span class="nc" id="L147">        getRelationDependentDomainMetaObjectOwnDependenceRecords().add((pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord)this, dependentDomainMetaObject);</span>
+<span class="nc" id="L148">    }</span>
+    
+    private java.lang.Long get$oidDependentDomainMetaObject() {
+<span class="nc" id="L151">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).dependentDomainMetaObject;</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    public pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate getDomainConsistencyPredicate() {
+<span class="nc" id="L156">        return ((DO_State)this.get$obj$state(false)).domainConsistencyPredicate;</span>
+    }
+    
+    public void setDomainConsistencyPredicate(pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate domainConsistencyPredicate) {
+<span class="nc" id="L160">        getRelationDomainConsistencyPredicateDomainDependenceRecords().add((pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord)this, domainConsistencyPredicate);</span>
+<span class="nc" id="L161">    }</span>
+    
+    private java.lang.Long get$oidDomainConsistencyPredicate() {
+<span class="nc" id="L164">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).domainConsistencyPredicate;</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    public pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate getInconsistentPredicate() {
+<span class="nc" id="L169">        return ((DO_State)this.get$obj$state(false)).inconsistentPredicate;</span>
+    }
+    
+    public void setInconsistentPredicate(pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate inconsistentPredicate) {
+<span class="nc" id="L173">        getRelationDomainConsistencyPredicateInconsistentDependenceRecords().add(inconsistentPredicate, (pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord)this);</span>
+<span class="nc" id="L174">    }</span>
+    
+    private java.lang.Long get$oidInconsistentPredicate() {
+<span class="nc" id="L177">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).inconsistentPredicate;</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    public void addDependedDomainMetaObject(pt.ist.fenixframework.DomainMetaObject dependedDomainMetaObject) {
+<span class="nc" id="L182">        getRelationDependedDomainMetaObjectsDependingDependenceRecords().add((pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord)this, dependedDomainMetaObject);</span>
+<span class="nc" id="L183">    }</span>
+    
+    public void removeDependedDomainMetaObject(pt.ist.fenixframework.DomainMetaObject dependedDomainMetaObject) {
+<span class="nc" id="L186">        getRelationDependedDomainMetaObjectsDependingDependenceRecords().remove((pt.ist.fenixframework.consistencyPredicates.DomainDependenceRecord)this, dependedDomainMetaObject);</span>
+<span class="nc" id="L187">    }</span>
+    
+    public java.util.Set&lt;pt.ist.fenixframework.DomainMetaObject&gt; getDependedDomainMetaObjectSet() {
+<span class="nc" id="L190">        return get$rl$dependedDomainMetaObject();</span>
+    }
+    
+    public void set$dependedDomainMetaObject(OJBFunctionalSetWrapper dependedDomainMetaObject) {
+<span class="nc" id="L194">        get$rl$dependedDomainMetaObject().setFromOJB(this, &quot;dependedDomainMetaObject&quot;, dependedDomainMetaObject);</span>
+<span class="nc" id="L195">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ist.fenixframework.DomainMetaObject&gt; getDependedDomainMetaObject() {
+<span class="nc" id="L199">        return getDependedDomainMetaObjectSet();</span>
+    }
+    
+    @Deprecated
+    public int getDependedDomainMetaObjectCount() {
+<span class="nc" id="L204">        return getDependedDomainMetaObjectSet().size();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="nc" id="L209">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="nc bnc" id="L210" title="All 2 branches missed.">        if (castedState.dependentDomainMetaObject != null) handleAttemptToDeleteConnectedObject(&quot;DependentDomainMetaObject&quot;);</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        if (castedState.domainConsistencyPredicate != null) handleAttemptToDeleteConnectedObject(&quot;DomainConsistencyPredicate&quot;);</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        if (castedState.inconsistentPredicate != null) handleAttemptToDeleteConnectedObject(&quot;InconsistentPredicate&quot;);</span>
+<span class="nc bnc" id="L213" title="All 2 branches missed.">        if (get$rl$dependedDomainMetaObject().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;DependedDomainMetaObject&quot;);</span>
+        
+<span class="nc" id="L215">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L218">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L219">        castedState.dependentDomainMetaObject = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_DEPENDENT_DOMAIN_META_OBJECT&quot;);</span>
+<span class="nc" id="L220">        castedState.domainConsistencyPredicate = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_DOMAIN_CONSISTENCY_PREDICATE&quot;);</span>
+<span class="nc" id="L221">        castedState.inconsistentPredicate = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_INCONSISTENT_PREDICATE&quot;);</span>
+<span class="nc" id="L222">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L224" title="All 2 branches missed.">        if (attrName.equals(&quot;dependedDomainMetaObject&quot;)) return getRelationDependedDomainMetaObjectsDependingDependenceRecords();</span>
+<span class="nc" id="L225">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L229">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="nc" id="L233">        super.create$allLists();</span>
+<span class="nc" id="L234">        get$$relationList(&quot;dependedDomainMetaObject&quot;, getRelationDependedDomainMetaObjectsDependingDependenceRecords());</span>
+        
+<span class="nc" id="L236">    }</span>
+<span class="nc" id="L237">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private pt.ist.fenixframework.DomainMetaObject dependentDomainMetaObject;
+        private pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate domainConsistencyPredicate;
+        private pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate inconsistentPredicate;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="nc" id="L242">            super.copyTo(newState);</span>
+<span class="nc" id="L243">            DO_State newCasted = (DO_State)newState;</span>
+<span class="nc" id="L244">            newCasted.dependentDomainMetaObject = this.dependentDomainMetaObject;</span>
+<span class="nc" id="L245">            newCasted.domainConsistencyPredicate = this.domainConsistencyPredicate;</span>
+<span class="nc" id="L246">            newCasted.inconsistentPredicate = this.inconsistentPredicate;</span>
+            
+<span class="nc" id="L248">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

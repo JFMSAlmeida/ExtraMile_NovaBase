@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Processor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.activity.domain</a> &gt; <span class="el_source">Processor.java</span></div><h1>Processor.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.activity.domain;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import pt.ulisboa.tecnico.softeng.activity.services.remote.BankInterface;
+import pt.ulisboa.tecnico.softeng.activity.services.remote.TaxInterface;
+import pt.ulisboa.tecnico.softeng.activity.services.remote.dataobjects.RestBankOperationData;
+import pt.ulisboa.tecnico.softeng.activity.services.remote.dataobjects.RestInvoiceData;
+import pt.ulisboa.tecnico.softeng.activity.services.remote.exceptions.BankException;
+import pt.ulisboa.tecnico.softeng.activity.services.remote.exceptions.RemoteAccessException;
+import pt.ulisboa.tecnico.softeng.activity.services.remote.exceptions.TaxException;
+
+<span class="fc" id="L14">public class Processor extends Processor_Base {</span>
+	private static final String TRANSACTION_SOURCE = &quot;ACTIVITY&quot;;
+
+	public void delete() {
+<span class="fc" id="L18">		setActivityProvider(null);</span>
+
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		for (Booking booking : getBookingSet()) {</span>
+<span class="fc" id="L21">			booking.delete();</span>
+<span class="fc" id="L22">		}</span>
+
+<span class="fc" id="L24">		deleteDomainObject();</span>
+<span class="fc" id="L25">	}</span>
+
+	public void submitBooking(Booking booking) {
+<span class="fc" id="L28">		addBooking(booking);</span>
+<span class="fc" id="L29">		processInvoices();</span>
+<span class="fc" id="L30">	}</span>
+
+	private void processInvoices() {
+<span class="fc" id="L33">		Set&lt;Booking&gt; failedToProcess = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">		for (Booking booking : getBookingSet()) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">			if (!booking.isCancelled()) {</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">				if (booking.getPaymentReference() == null) {</span>
+					try {
+<span class="fc" id="L38">						booking.setPaymentReference(BankInterface.processPayment(new RestBankOperationData(</span>
+<span class="fc" id="L39">								booking.getIban(), booking.getAmount(), TRANSACTION_SOURCE, booking.getReference())));</span>
+<span class="fc" id="L40">					} catch (BankException | RemoteAccessException ex) {</span>
+<span class="fc" id="L41">						failedToProcess.add(booking);</span>
+<span class="fc" id="L42">						continue;</span>
+<span class="fc" id="L43">					}</span>
+				}
+<span class="fc" id="L45">				RestInvoiceData invoiceData = new RestInvoiceData(booking.getProviderNif(), booking.getBuyerNif(),</span>
+<span class="fc" id="L46">						booking.getType(), booking.getAmount(), booking.getDate(), booking.getTime());</span>
+				try {
+<span class="fc" id="L48">					booking.setInvoiceReference(TaxInterface.submitInvoice(invoiceData));</span>
+<span class="fc" id="L49">				} catch (TaxException | RemoteAccessException ex) {</span>
+<span class="fc" id="L50">					failedToProcess.add(booking);</span>
+<span class="fc" id="L51">				}</span>
+<span class="fc" id="L52">			} else {</span>
+				try {
+<span class="fc bfc" id="L54" title="All 2 branches covered.">					if (booking.getCancelledPaymentReference() == null) {</span>
+<span class="fc" id="L55">						booking.setCancelledPaymentReference(</span>
+<span class="fc" id="L56">								BankInterface.cancelPayment(booking.getPaymentReference()));</span>
+					}
+<span class="fc" id="L58">					TaxInterface.cancelInvoice(booking.getInvoiceReference());</span>
+<span class="fc" id="L59">					booking.setCancelledInvoice(true);</span>
+<span class="fc" id="L60">				} catch (BankException | TaxException | RemoteAccessException ex) {</span>
+<span class="fc" id="L61">					failedToProcess.add(booking);</span>
+<span class="fc" id="L62">				}</span>
+
+			}
+<span class="fc" id="L65">		}</span>
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		for (Booking booking : getBookingSet()) {</span>
+<span class="fc" id="L68">			removeBooking(booking);</span>
+<span class="fc" id="L69">		}</span>
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		for (Booking booking : failedToProcess) {</span>
+<span class="fc" id="L72">			addBooking(booking);</span>
+<span class="fc" id="L73">		}</span>
+<span class="fc" id="L74">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

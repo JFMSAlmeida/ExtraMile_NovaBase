@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Activity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.activity.domain</a> &gt; <span class="el_source">Activity.java</span></div><h1>Activity.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.activity.domain;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.joda.time.LocalDate;
+
+import pt.ulisboa.tecnico.softeng.activity.exception.ActivityException;
+
+public class Activity extends Activity_Base {
+	private static final int MIN_AGE = 18;
+	private static final int MAX_AGE = 100;
+
+<span class="fc" id="L14">	public Activity(ActivityProvider provider, String name, int minAge, int maxAge, int capacity) {</span>
+<span class="fc" id="L15">		checkArguments(provider, name, minAge, maxAge, capacity);</span>
+
+<span class="fc" id="L17">		setCode(provider.getCode() + Integer.toString(provider.getCounter()));</span>
+<span class="fc" id="L18">		setName(name);</span>
+<span class="fc" id="L19">		setMinAge(minAge);</span>
+<span class="fc" id="L20">		setMaxAge(maxAge);</span>
+<span class="fc" id="L21">		setCapacity(capacity);</span>
+
+<span class="fc" id="L23">		setActivityProvider(provider);</span>
+<span class="fc" id="L24">	}</span>
+
+	public void delete() {
+<span class="fc" id="L27">		setActivityProvider(null);</span>
+
+<span class="fc bfc" id="L29" title="All 2 branches covered.">		for (ActivityOffer offer : getActivityOfferSet()) {</span>
+<span class="fc" id="L30">			offer.delete();</span>
+<span class="fc" id="L31">		}</span>
+
+<span class="fc" id="L33">		deleteDomainObject();</span>
+<span class="fc" id="L34">	}</span>
+
+	private void checkArguments(ActivityProvider provider, String name, int minAge, int maxAge, int capacity) {
+<span class="fc bfc" id="L37" title="All 6 branches covered.">		if (provider == null || name == null || name.trim().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L38">			throw new ActivityException();</span>
+		}
+
+<span class="fc bfc" id="L41" title="All 6 branches covered.">		if (minAge &lt; MIN_AGE || maxAge &gt;= MAX_AGE || minAge &gt; maxAge) {</span>
+<span class="fc" id="L42">			throw new ActivityException();</span>
+		}
+
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		if (capacity &lt; 1) {</span>
+<span class="fc" id="L46">			throw new ActivityException();</span>
+		}
+
+<span class="fc" id="L49">	}</span>
+
+	Set&lt;ActivityOffer&gt; getOffers(LocalDate begin, LocalDate end, int age) {
+<span class="fc" id="L52">		Set&lt;ActivityOffer&gt; result = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		for (ActivityOffer offer : getActivityOfferSet()) {</span>
+<span class="fc bfc" id="L54" title="All 4 branches covered.">			if (matchAge(age) &amp;&amp; offer.available(begin, end)) {</span>
+<span class="fc" id="L55">				result.add(offer);</span>
+			}
+<span class="fc" id="L57">		}</span>
+<span class="fc" id="L58">		return result;</span>
+	}
+
+	boolean matchAge(int age) {
+<span class="fc bfc" id="L62" title="All 4 branches covered.">		return age &gt;= getMinAge() &amp;&amp; age &lt;= getMaxAge();</span>
+	}
+
+	public Booking getBooking(String reference) {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		for (ActivityOffer offer : getActivityOfferSet()) {</span>
+<span class="fc" id="L67">			Booking booking = offer.getBooking(reference);</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">			if (booking != null) {</span>
+<span class="nc" id="L69">				return booking;</span>
+			}
+<span class="fc" id="L71">		}</span>
+<span class="fc" id="L72">		return null;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

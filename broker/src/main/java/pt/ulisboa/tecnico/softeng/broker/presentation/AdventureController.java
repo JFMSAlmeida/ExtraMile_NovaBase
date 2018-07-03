@@ -1,5 +1,6 @@
 package pt.ulisboa.tecnico.softeng.broker.presentation;
 
+import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -48,7 +49,13 @@ public class AdventureController {
 				adventureData.getAge(), adventureData.getVehicle());
 
 		try {
-			BrokerInterface.createAdventure(brokerCode, clientNif, adventureData);
+			AdventureData ad = new AdventureData();
+			ad.setBegin(new LocalDate(2016, 12, 21));
+			ad.setEnd(new LocalDate(2016, 12, 21));
+			ad.setMargin(0.2);
+			ad.setAge(30);
+			ad.setVehicle(false);
+			BrokerInterface.createAdventure("bk123", "333333333", ad);
 		} catch (BrokerException be) {
 			model.addAttribute("error", "Error: it was not possible to create the adventure");
 			model.addAttribute("adventure", adventureData);

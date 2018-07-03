@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InstallationData_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ist.fenixframework.data</a> &gt; <span class="el_source">InstallationData_Base.java</span></div><h1>InstallationData_Base.java</h1><pre class="source lang-java linenums">package pt.ist.fenixframework.data;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class InstallationData_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.data.InstallationData,pt.ist.fenixframework.DomainRoot&gt; role$$domainRoot = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.data.InstallationData,pt.ist.fenixframework.DomainRoot&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainRoot getValue(pt.ist.fenixframework.data.InstallationData o1) {
+<span class="nc" id="L14">            return ((InstallationData_Base.DO_State)o1.get$obj$state(false)).domainRoot;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.data.InstallationData o1, pt.ist.fenixframework.DomainRoot o2) {
+<span class="nc" id="L18">            ((InstallationData_Base.DO_State)o1.get$obj$state(true)).domainRoot = o2;</span>
+<span class="nc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainRoot,pt.ist.fenixframework.data.InstallationData&gt; getInverseRole() {
+<span class="nc" id="L21">            return pt.ist.fenixframework.DomainRoot.role$$installationData;</span>
+        }
+        
+    };
+    
+    private final static class DomainRootHasInstallationData {
+<span class="fc" id="L27">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.data.InstallationData,pt.ist.fenixframework.DomainRoot&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.data.InstallationData,pt.ist.fenixframework.DomainRoot&gt;(role$$domainRoot, &quot;DomainRootHasInstallationData&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.data.InstallationData,pt.ist.fenixframework.DomainRoot&gt; getRelationDomainRootHasInstallationData() {
+<span class="nc" id="L30">        return DomainRootHasInstallationData.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L34">        DomainRootHasInstallationData.relation.setRelationName(&quot;pt.ist.fenixframework.data.InstallationData.DomainRootHasInstallationData&quot;);</span>
+<span class="fc" id="L35">    }</span>
+    
+    // Slots
+    
+    // Role Slots
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L44">        init$Instance(true);</span>
+<span class="nc" id="L45">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L49">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L51">    }</span>
+    
+    // Constructors
+    protected  InstallationData_Base() {
+<span class="nc" id="L55">        super();</span>
+<span class="nc" id="L56">    }</span>
+    
+    // Getters and Setters
+    
+    public pt.ist.fenixframework.data.ModuleData getModuleData() {
+<span class="nc" id="L61">        return ((DO_State)this.get$obj$state(false)).moduleData;</span>
+    }
+    
+    public void setModuleData(pt.ist.fenixframework.data.ModuleData moduleData) {
+<span class="fc" id="L65">        ((DO_State)this.get$obj$state(true)).moduleData = moduleData;</span>
+<span class="fc" id="L66">    }</span>
+    
+    private java.lang.String get$moduleData() {
+<span class="fc" id="L69">        pt.ist.fenixframework.data.ModuleData value = ((DO_State)this.get$obj$state(false)).moduleData;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForJsonElement(ValueTypeSerializer.serialize$ModuleData(value));</span>
+    }
+    
+    private final void set$moduleData(com.google.gson.JsonElement value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">        ((DO_State)obj$state).moduleData = (pt.ist.fenixframework.data.ModuleData)((value == null) ? null : ValueTypeSerializer.deSerialize$ModuleData(value));</span>
+<span class="fc" id="L75">    }</span>
+    
+    // Role Methods
+    
+    public pt.ist.fenixframework.DomainRoot getDomainRoot() {
+<span class="nc" id="L80">        return ((DO_State)this.get$obj$state(false)).domainRoot;</span>
+    }
+    
+    public void setDomainRoot(pt.ist.fenixframework.DomainRoot domainRoot) {
+<span class="nc" id="L84">        getRelationDomainRootHasInstallationData().add((pt.ist.fenixframework.data.InstallationData)this, domainRoot);</span>
+<span class="nc" id="L85">    }</span>
+    
+    private java.lang.Long get$oidDomainRoot() {
+<span class="fc" id="L88">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).domainRoot;</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="nc" id="L94">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        if (castedState.domainRoot != null) handleAttemptToDeleteConnectedObject(&quot;DomainRoot&quot;);</span>
+        
+<span class="nc" id="L97">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="fc" id="L100">        DO_State castedState = (DO_State)state;</span>
+<span class="fc" id="L101">        set$moduleData(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readJsonElement(rs, &quot;MODULE_DATA&quot;), state);</span>
+<span class="fc" id="L102">        castedState.domainRoot = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_DOMAIN_ROOT&quot;);</span>
+<span class="fc" id="L103">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc" id="L105">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L109">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="nc" id="L113">        super.create$allLists();</span>
+        
+<span class="nc" id="L115">    }</span>
+<span class="fc" id="L116">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private pt.ist.fenixframework.data.ModuleData moduleData;
+        private pt.ist.fenixframework.DomainRoot domainRoot;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L120">            super.copyTo(newState);</span>
+<span class="fc" id="L121">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L122">            newCasted.moduleData = this.moduleData;</span>
+<span class="fc" id="L123">            newCasted.domainRoot = this.domainRoot;</span>
+            
+<span class="fc" id="L125">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Hotel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hotel</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.hotel.domain</a> &gt; <span class="el_source">Hotel.java</span></div><h1>Hotel.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.hotel.domain;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.joda.time.LocalDate;
+
+import pt.ist.fenixframework.FenixFramework;
+import pt.ulisboa.tecnico.softeng.hotel.exception.HotelException;
+import pt.ulisboa.tecnico.softeng.hotel.services.local.dataobjects.RoomBookingData;
+
+public class Hotel extends Hotel_Base {
+	static final int CODE_SIZE = 7;
+
+<span class="fc" id="L19">	public Hotel(String code, String name, String nif, String iban, double priceSingle, double priceDouble) {</span>
+<span class="fc" id="L20">		checkArguments(code, name, nif, iban, priceSingle, priceDouble);</span>
+
+<span class="fc" id="L22">		setCode(code);</span>
+<span class="fc" id="L23">		setName(name);</span>
+<span class="fc" id="L24">		setNif(nif);</span>
+<span class="fc" id="L25">		setIban(iban);</span>
+<span class="fc" id="L26">		setPriceSingle(priceSingle);</span>
+<span class="fc" id="L27">		setPriceDouble(priceDouble);</span>
+
+<span class="fc" id="L29">		setProcessor(new Processor());</span>
+
+<span class="fc" id="L31">		FenixFramework.getDomainRoot().addHotel(this);</span>
+<span class="fc" id="L32">	}</span>
+
+	public void delete() {
+<span class="fc" id="L35">		setRoot(null);</span>
+
+<span class="fc" id="L37">		getProcessor().delete();</span>
+
+<span class="fc bfc" id="L39" title="All 2 branches covered.">		for (Room room : getRoomSet()) {</span>
+<span class="fc" id="L40">			room.delete();</span>
+<span class="fc" id="L41">		}</span>
+
+<span class="fc" id="L43">		deleteDomainObject();</span>
+<span class="fc" id="L44">	}</span>
+
+	private void checkArguments(String code, String name, String nif, String iban, double priceSingle,
+			double priceDouble) {
+<span class="pc bpc" id="L48" title="3 of 14 branches missed.">		if (code == null || name == null || isEmpty(code) || isEmpty(name) || nif == null || isEmpty(nif)</span>
+<span class="pc bpc" id="L49" title="1 of 6 branches missed.">				|| iban == null || isEmpty(iban) || priceSingle &lt; 0 || priceDouble &lt; 0) {</span>
+
+<span class="fc" id="L51">			throw new HotelException();</span>
+		}
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (code.length() != Hotel.CODE_SIZE) {</span>
+<span class="fc" id="L55">			throw new HotelException();</span>
+		}
+
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">			if (hotel.getCode().equals(code)) {</span>
+<span class="fc" id="L60">				throw new HotelException();</span>
+			}
+<span class="fc" id="L62">		}</span>
+
+<span class="fc bfc" id="L64" title="All 2 branches covered.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			if (hotel.getNif().equals(nif)) {</span>
+<span class="nc" id="L66">				throw new HotelException();</span>
+			}
+<span class="fc" id="L68">		}</span>
+<span class="fc" id="L69">	}</span>
+
+	public Room hasVacancy(Room.Type type, LocalDate arrival, LocalDate departure) {
+<span class="fc bfc" id="L72" title="All 6 branches covered.">		if (type == null || arrival == null || departure == null) {</span>
+<span class="fc" id="L73">			throw new HotelException();</span>
+		}
+
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		for (Room room : getRoomSet()) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">			if (room.isFree(type, arrival, departure)) {</span>
+<span class="fc" id="L78">				return room;</span>
+			}
+<span class="fc" id="L80">		}</span>
+<span class="fc" id="L81">		return null;</span>
+	}
+
+	public Set&lt;Room&gt; getAvailableRooms(LocalDate arrival, LocalDate departure) {
+<span class="fc" id="L85">		Set&lt;Room&gt; availableRooms = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		for (Room room : getRoomSet()) {</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">			if (room.isFree(room.getType(), arrival, departure)) {</span>
+<span class="fc" id="L88">				availableRooms.add(room);</span>
+			}
+<span class="fc" id="L90">		}</span>
+<span class="fc" id="L91">		return availableRooms;</span>
+	}
+
+	public double getPrice(Room.Type type) {
+<span class="fc bfc" id="L95" title="All 2 branches covered.">		if (type == null) {</span>
+<span class="fc" id="L96">			throw new HotelException();</span>
+		} else {
+<span class="fc bfc" id="L98" title="All 2 branches covered.">			return type.equals(Room.Type.SINGLE) ? getPriceSingle() : getPriceDouble();</span>
+		}
+	}
+
+	public void setPrice(Room.Type type, double price) {
+<span class="pc bpc" id="L103" title="1 of 4 branches missed.">		if (price &lt; 0 || type == null) {</span>
+<span class="fc" id="L104">			throw new HotelException();</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		} else if (type.equals(Room.Type.SINGLE)) {</span>
+<span class="fc" id="L106">			setPriceSingle(price);</span>
+		} else {
+<span class="fc" id="L108">			setPriceDouble(price);</span>
+		}
+<span class="fc" id="L110">	}</span>
+
+	private boolean isEmpty(String str) {
+<span class="fc bfc" id="L113" title="All 2 branches covered.">		return str.trim().length() == 0;</span>
+	}
+
+	@Override
+	public void addRoom(Room room) {
+<span class="fc bfc" id="L118" title="All 2 branches covered.">		if (hasRoom(room.getNumber())) {</span>
+<span class="fc" id="L119">			throw new HotelException();</span>
+		}
+
+<span class="fc" id="L122">		super.addRoom(room);</span>
+<span class="fc" id="L123">	}</span>
+
+	public boolean hasRoom(String number) {
+<span class="fc bfc" id="L126" title="All 2 branches covered.">		for (Room room : getRoomSet()) {</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">			if (room.getNumber().equals(number)) {</span>
+<span class="fc" id="L128">				return true;</span>
+			}
+<span class="fc" id="L130">		}</span>
+<span class="fc" id="L131">		return false;</span>
+	}
+
+	public Booking getBooking(String reference) {
+<span class="fc bfc" id="L135" title="All 2 branches covered.">		for (Room room : getRoomSet()) {</span>
+<span class="fc" id="L136">			Booking booking = room.getBooking(reference);</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">			if (booking != null) {</span>
+<span class="fc" id="L138">				return booking;</span>
+			}
+<span class="fc" id="L140">		}</span>
+<span class="fc" id="L141">		return null;</span>
+	}
+
+	public static String reserveRoom(Room.Type type, LocalDate arrival, LocalDate departure, String buyerNIF,
+			String buyerIban) {
+<span class="fc bfc" id="L146" title="All 2 branches covered.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="fc" id="L147">			Room room = hotel.hasVacancy(type, arrival, departure);</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">			if (room != null) {</span>
+<span class="fc" id="L149">				Booking booking = room.reserve(type, arrival, departure, buyerNIF, buyerIban);</span>
+<span class="fc" id="L150">				return booking.getReference();</span>
+			}
+<span class="fc" id="L152">		}</span>
+<span class="fc" id="L153">		throw new HotelException();</span>
+	}
+
+	public static String cancelBooking(String reference) {
+<span class="fc bfc" id="L157" title="All 2 branches covered.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="fc" id="L158">			Booking booking = hotel.getBooking(reference);</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">			if (booking != null) {</span>
+<span class="fc" id="L160">				return booking.cancel();</span>
+			}
+<span class="fc" id="L162">		}</span>
+<span class="fc" id="L163">		throw new HotelException();</span>
+	}
+
+	public static RoomBookingData getRoomBookingData(String reference) {
+<span class="nc bnc" id="L167" title="All 2 branches missed.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="nc bnc" id="L168" title="All 2 branches missed.">			for (Room room : hotel.getRoomSet()) {</span>
+<span class="nc" id="L169">				Booking booking = room.getBooking(reference);</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">				if (booking != null) {</span>
+<span class="nc" id="L171">					return new RoomBookingData(booking);</span>
+				}
+<span class="nc" id="L173">			}</span>
+<span class="nc" id="L174">		}</span>
+<span class="nc" id="L175">		throw new HotelException();</span>
+	}
+
+	public static List&lt;Room&gt; getAvailableRooms(int number, LocalDate arrival, LocalDate departure) {
+<span class="nc" id="L179">		List&lt;Room&gt; availableRooms = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="nc" id="L181">			availableRooms.addAll(hotel.getAvailableRooms(arrival, departure));</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">			if (availableRooms.size() &gt;= number) {</span>
+<span class="nc" id="L183">				return availableRooms;</span>
+			}
+<span class="nc" id="L185">		}</span>
+<span class="nc" id="L186">		return availableRooms;</span>
+	}
+
+	public static Hotel getHotelByCode(String code) {
+<span class="nc bnc" id="L190" title="All 2 branches missed.">		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">			if (hotel.getCode().equals(code)) {</span>
+<span class="nc" id="L192">				return hotel;</span>
+			}
+<span class="nc" id="L194">		}</span>
+<span class="nc" id="L195">		return null;</span>
+	}
+
+	public Room getRoomByNumber(String number) {
+<span class="nc" id="L199">		return getRoomSet().stream().filter(r -&gt; r.getNumber().equals(number)).findFirst().orElse(null);</span>
+
+	}
+
+	@Override
+	public int getCounter() {
+<span class="fc" id="L205">		int counter = super.getCounter() + 1;</span>
+<span class="fc" id="L206">		setCounter(counter);</span>
+<span class="fc" id="L207">		return counter;</span>
+	}
+
+	public Booking getBooking4AdventureId(String adventureId) {
+<span class="nc" id="L211">		return getRoomSet().stream().flatMap(r -&gt; r.getBookingSet().stream())</span>
+<span class="nc bnc" id="L212" title="All 4 branches missed.">				.filter(b -&gt; b.getAdventureId() != null &amp;&amp; b.getAdventureId().equals(adventureId)).findFirst()</span>
+<span class="nc" id="L213">				.orElse(null);</span>
+	}
+
+	public Collection&lt;? extends Booking&gt; getBookings4BulkId(String bulkId) {
+<span class="fc" id="L217">		return getRoomSet().stream().flatMap(r -&gt; r.getBookingSet().stream())</span>
+<span class="pc bpc" id="L218" title="2 of 4 branches missed.">				.filter(b -&gt; b.getBulkId() != null &amp;&amp; b.getBulkId().equals(bulkId)).collect(Collectors.toSet());</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

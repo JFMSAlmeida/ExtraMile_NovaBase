@@ -1,0 +1,14 @@
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/BuyerConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/BuyerToReturnTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/InvoiceConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/TaxPayerGetInvoiceByReferenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/TaxPayerGetTaxesPerYearMethodsTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/TaxInterfaceSubmitInvoiceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/RollbackTestAbstractClass.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/SellerConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/ItemTypeConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/IRSCancelInvoiceMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/IRSGetTaxPayerByNIFTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/SellerToPayTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/TaxPersistenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/tax/src/test/java/pt/ulisboa/tecnico/softeng/tax/domain/IRSGetItemTypeByNameTest.java

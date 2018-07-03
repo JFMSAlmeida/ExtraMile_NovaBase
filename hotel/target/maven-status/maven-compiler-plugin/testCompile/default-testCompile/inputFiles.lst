@@ -1,0 +1,16 @@
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/RoomConstructorMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/services/local/HotelInterfaceBulkBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/BookingConflictMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/RollbackTestAbstractClass.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/HotelHasVacancyMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/HotelSetPriceMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/ProcessorSubmitBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/BookingConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/HotelPersistenceTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/services/local/HotelInterfaceCancelBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/RoomGetBookingMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/services/local/HotelInterfaceGetRoomBookingDataMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/HotelGetPriceMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/RoomReserveMethodTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/HotelConstructorTest.java
+/home/almeida/Desktop/ExtraMile_NovaBase/hotel/src/test/java/pt/ulisboa/tecnico/softeng/hotel/domain/HotelReserveRoomMethodTest.java

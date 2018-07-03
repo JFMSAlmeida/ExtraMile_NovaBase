@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: pt.ulisboa.tecnico.softeng.broker.domain.ConfirmedStateProcessMethodTest
+-------------------------------------------------------------------------------
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.799 sec - in pt.ulisboa.tecnico.softeng.broker.domain.ConfirmedStateProcessMethodTest

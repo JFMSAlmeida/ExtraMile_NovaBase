@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Room_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hotel</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.hotel.domain</a> &gt; <span class="el_source">Room_Base.java</span></div><h1>Room_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.hotel.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Room_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Hotel&gt; role$$hotel = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Hotel&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.hotel.domain.Hotel getValue(pt.ulisboa.tecnico.softeng.hotel.domain.Room o1) {
+<span class="fc" id="L14">            return ((Room_Base.DO_State)o1.get$obj$state(false)).hotel;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.hotel.domain.Room o1, pt.ulisboa.tecnico.softeng.hotel.domain.Hotel o2) {
+<span class="fc" id="L18">            ((Room_Base.DO_State)o1.get$obj$state(true)).hotel = o2;</span>
+<span class="fc" id="L19">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Hotel,pt.ulisboa.tecnico.softeng.hotel.domain.Room&gt; getInverseRole() {
+<span class="fc" id="L21">            return pt.ulisboa.tecnico.softeng.hotel.domain.Hotel.role$$room;</span>
+        }
+        
+    };
+<span class="fc" id="L25">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; role$$booking = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; getSet(pt.ulisboa.tecnico.softeng.hotel.domain.Room o1) {
+<span class="fc" id="L27">            return ((Room_Base)o1).get$rl$booking();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Booking,pt.ulisboa.tecnico.softeng.hotel.domain.Room&gt; getInverseRole() {
+<span class="fc" id="L30">            return pt.ulisboa.tecnico.softeng.hotel.domain.Booking.role$$room;</span>
+        }
+        
+    };
+    
+    private final static class HotelHasRooms {
+<span class="fc" id="L36">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Hotel&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Hotel&gt;(role$$hotel, &quot;HotelHasRooms&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Hotel&gt; getRelationHotelHasRooms() {
+<span class="fc" id="L39">        return HotelHasRooms.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L43">        HotelHasRooms.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.hotel.domain.Room.HotelHasRooms&quot;);</span>
+    }
+    
+    private final static class RoomHasBookings {
+<span class="fc" id="L47">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt;(role$$booking, &quot;RoomHasBookings&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; getRelationRoomHasBookings() {
+<span class="fc" id="L50">        return RoomHasBookings.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L54">        RoomHasBookings.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.hotel.domain.Room.RoomHasBookings&quot;);</span>
+    }
+<span class="pc" id="L56">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; keyFunction$$booking = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.hotel.domain.Booking value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Room,pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; get$rl$booking() {
+<span class="fc" id="L62">        return get$$relationList(&quot;booking&quot;, getRelationRoomHasBookings());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L69">        init$Instance(true);</span>
+<span class="nc" id="L70">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L74">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L76">    }</span>
+    
+    // Constructors
+    protected  Room_Base() {
+<span class="fc" id="L80">        super();</span>
+<span class="fc" id="L81">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getNumber() {
+<span class="fc" id="L86">        return ((DO_State)this.get$obj$state(false)).number;</span>
+    }
+    
+    public void setNumber(java.lang.String number) {
+<span class="fc" id="L90">        ((DO_State)this.get$obj$state(true)).number = number;</span>
+<span class="fc" id="L91">    }</span>
+    
+    private java.lang.String get$number() {
+<span class="fc" id="L94">        java.lang.String value = ((DO_State)this.get$obj$state(false)).number;</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$number(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        ((DO_State)obj$state).number = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L100">    }</span>
+    
+    public pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type getType() {
+<span class="fc" id="L103">        return ((DO_State)this.get$obj$state(false)).type;</span>
+    }
+    
+    public void setType(pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type type) {
+<span class="fc" id="L107">        ((DO_State)this.get$obj$state(true)).type = type;</span>
+<span class="fc" id="L108">    }</span>
+    
+    private java.lang.String get$type() {
+<span class="fc" id="L111">        pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type value = ((DO_State)this.get$obj$state(false)).type;</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForEnum(value);</span>
+    }
+    
+    private final void set$type(pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        ((DO_State)obj$state).type = (pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type)((value == null) ? null : value);</span>
+<span class="nc" id="L117">    }</span>
+    
+    // Role Methods
+    
+    public pt.ulisboa.tecnico.softeng.hotel.domain.Hotel getHotel() {
+<span class="fc" id="L122">        return ((DO_State)this.get$obj$state(false)).hotel;</span>
+    }
+    
+    public void setHotel(pt.ulisboa.tecnico.softeng.hotel.domain.Hotel hotel) {
+<span class="fc" id="L126">        getRelationHotelHasRooms().add((pt.ulisboa.tecnico.softeng.hotel.domain.Room)this, hotel);</span>
+<span class="fc" id="L127">    }</span>
+    
+    private java.lang.Long get$oidHotel() {
+<span class="fc" id="L130">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).hotel;</span>
+<span class="pc bpc" id="L131" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfHotel() {
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">        if (getHotel() == null) return false;</span>
+<span class="fc" id="L137">        return true;</span>
+    }
+    
+    public void addBooking(pt.ulisboa.tecnico.softeng.hotel.domain.Booking booking) {
+<span class="nc" id="L141">        getRelationRoomHasBookings().add((pt.ulisboa.tecnico.softeng.hotel.domain.Room)this, booking);</span>
+<span class="nc" id="L142">    }</span>
+    
+    public void removeBooking(pt.ulisboa.tecnico.softeng.hotel.domain.Booking booking) {
+<span class="nc" id="L145">        getRelationRoomHasBookings().remove((pt.ulisboa.tecnico.softeng.hotel.domain.Room)this, booking);</span>
+<span class="nc" id="L146">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; getBookingSet() {
+<span class="fc" id="L149">        return get$rl$booking();</span>
+    }
+    
+    public void set$booking(OJBFunctionalSetWrapper booking) {
+<span class="nc" id="L153">        get$rl$booking().setFromOJB(this, &quot;booking&quot;, booking);</span>
+<span class="nc" id="L154">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.hotel.domain.Booking&gt; getBooking() {
+<span class="nc" id="L158">        return getBookingSet();</span>
+    }
+    
+    @Deprecated
+    public int getBookingCount() {
+<span class="nc" id="L163">        return getBookingSet().size();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L168">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L169" title="1 of 2 branches missed.">        if (castedState.hotel != null) handleAttemptToDeleteConnectedObject(&quot;Hotel&quot;);</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">        if (get$rl$booking().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;Booking&quot;);</span>
+        
+<span class="fc" id="L172">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L175">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L176">        set$number(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;NUMBER&quot;), state);</span>
+<span class="nc" id="L177">        set$type(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readEnum(pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type.class, rs, &quot;TYPE&quot;), state);</span>
+<span class="nc" id="L178">        castedState.hotel = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_HOTEL&quot;);</span>
+<span class="nc" id="L179">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        if (attrName.equals(&quot;booking&quot;)) return getRelationRoomHasBookings();</span>
+<span class="nc" id="L182">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="fc" id="L186">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L190">        super.create$allLists();</span>
+<span class="fc" id="L191">        get$$relationList(&quot;booking&quot;, getRelationRoomHasBookings());</span>
+        
+<span class="fc" id="L193">    }</span>
+<span class="fc" id="L194">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String number;
+        private pt.ulisboa.tecnico.softeng.hotel.domain.Room.Type type;
+        private pt.ulisboa.tecnico.softeng.hotel.domain.Hotel hotel;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L199">            super.copyTo(newState);</span>
+<span class="fc" id="L200">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L201">            newCasted.number = this.number;</span>
+<span class="fc" id="L202">            newCasted.type = this.type;</span>
+<span class="fc" id="L203">            newCasted.hotel = this.hotel;</span>
+            
+<span class="fc" id="L205">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

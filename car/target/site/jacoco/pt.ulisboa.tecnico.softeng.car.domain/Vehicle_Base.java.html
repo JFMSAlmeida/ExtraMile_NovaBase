@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Vehicle_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">car</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.car.domain</a> &gt; <span class="el_source">Vehicle_Base.java</span></div><h1>Vehicle_Base.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.car.domain;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class Vehicle_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; role$$renting = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getSet(pt.ulisboa.tecnico.softeng.car.domain.Vehicle o1) {
+<span class="fc" id="L13">            return ((Vehicle_Base)o1).get$rl$renting();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting,pt.ulisboa.tecnico.softeng.car.domain.Vehicle&gt; getInverseRole() {
+<span class="fc" id="L16">            return pt.ulisboa.tecnico.softeng.car.domain.Renting.role$$vehicle;</span>
+        }
+        
+    };
+<span class="fc" id="L20">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.RentACar&gt; role$$rentACar = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.RentACar&gt;() {</span>
+        @Override
+        public pt.ulisboa.tecnico.softeng.car.domain.RentACar getValue(pt.ulisboa.tecnico.softeng.car.domain.Vehicle o1) {
+<span class="fc" id="L23">            return ((Vehicle_Base.DO_State)o1.get$obj$state(false)).rentACar;</span>
+        }
+        @Override
+        public void setValue(pt.ulisboa.tecnico.softeng.car.domain.Vehicle o1, pt.ulisboa.tecnico.softeng.car.domain.RentACar o2) {
+<span class="fc" id="L27">            ((Vehicle_Base.DO_State)o1.get$obj$state(true)).rentACar = o2;</span>
+<span class="fc" id="L28">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ulisboa.tecnico.softeng.car.domain.RentACar,pt.ulisboa.tecnico.softeng.car.domain.Vehicle&gt; getInverseRole() {
+<span class="fc" id="L30">            return pt.ulisboa.tecnico.softeng.car.domain.RentACar.role$$vehicle;</span>
+        }
+        
+    };
+    
+    private final static class VehicleHasRentings {
+<span class="fc" id="L36">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt;(role$$renting, &quot;VehicleHasRentings&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getRelationVehicleHasRentings() {
+<span class="fc" id="L39">        return VehicleHasRentings.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L43">        VehicleHasRentings.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.car.domain.Vehicle.VehicleHasRentings&quot;);</span>
+    }
+<span class="pc" id="L45">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; keyFunction$$renting = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt;() { public Comparable&lt;?&gt; getKey(pt.ulisboa.tecnico.softeng.car.domain.Renting value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    private final static class RentACarHasVehicles {
+<span class="fc" id="L48">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.RentACar&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.RentACar&gt;(role$$rentACar, &quot;RentACarHasVehicles&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.RentACar&gt; getRelationRentACarHasVehicles() {
+<span class="fc" id="L51">        return RentACarHasVehicles.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L55">        RentACarHasVehicles.relation.setRelationName(&quot;pt.ulisboa.tecnico.softeng.car.domain.Vehicle.RentACarHasVehicles&quot;);</span>
+<span class="fc" id="L56">    }</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ulisboa.tecnico.softeng.car.domain.Vehicle,pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; get$rl$renting() {
+<span class="fc" id="L62">        return get$$relationList(&quot;renting&quot;, getRelationVehicleHasRentings());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L69">        init$Instance(true);</span>
+<span class="nc" id="L70">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L74">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L76">    }</span>
+    
+    // Constructors
+    protected  Vehicle_Base() {
+<span class="fc" id="L80">        super();</span>
+<span class="fc" id="L81">    }</span>
+    
+    // Getters and Setters
+    
+    public java.lang.String getPlate() {
+<span class="fc" id="L86">        return ((DO_State)this.get$obj$state(false)).plate;</span>
+    }
+    
+    public void setPlate(java.lang.String plate) {
+<span class="fc" id="L90">        ((DO_State)this.get$obj$state(true)).plate = plate;</span>
+<span class="fc" id="L91">    }</span>
+    
+    private java.lang.String get$plate() {
+<span class="fc" id="L94">        java.lang.String value = ((DO_State)this.get$obj$state(false)).plate;</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForString(value);</span>
+    }
+    
+    private final void set$plate(java.lang.String value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L99" title="All 2 branches missed.">        ((DO_State)obj$state).plate = (java.lang.String)((value == null) ? null : value);</span>
+<span class="nc" id="L100">    }</span>
+    
+    public java.lang.Integer getKilometers() {
+<span class="fc" id="L103">        return ((DO_State)this.get$obj$state(false)).kilometers;</span>
+    }
+    
+    public void setKilometers(java.lang.Integer kilometers) {
+<span class="fc" id="L107">        ((DO_State)this.get$obj$state(true)).kilometers = kilometers;</span>
+<span class="fc" id="L108">    }</span>
+    
+    private java.lang.Integer get$kilometers() {
+<span class="fc" id="L111">        java.lang.Integer value = ((DO_State)this.get$obj$state(false)).kilometers;</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        return (value == null) ? null : pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueForInteger(value);</span>
+    }
+    
+    private final void set$kilometers(java.lang.Integer value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        ((DO_State)obj$state).kilometers = (java.lang.Integer)((value == null) ? null : value);</span>
+<span class="nc" id="L117">    }</span>
+    
+    public double getPrice() {
+<span class="fc" id="L120">        return ((DO_State)this.get$obj$state(false)).price;</span>
+    }
+    
+    public void setPrice(double price) {
+<span class="fc" id="L124">        ((DO_State)this.get$obj$state(true)).price = price;</span>
+<span class="fc" id="L125">    }</span>
+    
+    private double get$price() {
+<span class="fc" id="L128">        double value = ((DO_State)this.get$obj$state(false)).price;</span>
+<span class="fc" id="L129">        return pt.ist.fenixframework.backend.jvstmojb.repository.ToSqlConverter.getValueFordouble(value);</span>
+    }
+    
+    private final void set$price(double value, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  obj$state) {
+<span class="nc" id="L133">        ((DO_State)obj$state).price = (double)(value);</span>
+<span class="nc" id="L134">    }</span>
+    
+    // Role Methods
+    
+    public void addRenting(pt.ulisboa.tecnico.softeng.car.domain.Renting renting) {
+<span class="fc" id="L139">        getRelationVehicleHasRentings().add((pt.ulisboa.tecnico.softeng.car.domain.Vehicle)this, renting);</span>
+<span class="fc" id="L140">    }</span>
+    
+    public void removeRenting(pt.ulisboa.tecnico.softeng.car.domain.Renting renting) {
+<span class="nc" id="L143">        getRelationVehicleHasRentings().remove((pt.ulisboa.tecnico.softeng.car.domain.Vehicle)this, renting);</span>
+<span class="nc" id="L144">    }</span>
+    
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getRentingSet() {
+<span class="fc" id="L147">        return get$rl$renting();</span>
+    }
+    
+    public void set$renting(OJBFunctionalSetWrapper renting) {
+<span class="nc" id="L151">        get$rl$renting().setFromOJB(this, &quot;renting&quot;, renting);</span>
+<span class="nc" id="L152">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ulisboa.tecnico.softeng.car.domain.Renting&gt; getRenting() {
+<span class="nc" id="L156">        return getRentingSet();</span>
+    }
+    
+    @Deprecated
+    public int getRentingCount() {
+<span class="nc" id="L161">        return getRentingSet().size();</span>
+    }
+    
+    public pt.ulisboa.tecnico.softeng.car.domain.RentACar getRentACar() {
+<span class="fc" id="L165">        return ((DO_State)this.get$obj$state(false)).rentACar;</span>
+    }
+    
+    public void setRentACar(pt.ulisboa.tecnico.softeng.car.domain.RentACar rentACar) {
+<span class="fc" id="L169">        getRelationRentACarHasVehicles().add((pt.ulisboa.tecnico.softeng.car.domain.Vehicle)this, rentACar);</span>
+<span class="fc" id="L170">    }</span>
+    
+    private java.lang.Long get$oidRentACar() {
+<span class="fc" id="L173">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).rentACar;</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    @pt.ist.fenixframework.consistencyPredicates.ConsistencyPredicate
+    public final boolean checkMultiplicityOfRentACar() {
+<span class="pc bpc" id="L179" title="1 of 2 branches missed.">        if (getRentACar() == null) return false;</span>
+<span class="fc" id="L180">        return true;</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="fc" id="L185">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="pc bpc" id="L186" title="1 of 2 branches missed.">        if (get$rl$renting().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;Renting&quot;);</span>
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">        if (castedState.rentACar != null) handleAttemptToDeleteConnectedObject(&quot;RentACar&quot;);</span>
+        
+<span class="fc" id="L189">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L192">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L193">        set$plate(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readString(rs, &quot;PLATE&quot;), state);</span>
+<span class="nc" id="L194">        set$kilometers(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readInteger(rs, &quot;KILOMETERS&quot;), state);</span>
+<span class="nc" id="L195">        set$price(pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readdouble(rs, &quot;PRICE&quot;), state);</span>
+<span class="nc" id="L196">        castedState.rentACar = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_RENT_A_CAR&quot;);</span>
+<span class="nc" id="L197">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        if (attrName.equals(&quot;renting&quot;)) return getRelationVehicleHasRentings();</span>
+<span class="nc" id="L200">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L204">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="fc" id="L208">        super.create$allLists();</span>
+<span class="fc" id="L209">        get$$relationList(&quot;renting&quot;, getRelationVehicleHasRentings());</span>
+        
+<span class="fc" id="L211">    }</span>
+<span class="fc" id="L212">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private java.lang.String plate;
+        private java.lang.Integer kilometers;
+        private double price;
+        private pt.ulisboa.tecnico.softeng.car.domain.RentACar rentACar;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="fc" id="L218">            super.copyTo(newState);</span>
+<span class="fc" id="L219">            DO_State newCasted = (DO_State)newState;</span>
+<span class="fc" id="L220">            newCasted.plate = this.plate;</span>
+<span class="fc" id="L221">            newCasted.kilometers = this.kilometers;</span>
+<span class="fc" id="L222">            newCasted.price = this.price;</span>
+<span class="fc" id="L223">            newCasted.rentACar = this.rentACar;</span>
+            
+<span class="fc" id="L225">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

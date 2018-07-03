@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ClientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bank</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.bank.presentation</a> &gt; <span class="el_source">ClientController.java</span></div><h1>ClientController.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.bank.presentation;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import pt.ulisboa.tecnico.softeng.bank.exception.BankException;
+import pt.ulisboa.tecnico.softeng.bank.services.local.BankInterface;
+import pt.ulisboa.tecnico.softeng.bank.services.local.dataobjects.BankData;
+import pt.ulisboa.tecnico.softeng.bank.services.local.dataobjects.ClientData;
+
+@Controller
+@RequestMapping(value = &quot;/banks/{code}/clients&quot;)
+<span class="nc" id="L19">public class ClientController {</span>
+<span class="nc" id="L20">	private static Logger logger = LoggerFactory.getLogger(ClientController.class);</span>
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String clientForm(Model model, @PathVariable String code) {
+<span class="nc" id="L24">		logger.info(&quot;clientForm bankCode:{}&quot;, code);</span>
+
+<span class="nc" id="L26">		BankData bankData = BankInterface.getBankDataByCode(code);</span>
+
+<span class="nc bnc" id="L28" title="All 2 branches missed.">		if (bankData == null) {</span>
+<span class="nc" id="L29">			model.addAttribute(&quot;error&quot;, &quot;Error: it does not exist a bank with the code &quot; + code);</span>
+<span class="nc" id="L30">			model.addAttribute(&quot;bank&quot;, new BankData());</span>
+<span class="nc" id="L31">			model.addAttribute(&quot;banks&quot;, BankInterface.getBanks());</span>
+<span class="nc" id="L32">			return &quot;banks&quot;;</span>
+		}
+
+<span class="nc" id="L35">		model.addAttribute(&quot;client&quot;, new ClientData());</span>
+<span class="nc" id="L36">		model.addAttribute(&quot;bank&quot;, bankData);</span>
+<span class="nc" id="L37">		return &quot;clients&quot;;</span>
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String clientSubmit(Model model, @PathVariable String code, @ModelAttribute ClientData client) {
+<span class="nc" id="L42">		logger.info(&quot;clientSubmit bankCode:{}, clientName:{}&quot;, code, client.getName());</span>
+
+		try {
+<span class="nc" id="L45">			BankInterface.createClient(code, client);</span>
+<span class="nc" id="L46">		} catch (BankException be) {</span>
+<span class="nc" id="L47">			model.addAttribute(&quot;error&quot;, &quot;Error: it was not possible to create the client&quot;);</span>
+<span class="nc" id="L48">			model.addAttribute(&quot;client&quot;, client);</span>
+<span class="nc" id="L49">			model.addAttribute(&quot;bank&quot;, BankInterface.getBankDataByCode(code));</span>
+<span class="nc" id="L50">			return &quot;clients&quot;;</span>
+<span class="nc" id="L51">		}</span>
+
+<span class="nc" id="L53">		return &quot;redirect:/banks/&quot; + code + &quot;/clients&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

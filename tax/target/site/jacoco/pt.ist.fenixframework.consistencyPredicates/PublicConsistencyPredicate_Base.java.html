@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PublicConsistencyPredicate_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">tax</a> &gt; <a href="index.source.html" class="el_package">pt.ist.fenixframework.consistencyPredicates</a> &gt; <span class="el_source">PublicConsistencyPredicate_Base.java</span></div><h1>PublicConsistencyPredicate_Base.java</h1><pre class="source lang-java linenums">package pt.ist.fenixframework.consistencyPredicates;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class PublicConsistencyPredicate_Base extends pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; role$$publicConsistencyPredicateOverriding = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; getSet(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate o1) {
+<span class="nc" id="L13">            return ((PublicConsistencyPredicate_Base)o1).get$rl$publicConsistencyPredicateOverriding();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; getInverseRole() {
+<span class="nc" id="L16">            return pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate.role$$publicConsistencyPredicateOverridden;</span>
+        }
+        
+    };
+<span class="fc" id="L20">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; role$$publicConsistencyPredicateOverridden = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate getValue(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate o1) {
+<span class="nc" id="L23">            return ((PublicConsistencyPredicate_Base.DO_State)o1.get$obj$state(false)).publicConsistencyPredicateOverridden;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate o1, pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate o2) {
+<span class="nc" id="L27">            ((PublicConsistencyPredicate_Base.DO_State)o1.get$obj$state(true)).publicConsistencyPredicateOverridden = o2;</span>
+<span class="nc" id="L28">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; getInverseRole() {
+<span class="nc" id="L30">            return pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate.role$$publicConsistencyPredicateOverriding;</span>
+        }
+        
+    };
+    
+<span class="pc" id="L35">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; keyFunction$$publicConsistencyPredicateOverriding = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt;() { public Comparable&lt;?&gt; getKey(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    private final static class PublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding {
+<span class="fc" id="L38">        private static final pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; relation = new pt.ist.fenixframework.backend.jvstmojb.pstm.LoggingRelation&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt;(role$$publicConsistencyPredicateOverridden, &quot;PublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding&quot;);</span>
+    }
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding() {
+<span class="nc" id="L41">        return PublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding.relation;</span>
+    }
+    
+    static {
+<span class="fc" id="L45">        PublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding.relation.setRelationName(&quot;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate.PublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding&quot;);</span>
+<span class="fc" id="L46">    }</span>
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate,pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; get$rl$publicConsistencyPredicateOverriding() {
+<span class="nc" id="L52">        return get$$relationList(&quot;publicConsistencyPredicateOverriding&quot;, getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding().getInverseRelation());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L59">        init$Instance(true);</span>
+<span class="nc" id="L60">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="nc" id="L64">        super.init$Instance(allocateOnly);</span>
+        
+<span class="nc" id="L66">    }</span>
+    
+    // Constructors
+    protected  PublicConsistencyPredicate_Base() {
+<span class="nc" id="L70">        super();</span>
+<span class="nc" id="L71">    }</span>
+    
+    // Getters and Setters
+    
+    // Role Methods
+    
+    public void addPublicConsistencyPredicateOverriding(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate publicConsistencyPredicateOverriding) {
+<span class="nc" id="L78">        getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding().add(publicConsistencyPredicateOverriding, (pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate)this);</span>
+<span class="nc" id="L79">    }</span>
+    
+    public void removePublicConsistencyPredicateOverriding(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate publicConsistencyPredicateOverriding) {
+<span class="nc" id="L82">        getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding().remove(publicConsistencyPredicateOverriding, (pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate)this);</span>
+<span class="nc" id="L83">    }</span>
+    
+    public java.util.Set&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; getPublicConsistencyPredicateOverridingSet() {
+<span class="nc" id="L86">        return get$rl$publicConsistencyPredicateOverriding();</span>
+    }
+    
+    public void set$publicConsistencyPredicateOverriding(OJBFunctionalSetWrapper publicConsistencyPredicateOverriding) {
+<span class="nc" id="L90">        get$rl$publicConsistencyPredicateOverriding().setFromOJB(this, &quot;publicConsistencyPredicateOverriding&quot;, publicConsistencyPredicateOverriding);</span>
+<span class="nc" id="L91">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate&gt; getPublicConsistencyPredicateOverriding() {
+<span class="nc" id="L95">        return getPublicConsistencyPredicateOverridingSet();</span>
+    }
+    
+    @Deprecated
+    public int getPublicConsistencyPredicateOverridingCount() {
+<span class="nc" id="L100">        return getPublicConsistencyPredicateOverridingSet().size();</span>
+    }
+    
+    public pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate getPublicConsistencyPredicateOverridden() {
+<span class="nc" id="L104">        return ((DO_State)this.get$obj$state(false)).publicConsistencyPredicateOverridden;</span>
+    }
+    
+    public void setPublicConsistencyPredicateOverridden(pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate publicConsistencyPredicateOverridden) {
+<span class="nc" id="L108">        getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding().add((pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate)this, publicConsistencyPredicateOverridden);</span>
+<span class="nc" id="L109">    }</span>
+    
+    private java.lang.Long get$oidPublicConsistencyPredicateOverridden() {
+<span class="nc" id="L112">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).publicConsistencyPredicateOverridden;</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="nc" id="L118">        super.checkDisconnected();</span>
+<span class="nc" id="L119">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        if (get$rl$publicConsistencyPredicateOverriding().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;PublicConsistencyPredicateOverriding&quot;);</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        if (castedState.publicConsistencyPredicateOverridden != null) handleAttemptToDeleteConnectedObject(&quot;PublicConsistencyPredicateOverridden&quot;);</span>
+        
+<span class="nc" id="L123">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L126">        super.readStateFromResultSet(rs, state);</span>
+<span class="nc" id="L127">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L128">        castedState.publicConsistencyPredicateOverridden = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_PUBLIC_CONSISTENCY_PREDICATE_OVERRIDDEN&quot;);</span>
+<span class="nc" id="L129">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        if (attrName.equals(&quot;publicConsistencyPredicateOverriding&quot;)) return getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding().getInverseRelation();</span>
+<span class="nc" id="L132">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L136">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="nc" id="L140">        super.create$allLists();</span>
+<span class="nc" id="L141">        get$$relationList(&quot;publicConsistencyPredicateOverriding&quot;, getRelationPublicConsistencyPredicateOverriddenPublicConsistencyPredicatesOverriding().getInverseRelation());</span>
+        
+<span class="nc" id="L143">    }</span>
+<span class="nc" id="L144">    protected static class DO_State extends pt.ist.fenixframework.consistencyPredicates.DomainConsistencyPredicate.DO_State {</span>
+        private pt.ist.fenixframework.consistencyPredicates.PublicConsistencyPredicate publicConsistencyPredicateOverridden;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="nc" id="L147">            super.copyTo(newState);</span>
+<span class="nc" id="L148">            DO_State newCasted = (DO_State)newState;</span>
+<span class="nc" id="L149">            newCasted.publicConsistencyPredicateOverridden = this.publicConsistencyPredicateOverridden;</span>
+            
+<span class="nc" id="L151">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

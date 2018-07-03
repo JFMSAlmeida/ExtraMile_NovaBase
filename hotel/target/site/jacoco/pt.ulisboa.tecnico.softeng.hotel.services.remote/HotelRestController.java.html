@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HotelRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hotel</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.hotel.services.remote</a> &gt; <span class="el_source">HotelRestController.java</span></div><h1>HotelRestController.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.hotel.services.remote;
+
+import org.joda.time.LocalDate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import pt.ulisboa.tecnico.softeng.hotel.exception.HotelException;
+import pt.ulisboa.tecnico.softeng.hotel.services.local.HotelInterface;
+import pt.ulisboa.tecnico.softeng.hotel.services.remote.dataobjects.RestRoomBookingData;
+
+@RestController
+@RequestMapping(value = &quot;/rest/hotels&quot;)
+<span class="nc" id="L21">public class HotelRestController {</span>
+<span class="nc" id="L22">	private static Logger logger = LoggerFactory.getLogger(HotelRestController.class);</span>
+
+	@RequestMapping(value = &quot;/reserve&quot;, method = RequestMethod.POST)
+	public ResponseEntity&lt;String&gt; reserve(@RequestBody RestRoomBookingData roomBookingData) {
+<span class="nc" id="L26">		logger.info(&quot;reserve type:{}, arrival:{}, departure:{}, nif:{}, iba:{}, adventureId:{}&quot;,</span>
+<span class="nc" id="L27">				roomBookingData.getRoomType(), roomBookingData.getArrival(), roomBookingData.getDeparture(),</span>
+<span class="nc" id="L28">				roomBookingData.getBuyerNif(), roomBookingData.getBuyerIban(), roomBookingData.getAdventureId());</span>
+		try {
+<span class="nc" id="L30">			return new ResponseEntity&lt;String&gt;(HotelInterface.reserveRoom(roomBookingData), HttpStatus.OK);</span>
+<span class="nc" id="L31">		} catch (HotelException be) {</span>
+<span class="nc" id="L32">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+	@RequestMapping(value = &quot;/cancel&quot;, method = RequestMethod.POST)
+	public ResponseEntity&lt;String&gt; cancel(@RequestParam String reference) {
+<span class="nc" id="L38">		logger.info(&quot;cancel reference:{}&quot;, reference);</span>
+		try {
+<span class="nc" id="L40">			return new ResponseEntity&lt;&gt;(HotelInterface.cancelBooking(reference), HttpStatus.OK);</span>
+<span class="nc" id="L41">		} catch (HotelException be) {</span>
+<span class="nc" id="L42">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+	@RequestMapping(value = &quot;/booking&quot;, method = RequestMethod.GET)
+	public ResponseEntity&lt;RestRoomBookingData&gt; booking(@RequestParam String reference) {
+<span class="nc" id="L48">		logger.info(&quot;booking reference:{}&quot;, reference);</span>
+		try {
+<span class="nc" id="L50">			return new ResponseEntity&lt;&gt;(HotelInterface.getRoomBookingData(reference), HttpStatus.OK);</span>
+<span class="nc" id="L51">		} catch (HotelException be) {</span>
+<span class="nc" id="L52">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+	@RequestMapping(value = &quot;/bulk&quot;, method = RequestMethod.POST)
+	public ResponseEntity&lt;String[]&gt; bulk(@RequestParam int number,
+			@RequestParam @DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) LocalDate arrival,
+			@DateTimeFormat(pattern = &quot;yyyy-MM-dd&quot;) @RequestParam LocalDate departure, @RequestParam String nif,
+			@RequestParam String iban, @RequestParam String bulkId) {
+<span class="nc" id="L61">		logger.info(&quot;bulk number:{}, arrival:{}, departure:{}, nif:{}, iban:{}, bulkId:{}&quot;, number, arrival, departure,</span>
+				nif, iban, bulkId);
+		try {
+<span class="nc" id="L64">			return new ResponseEntity&lt;&gt;(HotelInterface.bulkBooking(number, arrival, departure, nif, iban, bulkId)</span>
+<span class="nc" id="L65">					.stream().toArray(size -&gt; new String[size]), HttpStatus.OK);</span>
+<span class="nc" id="L66">		} catch (HotelException be) {</span>
+<span class="nc" id="L67">			return new ResponseEntity&lt;&gt;(HttpStatus.BAD_REQUEST);</span>
+		}
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

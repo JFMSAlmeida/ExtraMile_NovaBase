@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Operation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bank</a> &gt; <a href="index.source.html" class="el_package">pt.ulisboa.tecnico.softeng.bank.domain</a> &gt; <span class="el_source">Operation.java</span></div><h1>Operation.java</h1><pre class="source lang-java linenums">package pt.ulisboa.tecnico.softeng.bank.domain;
+
+import org.joda.time.DateTime;
+
+import pt.ulisboa.tecnico.softeng.bank.exception.BankException;
+
+public class Operation extends Operation_Base {
+<span class="fc" id="L8">	public static enum Type {</span>
+<span class="fc" id="L9">		DEPOSIT, WITHDRAW</span>
+	};
+
+<span class="fc" id="L12">	public Operation(Type type, Account account, double value) {</span>
+<span class="fc" id="L13">		checkArguments(type, account, value);</span>
+
+<span class="fc" id="L15">		setReference(account.getBank().getCode() + Integer.toString(account.getBank().getCounter()));</span>
+<span class="fc" id="L16">		setType(type);</span>
+<span class="fc" id="L17">		setValue(value);</span>
+<span class="fc" id="L18">		setTime(DateTime.now());</span>
+
+<span class="fc" id="L20">		setAccount(account);</span>
+
+<span class="fc" id="L22">		setBank(account.getBank());</span>
+<span class="fc" id="L23">	}</span>
+
+	public void delete() {
+<span class="fc" id="L26">		setBank(null);</span>
+<span class="fc" id="L27">		setAccount(null);</span>
+
+<span class="fc" id="L29">		deleteDomainObject();</span>
+<span class="fc" id="L30">	}</span>
+
+	private void checkArguments(Type type, Account account, double value) {
+<span class="fc bfc" id="L33" title="All 6 branches covered.">		if (type == null || account == null || value &lt;= 0) {</span>
+<span class="fc" id="L34">			throw new BankException();</span>
+		}
+<span class="fc" id="L36">	}</span>
+
+	public String revert() {
+<span class="fc" id="L39">		setCancellation(getReference() + &quot;_CANCEL&quot;);</span>
+<span class="pc bpc" id="L40" title="1 of 3 branches missed.">		switch (getType()) {</span>
+		case DEPOSIT:
+<span class="fc" id="L42">			return getAccount().withdraw(getValue()).getReference();</span>
+		case WITHDRAW:
+<span class="fc" id="L44">			return getAccount().deposit(getValue()).getReference();</span>
+		default:
+<span class="nc" id="L46">			throw new BankException();</span>
+
+		}
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

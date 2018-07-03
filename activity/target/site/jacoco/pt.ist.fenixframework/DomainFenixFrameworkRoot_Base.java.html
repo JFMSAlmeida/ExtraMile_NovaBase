@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DomainFenixFrameworkRoot_Base.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">activity</a> &gt; <a href="index.source.html" class="el_package">pt.ist.fenixframework</a> &gt; <span class="el_source">DomainFenixFrameworkRoot_Base.java</span></div><h1>DomainFenixFrameworkRoot_Base.java</h1><pre class="source lang-java linenums">package pt.ist.fenixframework;
+
+import pt.ist.fenixframework.backend.jvstmojb.pstm.RelationList;
+import pt.ist.fenixframework.backend.jvstmojb.ojb.OJBFunctionalSetWrapper;
+import pt.ist.fenixframework.ValueTypeSerializer;
+
+
+@SuppressWarnings(&quot;all&quot;)
+public abstract class DomainFenixFrameworkRoot_Base extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject {
+    // Static Slots
+<span class="fc" id="L11">    public final static pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.DomainFenixFrameworkRoot,pt.ist.fenixframework.DomainMetaClass&gt; role$$domainMetaClass = new pt.ist.fenixframework.dml.runtime.RoleMany&lt;pt.ist.fenixframework.DomainFenixFrameworkRoot,pt.ist.fenixframework.DomainMetaClass&gt;() {</span>
+        public pt.ist.fenixframework.dml.runtime.RelationBaseSet&lt;pt.ist.fenixframework.DomainMetaClass&gt; getSet(pt.ist.fenixframework.DomainFenixFrameworkRoot o1) {
+<span class="nc" id="L13">            return ((DomainFenixFrameworkRoot_Base)o1).get$rl$domainMetaClass();</span>
+        }
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; getInverseRole() {
+<span class="nc" id="L16">            return pt.ist.fenixframework.DomainMetaClass.role$$domainFenixFrameworkRoot;</span>
+        }
+        
+    };
+<span class="fc" id="L20">    public final static pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainFenixFrameworkRoot,pt.ist.fenixframework.DomainRoot&gt; role$$domainRoot = new pt.ist.fenixframework.dml.runtime.RoleOne&lt;pt.ist.fenixframework.DomainFenixFrameworkRoot,pt.ist.fenixframework.DomainRoot&gt;() {</span>
+        @Override
+        public pt.ist.fenixframework.DomainRoot getValue(pt.ist.fenixframework.DomainFenixFrameworkRoot o1) {
+<span class="nc" id="L23">            return ((DomainFenixFrameworkRoot_Base.DO_State)o1.get$obj$state(false)).domainRoot;</span>
+        }
+        @Override
+        public void setValue(pt.ist.fenixframework.DomainFenixFrameworkRoot o1, pt.ist.fenixframework.DomainRoot o2) {
+<span class="nc" id="L27">            ((DomainFenixFrameworkRoot_Base.DO_State)o1.get$obj$state(true)).domainRoot = o2;</span>
+<span class="nc" id="L28">        }</span>
+        public pt.ist.fenixframework.dml.runtime.Role&lt;pt.ist.fenixframework.DomainRoot,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; getInverseRole() {
+<span class="nc" id="L30">            return pt.ist.fenixframework.DomainRoot.role$$domainFenixFrameworkRoot;</span>
+        }
+        
+    };
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainMetaClass,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; getRelationDomainFenixFrameworkRootDomainMetaClasses() {
+<span class="fc" id="L36">        return pt.ist.fenixframework.DomainMetaClass.getRelationDomainFenixFrameworkRootDomainMetaClasses();</span>
+    }
+<span class="pc" id="L38">    private static pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.DomainMetaClass&gt; keyFunction$$domainMetaClass = new pt.ist.fenixframework.dml.runtime.KeyFunction&lt;Comparable&lt;?&gt;,pt.ist.fenixframework.DomainMetaClass&gt;() { public Comparable&lt;?&gt; getKey(pt.ist.fenixframework.DomainMetaClass value) { return value.getOid(); } public boolean allowMultipleKeys() {return false; }};</span>
+    
+    public static pt.ist.fenixframework.dml.runtime.DirectRelation&lt;pt.ist.fenixframework.DomainRoot,pt.ist.fenixframework.DomainFenixFrameworkRoot&gt; getRelationDomainRootDomainFenixFrameworkRoot() {
+<span class="nc" id="L41">        return pt.ist.fenixframework.DomainRoot.getRelationDomainRootDomainFenixFrameworkRoot();</span>
+    }
+    
+    // Slots
+    
+    // Role Slots
+    private RelationList&lt;pt.ist.fenixframework.DomainFenixFrameworkRoot,pt.ist.fenixframework.DomainMetaClass&gt; get$rl$domainMetaClass() {
+<span class="fc" id="L48">        return get$$relationList(&quot;domainMetaClass&quot;, getRelationDomainFenixFrameworkRootDomainMetaClasses().getInverseRelation());</span>
+        
+    }
+    
+    // Init Instance
+    
+    private void initInstance() {
+<span class="nc" id="L55">        init$Instance(true);</span>
+<span class="nc" id="L56">    }</span>
+    
+    @Override
+    protected void init$Instance(boolean allocateOnly) {
+<span class="fc" id="L60">        super.init$Instance(allocateOnly);</span>
+        
+<span class="fc" id="L62">    }</span>
+    
+    // Constructors
+    protected  DomainFenixFrameworkRoot_Base() {
+<span class="nc" id="L66">        super();</span>
+<span class="nc" id="L67">    }</span>
+    
+    // Getters and Setters
+    
+    // Role Methods
+    
+    public void addDomainMetaClass(pt.ist.fenixframework.DomainMetaClass domainMetaClass) {
+<span class="nc" id="L74">        getRelationDomainFenixFrameworkRootDomainMetaClasses().add(domainMetaClass, (pt.ist.fenixframework.DomainFenixFrameworkRoot)this);</span>
+<span class="nc" id="L75">    }</span>
+    
+    public void removeDomainMetaClass(pt.ist.fenixframework.DomainMetaClass domainMetaClass) {
+<span class="nc" id="L78">        getRelationDomainFenixFrameworkRootDomainMetaClasses().remove(domainMetaClass, (pt.ist.fenixframework.DomainFenixFrameworkRoot)this);</span>
+<span class="nc" id="L79">    }</span>
+    
+    public java.util.Set&lt;pt.ist.fenixframework.DomainMetaClass&gt; getDomainMetaClassSet() {
+<span class="fc" id="L82">        return get$rl$domainMetaClass();</span>
+    }
+    
+    public void set$domainMetaClass(OJBFunctionalSetWrapper domainMetaClass) {
+<span class="fc" id="L86">        get$rl$domainMetaClass().setFromOJB(this, &quot;domainMetaClass&quot;, domainMetaClass);</span>
+<span class="fc" id="L87">    }</span>
+    
+    @Deprecated
+    public java.util.Set&lt;pt.ist.fenixframework.DomainMetaClass&gt; getDomainMetaClass() {
+<span class="nc" id="L91">        return getDomainMetaClassSet();</span>
+    }
+    
+    @Deprecated
+    public int getDomainMetaClassCount() {
+<span class="nc" id="L96">        return getDomainMetaClassSet().size();</span>
+    }
+    
+    public pt.ist.fenixframework.DomainRoot getDomainRoot() {
+<span class="nc" id="L100">        return ((DO_State)this.get$obj$state(false)).domainRoot;</span>
+    }
+    
+    public void setDomainRoot(pt.ist.fenixframework.DomainRoot domainRoot) {
+<span class="nc" id="L104">        getRelationDomainRootDomainFenixFrameworkRoot().add(domainRoot, (pt.ist.fenixframework.DomainFenixFrameworkRoot)this);</span>
+<span class="nc" id="L105">    }</span>
+    
+    private java.lang.Long get$oidDomainRoot() {
+<span class="nc" id="L108">        pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject value = (pt.ist.fenixframework.backend.jvstmojb.pstm.AbstractDomainObject) ((DO_State)this.get$obj$state(false)).domainRoot;</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">        return (value == null) ? null : value.getOid();</span>
+    }
+    
+    
+    protected void checkDisconnected() {
+<span class="nc" id="L114">        DO_State castedState = (DO_State)this.get$obj$state(false);</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">        if (get$rl$domainMetaClass().size() &gt; 0) handleAttemptToDeleteConnectedObject(&quot;DomainMetaClass&quot;);</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (castedState.domainRoot != null) handleAttemptToDeleteConnectedObject(&quot;DomainRoot&quot;);</span>
+        
+<span class="nc" id="L118">    }</span>
+    
+    protected void readStateFromResultSet(java.sql.ResultSet rs, pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  state) throws java.sql.SQLException {
+<span class="nc" id="L121">        DO_State castedState = (DO_State)state;</span>
+<span class="nc" id="L122">        castedState.domainRoot = pt.ist.fenixframework.backend.jvstmojb.repository.ResultSetReader.readDomainObject(rs, &quot;OID_DOMAIN_ROOT&quot;);</span>
+<span class="nc" id="L123">    }</span>
+    protected pt.ist.fenixframework.dml.runtime.Relation get$$relationFor(String attrName) {
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (attrName.equals(&quot;domainMetaClass&quot;)) return getRelationDomainFenixFrameworkRootDomainMetaClasses().getInverseRelation();</span>
+<span class="nc" id="L126">        return super.get$$relationFor(attrName);</span>
+        
+    }
+    protected pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  make$newState() {
+<span class="nc" id="L130">        return new DO_State();</span>
+        
+    }
+    protected void create$allLists() {
+<span class="nc" id="L134">        super.create$allLists();</span>
+<span class="nc" id="L135">        get$$relationList(&quot;domainMetaClass&quot;, getRelationDomainFenixFrameworkRootDomainMetaClasses().getInverseRelation());</span>
+        
+<span class="nc" id="L137">    }</span>
+<span class="nc" id="L138">    protected static class DO_State extends pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State {</span>
+        private pt.ist.fenixframework.DomainRoot domainRoot;
+        protected void copyTo(pt.ist.fenixframework.backend.jvstmojb.pstm.OneBoxDomainObject.DO_State  newState) {
+<span class="nc" id="L141">            super.copyTo(newState);</span>
+<span class="nc" id="L142">            DO_State newCasted = (DO_State)newState;</span>
+<span class="nc" id="L143">            newCasted.domainRoot = this.domainRoot;</span>
+            
+<span class="nc" id="L145">        }</span>
+        
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
