@@ -8,7 +8,6 @@ class App extends Component {
     constructor(props) {
         super(props);
          // This binding is necessary to make `this` work in the callback
-        this.handleClickEcho = this.handleClickEcho.bind(this);
         this.handleClickProcess = this.handleClickProcess.bind(this);
     }
 
