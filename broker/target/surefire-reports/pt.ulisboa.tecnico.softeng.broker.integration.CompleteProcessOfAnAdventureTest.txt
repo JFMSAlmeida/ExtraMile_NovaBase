@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: pt.ulisboa.tecnico.softeng.broker.integration.CompleteProcessOfAnAdventureTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.003 sec - in pt.ulisboa.tecnico.softeng.broker.integration.CompleteProcessOfAnAdventureTest

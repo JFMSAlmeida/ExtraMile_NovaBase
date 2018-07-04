@@ -13,15 +13,14 @@ import pt.ulisboa.tecnico.softeng.broker.exception.BrokerException;
 public class BrokerRestController {
 	private static Logger logger = LoggerFactory.getLogger(BrokerRestController.class);
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value = "/process", method = RequestMethod.POST)
-	public ResponseEntity<String> process(@RequestParam(value="param1") String brokerCode,
-										  @RequestParam(value="param2") String id) {
+	public String process(@RequestParam(value="param1") String brokerCode,
+						  @RequestParam(value="param2") String id) {
 		try {
 			BrokerInterface.processAdventure(brokerCode, id);
-			return new ResponseEntity<>("xpto", HttpStatus.OK);
+			return "ok";
 		} catch (BrokerException be) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return "not ok";
 		}
 	}
 }

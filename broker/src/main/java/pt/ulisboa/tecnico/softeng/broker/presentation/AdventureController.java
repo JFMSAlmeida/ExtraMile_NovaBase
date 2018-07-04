@@ -49,13 +49,7 @@ public class AdventureController {
 				adventureData.getAge(), adventureData.getVehicle());
 
 		try {
-			AdventureData ad = new AdventureData();
-			ad.setBegin(new LocalDate(2016, 12, 21));
-			ad.setEnd(new LocalDate(2016, 12, 21));
-			ad.setMargin(0.2);
-			ad.setAge(30);
-			ad.setVehicle(false);
-			BrokerInterface.createAdventure("bk123", "333333333", ad);
+			BrokerInterface.createAdventure(brokerCode, clientNif, adventureData);
 		} catch (BrokerException be) {
 			model.addAttribute("error", "Error: it was not possible to create the adventure");
 			model.addAttribute("adventure", adventureData);

@@ -31,13 +31,7 @@ public class BrokerController {
 				brokerData.getCode(), brokerData.getNifAsSeller(), brokerData.getNifAsBuyer(), brokerData.getIban());
 
 		try {
-			BrokerData bd = new BrokerData();
-			bd.setName("Broker1");
-			bd.setCode("bk123");
-			bd.setNifAsSeller("111111111");
-			bd.setNifAsBuyer("222222222");
-			bd.setIban("BC123456789");
-			BrokerInterface.createBroker(bd);
+			BrokerInterface.createBroker(brokerData);
 		} catch (BrokerException be) {
 			model.addAttribute("error", "Error: it was not possible to create the broker");
 			model.addAttribute("broker", brokerData);
