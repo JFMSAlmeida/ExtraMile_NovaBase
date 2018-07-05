@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Carousel from "../components/Carousel";
-import AdventureBuilder from './AdventureBuilder';
-import AdventureFinder from './AdventureFinder';
-import { Switch, Route } from 'react-router-dom'
+
 
 class Home extends Component {
 
@@ -15,14 +13,24 @@ class Home extends Component {
     }
 
     handleClickProcess() {
-        fetch('http://localhost:8083/rest/brokers/process?param1=B100&param2=B1001')
+        fetch('http://localhost:8083/rest/brokers/process?param1=B100')
         .then(response => {
-            console.log(response.text);
             return response.text();
         })
         .then(body => {
             console.log(JSON.parse(body));
         });
+    }
+    handleClickShowAdventures() {
+        fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=111111115')
+            .then(response => {
+                console.log(response);
+                return response.text();
+            })
+            .then(body => {
+                const response = JSON.parse(body);
+                console.log(response);
+            });
     }
 
     handleClickEcho() {
@@ -43,6 +51,7 @@ class Home extends Component {
                 <h1>HELLO THIS IS A TEST</h1>
                 <button onClick={this.handleClickProcess}>Click Process</button>
                 <button onClick={this.handleClickEcho}>Click Echo</button>
+                <button onClick={this.handleClickShowAdventures}>Show Adventures</button>
             </div>
         );
     }

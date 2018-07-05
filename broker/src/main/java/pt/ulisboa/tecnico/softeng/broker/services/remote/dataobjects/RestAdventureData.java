@@ -1,15 +1,15 @@
-package pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects;
+package pt.ulisboa.tecnico.softeng.broker.services.remote.dataobjects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import pt.ulisboa.tecnico.softeng.broker.domain.Adventure;
 
-public class AdventureData {
+public class RestAdventureData {
 	private String id;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate begin;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate end;
 	private Integer age;
 	private String iban;
@@ -18,8 +18,6 @@ public class AdventureData {
 	private Double amount;
 	private Adventure.State state;
 
-	private String rentingConfirmation;
-	private String rentingCancellation;
 	private String paymentConfirmation;
 	private String paymentCancellation;
 	private String roomConfirmation;
@@ -27,10 +25,10 @@ public class AdventureData {
 	private String activityConfirmation;
 	private String activityCancellation;
 
-	public AdventureData() {
+	public RestAdventureData() {
 	}
 
-	public AdventureData(Adventure adventure) {
+	public RestAdventureData(Adventure adventure) {
 		this.id = adventure.getID();
 		this.begin = adventure.getBegin();
 		this.end = adventure.getEnd();
@@ -42,8 +40,6 @@ public class AdventureData {
 
 		this.paymentConfirmation = adventure.getPaymentConfirmation();
 		this.paymentCancellation = adventure.getPaymentCancellation();
-		this.rentingConfirmation = adventure.getRentingConfirmation();
-		this.rentingCancellation = adventure.getRentingCancellation();
 		this.roomConfirmation = adventure.getRoomConfirmation();
 		this.roomCancellation = adventure.getRoomCancellation();
 		this.activityConfirmation = adventure.getActivityConfirmation();
@@ -170,19 +166,4 @@ public class AdventureData {
 		this.vehicle = vehicle;
 	}
 
-	public String getRentingConfirmation() {
-		return rentingConfirmation;
-	}
-
-	public void setRentingConfirmation(String rentingConfirmation) {
-		this.rentingConfirmation = rentingConfirmation;
-	}
-
-	public String getRentingCancellation() {
-		return rentingCancellation;
-	}
-
-	public void setRentingCancellation(String rentingCancellation) {
-		this.rentingCancellation = rentingCancellation;
-	}
 }
