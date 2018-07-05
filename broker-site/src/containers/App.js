@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Carousel from "../components/Carousel";
 
 //const client = require('./client');
 
@@ -37,6 +38,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+                <Carousel/>
                 <h1>HELLO THIS IS A TEST</h1>
                 <button onClick={this.handleClickProcess}>Click Process</button>
                 <button onClick={this.handleClickEcho}>Click Echo</button>
