@@ -20,7 +20,7 @@ export default class Carousel extends React.Component {
                             <img className="main-banner" src={imageOne}/>
                                 <div className="carousel-caption">
                                     <h3>Adventure Finder</h3>
-                                    <p>Procure a sua aventura de sonho entre os mais variados Brokers!</p>
+                                    <p>Procure a sua aventura de sonho!</p>
                                 </div>
                         </div>
 
