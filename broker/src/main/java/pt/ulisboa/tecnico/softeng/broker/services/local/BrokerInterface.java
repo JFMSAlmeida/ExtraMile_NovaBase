@@ -134,12 +134,11 @@ public class BrokerInterface {
 				adv.process();
 	}
 
-	public static Map<String, Object> adventures2HashMap(List<AdventureData> listAdventures) {
+	public static ArrayList<Object> adventures2HashMap(List<AdventureData> listAdventures) {
 
-		Map<String, Object> adventures = new HashMap<>();
+		ArrayList<Object> adventures = new ArrayList<>();
 
 		for (AdventureData adv: listAdventures) {
-			int i = 0;
 			if (adv.getState() == Adventure.State.PROCESS_PAYMENT) {
 				Map<String, Object> advt = new HashMap<>();
 				advt.put("id", adv.getId());
@@ -147,6 +146,8 @@ public class BrokerInterface {
 				advt.put("begin", adv.getBegin());
 				advt.put("end", adv.getEnd());
 				advt.put("hasVehicle", adv.getVehicle());
+				advt.put("price", adv.getAmount());
+				advt.put("hasRoom", !adv.getBegin().equals(adv.getEnd()));
 
 				RestActivityBookingData actData = ActivityInterface.getActivityReservationData(adv.getActivityConfirmation());
 				advt.put("activityName", actData.getName());
@@ -165,8 +166,7 @@ public class BrokerInterface {
 					advt.put("rentEnd", rentData.getEnd());
 				}
 
-				adventures.put("adventures" + i, advt );
-				i++;
+				adventures.add(advt);
 			}
 		}
 		return adventures;

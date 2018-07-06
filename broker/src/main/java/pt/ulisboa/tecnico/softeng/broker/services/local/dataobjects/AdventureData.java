@@ -39,6 +39,7 @@ public class AdventureData {
 		this.margin = adventure.getMargin();
 		this.vehicle = adventure.getRentVehicle();
 		this.state = adventure.getState().getValue();
+		this.amount = adventure.getAmount();
 
 		this.paymentConfirmation = adventure.getPaymentConfirmation();
 		this.paymentCancellation = adventure.getPaymentCancellation();

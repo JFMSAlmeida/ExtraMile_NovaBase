@@ -10,6 +10,7 @@ import pt.ulisboa.tecnico.softeng.broker.services.local.BrokerInterface;
 import pt.ulisboa.tecnico.softeng.broker.exception.BrokerException;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.ClientData;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,8 +20,8 @@ public class BrokerRestController {
 
 	@CrossOrigin
 	@RequestMapping(value = "/showAdventures")
-	public ResponseEntity<Map<String, Object>> showAdventures(@RequestParam(value="param1") String brokerCode,
-													   @RequestParam(value="param2") String clientNif) {
+	public ResponseEntity<ArrayList<Object>> showAdventures(@RequestParam(value="param1") String brokerCode,
+															@RequestParam(value="param2") String clientNif) {
 
 		ClientData clientData = BrokerInterface.getClientDataByBrokerCodeAndNif(brokerCode, clientNif);
 

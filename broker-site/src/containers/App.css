@@ -55,6 +55,42 @@ li a:hover:not(.active) {
   background-color: #111;
 }
 
+.shelf-container {
+  width: 85%;
+  float: left; }
+
+.shelf-container .shelf-item {
+  float: left;
+  width: 25%;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid transparent; }
+
+.shelf-container .shelf-item:hover {
+  border: 1px solid #eee; }
+
+.shelf-container .shelf-item:hover .shelf-item__buy-btn {
+  background-color: #eabf00; }
+
+.shelf-container .shelf-item__buy-btn {
+  background-color: #1b1a20;
+  color: #fff;
+  padding: 15px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s; }
+
+.shelf-item__image{
+  display: inline-block;
+  width: 70%;
+  margin-right:10%;
+  height: 40%;
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
