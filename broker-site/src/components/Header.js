@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import avatar from '../components/avatar.png'
+import Cart from './cart/Cart'
 
 // The Header creates links that can be used to navigate
 // between routes.
@@ -80,12 +81,14 @@ export default class Header extends React.Component {
                     <li><Link to='/adventurebuilder'>AdventureBuilder</Link></li>
                   </ul>
                     <ul className="nav navbar-nav navbar-right">
+                        <Cart
+                            product = {this.props.product}
+                        />
                         <li data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li>
                         <li data-toggle="modal" data-target="#loginModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
                     </ul>
                 </nav>
               </header>
-
 
               /* SIGN UP MODAL */
               <div id="signupModal" className="modal fade">

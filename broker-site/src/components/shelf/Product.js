@@ -2,6 +2,7 @@ import React from 'react';
 
 const Product = (props) => {
     const product = props.product;
+    console.log(props.a);
 
     return (
         <div className="shelf-item" data-sku={product.id}>
@@ -31,7 +32,7 @@ const Product = (props) => {
                 <p className="shelf-item__rental-vehicleType"> Vehicle Type: {product.vehicleType} </p>
                 <p className="shelf-item__rental-kilometers"> Vehicle kilometers: {product.kilometers} </p>
             </div>}
-            <p className="shelf-item__buy-btn"> Add to cart</p>
+            <p className="shelf-item__buy-btn" onClick={props.addCart}> Add to cart </p>
         </div>
     );
 }
