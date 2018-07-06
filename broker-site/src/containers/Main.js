@@ -4,6 +4,8 @@ import Home from './Home'
 import AdventureFinder from './AdventureFinder'
 import AdventureBuilder from './AdventureBuilder'
 import Signup from './Signup'
+import createBrowserHistory from 'history/createBrowserHistory'
+const history = createBrowserHistory();
 
 class Main extends React.Component {
     constructor(props){
@@ -13,9 +15,9 @@ class Main extends React.Component {
         return (
           <main>
             <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route path='/adventurefinder' component={AdventureFinder}/>
-              <Route path='/adventurebuilder' component={AdventureBuilder}/>
+              <Route exact path='/' component={Home} history={history}/>
+              <Route path='/adventurefinder' component={AdventureFinder} history={history}/>
+              <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
               <Route path='/signup' component={Signup}/>
             </Switch>
           </main>
