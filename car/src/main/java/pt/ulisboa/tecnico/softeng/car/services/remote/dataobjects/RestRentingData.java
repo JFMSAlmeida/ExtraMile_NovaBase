@@ -4,7 +4,9 @@ import org.joda.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import pt.ulisboa.tecnico.softeng.car.domain.Car;
 import pt.ulisboa.tecnico.softeng.car.domain.Renting;
+import pt.ulisboa.tecnico.softeng.car.domain.Vehicle;
 
 public class RestRentingData {
 	private String reference;
@@ -29,6 +31,15 @@ public class RestRentingData {
 	}
 
 	public RestRentingData(Renting renting) {
+
+		Class<? extends Vehicle> vehicleType = renting.getVehicle().getClass();
+		if(vehicleType == Car.class)
+			this.typeValue = Vehicle.Type.CAR.toString();
+		else
+			this.typeValue = Vehicle.Type.MOTORCYCLE.toString();
+
+		this.kilometers = renting.getVehicle().getKilometers();
+
 		this.reference = renting.getReference();
 		this.plate = renting.getVehicle().getPlate();
 		this.drivingLicense = renting.getDrivingLicense();
@@ -162,4 +173,11 @@ public class RestRentingData {
 		this.adventureId = adventureId;
 	}
 
+	public String getType() {
+		return typeValue;
+	}
+
+	public void setType(String type) {
+		this.typeValue = type;
+	}
 }
