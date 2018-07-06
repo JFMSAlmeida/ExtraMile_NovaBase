@@ -119,6 +119,49 @@
   outline: none;
 }
 
+.shelf-container {
+  width: 85%;
+  float: left; }
+
+.shelf-container .shelf-item {
+  float: left;
+  width: 25%;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid transparent; }
+
+.shelf-container .shelf-item:hover {
+  border: 1px solid #eee; }
+
+.shelf-container .shelf-item:hover .shelf-item__buy-btn {
+  background-color: #eabf00; }
+
+.shelf-container .shelf-item__buy-btn {
+  background-color: #1b1a20;
+  color: #fff;
+  padding: 15px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s; }
+
+.shelf-item__image{
+  display: inline-block;
+  max-height: 100%;
+  max-width: 100%;
+  margin-right:10%;
+}
+
+.shelf-container .shelf-item__price .val{
+  height: 60px;
+  font-size: 1.5em;
+  margin-left: 5px;
+  color: #9c9b9b;
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
