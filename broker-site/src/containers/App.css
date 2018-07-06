@@ -85,9 +85,16 @@ li a:hover:not(.active) {
 
 .shelf-item__image{
   display: inline-block;
-  width: 70%;
+  max-height: 100%;
+  max-width: 100%;
   margin-right:10%;
-  height: 40%;
+}
+
+.shelf-container .shelf-item__price .val{
+  height: 60px;
+  font-size: 1.5em;
+  margin-left: 5px;
+  color: #9c9b9b;
 }
 
 

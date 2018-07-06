@@ -9,7 +9,7 @@ const Product = (props) => {
                 <p className="shelf-item__title"> Package {product.id}</p>
                 <img className="shelf-item__image" src={require(`./${product.id}.jpg`)} alt={product.id}/>
                 <div className="shelf-item__price">
-                    <div className="val"><p>Price: {product.price}<b>€</b></p>
+                    <div className="val"><b>Price: {product.price}</b><small>€</small>
                     </div>
                 </div>
                 <p> Minimum Age: {product.age}</p>
