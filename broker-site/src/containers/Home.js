@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Carousel from "../components/Carousel";
-import AdventureBuilder from './AdventureBuilder';
-import AdventureFinder from './AdventureFinder';
-import { Switch, Route } from 'react-router-dom'
 
 class Home extends Component {
 
