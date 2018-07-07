@@ -33,10 +33,12 @@ class CartProduct extends Component {
                     onMouseOut={() => this.handleMouseOut()}
                     onClick={this.props.remove}
                 />
+                <img className="shelf-item__image" src={require(`../shelf/B1001.jpg`)} alt={product.id}/>
                 <div className="shelf-item__details">
                     <p className="title">{product.title}</p>
                     <p className="desc">
-                        Package {product.id} <br />
+                        <b> Package {product.id} </b> <br />
+                        {`| ${product.activityName} | ${product.hotelName} | ${product.vehicleType} |`}
                     </p>
                 </div>
                 <div className="shelf-item__price">
