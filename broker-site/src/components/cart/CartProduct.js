@@ -31,6 +31,7 @@ class CartProduct extends Component {
                     className="shelf-item__del"
                     onMouseOver={() => this.handleMouseOver()}
                     onMouseOut={() => this.handleMouseOut()}
+                    onClick={this.props.remove}
                 />
                 <div className="shelf-item__details">
                     <p className="title">{product.title}</p>

@@ -9,6 +9,7 @@ class Cart extends Component{
             products : [],
             newProduct : null
         };
+        this.removeProduct = this.removeProduct.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -17,10 +18,6 @@ class Cart extends Component{
             this.state.newProduct = nextProps.product;
             this.addProduct(nextProps.product);
         }
-
-        /*if (nextProps.productToRemove !== this.props.productToRemove) {
-            this.removeProduct(nextProps.productToRemove);
-        }*/
     }
 
     calculateTotalAmount(){
@@ -53,18 +50,21 @@ class Cart extends Component{
             this.state.products.push(product);
         }
 
-        /*updateCart(cartProducts);*/
         this.openFloatCart();
     }
 
     removeProduct = (product) => {
-        const { cartProducts, updateCart } = this.props;
+        console.log(product);
+        const cartProducts = this.state.products;
 
         const index = cartProducts.findIndex(p => p.id === product.id);
         if (index >= 0) {
             cartProducts.splice(index, 1);
-            updateCart(cartProducts);
         }
+        this.setState({
+            products : cartProducts,
+            newProduct : null
+        });
     }
 
     render() {
@@ -72,6 +72,7 @@ class Cart extends Component{
             return (
                 <CartProduct
                     product={p}
+                    remove = {() => this.removeProduct(p)}
                     key={p.id}
                 />
             );
