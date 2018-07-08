@@ -5,12 +5,6 @@ import imageThree from './banner-sample.png';
 
 export default class Carousel extends React.Component {
     render() {
-        function handleOnClick() {
-            handleOnClick = () => {
-                this.context.router.push('/adventurebuilder');
-            }
-        }
-
         return (
             <div className="sliderContainer">
                 <div id="myCarousel" className="carousel slide" data-ride="carousel">
@@ -26,7 +20,7 @@ export default class Carousel extends React.Component {
                             <img className="main-banner" src={imageOne}/>
                                 <div className="carousel-caption">
                                     <h3>Adventure Finder</h3>
-                                    <p>Procure a sua aventura de sonho entre os mais variados Brokers!</p>
+                                    <p>Procure a sua aventura de sonho!</p>
                                 </div>
                         </div>
 
