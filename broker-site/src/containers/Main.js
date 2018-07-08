@@ -3,26 +3,19 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import AdventureFinder from './AdventureFinder'
 import AdventureBuilder from './AdventureBuilder'
-import Signup from './Signup'
-import createBrowserHistory from 'history/createBrowserHistory'
-const history = createBrowserHistory();
+import About from './About'
+import Faq from './Faq'
 
-class Main extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    render() {
-        return (
-          <main>
-            <Switch>
-              <Route exact path='/' component={Home} history={history}/>
-              <Route path='/adventurefinder' component={AdventureFinder} history={history}/>
-              <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
-              <Route path='/signup' component={Signup}/>
-            </Switch>
-          </main>
-        );
-    }
-}
+const Main = () => (
+  <main>
+    <Switch>
+      <Route exact path='/' component={Home}/>
+      <Route path='/adventurefinder' component={AdventureFinder}/>
+      <Route path='/adventurebuilder' component={AdventureBuilder}/>
+      <Route path='/about' component={About}/>
+      <Route path='/faq' component={Faq}/>
+    </Switch>
+  </main>
+)
 
 export default Main

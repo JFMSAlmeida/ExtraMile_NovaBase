@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class AdventureBuilder extends Component {
+class Faq extends Component {
     render() {
         return (
-            <h3>Options</h3>
+            <h3>Faq</h3>
         );
     }
 }
 
-export default AdventureBuilder;
+export default Faq;

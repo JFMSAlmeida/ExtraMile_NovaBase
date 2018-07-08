@@ -1,48 +1,29 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
-import AdventureBuilder from "./AdventureBuilder";
-import AdventureFinder from "./AdventureFinder";
-import Options from "./Options";
-import Signup from "./Signup";
-import Home from "./Home";
-import createBrowserHistory from 'history/createBrowserHistory'
-import Header from "../components/Header";
-const history = createBrowserHistory();
-
-class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            product:null
-        };
-
-        this.addProduct = this.addProduct.bind(this);
-    }
-
-    addProduct(product){
-        this.setState({
-            product : product
-        });
-        console.log(product);
-    }
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer'
 
 
-    render() {
+import { library } from '@fortawesome/fontawesome-svg-core'
 
-        return (
-            <div>
-                <Header
-                    history={history}
-                    product = {this.state.product}
-                />
-                <Route exact path='/' component={Home} history={history}/>
-                <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)} a = {10}/>}/>
-                <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
-                <Route path='/signup' component={Signup} history={history}/>
-                <Route path='/options' component={Options} history={history}/>
-            </div>
-        );
-    }
-}
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faPhone} from '@fortawesome/free-solid-svg-icons'
 
-export default App;
+
+
+library.add(faMapMarkerAlt)
+library.add(faEnvelope)
+library.add(faPhone)
+
+
+const App = () => (
+    <div>
+        <Header />
+        <Main />
+        <Footer />
+    </div>
+)
+
+export default App

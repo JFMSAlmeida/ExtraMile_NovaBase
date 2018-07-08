@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 
-class Signup extends Component {
+class About extends Component {
     render() {
         return (
-            <h3>Signup</h3>
+            <h3>About</h3>
         );
     }
 }
 
-export default Signup;
+export default About;
