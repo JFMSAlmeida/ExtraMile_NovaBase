@@ -7,6 +7,10 @@ import Signup from "./Signup";
 import Home from "./Home";
 import createBrowserHistory from 'history/createBrowserHistory'
 import Header from "../components/Header";
+import Footer from "../components/Footer";
+import About from "../containers/About";
+import Faq from "../containers/Faq"
+
 const history = createBrowserHistory();
 
 class App extends React.Component {
@@ -28,7 +32,6 @@ class App extends React.Component {
 
 
     render() {
-
         return (
             <div>
                 <Header
@@ -40,6 +43,9 @@ class App extends React.Component {
                 <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
                 <Route path='/signup' component={Signup} history={history}/>
                 <Route path='/options' component={Options} history={history}/>
+                <Route path='/about' component={About} history={history}/>
+                <Route path='/faq' component={Faq} history={history}/>
+                <Footer/>
             </div>
         );
     }
