@@ -12,13 +12,31 @@ const history = createBrowserHistory();
 class App extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            product:null
+        };
+
+        this.addProduct = this.addProduct.bind(this);
     }
+
+    addProduct(product){
+        this.setState({
+            product : product
+        });
+        console.log(product);
+    }
+
+
     render() {
+
         return (
             <div>
-                <Header history={history}/>
+                <Header
+                    history={history}
+                    product = {this.state.product}
+                />
                 <Route exact path='/' component={Home} history={history}/>
-                <Route path='/adventurefinder' component={AdventureFinder} history={history}/>
+                <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)} a = {10}/>}/>
                 <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
                 <Route path='/signup' component={Signup} history={history}/>
                 <Route path='/options' component={Options} history={history}/>

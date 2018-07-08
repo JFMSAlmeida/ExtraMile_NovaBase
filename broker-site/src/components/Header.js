@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import avatar from '../components/avatar.png'
 import $ from 'jquery';
+import Cart from './cart/Cart'
 
 // The Header creates links that can be used to navigate
 // between routes.
@@ -67,6 +68,10 @@ export default class Header extends React.Component {
                                                 </div>
                                             </div>
                                             : null }
+          
+                        <Cart
+                            product = {this.props.product}
+                        />
                     </ul>
                 </nav>
               </header>

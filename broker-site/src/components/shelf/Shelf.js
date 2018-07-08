@@ -8,15 +8,20 @@ class Shelf extends Component {
         console.log(adv);
         console.log(adv.constructor === Array);
         console.log(Array.isArray(adv));
+        console.log(this.props.addCart);
 
         const advArray = adv.map(adv => {
             return (
                 <Product
                     product={adv}
+                    addCart={() => this.props.addCart(adv)}
+                    a = {this.props.a}
                     key={adv.id}
                  />
                 );
         });
+
+        console.log(this.props.a);
 
         return (
             <React.Fragment>
