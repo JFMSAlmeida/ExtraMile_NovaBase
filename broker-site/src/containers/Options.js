@@ -11,9 +11,9 @@ class AdventureBuilder extends Component {
         this.handleOk = this.handleOk.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.state = {
-            iban: '',
-            age: '',
-            drivinglicense: ''
+            iban: this.props.location.state.info.iban,
+            age: this.props.location.state.info.iban,
+            drivinglicense: this.props.location.state.info.iban
         };
     }
 
@@ -38,9 +38,26 @@ class AdventureBuilder extends Component {
     }
 
     handleOk(e, str) {
+        console.log("handleok", str);
         e.preventDefault();
-        if (str == "iban")
-            this.props.location.state.info.handleInfoChange("iban", this.state.iban);
+        console.log(this.props);
+        console.log(this.props.location);
+        if (str == "iban") {
+            this.props.location.handleInfoChange("iban", this.state.iban);
+            this.props.location.state.info.iban = this.state.iban;
+        }
+        if (str == "age") {
+            this.props.location.handleInfoChange("age", this.state.age);
+            this.props.location.state.info.age = this.state.age;
+        }
+        if (str == "dl") {
+            this.props.location.handleInfoChange("dl", this.state.drivinglicense);
+            this.props.location.state.info.drivinglicense = this.state.drivinglicense;
+        }
+        document.getElementById(str).disabled = true;
+        document.getElementById(str+'-edit').hidden = false;
+        document.getElementById(str+'-ok').hidden = true;
+        document.getElementById(str+'-remove').hidden = true;
     }
 
     handleRemove(e, str) {
@@ -84,18 +101,18 @@ class AdventureBuilder extends Component {
                 <div className="form-group">
                     <label className="col-lg-3 control-label">Age:</label>
                     <div className="col-lg-8">
-                        <input id="age" disabled="true" className="form-cont rol" type="text" defaultValue={this.props.location.state.info.age}></input>&nbsp;
+                        <input id="age" disabled="true" className="form-cont rol" type="text" defaultValue={this.props.location.state.info.age} onChange={this.handleAgeChange}></input>&nbsp;
                         <button id="age-edit" onClick={(e) => this.handleEdit(e, "age")}><span className="glyphicon glyphicon-edit"></span></button>
-                        <button id="age-ok" hidden="true" ><span className="glyphicon glyphicon-ok"></span></button>&nbsp;
+                        <button id="age-ok" onClick={(e) => this.handleOk(e, "age")} hidden="true" ><span className="glyphicon glyphicon-ok"></span></button>&nbsp;
                         <button id="age-remove" onClick={(e) => this.handleRemove(e, "age")} hidden="true" ><span className="glyphicon glyphicon-remove"></span></button>
                     </div>
                 </div>
                 <div className="form-group">
                     <label className="col-lg-3 control-label">Driving License:</label>
                     <div className="col-lg-8">
-                        <input id="dl" disabled="true" className="form-cont rol" type="text" defaultValue={this.props.location.state.info.drivinglicense}></input>&nbsp;
+                        <input id="dl" disabled="true" className="form-cont rol" type="text" defaultValue={this.props.location.state.info.drivinglicense} onChange={this.handleDrivingLicenseChange}></input>&nbsp;
                         <button id="dl-edit" onClick={(e) => this.handleEdit(e, "dl")}><span className="glyphicon glyphicon-edit"></span></button>
-                        <button id="dl-ok" hidden="true" ><span className="glyphicon glyphicon-ok"></span></button>&nbsp;
+                        <button id="dl-ok" onClick={(e) => this.handleOk(e, "dl")} hidden="true" ><span className="glyphicon glyphicon-ok"></span></button>&nbsp;
                         <button id="dl-remove" onClick={(e) => this.handleRemove(e, "dl")} hidden="true" ><span className="glyphicon glyphicon-remove"></span></button>
                     </div>
                 </div>
