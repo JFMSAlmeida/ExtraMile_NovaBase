@@ -43,6 +43,7 @@ class Home extends Component {
                 <h1>HELLO THIS IS A TEST</h1>
                 <button onClick={this.handleClickProcess}>Click Process</button>
                 <button onClick={this.handleClickEcho}>Click Echo</button>
+                
             </div>
         );
     }
