@@ -1,154 +1,174 @@
-2018-07-05 19:01:52,188 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
-2018-07-05 19:01:52,232 INFO o.a.j.JMeter: Loading user properties from: /opt/apache-jmeter-4.0/bin/user.properties
-2018-07-05 19:01:52,242 INFO o.a.j.JMeter: Loading system properties from: /opt/apache-jmeter-4.0/bin/system.properties
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: Copyright (c) 1998-2018 The Apache Software Foundation
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: Version 4.0 r1823414
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: java.version=1.8.0_162
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: os.name=Linux
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: os.arch=amd64
-2018-07-05 19:01:52,261 INFO o.a.j.JMeter: os.version=4.15.0-24-generic
-2018-07-05 19:01:52,262 INFO o.a.j.JMeter: file.encoding=UTF-8
-2018-07-05 19:01:52,262 INFO o.a.j.JMeter: Max memory     =1073741824
-2018-07-05 19:01:52,262 INFO o.a.j.JMeter: Available Processors =8
-2018-07-05 19:01:52,277 INFO o.a.j.JMeter: Default Locale=English (EN)
-2018-07-05 19:01:52,278 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
-2018-07-05 19:01:52,278 INFO o.a.j.JMeter: JMeterHome=/opt/apache-jmeter-4.0
-2018-07-05 19:01:52,278 INFO o.a.j.JMeter: user.dir  =/home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase
-2018-07-05 19:01:52,278 INFO o.a.j.JMeter: PWD       =/home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase
-2018-07-05 19:01:52,278 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: bernardo-G53SX FullName: bernardo-G53SX
-2018-07-05 19:01:53,903 INFO o.a.j.g.a.LookAndFeelCommand: Installing Darcula LAF
-2018-07-05 19:01:54,947 INFO o.a.j.g.a.LookAndFeelCommand: Using look and feel: com.bulenkov.darcula.DarculaLaf [Darcula]
-2018-07-05 19:01:54,947 INFO o.a.j.JMeter: Setting LAF to: com.bulenkov.darcula.DarculaLaf
-2018-07-05 19:01:55,126 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
-2018-07-05 19:01:56,121 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
-2018-07-05 19:01:56,121 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
-2018-07-05 19:02:03,303 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2018-07-05 19:02:03,304 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2018-07-05 19:02:03,304 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2018-07-05 19:02:03,304 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
-2018-07-05 19:02:03,304 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
-2018-07-05 19:02:03,304 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
-2018-07-05 19:02:05,153 INFO o.a.j.e.KeyToolUtils: keytool found at 'keytool'
-2018-07-05 19:02:05,155 INFO o.a.j.p.h.p.ProxyControl: HTTP(S) Test Script Recorder SSL Proxy will use keys that support embedded 3rd party resources in file /opt/apache-jmeter-4.0/bin/proxyserver.jks
-2018-07-05 19:02:05,359 INFO o.a.j.s.FileServer: Default base='/home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase'
-2018-07-05 19:02:06,159 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
-2018-07-05 19:02:06,159 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
-2018-07-05 19:02:06,159 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
-2018-07-05 19:02:06,159 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
-2018-07-05 19:02:22,017 INFO o.a.j.g.a.Load: Loading file: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/test.jmx
-2018-07-05 19:02:22,017 INFO o.a.j.s.FileServer: Set new base='/home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence'
-2018-07-05 19:02:23,085 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
-2018-07-05 19:02:23,290 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
-2018-07-05 19:02:23,292 INFO o.a.j.s.SaveService: Using SaveService properties version 4.0
-2018-07-05 19:02:23,302 INFO o.a.j.s.SaveService: Loading file: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/test.jmx
-2018-07-05 19:02:23,865 INFO o.a.j.s.FileServer: Set new base='/home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence'
-2018-07-05 19:02:37,741 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2018-07-05 19:02:37,742 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2018-07-05 19:02:37,742 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2018-07-05 19:02:37,922 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
-2018-07-05 19:02:38,108 INFO o.a.j.e.StandardJMeterEngine: No enabled thread groups found
-2018-07-05 19:02:38,108 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown thread groups
-2018-07-05 19:02:38,108 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown ThreadGroup: 1 : tearDown Thread Group
-2018-07-05 19:02:38,108 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group tearDown Thread Group.
-2018-07-05 19:02:38,108 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:02:38,109 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:02:38,126 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2018-07-05 19:02:38,130 INFO o.a.j.t.JMeterThread: Thread started: tearDown Thread Group 1-1
-2018-07-05 19:02:38,216 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = bernardo-G53SX
-2018-07-05 19:02:38,262 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
-2018-07-05 19:02:57,776 INFO o.a.j.t.JMeterThread: Thread is done: tearDown Thread Group 1-1
-2018-07-05 19:02:57,789 INFO o.a.j.t.JMeterThread: Thread finished: tearDown Thread Group 1-1
-2018-07-05 19:02:57,791 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
-2018-07-05 19:02:57,792 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
-2018-07-05 19:03:10,633 INFO o.a.j.e.StandardJMeterEngine: Running the test!
-2018-07-05 19:03:10,634 INFO o.a.j.s.SampleEvent: List of sample_variables: []
-2018-07-05 19:03:10,648 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
-2018-07-05 19:03:10,863 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Initialize Activity
-2018-07-05 19:03:10,863 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Activity.
-2018-07-05 19:03:10,864 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:03:10,864 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:03:10,865 INFO o.a.j.t.ThreadGroup: Started thread group number 1
-2018-07-05 19:03:10,865 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Activity to finish before starting next group
-2018-07-05 19:03:10,894 INFO o.a.j.t.JMeterThread: Thread started: Initialize Activity 1-1
-2018-07-05 19:03:10,895 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/offer.txt
-2018-07-05 19:03:10,901 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/activity.txt
-2018-07-05 19:03:10,909 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/provider.txt
-2018-07-05 19:03:12,144 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Activity 1-1
-2018-07-05 19:03:12,145 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Activity 1-1
-2018-07-05 19:03:12,145 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Initialize Bank
-2018-07-05 19:03:12,145 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Bank.
-2018-07-05 19:03:12,145 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:03:12,145 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:03:12,146 INFO o.a.j.t.ThreadGroup: Started thread group number 2
-2018-07-05 19:03:12,146 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Bank to finish before starting next group
-2018-07-05 19:03:12,147 INFO o.a.j.t.JMeterThread: Thread started: Initialize Bank 2-1
-2018-07-05 19:03:12,148 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/bank.txt
-2018-07-05 19:03:12,473 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/client.txt
-2018-07-05 19:03:13,395 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/clientId.txt
-2018-07-05 19:03:14,171 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/deposit.txt
-2018-07-05 19:03:14,727 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Bank 2-1
-2018-07-05 19:03:14,727 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Bank 2-1
-2018-07-05 19:03:14,727 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : Initialize Hotel
-2018-07-05 19:03:14,728 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Hotel.
-2018-07-05 19:03:14,728 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:03:14,728 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:03:14,728 INFO o.a.j.t.ThreadGroup: Started thread group number 3
-2018-07-05 19:03:14,728 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Hotel to finish before starting next group
-2018-07-05 19:03:14,729 INFO o.a.j.t.JMeterThread: Thread started: Initialize Hotel 3-1
-2018-07-05 19:03:14,729 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/room.txt
-2018-07-05 19:03:14,730 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/hotel.txt
-2018-07-05 19:03:15,230 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Hotel 3-1
-2018-07-05 19:03:15,230 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Hotel 3-1
-2018-07-05 19:03:15,230 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 4 : Initialize Rent a Car
-2018-07-05 19:03:15,231 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Rent a Car.
-2018-07-05 19:03:15,231 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:03:15,231 INFO o.a.j.t.ThreadGroup: Starting thread group... number=4 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:03:15,232 INFO o.a.j.t.ThreadGroup: Started thread group number 4
-2018-07-05 19:03:15,232 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Rent a Car to finish before starting next group
-2018-07-05 19:03:15,233 INFO o.a.j.t.JMeterThread: Thread started: Initialize Rent a Car 4-1
-2018-07-05 19:03:15,233 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/car.txt
-2018-07-05 19:03:15,241 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/rentacar.txt
-2018-07-05 19:03:15,829 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Rent a Car 4-1
-2018-07-05 19:03:15,830 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Rent a Car 4-1
-2018-07-05 19:03:15,830 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 5 : Initialize Tax
-2018-07-05 19:03:15,830 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Tax.
-2018-07-05 19:03:15,830 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:03:15,831 INFO o.a.j.t.ThreadGroup: Starting thread group... number=5 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:03:15,831 INFO o.a.j.t.ThreadGroup: Started thread group number 5
-2018-07-05 19:03:15,831 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Tax to finish before starting next group
-2018-07-05 19:03:15,832 INFO o.a.j.t.JMeterThread: Thread started: Initialize Tax 5-1
-2018-07-05 19:03:15,832 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/itemtype.txt
-2018-07-05 19:03:16,742 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/taxpayer.txt
-2018-07-05 19:03:17,629 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Tax 5-1
-2018-07-05 19:03:17,629 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Tax 5-1
-2018-07-05 19:03:17,630 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 6 : Initialize Broker
-2018-07-05 19:03:17,630 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Broker.
-2018-07-05 19:03:17,630 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
-2018-07-05 19:03:17,630 INFO o.a.j.t.ThreadGroup: Starting thread group... number=6 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
-2018-07-05 19:03:17,631 INFO o.a.j.t.ThreadGroup: Started thread group number 6
-2018-07-05 19:03:17,631 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
-2018-07-05 19:03:17,634 INFO o.a.j.t.JMeterThread: Thread started: Initialize Broker 6-1
-2018-07-05 19:03:17,634 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventure.txt Alias: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventure.txt@101960679
-2018-07-05 19:03:17,645 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/brokerClient.txt
-2018-07-05 19:03:17,646 INFO o.a.j.s.FileServer: Stored: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/broker.txt
-2018-07-05 19:03:18,409 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Broker 6-1
-2018-07-05 19:03:18,409 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Broker 6-1
-2018-07-05 19:03:18,409 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
-2018-07-05 19:03:18,409 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/activity.txt
-2018-07-05 19:03:18,410 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventure.txt@101960679
-2018-07-05 19:03:18,410 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/client.txt
-2018-07-05 19:03:18,410 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/broker.txt
-2018-07-05 19:03:18,411 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/rentacar.txt
-2018-07-05 19:03:18,411 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/car.txt
-2018-07-05 19:03:18,411 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/provider.txt
-2018-07-05 19:03:18,411 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/brokerClient.txt
-2018-07-05 19:03:18,411 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/clientId.txt
-2018-07-05 19:03:18,412 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/deposit.txt
-2018-07-05 19:03:18,412 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/itemtype.txt
-2018-07-05 19:03:18,412 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/offer.txt
-2018-07-05 19:03:18,412 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/room.txt
-2018-07-05 19:03:18,412 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/bank.txt
-2018-07-05 19:03:18,413 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/hotel.txt
-2018-07-05 19:03:18,413 INFO o.a.j.s.FileServer: Close: /home/bernardo/Desktop/Eng Software Project/es18tg_4-project/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/taxpayer.txt
-2018-07-05 19:03:18,414 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2018-07-07 14:50:56,790 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2018-07-07 14:50:56,970 INFO o.a.j.JMeter: Loading user properties from: /opt/apache-jmeter-4.0/bin/user.properties
+2018-07-07 14:50:56,990 INFO o.a.j.JMeter: Loading system properties from: /opt/apache-jmeter-4.0/bin/system.properties
+2018-07-07 14:50:57,068 INFO o.a.j.JMeter: Copyright (c) 1998-2018 The Apache Software Foundation
+2018-07-07 14:50:57,069 INFO o.a.j.JMeter: Version 4.0 r1823414
+2018-07-07 14:50:57,069 INFO o.a.j.JMeter: java.version=1.8.0_171
+2018-07-07 14:50:57,069 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2018-07-07 14:50:57,069 INFO o.a.j.JMeter: os.name=Linux
+2018-07-07 14:50:57,069 INFO o.a.j.JMeter: os.arch=amd64
+2018-07-07 14:50:57,070 INFO o.a.j.JMeter: os.version=4.10.0-38-generic
+2018-07-07 14:50:57,070 INFO o.a.j.JMeter: file.encoding=UTF-8
+2018-07-07 14:50:57,070 INFO o.a.j.JMeter: Max memory     =1073741824
+2018-07-07 14:50:57,070 INFO o.a.j.JMeter: Available Processors =4
+2018-07-07 14:50:57,112 INFO o.a.j.JMeter: Default Locale=English (EN)
+2018-07-07 14:50:57,112 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2018-07-07 14:50:57,112 INFO o.a.j.JMeter: JMeterHome=/opt/apache-jmeter-4.0
+2018-07-07 14:50:57,112 INFO o.a.j.JMeter: user.dir  =/home/samuel/ExtraMile_NovaBase
+2018-07-07 14:50:57,113 INFO o.a.j.JMeter: PWD       =/home/samuel/ExtraMile_NovaBase
+2018-07-07 14:50:57,113 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: samuel-X555LJ FullName: samuel-X555LJ
+2018-07-07 14:50:59,467 INFO o.a.j.g.a.LookAndFeelCommand: Installing Darcula LAF
+2018-07-07 14:51:00,178 INFO o.a.j.g.a.LookAndFeelCommand: Using look and feel: com.bulenkov.darcula.DarculaLaf [Darcula]
+2018-07-07 14:51:00,179 INFO o.a.j.JMeter: Setting LAF to: com.bulenkov.darcula.DarculaLaf
+2018-07-07 14:51:01,169 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2018-07-07 14:51:03,757 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2018-07-07 14:51:03,757 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2018-07-07 14:51:08,667 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-07 14:51:08,668 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-07 14:51:08,668 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-07 14:51:08,669 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2018-07-07 14:51:08,669 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2018-07-07 14:51:08,669 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2018-07-07 14:51:09,355 INFO o.a.j.e.KeyToolUtils: keytool found at 'keytool'
+2018-07-07 14:51:09,356 INFO o.a.j.p.h.p.ProxyControl: HTTP(S) Test Script Recorder SSL Proxy will use keys that support embedded 3rd party resources in file /opt/apache-jmeter-4.0/bin/proxyserver.jks
+2018-07-07 14:51:09,616 INFO o.a.j.s.FileServer: Default base='/home/samuel/ExtraMile_NovaBase'
+2018-07-07 14:51:10,603 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2018-07-07 14:51:10,603 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2018-07-07 14:51:10,604 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2018-07-07 14:51:10,605 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2018-07-07 14:51:20,016 INFO o.a.j.g.a.Load: Loading file: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/test.jmx
+2018-07-07 14:51:20,017 INFO o.a.j.s.FileServer: Set new base='/home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence'
+2018-07-07 14:51:20,255 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2018-07-07 14:51:20,306 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2018-07-07 14:51:20,309 INFO o.a.j.s.SaveService: Using SaveService properties version 4.0
+2018-07-07 14:51:20,312 INFO o.a.j.s.SaveService: Loading file: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/test.jmx
+2018-07-07 14:51:20,675 INFO o.a.j.s.FileServer: Set new base='/home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence'
+2018-07-07 14:51:31,075 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2018-07-07 14:51:31,076 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2018-07-07 14:51:31,076 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2018-07-07 14:51:31,157 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2018-07-07 14:51:31,179 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Process Adventure
+2018-07-07 14:51:31,183 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Process Adventure.
+2018-07-07 14:51:31,184 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:31,185 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:31,189 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2018-07-07 14:51:31,189 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Process Adventure to finish before starting next group
+2018-07-07 14:51:31,199 INFO o.a.j.t.JMeterThread: Thread started: Process Adventure 1-1
+2018-07-07 14:51:31,201 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventureId.txt
+2018-07-07 14:51:31,249 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = samuel-X555LJ
+2018-07-07 14:51:31,268 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2018-07-07 14:51:34,017 INFO o.a.j.t.JMeterThread: Thread is done: Process Adventure 1-1
+2018-07-07 14:51:34,017 INFO o.a.j.t.JMeterThread: Thread finished: Process Adventure 1-1
+2018-07-07 14:51:34,019 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Assert Results
+2018-07-07 14:51:34,019 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Assert Results.
+2018-07-07 14:51:34,019 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:34,019 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:34,023 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2018-07-07 14:51:34,023 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Assert Results to finish before starting next group
+2018-07-07 14:51:34,024 INFO o.a.j.t.JMeterThread: Thread started: Assert Results 2-1
+2018-07-07 14:51:34,042 INFO o.a.j.t.JMeterThread: Thread is done: Assert Results 2-1
+2018-07-07 14:51:34,042 INFO o.a.j.t.JMeterThread: Thread finished: Assert Results 2-1
+2018-07-07 14:51:34,042 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2018-07-07 14:51:34,043 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown thread groups
+2018-07-07 14:51:34,043 INFO o.a.j.e.StandardJMeterEngine: Starting tearDown ThreadGroup: 1 : tearDown Thread Group
+2018-07-07 14:51:34,043 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group tearDown Thread Group.
+2018-07-07 14:51:34,043 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:34,043 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:34,044 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2018-07-07 14:51:34,044 INFO o.a.j.t.JMeterThread: Thread started: tearDown Thread Group 1-1
+2018-07-07 14:51:34,274 INFO o.a.j.t.JMeterThread: Thread is done: tearDown Thread Group 1-1
+2018-07-07 14:51:34,274 INFO o.a.j.t.JMeterThread: Thread finished: tearDown Thread Group 1-1
+2018-07-07 14:51:34,275 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2018-07-07 14:51:34,275 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventureId.txt
+2018-07-07 14:51:34,276 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2018-07-07 14:51:47,789 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2018-07-07 14:51:47,790 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2018-07-07 14:51:47,813 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2018-07-07 14:51:47,943 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Initialize Activity
+2018-07-07 14:51:47,943 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Activity.
+2018-07-07 14:51:47,943 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:47,943 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:47,946 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2018-07-07 14:51:47,946 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Activity to finish before starting next group
+2018-07-07 14:51:47,952 INFO o.a.j.t.JMeterThread: Thread started: Initialize Activity 1-1
+2018-07-07 14:51:47,954 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/offer.txt
+2018-07-07 14:51:47,967 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/activity.txt
+2018-07-07 14:51:47,967 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/provider.txt
+2018-07-07 14:51:47,975 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Activity 1-1
+2018-07-07 14:51:47,975 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Activity 1-1
+2018-07-07 14:51:47,975 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Initialize Bank
+2018-07-07 14:51:47,975 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Bank.
+2018-07-07 14:51:47,975 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:47,976 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:47,976 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2018-07-07 14:51:47,976 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Bank to finish before starting next group
+2018-07-07 14:51:47,977 INFO o.a.j.t.JMeterThread: Thread started: Initialize Bank 2-1
+2018-07-07 14:51:47,978 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/bank.txt
+2018-07-07 14:51:47,981 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/client.txt
+2018-07-07 14:51:48,004 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/clientId.txt
+2018-07-07 14:51:48,010 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/deposit.txt
+2018-07-07 14:51:48,017 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Bank 2-1
+2018-07-07 14:51:48,017 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Bank 2-1
+2018-07-07 14:51:48,017 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : Initialize Hotel
+2018-07-07 14:51:48,017 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Hotel.
+2018-07-07 14:51:48,018 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:48,018 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:48,018 INFO o.a.j.t.ThreadGroup: Started thread group number 3
+2018-07-07 14:51:48,018 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Hotel to finish before starting next group
+2018-07-07 14:51:48,019 INFO o.a.j.t.JMeterThread: Thread started: Initialize Hotel 3-1
+2018-07-07 14:51:48,020 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/room.txt
+2018-07-07 14:51:48,020 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/hotel.txt
+2018-07-07 14:51:48,023 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Hotel 3-1
+2018-07-07 14:51:48,024 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Hotel 3-1
+2018-07-07 14:51:48,024 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 4 : Initialize Rent a Car
+2018-07-07 14:51:48,024 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Rent a Car.
+2018-07-07 14:51:48,024 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:48,024 INFO o.a.j.t.ThreadGroup: Starting thread group... number=4 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:48,025 INFO o.a.j.t.ThreadGroup: Started thread group number 4
+2018-07-07 14:51:48,025 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Rent a Car to finish before starting next group
+2018-07-07 14:51:48,025 INFO o.a.j.t.JMeterThread: Thread started: Initialize Rent a Car 4-1
+2018-07-07 14:51:48,026 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/car.txt
+2018-07-07 14:51:48,026 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/rentacar.txt
+2018-07-07 14:51:48,029 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Rent a Car 4-1
+2018-07-07 14:51:48,029 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Rent a Car 4-1
+2018-07-07 14:51:48,029 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 5 : Initialize Tax
+2018-07-07 14:51:48,029 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Tax.
+2018-07-07 14:51:48,029 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:48,029 INFO o.a.j.t.ThreadGroup: Starting thread group... number=5 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:48,030 INFO o.a.j.t.ThreadGroup: Started thread group number 5
+2018-07-07 14:51:48,030 INFO o.a.j.e.StandardJMeterEngine: Waiting for thread group: Initialize Tax to finish before starting next group
+2018-07-07 14:51:48,031 INFO o.a.j.t.JMeterThread: Thread started: Initialize Tax 5-1
+2018-07-07 14:51:48,031 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/itemtype.txt
+2018-07-07 14:51:48,039 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/taxpayer.txt
+2018-07-07 14:51:48,045 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Tax 5-1
+2018-07-07 14:51:48,045 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Tax 5-1
+2018-07-07 14:51:48,046 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 6 : Initialize Broker
+2018-07-07 14:51:48,047 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Initialize Broker.
+2018-07-07 14:51:48,047 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2018-07-07 14:51:48,047 INFO o.a.j.t.ThreadGroup: Starting thread group... number=6 threads=1 ramp-up=1 perThread=1000.0 delayedStart=false
+2018-07-07 14:51:48,048 INFO o.a.j.t.ThreadGroup: Started thread group number 6
+2018-07-07 14:51:48,048 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2018-07-07 14:51:48,053 INFO o.a.j.t.JMeterThread: Thread started: Initialize Broker 6-1
+2018-07-07 14:51:48,054 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventure.txt Alias: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventure.txt@1028915607
+2018-07-07 14:51:48,055 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/brokerClient.txt
+2018-07-07 14:51:48,055 INFO o.a.j.s.FileServer: Stored: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/broker.txt
+2018-07-07 14:51:48,484 INFO o.a.j.t.JMeterThread: Thread is done: Initialize Broker 6-1
+2018-07-07 14:51:48,485 INFO o.a.j.t.JMeterThread: Thread finished: Initialize Broker 6-1
+2018-07-07 14:51:48,485 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2018-07-07 14:51:48,485 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/car.txt
+2018-07-07 14:51:48,487 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/itemtype.txt
+2018-07-07 14:51:48,487 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/adventure.txt@1028915607
+2018-07-07 14:51:48,488 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/brokerClient.txt
+2018-07-07 14:51:48,488 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/client.txt
+2018-07-07 14:51:48,488 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/room.txt
+2018-07-07 14:51:48,488 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/activity.txt
+2018-07-07 14:51:48,488 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/clientId.txt
+2018-07-07 14:51:48,488 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/rentacar.txt
+2018-07-07 14:51:48,489 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/broker.txt
+2018-07-07 14:51:48,489 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/provider.txt
+2018-07-07 14:51:48,489 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/bank.txt
+2018-07-07 14:51:48,489 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/deposit.txt
+2018-07-07 14:51:48,489 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/taxpayer.txt
+2018-07-07 14:51:48,489 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/hotel.txt
+2018-07-07 14:51:48,490 INFO o.a.j.s.FileServer: Close: /home/samuel/ExtraMile_NovaBase/jmeter/tests/integration/success-sequence/offer.txt
+2018-07-07 14:51:48,490 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)

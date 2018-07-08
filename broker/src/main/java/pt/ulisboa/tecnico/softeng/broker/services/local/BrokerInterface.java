@@ -171,4 +171,14 @@ public class BrokerInterface {
 		}
 		return adventures;
 	}
+
+	@Atomic(mode = TxMode.WRITE)
+	public static void signUp(String brokerCode, String nif, String iban, int age, String dl) {
+		ClientData cd = new ClientData();
+		cd.setNif(nif);
+		cd.setIban(iban);
+		cd.setAge(age);
+		cd.setDrivingLicense(dl);
+		BrokerInterface.createClient(brokerCode, cd);
+	}
 }
