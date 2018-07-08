@@ -10,10 +10,15 @@ class AdventureBuilder extends Component {
         this.handleDrivingLicenseChange = this.handleDrivingLicenseChange.bind(this);
         this.handleOk = this.handleOk.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+
         this.state = {
+            broker: this.props.location.state.info.broker,
+            nif: this.props.location.state.info.nif,
             iban: this.props.location.state.info.iban,
             age: this.props.location.state.info.iban,
-            drivinglicense: this.props.location.state.info.iban
+            drivinglicense: this.props.location.state.info.iban,
+            alert: false
         };
     }
 
@@ -36,28 +41,58 @@ class AdventureBuilder extends Component {
     handleDrivingLicenseChange(e) {
         this.setState({drivinglicense: e.target.value});
     }
+    handleAlertDismiss(e) {
+        e.preventDefault();
+        this.setState({alert: false});
+    }
 
     handleOk(e, str) {
         console.log("handleok", str);
         e.preventDefault();
-        console.log(this.props);
-        console.log(this.props.location);
-        if (str == "iban") {
-            this.props.location.handleInfoChange("iban", this.state.iban);
-            this.props.location.state.info.iban = this.state.iban;
-        }
-        if (str == "age") {
-            this.props.location.handleInfoChange("age", this.state.age);
-            this.props.location.state.info.age = this.state.age;
-        }
-        if (str == "dl") {
-            this.props.location.handleInfoChange("dl", this.state.drivinglicense);
-            this.props.location.state.info.drivinglicense = this.state.drivinglicense;
-        }
-        document.getElementById(str).disabled = true;
-        document.getElementById(str+'-edit').hidden = false;
-        document.getElementById(str+'-ok').hidden = true;
-        document.getElementById(str+'-remove').hidden = true;
+        this.setState({alert: true});
+        fetch('http://localhost:8083/rest/brokers/signup?brokerCode=' + this.state.broker +
+                                                        '&nif=' + this.state.nif +
+                                                        '&iban=' + this.state.iban +
+                                                        '&age=' + this.state.age +
+                                                        '&dl=' + this.state.drivinglicense)
+
+            .then(function(response) {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response;
+            }).then(response => {
+            return response.text();
+        })
+            .then(body => {
+                console.log(JSON.parse(body));
+                if (!JSON.parse(body).success) {
+                    //DL invalido
+                    document.getElementById("alert-text").innerHTML = "It was not possible to update your Driving License field since it is already in use."
+                }
+                else {
+                    //Atualizar fields e states
+                    if (str == "iban") {
+                        this.props.location.handleInfoChange("iban", this.state.iban);
+                        this.props.location.state.info.iban = this.state.iban;
+                    }
+                    if (str == "age") {
+                        this.props.location.handleInfoChange("age", this.state.age);
+                        this.props.location.state.info.age = this.state.age;
+                    }
+                    if (str == "dl") {
+                        this.props.location.handleInfoChange("dl", this.state.drivinglicense);
+                        this.props.location.state.info.drivinglicense = this.state.drivinglicense;
+                    }
+                    document.getElementById("alert-text").innerHTML = "Fields updated with success!"
+                    document.getElementById(str).disabled = true;
+                    document.getElementById(str+'-edit').hidden = false;
+                    document.getElementById(str+'-ok').hidden = true;
+                    document.getElementById(str+'-remove').hidden = true;
+                }
+            }).catch(function(error) {
+                document.getElementById("alert-text").innerHTML = "Something went wrong... Try again later."
+        });
     }
 
     handleRemove(e, str) {
@@ -77,10 +112,11 @@ class AdventureBuilder extends Component {
     render() {
         return (
             <div>
-                <div className="alert alert-info alert-dismissable">
-                    <a className="panel-close close" data-dismiss="alert">×</a>
-                    This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                </div>
+                {this.state.alert ? <div id="alert" className="alert alert-info alert-dismissable">
+                    <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                    <div id="alert-text">Ola</div>
+                </div> : null }
+
                 <h3>Options</h3>
                 <div className="form-group">
                     <label className="col-lg-3 control-label">Nif:</label>
@@ -101,7 +137,7 @@ class AdventureBuilder extends Component {
                 <div className="form-group">
                     <label className="col-lg-3 control-label">Age:</label>
                     <div className="col-lg-8">
-                        <input id="age" disabled="true" className="form-cont rol" type="text" defaultValue={this.props.location.state.info.age} onChange={this.handleAgeChange}></input>&nbsp;
+                        <input id="age" disabled="true" className="form-cont rol" type="number" min="1" max="120" defaultValue={this.props.location.state.info.age} onChange={this.handleAgeChange}></input>&nbsp;
                         <button id="age-edit" onClick={(e) => this.handleEdit(e, "age")}><span className="glyphicon glyphicon-edit"></span></button>
                         <button id="age-ok" onClick={(e) => this.handleOk(e, "age")} hidden="true" ><span className="glyphicon glyphicon-ok"></span></button>&nbsp;
                         <button id="age-remove" onClick={(e) => this.handleRemove(e, "age")} hidden="true" ><span className="glyphicon glyphicon-remove"></span></button>
