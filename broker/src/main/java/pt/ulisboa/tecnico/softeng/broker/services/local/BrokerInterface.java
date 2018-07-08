@@ -1,7 +1,10 @@
 package pt.ulisboa.tecnico.softeng.broker.services.local;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
@@ -15,6 +18,12 @@ import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BrokerData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BrokerData.CopyDepth;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BulkData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.ClientData;
+import pt.ulisboa.tecnico.softeng.broker.services.remote.ActivityInterface;
+import pt.ulisboa.tecnico.softeng.broker.services.remote.CarInterface;
+import pt.ulisboa.tecnico.softeng.broker.services.remote.HotelInterface;
+import pt.ulisboa.tecnico.softeng.broker.services.remote.dataobjects.RestActivityBookingData;
+import pt.ulisboa.tecnico.softeng.broker.services.remote.dataobjects.RestRentingData;
+import pt.ulisboa.tecnico.softeng.broker.services.remote.dataobjects.RestRoomBookingData;
 
 public class BrokerInterface {
 
@@ -114,4 +123,62 @@ public class BrokerInterface {
 		return null;
 	}
 
+	@Atomic(mode = TxMode.WRITE)
+	public static void processAdventure2(String brokerCode) {
+		List<Adventure> list = FenixFramework.getDomainRoot().getBrokerSet().stream()
+				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
+				.collect(Collectors.toList());
+
+		for (Adventure adv: list)
+			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT )
+				adv.process();
+	}
+
+	public static ArrayList<Object> adventures2HashMap(List<AdventureData> listAdventures) {
+
+		ArrayList<Object> adventures = new ArrayList<>();
+
+		for (AdventureData adv: listAdventures) {
+			if (adv.getState() == Adventure.State.PROCESS_PAYMENT) {
+				Map<String, Object> advt = new HashMap<>();
+				advt.put("id", adv.getId());
+				advt.put("age", adv.getAge());
+				advt.put("begin", adv.getBegin());
+				advt.put("end", adv.getEnd());
+				advt.put("hasVehicle", adv.getVehicle());
+				advt.put("price", adv.getAmount());
+				advt.put("hasRoom", !adv.getBegin().equals(adv.getEnd()));
+
+				RestActivityBookingData actData = ActivityInterface.getActivityReservationData(adv.getActivityConfirmation());
+				advt.put("activityName", actData.getName());
+
+				if(!adv.getBegin().equals(adv.getEnd())) {
+					RestRoomBookingData roomData = HotelInterface.getRoomBookingData(adv.getRoomConfirmation());
+					advt.put("hotelName", roomData.getHotelName());
+					advt.put("roomNumber", roomData.getRoomNumber());
+					advt.put("roomType", roomData.getRoomType());
+				}
+				if(adv.getVehicle()) {
+					RestRentingData rentData = CarInterface.getRentingData(adv.getRentingConfirmation());
+					advt.put("vehicleType", rentData.getTypeValue());
+					advt.put("kilometers", rentData.getKilometers());
+					advt.put("rentBegin", rentData.getBegin());
+					advt.put("rentEnd", rentData.getEnd());
+				}
+
+				adventures.add(advt);
+			}
+		}
+		return adventures;
+	}
+
+	@Atomic(mode = TxMode.WRITE)
+	public static void signUp(String brokerCode, String nif, String iban, int age, String dl) {
+		ClientData cd = new ClientData();
+		cd.setNif(nif);
+		cd.setIban(iban);
+		cd.setAge(age);
+		cd.setDrivingLicense(dl);
+		BrokerInterface.createClient(brokerCode, cd);
+	}
 }
