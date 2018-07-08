@@ -29,7 +29,7 @@ const Footer = () => (
       <div class="footer-center">
 
         <div>
-          <i><FontAwesomeIcon icon="map-marker-alt" /></i>
+          <i class="fa  fa-map-marker"></i>
           <p><span>Avª Prof. Doutor Aníbal Cavaco Silva </span>Oeiras, Portugal</p>
         </div>
 
