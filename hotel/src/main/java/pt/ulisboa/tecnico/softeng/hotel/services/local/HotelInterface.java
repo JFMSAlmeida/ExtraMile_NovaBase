@@ -1,9 +1,6 @@
 package pt.ulisboa.tecnico.softeng.hotel.services.local;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.joda.time.LocalDate;
@@ -157,6 +154,47 @@ public class HotelInterface {
 		}
 		return availableRooms;
 	}
+
+	public static List<Room> getAllRooms() {
+		List<Room> availableRooms = new ArrayList<>();
+
+		LocalDate arrival =  new LocalDate("1980-01-01");
+		LocalDate departure = new LocalDate("2050-12-12");
+
+		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {
+			availableRooms.addAll(hotel.getAvailableRooms(arrival, departure));
+		}
+
+		return availableRooms;
+	}
+
+	public static ArrayList<Object> rooms2HashMap(List<Room> availableRooms) {
+		ArrayList<Object> rooms = new ArrayList<>();
+
+		for (Room room : availableRooms) {
+
+			Map<String, Object> roomt = new HashMap<>();
+			roomt.put("number", room.getNumber());
+			roomt.put("type", room.getType());
+			roomt.put("hotel", room.getHotel().getName());
+
+			if (room.getType() == Room.Type.SINGLE) {
+
+				roomt.put("price", room.getHotel().getPriceSingle());
+			} else {
+
+				roomt.put("price", room.getHotel().getPriceDouble());
+			}
+
+			rooms.add(roomt);
+		}
+
+		return rooms;
+	}
+
+
+
+
 
 	private static Hotel getHotelByCode(String code) {
 		return FenixFramework.getDomainRoot().getHotelSet().stream().filter(h -> h.getCode().equals(code)).findFirst()
