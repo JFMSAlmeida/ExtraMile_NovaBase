@@ -364,35 +364,67 @@
   to { transform: rotate(360deg); }
 }
 .wrapper{
-
   position: absolute;
   top: 20%;
-  left: 25%;
+  left: 20%;
 
 }
 .product_list{
-  width: 100%;
+  width: 150%;
+  font-family: Roboto,sans-serif;
 }
 
 .product_list tbody tr:last-child {
   background-color: #0c0b10;
   color: #ffffff;
+  border-bottom: 1px solid #fff;
 }
 .product_list tr {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #0c0b10;
   display: block;
   padding: 10px 20px;
 }
 .product_list .name_td {
   text-align: left;
+  font-size: 150%;
+
 }
 .product_list .delete_td, .product_list .price_td {
   min-width: 100px;
   text-align: center;
+  font-size: 150%;
 }
-.cart_line {
-  color: #ffffff;
 
+.product_list .title_td-item{
+  font-size:20px;
+
+}
+
+.product_list .delete_td-item {
+  min-width: 100px;
+  text-align: center;
+  font-size: 150%;
+}
+
+.product_list .price_td-item {
+  min-width: 100px;
+  text-align: center;
+  font-size: 150%;
+  color: #eabf00;
+}
+
+.product_list .cart_line {
+  color: #ffffff;
+}
+
+.product_list .cart_line::before{
+  content: "";
+  width: 90%;
+  height: 2px;
+  background-color: rgba(0,0,0,.2);
+  position: absolute;
+  top: 0;
+  left: 5%;
 }
 .product_list tbody tr{
   background-color: #1b1a20;
@@ -412,8 +444,38 @@
   color: #ffffff;
 }
 
-.product_list .thumb_td {
-  width: 50px;
+.product_list .thumb_td-item {
+  width: 20%;
 }
-.cart_line{
+
+.checkout__del {
+  width: 30px;
+  height: 30px;
+  border-radius: 70%;
+  background-size: auto 100%;
+  background-image: url("./../components/shelf/sprite_delete-icon.png");
+  background-repeat: no-repeat;
+  z-index: 2;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.checkout__del:hover {
+  background-position-x: -32px; }
+
+.totals-table .totalPrice{
+  min-width: 100px;
+  text-align: center;
+  font-size: 150%;
+  color: #eabf00;
+}
+
+.product_list .cart_line--mouseover {
+  background-color: #0c0b10; }
+
+.product_list .cart_line--mouseover .title_td-item, .product_list .cart_line--mouseover .price_td-item {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+

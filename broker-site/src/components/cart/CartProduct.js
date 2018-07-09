@@ -35,9 +35,8 @@ class CartProduct extends Component {
                 />
                 <img className="shelf-item__image" src={require(`../shelf/B1001.jpg`)} alt={product.id}/>
                 <div className="shelf-item__details">
-                    <p className="title">{product.title}</p>
+                    <p className="title">Package {product.id}</p>
                     <p className="desc">
-                        <b> Package {product.id} </b> <br />
                         {`| ${product.activityName} | ${product.hotelName} | ${product.vehicleType} |`}
                     </p>
                 </div>

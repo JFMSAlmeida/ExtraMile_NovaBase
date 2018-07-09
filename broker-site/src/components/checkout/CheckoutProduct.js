@@ -1,25 +1,49 @@
 import React from "react";
 
 export default class CheckoutProduct extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            isMouseOver : false
+        };
+    }
+    handleMouseOver = () => {
+        this.setState({isMouseOver: true});
+    }
+
+    handleMouseOut = () => {
+        this.setState({isMouseOver: false});
+    }
+
     render() {
+        console.log(this.props.product);
+
+        const classes = ['cart_line'];
+
+        if(this.state.isMouseOver){
+            classes.push('cart_line--mouseover');
+        }
+
         return (
-            <tr className="cart_line">
-                <td className="thumb_td">
-                    <img width="90" height="90" src={require(`../shelf/B1001.jpg`)} alt=""/>
+            <tr className={classes.join(" ")}>
+                <td className="thumb_td-item">
+                    <img width="160" height="100" src={require(`../shelf/B1001.jpg`)} alt=""/>
 
                 </td>
-                <td className="title_td">
-                    <strong>Real Mass Gainer 2722 g</strong>
-                    <div className="variant">Sabor: Chocolate</div>
+                <td className="title_td-item">
+                    <strong>{this.props.product.id}</strong>
+                    <div className="desc">{`| ${this.props.product.activityName} | ${this.props.product.hotelName} | ${this.props.product.vehicleType} |`}</div>
                     <br/>
                 </td>
-                <td className="price_td">
-                    €26.99
+                <td className="price_td-item">
+                    {this.props.product.price}€
                 </td>
-                <td className="delete_td">
-                    <button type="submit">
-                        <i className="icon-close"/>
-                    </button>
+                <td className="delete_td-item">
+                    <div
+                        className="checkout__del"
+                        onMouseOver={() => this.handleMouseOver()}
+                        onMouseOut={() => this.handleMouseOut()}
+                    />
                 </td>
             </tr>
 

@@ -5,10 +5,22 @@ import CheckoutProduct from "./CheckoutProduct";
 export default class Checkout extends React.Component {
     constructor(props){
         super(props);
-         }
+
+        this.calculateTotalAmount = this.calculateTotalAmount.bind(this);
+    }
+
+    calculateTotalAmount = () => {
+        var acumulator = 0;
+        for(var i = 0; i < this.props.location.state.products.length; i++){
+            acumulator = acumulator + this.props.location.state.products[i].price;
+        }
+        console.log(acumulator);
+        return acumulator;
+    }
 
     render(){
-        console.log(this.props.location.state);
+
+        console.log(this.props.location.state.total);
         const productsArray = this.props.location.state.products.map(adv => {
             return (
                 <CheckoutProduct
@@ -34,8 +46,8 @@ export default class Checkout extends React.Component {
                                     <table className="totals-table">
                                         <tbody>
                                             <tr>
-                                                <td className="strong">Total:</td>
-                                                <td className="strong">€81.97</td>
+                                                <td><font size="5">Totals:</font></td>
+                                                <td className="totalPrice">{this.calculateTotalAmount()}€</td>
                                             </tr>
                                         </tbody>
                                     </table>

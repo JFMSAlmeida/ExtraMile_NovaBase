@@ -79,6 +79,8 @@ class Cart extends Component{
             );
         });
 
+        const totalPrice = this.calculateTotalAmount();
+
         let classes = ['float-cart'];
 
         if (this.state.isOpen) {
@@ -130,11 +132,11 @@ class Cart extends Component{
                         <div className="sub">SUBTOTAL</div>
                         <div className="sub-price">
                             <p className="sub-price__val">
-                                {this.calculateTotalAmount()} €
+                                {totalPrice} €
                             </p>
                         </div>
                         <div className="buy-btn">
-                            <Link to={{ pathname: '/checkout', state:{products : this.state.products} }}>Checkout</Link>
+                            <Link to={{ pathname: '/checkout', state:{products : this.state.products, total : totalPrice}}}>Checkout</Link>
                         </div>
                     </div>
                 </div>
