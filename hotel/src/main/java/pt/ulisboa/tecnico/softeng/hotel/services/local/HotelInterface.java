@@ -153,8 +153,9 @@ public class HotelInterface {
 			}
 		}
 		return availableRooms;
-	}
+	} 
 
+	@Atomic(mode = TxMode.READ)
 	public static List<Room> getAllRooms() {
 		List<Room> availableRooms = new ArrayList<>();
 
@@ -168,9 +169,10 @@ public class HotelInterface {
 		return availableRooms;
 	}
 
+	@Atomic(mode = TxMode.READ)
 	public static ArrayList<Object> rooms2HashMap(List<Room> availableRooms) {
 		ArrayList<Object> rooms = new ArrayList<>();
-
+		
 		for (Room room : availableRooms) {
 
 			Map<String, Object> roomt = new HashMap<>();
@@ -190,7 +192,7 @@ public class HotelInterface {
 		}
 
 		return rooms;
-	}
+	}  
 
 
 

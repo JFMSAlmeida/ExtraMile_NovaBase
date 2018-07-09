@@ -59,7 +59,9 @@ public class HotelRestController {
     public ResponseEntity<List<Object>> getRooms() {
 
 	    try {
-	        return new ResponseEntity<>(HotelInterface.rooms2HashMap(HotelInterface.getAllRooms()), HttpStatus.OK);
+	    	List<Room> teste123 = HotelInterface.getAllRooms();
+
+	        return new ResponseEntity<>(HotelInterface.rooms2HashMap(teste123), HttpStatus.OK);
 
     } catch (HotelException he) {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
