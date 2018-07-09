@@ -63,7 +63,7 @@ export default class Header extends React.Component {
                                                 </button>
                                                 <div className="dropdown-contentLogin">
                                                     <a href="#"><span className="glyphicon glyphicon-usd"></span>&nbsp; Balance</a>
-                                                    <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Options</Link>
+                                                    <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
                                                     <a onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
                                                 </div>
                                             </div>
@@ -244,17 +244,10 @@ export default class Header extends React.Component {
         });
     }
 
-    handleInfoChange(str, newVal) {
-        if (str === "iban") {
-            this.setState({ iban: newVal });
-        }
-        if (str === "age") {
-            this.setState({ age: newVal });
-        }
-        if (str === "dl") {
-            this.setState({ drivinglicense: newVal });
-        }
-        console.log(str, newVal, this.state);
+    handleInfoChange(newIban, newAge, newDl) {
+        this.setState({ iban: newIban,
+                        age: newAge,
+                        drivinglicense: newDl});
         /*if (str == "age")
             this.state.age
         if (str == "dl")

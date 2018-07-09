@@ -194,10 +194,14 @@ public class BrokerInterface {
 		if (client == null) {
 			return false;
 		}
-		if ((client.getDrivingLicense()).equals(drivingLicense))
-			checkArguments(broker, nif, iban, age, drivingLicense, true);
-		else
-			checkArguments(broker, nif, iban, age, drivingLicense, false);
+		try {
+			if ((client.getDrivingLicense()).equals(drivingLicense))
+				checkArguments(broker, nif, iban, age, drivingLicense, false);
+			else
+				checkArguments(broker, nif, iban, age, drivingLicense, true);
+		} catch (BrokerException e) {
+			return false;
+		}
 
 		client.setNif(nif);
 		client.setIban(iban);
