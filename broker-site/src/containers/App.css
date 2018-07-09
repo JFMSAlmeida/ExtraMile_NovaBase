@@ -363,34 +363,57 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-/*.wrapper{
+.wrapper{
+
   position: absolute;
-  border: 1px solid #000000;
   top: 20%;
   left: 25%;
-  max-width: 100%;
-  width: 50%;
-  height: 50%;
-}*/
-.wrapper{
-  display:block;
-  min-height: 280px;
-  color: #1b1a20;
-  margin: 0;
+
 }
-.product_list th{
-  background-color: #ecf0f1;
+.product_list{
   width: 100%;
 }
-/*.product_list tr{
-  display:block;
-  padding:10px 20px;
-}*/
 
-.totals-table{
-  background-color: #ecf0f1;
+.product_list tbody tr:last-child {
+  background-color: #0c0b10;
+  color: #ffffff;
+}
+.product_list tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 10px 20px;
+}
+.product_list .name_td {
+  text-align: left;
+}
+.product_list .delete_td, .product_list .price_td {
+  min-width: 100px;
+  text-align: center;
+}
+.cart_line {
+  color: #ffffff;
+
+}
+.product_list tbody tr{
+  background-color: #1b1a20;
+}
+.product_list tbody td{
+  width:100%;
+  padding: 5px;
+  white-space: nowrap;
+
+}
+.product_list thead{
+  background-color: #0c0b10;
+}
+.product_list th{
+  width:100%;
+  padding: 5px;
+  color: #ffffff;
 }
 
+.product_list .thumb_td {
+  width: 50px;
+}
 .cart_line{
-  border-top: 1px solid;
 }

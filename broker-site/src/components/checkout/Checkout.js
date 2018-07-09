@@ -21,7 +21,7 @@ export default class Checkout extends React.Component {
                     <table className="product_list">
                         <thead>
                             <tr>
-                                <th className="name_td" colSpan="2">Produtos</th>
+                                <th className="name_td">Produtos</th>
                                 <th className="price_td">Preço</th>
                                 <th className="delete_td" >Remover</th>
                             </tr>
@@ -29,7 +29,7 @@ export default class Checkout extends React.Component {
                         <tbody>
                             {productsArray}
                             <tr>
-                                <td colSpan="2"></td>
+                                <td></td>
                                 <td className="totals">
                                     <table className="totals-table">
                                         <tbody>
