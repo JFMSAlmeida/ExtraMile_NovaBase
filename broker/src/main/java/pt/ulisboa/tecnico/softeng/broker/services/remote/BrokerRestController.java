@@ -92,11 +92,31 @@ public class BrokerRestController {
 			else {
 				json.put("success", true);
 				json.put("nif", nif);
-				json.put("iban", nif);
-				json.put("age", nif);
-				json.put("drivinglicense", nif);
+				json.put("iban", cd.getIban());
+				json.put("age", cd.getAge());
+				json.put("drivinglicense", cd.getDrivingLicense());
 			}
 			return new ResponseEntity<>(json, HttpStatus.OK);
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/updateClientInfo")
+	public ResponseEntity<?> updateClientInfo(@RequestParam(value="brokerCode") String brokerCode,
+											  @RequestParam(value="nif") String nif,
+											  @RequestParam(value="iban") String iban,
+											  @RequestParam(value="age") int age,
+											  @RequestParam(value="dl") String dl) {
+		try {
+			Map<String, Object> json = new HashMap<String, Object>();
+			if(BrokerInterface.updateClientInfo(brokerCode, nif, iban, age, dl))
+				json.put("success", true);
+			else
+				json.put("success", false);
+			return new ResponseEntity<>(json, HttpStatus.OK);
+
 		} catch (BrokerException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

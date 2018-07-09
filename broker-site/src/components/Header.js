@@ -19,9 +19,11 @@ export default class Header extends React.Component {
         this.handleIBANChange = this.handleIBANChange.bind(this);
         this.handleAgeChange = this.handleAgeChange.bind(this);
         this.handleDrivingLicenseChange = this.handleDrivingLicenseChange.bind(this);
+        this.handleInfoChange = this.handleInfoChange.bind(this);
 
         this.state = {
             auth: false,
+            broker: 'B100',
             nif: '',
             iban: '',
             age: '',
@@ -61,7 +63,7 @@ export default class Header extends React.Component {
                                                 </button>
                                                 <div className="dropdown-contentLogin">
                                                     <a href="#"><span className="glyphicon glyphicon-usd"></span>&nbsp; Balance</a>
-                                                    <Link to='/options'><span className="glyphicon glyphicon-cog"></span>&nbsp; Options</Link>
+                                                    <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
                                                     <a onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
                                                 </div>
                                             </div>
@@ -176,11 +178,11 @@ export default class Header extends React.Component {
     handleSignUp(e) {
         e.preventDefault();
         console.log("handleSignUp");
-        fetch('http://localhost:8083/rest/brokers/signup?brokerCode=' + 'B100' +
-            '&nif=' + this.state.signupNif +
-            '&iban=' + this.state.signupIBAN +
-            '&age=' + this.state.signupAge +
-            '&dl=' + this.state.signupDrivingLicense)
+        fetch('http://localhost:8083/rest/brokers/signup?brokerCode=' + this.state.broker +
+                                                        '&nif=' + this.state.signupNif +
+                                                        '&iban=' + this.state.signupIBAN +
+                                                        '&age=' + this.state.signupAge +
+                                                        '&dl=' + this.state.signupDrivingLicense)
 
             .then(function(response) {
                 if (!response.ok) {
@@ -200,7 +202,7 @@ export default class Header extends React.Component {
     handleLogin(e) {
         e.preventDefault();
         console.log("handleLogin");
-        fetch('http://localhost:8083/rest/brokers/login?brokerCode=' + 'B100' +
+        fetch('http://localhost:8083/rest/brokers/login?brokerCode=' + this.state.broker +
             '&nif=' + this.state.loginNif)
 
             .then(function(response) {
@@ -226,7 +228,7 @@ export default class Header extends React.Component {
                         drivinglicense: JSON.parse(body).drivinglicense});
                 }
             }).catch(function(error) {
-            document.getElementById('errorLogin').innerHTML = "Something went wrong. Try again.";
+                document.getElementById('errorLogin').innerHTML = "Something went wrong. Try again later.";
         });
     }
 
@@ -240,5 +242,15 @@ export default class Header extends React.Component {
             age: '',
             drivinglicense: ''
         });
+    }
+
+    handleInfoChange(newIban, newAge, newDl) {
+        this.setState({ iban: newIban,
+                        age: newAge,
+                        drivinglicense: newDl});
+        /*if (str == "age")
+            this.state.age
+        if (str == "dl")
+            this.state.drivinglicense */
     }
 }

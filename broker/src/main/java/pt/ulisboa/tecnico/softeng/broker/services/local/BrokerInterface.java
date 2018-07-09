@@ -13,6 +13,7 @@ import pt.ulisboa.tecnico.softeng.broker.domain.Adventure;
 import pt.ulisboa.tecnico.softeng.broker.domain.Broker;
 import pt.ulisboa.tecnico.softeng.broker.domain.BulkRoomBooking;
 import pt.ulisboa.tecnico.softeng.broker.domain.Client;
+import pt.ulisboa.tecnico.softeng.broker.exception.BrokerException;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.AdventureData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BrokerData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BrokerData.CopyDepth;
@@ -181,4 +182,52 @@ public class BrokerInterface {
 		cd.setDrivingLicense(dl);
 		BrokerInterface.createClient(brokerCode, cd);
 	}
+
+	@Atomic(mode = TxMode.WRITE)
+	public static boolean updateClientInfo(String brokerCode, String nif, String iban, int age, String drivingLicense) {
+		Broker broker = getBrokerByCode(brokerCode);
+		if (broker == null) {
+			return false;
+		}
+
+		Client client = broker.getClientByNIF(nif);
+		if (client == null) {
+			return false;
+		}
+		try {
+			if ((client.getDrivingLicense()).equals(drivingLicense))
+				checkArguments(broker, nif, iban, age, drivingLicense, false);
+			else
+				checkArguments(broker, nif, iban, age, drivingLicense, true);
+		} catch (BrokerException e) {
+			return false;
+		}
+
+		client.setNif(nif);
+		client.setIban(iban);
+		client.setAge(age);
+		client.setDrivingLicense(drivingLicense);
+		return true;
+	}
+
+	private static void checkArguments(Broker broker, String nif, String iban, int age, String drivingLicense, boolean checkDrivingLicense) {
+		if (iban == null || nif == null || iban.trim().isEmpty() || nif.trim().isEmpty()) {
+			throw new BrokerException();
+		}
+
+		if (drivingLicense != null && drivingLicense.trim().isEmpty()) {
+			throw new BrokerException();
+		}
+
+		if (age < 0) {
+			throw new BrokerException();
+		}
+
+		if (checkDrivingLicense) {
+			if (broker.drivingLicenseIsRegistered(drivingLicense)) {
+				throw new BrokerException();
+			}
+		}
+	}
+
 }
