@@ -363,3 +363,34 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+/*.wrapper{
+  position: absolute;
+  border: 1px solid #000000;
+  top: 20%;
+  left: 25%;
+  max-width: 100%;
+  width: 50%;
+  height: 50%;
+}*/
+.wrapper{
+  display:block;
+  min-height: 280px;
+  color: #1b1a20;
+  margin: 0;
+}
+.product_list th{
+  background-color: #ecf0f1;
+  width: 100%;
+}
+/*.product_list tr{
+  display:block;
+  padding:10px 20px;
+}*/
+
+.totals-table{
+  background-color: #ecf0f1;
+}
+
+.cart_line{
+  border-top: 1px solid;
+}

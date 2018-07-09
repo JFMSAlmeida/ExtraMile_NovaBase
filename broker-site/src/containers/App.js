@@ -6,6 +6,7 @@ import Signup from "./Signup";
 import Home from "./Home";
 import createBrowserHistory from 'history/createBrowserHistory'
 import Header from "../components/Header";
+import Checkout from "../components/checkout/Checkout";
 const history = createBrowserHistory();
 
 class App extends React.Component {
@@ -35,9 +36,10 @@ class App extends React.Component {
                     product = {this.state.product}
                 />
                 <Route exact path='/' component={Home} history={history}/>
-                <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)} a = {10}/>}/>
+                <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)}/>}/>
                 <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
                 <Route path='/signup' component={Signup} history={history}/>
+                <Route path='/checkout' component={Checkout} />
             </div>
         );
     }

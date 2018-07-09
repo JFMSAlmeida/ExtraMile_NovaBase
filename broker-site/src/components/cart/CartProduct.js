@@ -44,8 +44,6 @@ class CartProduct extends Component {
                 <div className="shelf-item__price">
                     <b><p>{product.price} €</p></b>
                 </div>
-
-                <div className="clearfix" />
             </div>
         );
     }

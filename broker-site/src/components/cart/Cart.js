@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartProduct from './CartProduct';
+import {Link} from "react-router-dom";
 
 class Cart extends Component{
     constructor(props){
@@ -132,8 +133,8 @@ class Cart extends Component{
                                 {this.calculateTotalAmount()} €
                             </p>
                         </div>
-                        <div onClick={() => this.proceedToCheckout()} className="buy-btn">
-                            Checkout
+                        <div className="buy-btn">
+                            <Link to={{ pathname: '/checkout', state:{products : this.state.products} }}>Checkout</Link>
                         </div>
                     </div>
                 </div>
