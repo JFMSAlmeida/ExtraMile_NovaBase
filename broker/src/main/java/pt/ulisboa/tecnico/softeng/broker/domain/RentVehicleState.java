@@ -47,4 +47,10 @@ public class RentVehicleState extends RentVehicleState_Base {
 		getAdventure().setState(State.PROCESS_PAYMENT);
 	}
 
+	@Override
+	public void process(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

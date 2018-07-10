@@ -124,6 +124,10 @@ public class Adventure extends Adventure_Base {
 		// logger.debug("process ID:{}, state:{} ", this.ID, getState().name());
 		getState().process();
 	}
+	
+	public void process(String id) {
+		getState().process(id);
+	}
 
 	public boolean shouldCancelRoom() {
 		return getRoomConfirmation() != null && getRoomCancellation() == null;

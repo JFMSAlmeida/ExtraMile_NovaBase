@@ -73,4 +73,10 @@ public class UndoState extends UndoState_Base {
 		}
 	}
 
+	@Override
+	public void process(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

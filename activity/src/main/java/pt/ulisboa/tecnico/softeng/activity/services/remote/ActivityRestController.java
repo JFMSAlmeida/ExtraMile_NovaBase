@@ -25,6 +25,18 @@ public class ActivityRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@RequestMapping(value = "/reserveSelected")
+	public ResponseEntity<String> reserveSelected(@RequestBody RestActivityBookingData activityBookingData) {
+		logger.info("reserveActivity begin:{}, end:{}, age:{}, nif:{}, iban:{}, adventureId:{}, id:{}",
+				activityBookingData.getBegin(), activityBookingData.getEnd(), activityBookingData.getAge(),
+				activityBookingData.getNif(), activityBookingData.getIban(), activityBookingData.getAdventureId(), activityBookingData.getId());
+		try {
+			return new ResponseEntity<String>(ActivityInterface.reserveSelectedActivity(activityBookingData), HttpStatus.OK);
+		} catch (ActivityException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
 
 	@RequestMapping(value = "/cancel", method = RequestMethod.POST)
 	public ResponseEntity<String> cancel(@RequestParam String reference) {

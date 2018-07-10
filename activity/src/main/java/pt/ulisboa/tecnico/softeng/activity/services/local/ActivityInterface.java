@@ -3,6 +3,10 @@ package pt.ulisboa.tecnico.softeng.activity.services.local;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
 import pt.ist.fenixframework.FenixFramework;
@@ -90,6 +94,7 @@ public class ActivityInterface {
 		if (booking != null) {
 			return booking.getReference();
 		}
+		
 
 		List<ActivityOffer> offers;
 		for (ActivityProvider provider : FenixFramework.getDomainRoot().getActivityProviderSet()) {
@@ -104,6 +109,8 @@ public class ActivityInterface {
 		}
 		throw new ActivityException();
 	}
+	
+
 
 	@Atomic(mode = TxMode.WRITE)
 	public static void reserveActivity(String externalId, RestActivityBookingData bookingData) {
@@ -179,5 +186,48 @@ public class ActivityInterface {
 		return provider.getActivitySet().stream().filter(a -> a.getCode().equals(codeActivity)).findFirst()
 				.orElse(null);
 	}
+	
+	@Atomic(mode = TxMode.WRITE)
+	public static String reserveSelectedActivity(RestActivityBookingData activityBookingData) {
 
+		Booking booking = getBookingByAdventureId(activityBookingData.getAdventureId());
+		if (booking != null) {
+			return booking.getReference();
+			
+		}
+		
+		String[] id = activityBookingData.getId().split(";");
+		
+		String providerCode = id[0];
+		String activityCode = id[1];
+		
+		ActivityProvider provider = null;
+		
+		for (ActivityProvider aux : FenixFramework.getDomainRoot().getActivityProviderSet()) {
+		
+			if (providerCode.equals(aux.getCode())) {
+				provider = aux;
+				break;
+			}
+		}
+		
+		
+		if (provider == null)
+			throw new ActivityException();
+		
+		ActivityOffer offer = provider.findOffer(activityBookingData.getBegin(), activityBookingData.getEnd(),
+				activityBookingData.getAge(), activityCode);
+		
+		
+		if (offer != null) {
+			Booking newBooking = offer.book(provider, offer, activityBookingData.getAge(),
+					activityBookingData.getNif(), activityBookingData.getIban(),
+					activityBookingData.getAdventureId());
+
+			return newBooking.getReference();
+		}
+		
+		throw new ActivityException();
+	}
+	
 }

@@ -46,4 +46,39 @@ public class ReserveActivityState extends ReserveActivityState_Base {
 		}
 	}
 
+	@Override
+	public void process(String id) {
+		try {
+			String reference = ActivityInterface.reserveSelectedActivity(new RestActivityBookingData(getAdventure().getBegin(),
+					getAdventure().getEnd(), getAdventure().getAge(), getAdventure().getBroker().getNifAsBuyer(),
+					getAdventure().getBroker().getIban(), getAdventure().getID(), id));
+
+			getAdventure().setActivityConfirmation(reference);
+
+			getAdventure().incAmountToPay(ActivityInterface.getActivityReservationData(reference).getPrice());
+		} catch (ActivityException ae) {
+			getAdventure().setState(State.UNDO);
+			return;
+		} catch (RemoteAccessException rae) {
+			incNumOfRemoteErrors();
+			if (getNumOfRemoteErrors() == MAX_REMOTE_ERRORS) {
+				getAdventure().setState(State.UNDO);
+			}
+			return;
+		}
+		
+		if (getAdventure().getBegin().equals(getAdventure().getEnd())) {
+			if (getAdventure().shouldRentVehicle()) {
+				getAdventure().setState(State.RENT_VEHICLE);
+			} else {
+				getAdventure().setState(State.PROCESS_PAYMENT);
+			}
+		} else {
+			getAdventure().setState(State.BOOK_ROOM);
+		}
+		
+	}
+	
+	
+
 }

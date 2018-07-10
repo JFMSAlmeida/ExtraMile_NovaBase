@@ -41,4 +41,10 @@ public class BookRoomState extends BookRoomState_Base {
 		}
 	}
 
+	@Override
+	public void process(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

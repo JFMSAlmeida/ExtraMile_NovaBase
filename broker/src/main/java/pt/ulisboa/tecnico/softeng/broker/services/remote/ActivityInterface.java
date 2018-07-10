@@ -19,6 +19,7 @@ public class ActivityInterface {
 				activityBookingData.getBegin(), activityBookingData.getEnd(), activityBookingData.getAge(),
 				activityBookingData.getNif(), activityBookingData.getIban(), activityBookingData.getAdventureId());
 		RestTemplate restTemplate = new RestTemplate();
+		
 		try {
 			String result = restTemplate.postForObject(ENDPOINT + "/rest/providers/reserve", activityBookingData,
 					String.class);
@@ -69,4 +70,28 @@ public class ActivityInterface {
 		}
 	}
 
+	public static String reserveSelectedActivity(RestActivityBookingData activityBookingData) {
+		logger.info(
+				"reserveActivity begin:{}, end:{}, age:{}, nif:{}, iban:{}, adventureId:{}, id:{}",
+				activityBookingData.getBegin(), activityBookingData.getEnd(), activityBookingData.getAge(),
+				activityBookingData.getNif(), activityBookingData.getIban(), activityBookingData.getAdventureId(), activityBookingData.getId());
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			String result = restTemplate.postForObject(ENDPOINT + "/rest/providers/reserveSelected", activityBookingData,
+					String.class);
+			return result;
+		} catch (HttpClientErrorException e) {
+			logger.info(
+					"reserveActivity HttpClientErrorException begin:{}, end:{}, age:{}, nif:{}, iban:{}, adventureId:{}, id:{}",
+					activityBookingData.getBegin(), activityBookingData.getEnd(), activityBookingData.getAge(),
+					activityBookingData.getNif(), activityBookingData.getIban(), activityBookingData.getAdventureId(), activityBookingData.getId());
+			throw new ActivityException();
+		} catch (Exception e) {
+			logger.info(
+					"reserveActivity HttpClientErrorException begin:{}, end:{}, age:{}, nif:{}, iban:{}, adventureId:{}, id:{}",
+					activityBookingData.getBegin(), activityBookingData.getEnd(), activityBookingData.getAge(),
+					activityBookingData.getNif(), activityBookingData.getIban(), activityBookingData.getAdventureId(), activityBookingData.getId());
+			throw new RemoteAccessException();
+		}
+	}
 }

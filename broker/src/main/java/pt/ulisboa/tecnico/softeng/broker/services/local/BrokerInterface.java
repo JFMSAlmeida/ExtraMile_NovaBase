@@ -134,6 +134,24 @@ public class BrokerInterface {
 			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT )
 				adv.process();
 	}
+	
+	@Atomic(mode = TxMode.WRITE)
+	public static void processTest(String brokerCode, String id, String advId) {
+		List<Adventure> list = FenixFramework.getDomainRoot().getBrokerSet().stream()
+				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
+				.collect(Collectors.toList());
+		
+		Adventure advt = null;
+		
+		for (Adventure adv: list) {
+			if (adv.getID().equals(advId)) {
+				advt = adv;
+				break;
+			}
+		}
+
+		advt.process(id);
+	}
 
 	public static ArrayList<Object> adventures2HashMap(List<AdventureData> listAdventures) {
 

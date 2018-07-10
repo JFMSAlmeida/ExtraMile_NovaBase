@@ -22,6 +22,7 @@ public class RestActivityBookingData {
 	private Double price;
 	private String paymentReference;
 	private String invoiceReference;
+	private String id;
 
 	public RestActivityBookingData() {
 	}
@@ -34,6 +35,17 @@ public class RestActivityBookingData {
 		this.nif = nifAsBuyer;
 		this.iban = iban;
 		this.adventureId = adventureId;
+	}
+	
+	public RestActivityBookingData(LocalDate begin, LocalDate end, int age, String nifAsBuyer, String iban,
+			String adventureId, String id) {
+		this.begin = begin;
+		this.end = end;
+		this.age = age;
+		this.nif = nifAsBuyer;
+		this.iban = iban;
+		this.adventureId = adventureId;
+		this.id = id;
 	}
 
 	public String getReference() {
@@ -146,6 +158,14 @@ public class RestActivityBookingData {
 
 	public void setInvoiceReference(String invoiceReference) {
 		this.invoiceReference = invoiceReference;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
