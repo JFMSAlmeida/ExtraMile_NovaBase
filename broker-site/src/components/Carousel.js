@@ -27,19 +27,19 @@ class Carousel extends React.Component {
 
                     <div className="carousel-inner">
                         <div className="item active">
-                            <a href=""><img className="main-banner" src={imageOne} onClick={(e) => this.handlePageChange(e, "/adventurefinder")}/></a>
-                            <a href=""><div className="carousel-caption" onClick={(e) => this.handlePageChange(e, "/adventurefinder")}>
+                            <img className="main-banner" src={imageOne} onClick={(e) => this.handlePageChange(e, "/adventurefinder")}/>
+                            <div className="carousel-caption" onClick={(e) => this.handlePageChange(e, "/adventurefinder")}>
                                 <h3>Adventure Finder</h3>
                                 <p>Procure a sua aventura de sonho!</p>
-                            </div></a>
+                            </div>
                         </div>
 
                         <div className="item">
-                            <a href=""><img className="main-banner" src={imageTwo} onClick={(e) => this.handlePageChange(e, "/adventurebuilder")}/></a>
-                            <a><div className="carousel-caption" onClick={(e) => this.handlePageChange(e, "/adventurebuilder")}>
+                            <img className="main-banner" src={imageTwo} onClick={(e) => this.handlePageChange(e, "/adventurebuilder")}/>
+                            <div className="carousel-caption" onClick={(e) => this.handlePageChange(e, "/adventurebuilder")}>
                                 <h3>Adventure Builder</h3>
                                 <p>Não encontra uma aventura ao seu gosto? Crie a sua própria aventura!</p>
-                            </div></a>
+                            </div>
                         </div>
 
                         <div className="item">
