@@ -69,6 +69,7 @@ class Cart extends Component{
     }
 
     render() {
+        const totalPrice = this.calculateTotalAmount();
         const products = this.state.products.map(p => {
             return (
                 <CartProduct
@@ -79,7 +80,7 @@ class Cart extends Component{
             );
         });
 
-        const totalPrice = this.calculateTotalAmount();
+
 
         let classes = ['float-cart'];
 
