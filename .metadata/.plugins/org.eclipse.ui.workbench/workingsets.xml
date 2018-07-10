@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530715110443_0" label="adventures" name="adventures">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/bank" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/broker" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/car" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tax" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hotel" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/activity" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1530744434173_1" label="Window Working Set" name="Aggregate for window 1530744434173"/>
+</workingSetManager>
