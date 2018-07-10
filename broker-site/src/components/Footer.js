@@ -11,15 +11,15 @@ const Footer = () => (
         <h3>RRR<span>-Gang</span></h3>
 
         <p class="footer-links">
-          <a href="#"><Link to='/'>Home</Link> </a>
+          <a href="null"><Link to='/'>Home</Link> </a>
 
           <span> · </span>
 
-          <a href="#"><Link to='/about'>About</Link> </a>
+          <a href="null"><Link to='/about'>About</Link> </a>
 
           <span> ·     </span>
            
-          <a href="#"><Link to='/faq'>Faq</Link></a>
+          <a href="null"><Link to='/faq'>Faq</Link></a>
 
         </p>
 
