@@ -1,6 +1,9 @@
 package pt.ulisboa.tecnico.softeng.car.services.local;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.joda.time.LocalDate;
@@ -14,6 +17,7 @@ import pt.ulisboa.tecnico.softeng.car.domain.Motorcycle;
 import pt.ulisboa.tecnico.softeng.car.domain.RentACar;
 import pt.ulisboa.tecnico.softeng.car.domain.Renting;
 import pt.ulisboa.tecnico.softeng.car.domain.Vehicle;
+import pt.ulisboa.tecnico.softeng.car.domain.Vehicle_Base;
 import pt.ulisboa.tecnico.softeng.car.exception.CarException;
 import pt.ulisboa.tecnico.softeng.car.services.local.dataobjects.RentACarData;
 import pt.ulisboa.tecnico.softeng.car.services.local.dataobjects.RentingData;
@@ -23,7 +27,7 @@ import pt.ulisboa.tecnico.softeng.car.services.remote.dataobjects.RestRentingDat
 public class RentACarInterface {
 	private static Logger logger = LoggerFactory.getLogger(RentACarInterface.class);
 
-	@Atomic(mode = Atomic.TxMode.READ)
+	@Atomic(mode = Atomic.TxMode.READ) 
 	public static List<RentACarData> getRentACars() {
 		return FenixFramework.getDomainRoot().getRentACarSet().stream()
 				.map(r -> new RentACarData(r.getCode(), r.getName(), r.getNif(), r.getIban(), r.getVehicleSet().size()))
@@ -209,5 +213,40 @@ public class RentACarInterface {
 		}
 		return null;
 	}
+
+
+	public static ArrayList<Object> vehicle2HashMap(List<RentACarData> data) {
+		return null;
+	}
+	
+		//CALL STATIC GETALLAVALIABLEMOTO/CAR E TESTAR SE VEM TUDO
+
+		/*ArrayList<Object> vehicles = new ArrayList<>();
+		ArrayList<Object> freeVehicles = new ArrayList<>();
+		
+		LocalDate arrival =  new LocalDate("1980-01-01");
+		LocalDate departure = new LocalDate("2050-12-12");
+
+
+		for(RentACarData rentData : data){
+			RentACar rentACar = getRentACar(rentData.getCode());
+
+			freeVehicles.addAll(rentACar.getAllAvailableMotorcycles(arrival, departure));
+			freeVehicles.addAll(rentACar.getAllAvailableCars(arrival, departure));
+		}
+
+		for(Object v : freeVehicles){
+			Map<String, Object> vehicleInfo = new HashMap<>();
+			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
+			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
+			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
+			vehicleInfo.put("RentACar Name", ((Vehicle_Base) v).getRentACar().getName());
+		
+			vehicles.add(vehicleInfo);
+		}
+
+		return vehicles;
+
+	}*/
 
 }
