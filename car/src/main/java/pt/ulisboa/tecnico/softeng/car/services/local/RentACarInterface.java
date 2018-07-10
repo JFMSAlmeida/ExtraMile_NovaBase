@@ -214,29 +214,26 @@ public class RentACarInterface {
 		return null;
 	}
 
-
+	@Atomic(mode = Atomic.TxMode.READ)
 	public static ArrayList<Object> vehicle2HashMap(List<RentACarData> data) {
-		return null;
-	}
-	
-		//CALL STATIC GETALLAVALIABLEMOTO/CAR E TESTAR SE VEM TUDO
 
-		/*ArrayList<Object> vehicles = new ArrayList<>();
+		ArrayList<Object> vehicles = new ArrayList<>();
 		ArrayList<Object> freeVehicles = new ArrayList<>();
 		
 		LocalDate arrival =  new LocalDate("1980-01-01");
 		LocalDate departure = new LocalDate("2050-12-12");
 
-
-		for(RentACarData rentData : data){
+		for(RentACarData rentData: data){
 			RentACar rentACar = getRentACar(rentData.getCode());
 
 			freeVehicles.addAll(rentACar.getAllAvailableMotorcycles(arrival, departure));
 			freeVehicles.addAll(rentACar.getAllAvailableCars(arrival, departure));
 		}
 
-		for(Object v : freeVehicles){
+		for(Object v: freeVehicles){
+			
 			Map<String, Object> vehicleInfo = new HashMap<>();
+
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
 			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
@@ -247,6 +244,6 @@ public class RentACarInterface {
 
 		return vehicles;
 
-	}*/
+	}
 
 }

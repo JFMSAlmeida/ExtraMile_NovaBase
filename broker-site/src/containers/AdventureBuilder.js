@@ -5,13 +5,28 @@ class AdventureBuilder extends Component {
 
     constructor(props){
         super(props);
-        this.state = {rooms: [],
-                      vehicles: []};
+        this.state = { activities: [],
+                       rooms: [],
+                       vehicles: []};
     }
 
     componentWillMount() {
 
-        fetch('http://localhost:8083/rest/hotels/rooms')
+        fetch('http://localhost:8081/rest/providers/activities')
+            .then(response => {
+                return response.text();
+            })
+            .then(body => {
+                console.log(JSON.parse(body));
+
+                const response = JSON.parse(body);
+                console.log(response);
+
+                this.setState({activities: response});
+                console.log(this.state);
+            });
+
+        fetch('http://localhost:8085/rest/hotels/rooms')
             .then(response => {
                 return response.text();
             })
@@ -25,7 +40,7 @@ class AdventureBuilder extends Component {
                 console.log(this.state);
             });
 
-        fetch('http://localhost:8083/rest/rentacars/vehicles')
+        fetch('http://localhost:8084/rest/rentacars/vehicles')
             .then(response => {
                 return response.text();
             })

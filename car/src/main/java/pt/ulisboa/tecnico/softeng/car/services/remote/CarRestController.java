@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import pt.ulisboa.tecnico.softeng.car.exception.CarException;
 import pt.ulisboa.tecnico.softeng.car.services.local.RentACarInterface;
+import pt.ulisboa.tecnico.softeng.car.services.local.dataobjects.RentACarData;
 import pt.ulisboa.tecnico.softeng.car.services.remote.dataobjects.RestRentingData;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/rest/rentacars")
@@ -51,19 +54,18 @@ public class CarRestController {
 		}
 	}
 
-	/*@CrossOrigin
+	@CrossOrigin
 	@RequestMapping(value = "/vehicles", method = RequestMethod.GET)
     public ResponseEntity<List<Object>> getVehicles() {
 
-	    try {
+		try {
 
 	    	List<RentACarData> aux = RentACarInterface.getRentACars();
 
-	        return new ResponseEntity<>(RentACarInterface.vehicles2HashMap(aux), HttpStatus.OK);
-
-    } catch (CarException ce) {
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	        return new ResponseEntity<>(RentACarInterface.vehicle2HashMap(aux), HttpStatus.OK);
+		} catch (CarException ce) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
     }
-    }*/
 
 }
