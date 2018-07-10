@@ -134,9 +134,8 @@ class AdventureBuilder extends Component {
                     <div className="col-md-3 ">
                         <div className="list-group ">
                             <a className="list-group-item list-group-item-action active">Dashboard</a>
-                            <a className="list-group-item list-group-item-action">Wish List</a>
-
-
+                            <a className="list-group-item list-group-item-action">Something</a>
+                            <a className="list-group-item list-group-item-action">Something Else</a>
                         </div>
                     </div>
                     <div className="col-md-9">
@@ -144,17 +143,17 @@ class AdventureBuilder extends Component {
                             <div className="card-body">
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <h4>Your Profile</h4>
+                                        <h4>Dashboard</h4>
                                         <hr></hr>
                                     </div>
                                 </div>
                                 <div className="row" style={{paddingLeft: "18px"}}>
                                     <div className="col-md-12">
                                         <div className="form-group row">
-                                            <label htmlFor="username" className="col-4 col-form-label">NIF:</label>
+                                            <label className="col-lg-3 control-label">NIF:</label>
                                             <div className="col-8">
                                                 <div className="col-lg-8">
-                                                    <div className="col-lg-8">
+                                                    <div className="fieldContainer">
                                                         <span>{this.props.location.state.info.nif}</span>
                                                     </div>
                                                 </div>
@@ -163,34 +162,40 @@ class AdventureBuilder extends Component {
 
 
                                         <div className="form-group row">
-                                            <label htmlFor="username" className="col-4 col-form-label">IBAN:</label>
+                                            <label className="col-lg-3 control-label">IBAN:</label>
                                             <div className="col-8">
-                                                <div className="col-lg-8">
-                                                    <input id="iban" disabled="true" type="text" defaultValue={this.props.location.state.info.iban} onChange={this.handleIBANChange}></input>&nbsp;
-                                                    <button id="iban-edit" onClick={(e) => this.handleEdit(e, "iban")}><span className="glyphicon glyphicon-edit"></span></button>
-                                                    <button id="iban-remove" onClick={(e) => this.handleRemove(e, "iban")} hidden="true" ><span className="glyphicon glyphicon-remove"></span></button>
+                                                <div className="col-lg-2">
+                                                    <div className="fieldContainer">
+                                                        <input id="iban" className="form-control" disabled="true" type="text" defaultValue={this.props.location.state.info.iban} onChange={this.handleIBANChange}></input>&nbsp;
+                                                        <button className="btn btn-default go inline" id="iban-edit" onClick={(e) => this.handleEdit(e, "iban")} style={{marginTop: '-96px', marginLeft: '110px'}}><span className="glyphicon glyphicon-edit"></span></button>
+                                                        <button className="btn btn-default go inline" id="iban-remove" onClick={(e) => this.handleRemove(e, "iban")} hidden="true" style={{marginTop: '-96px', marginLeft: '110px'}}><span className="glyphicon glyphicon-remove"></span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="form-group row">
-                                            <label htmlFor="username" className="col-4 col-form-label">Age:</label>
+                                            <label className="col-lg-3 control-label">Age:</label>
                                             <div className="col-8">
-                                                <div className="col-lg-8">
-                                                    <input id="age" disabled="true" className="form-cont rol" type="number" min="1" max="120" defaultValue={this.props.location.state.info.age} onChange={this.handleAgeChange}></input>&nbsp;
-                                                    <button id="age-edit" onClick={(e) => this.handleEdit(e, "age")}><span className="glyphicon glyphicon-edit"></span></button>
-                                                    <button id="age-remove" onClick={(e) => this.handleRemove(e, "age")} hidden="true" ><span className="glyphicon glyphicon-remove"></span></button>
+                                                <div className="col-lg-2">
+                                                    <div className="fieldContainer">
+                                                        <input id="age" disabled="true" className="form-control" type="number" min="1" max="120" defaultValue={this.props.location.state.info.age} onChange={this.handleAgeChange}></input>&nbsp;
+                                                        <button className="btn btn-default go inline" id="age-edit" onClick={(e) => this.handleEdit(e, "age")} style={{marginTop: '-96px', marginLeft: '110px'}}><span className="glyphicon glyphicon-edit"></span></button>
+                                                        <button className="btn btn-default go inline" id="age-remove" onClick={(e) => this.handleRemove(e, "age")} hidden="true" style={{marginTop: '-96px', marginLeft: '110px'}}><span className="glyphicon glyphicon-remove"></span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="form-group row">
-                                            <label htmlFor="username" className="col-4 col-form-label">Driving License:</label>
+                                            <label className="col-lg-3 control-label">Driving License:</label>
                                             <div className="col-8">
-                                                <div className="col-lg-8">
-                                                    <input id="dl" disabled="true" className="form-cont rol" type="text" defaultValue={this.props.location.state.info.drivinglicense} onChange={this.handleDrivingLicenseChange}></input>&nbsp;
-                                                    <button id="dl-edit" onClick={(e) => this.handleEdit(e, "dl")}><span className="glyphicon glyphicon-edit"></span></button>
-                                                    <button id="dl-remove" onClick={(e) => this.handleRemove(e, "dl")} hidden="true" ><span className="glyphicon glyphicon-remove"></span></button>
+                                                <div className="col-lg-2">
+                                                    <div className="fieldContainer">
+                                                        <input id="dl" disabled="true" className="form-control" type="text" defaultValue={this.props.location.state.info.drivinglicense} onChange={this.handleDrivingLicenseChange}></input>&nbsp;
+                                                        <button className="btn btn-default go inline" id="dl-edit" onClick={(e) => this.handleEdit(e, "dl")} style={{marginTop: '-96px', marginLeft: '110px'}}><span className="glyphicon glyphicon-edit"></span></button>
+                                                        <button className="btn btn-default go inline" id="dl-remove" onClick={(e) => this.handleRemove(e, "dl")} hidden="true" style={{marginTop: '-96px', marginLeft: '110px'}}><span className="glyphicon glyphicon-remove"></span></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

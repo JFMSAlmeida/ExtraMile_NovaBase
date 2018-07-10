@@ -400,3 +400,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+[hidden] {
+  display: none !important;
+}
+
+.fieldContainer {
+  height: 50px;
+  max-width: 115px;
+}
