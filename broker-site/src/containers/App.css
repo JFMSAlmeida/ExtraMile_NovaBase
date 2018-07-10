@@ -22,10 +22,21 @@
   font-size: large;
 }
 
-.sliderContainer {
+.carousel-inner {
   width: 100%;
-  background-color: #4CAF50;
-  padding:0px;
+  height: 480px;
+  background-color: black;
+}
+
+.item img{
+  width: 100%;
+  min-height: 480px;
+  max-height: 480px;
+}
+
+.carousel-caption {
+  bottom: 15%;
+  text-shadow: 0 1px 3px rgba(1,1,1,1);
 }
 
 .headerContainer{
@@ -170,6 +181,7 @@
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  margin-right: 50px;
 }
 
 .dropdown-contentLogin {
@@ -230,18 +242,24 @@
   display: inline-block;
   vertical-align: middle;
   margin-right: 15px;
-  background-image: url("bag-icon.png");
+  background-image: url("bag-icon2.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center; }
+
+.float-cart .bag:hover {
+  background-image: url("bag-icon2-hover.png");
+}
+
 .float-cart .bag--float-cart-closed {
   position: absolute;
-  background-color: #000;
+  background-color: #222;
   background-size: 50%;
   left: -60px;
   width: 60px;
-  height: 60px;
-  cursor: pointer; }
+  height: 40px;
+  cursor: pointer;
+  top: 4px; }
 .float-cart .bag--float-cart-closed .bag__quantity {
   bottom: 5px;
   right: 10px; }

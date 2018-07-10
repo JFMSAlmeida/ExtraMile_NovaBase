@@ -1,12 +1,12 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import avatar from '../components/avatar.png'
 import $ from 'jquery';
 import Cart from './cart/Cart'
 
 // The Header creates links that can be used to navigate
 // between routes.
-export default class Header extends React.Component {
+class Header extends React.Component {
     constructor(props){
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
@@ -51,8 +51,8 @@ export default class Header extends React.Component {
                   <ul className="nav navbar-nav">
                     <a className="navbar-brand">ExtraMile</a>
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/adventurefinder'>AdventureFinder</Link></li>
-                    <li><Link to='/adventurebuilder'>AdventureBuilder</Link></li>
+                    <li><Link to='/adventurefinder'>Adventure Finder</Link></li>
+                    <li><Link to='/adventurebuilder'>Adventure Builder</Link></li>
                   </ul>
                     <ul className="nav navbar-nav navbar-right">
                         { !this.state.auth ? <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li> : null}
@@ -64,7 +64,7 @@ export default class Header extends React.Component {
                                                 <div className="dropdown-contentLogin">
                                                     <a href="#"><span className="glyphicon glyphicon-usd"></span>&nbsp; Balance</a>
                                                     <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
-                                                    <a onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
+                                                    <a href="" onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
                                                 </div>
                                             </div>
                                             : null }
@@ -72,6 +72,7 @@ export default class Header extends React.Component {
                         <Cart
                             product = {this.props.product}
                         />
+                        { !this.state.auth ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> : null }
                     </ul>
                 </nav>
               </header>
@@ -242,6 +243,7 @@ export default class Header extends React.Component {
             age: '',
             drivinglicense: ''
         });
+        this.props.history.push('/');
     }
 
     handleInfoChange(newIban, newAge, newDl) {
@@ -254,3 +256,5 @@ export default class Header extends React.Component {
             this.state.drivinglicense */
     }
 }
+
+export default withRouter(Header);
