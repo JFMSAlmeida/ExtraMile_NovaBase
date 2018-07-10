@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckoutProduct from "./CheckoutProduct";
+import {Link} from "react-router-dom";
 
 
 export default class Checkout extends React.Component {
@@ -37,7 +38,7 @@ export default class Checkout extends React.Component {
                             <img width="40" height="47" src={require(`../../containers/bag-icon-black.png`)} alt=""/>
                             <span className="checkout_header-text">Shopping Cart</span>
                         </h1>
-                        <div className="buy-btn" onClick={() => this.cleanCheckout()}>
+                        <div className="clean-btn" onClick={() => this.cleanCheckout()}>
                             Empty Shopping Cart
                         </div>
                     </div>
@@ -57,7 +58,7 @@ export default class Checkout extends React.Component {
                                     <table className="totals-table">
                                         <tbody>
                                             <tr>
-                                                <td><font size="5">Totals:</font></td>
+                                                <td><font size="5">Total:</font></td>
                                                 <td className="totalPrice">{this.props.location.state.total}€</td>
                                             </tr>
                                         </tbody>
@@ -66,6 +67,14 @@ export default class Checkout extends React.Component {
                             </tr>
                         </tbody>
                     </table>
+                    <div>
+                        <div className="back-btn">
+                            <Link to={{ pathname: '/'}}>Back to Store</Link>
+                        </div>
+                        <div className="buy-btn">
+                            <Link to={{ pathname: '/payment', state:{products : this.state.products, total : totalPrice}}}>Buy</Link>
+                        </div>
+                    </div>
                 </div>}
                 {!this.state.products.length && <div> <h1>Carrinho Vazio</h1></div> }
             </div>

@@ -99,6 +99,17 @@ public class BrokerInterface {
 	}
 
 	@Atomic(mode = TxMode.WRITE)
+	public static void processBulkAdventure(String brokerCode, String id) {
+		Adventure adventure = FenixFramework.getDomainRoot().getBrokerSet().stream()
+				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
+				.filter(a -> a.getID().equals(id)).findFirst().orElse(null);
+
+		while(adventure.getState().getValue() != Adventure.State.PROCESS_PAYMENT){
+			
+		}
+	}
+
+	@Atomic(mode = TxMode.WRITE)
 	public static void processBulk(String brokerCode, String bulkId) {
 		BulkRoomBooking bulkRoomBooking = FenixFramework.getDomainRoot().getBrokerSet().stream()
 				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getRoomBulkBookingSet().stream())
@@ -129,9 +140,13 @@ public class BrokerInterface {
 				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
 				.collect(Collectors.toList());
 
-		for (Adventure adv: list)
+		for (Adventure adv: list){
+			if((adv.getState().getValue() == Adventure.State.CONFIRMED))
+				continue;
 			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT )
 				adv.process();
+		}
+
 	}
 
 	public static ArrayList<Object> adventures2HashMap(List<AdventureData> listAdventures) {
