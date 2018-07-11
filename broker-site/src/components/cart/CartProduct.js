@@ -18,6 +18,7 @@ class CartProduct extends Component {
     render(){
         const product = this.props.product;
         console.log(product);
+        console.log(product.vehicleType);
 
         const classes = ['shelf-item'];
 
@@ -37,7 +38,7 @@ class CartProduct extends Component {
                 <div className="shelf-item__details">
                     <b><p className="title">Package {product.id}</p></b>
                     <p className="desc">
-                        {`| ${product.activityName} | ${product.hotelName} | ${product.vehicleType} |`}
+                        {product.activityName} {product.hasRoom && <span>| {product.hotelName} </span>} {product.hasVehicle && <span>| {product.vehicleType} </span>}
                     </p>
                 </div>
                 <div className="shelf-item__price">

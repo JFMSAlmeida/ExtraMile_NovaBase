@@ -152,21 +152,26 @@ a:hover {color: inherit;}
 }
 
 .shelf-container {
-  width: 85%;
-  float: left; }
+  width: 80%;
+  float: right; }
 
 .shelf-container .shelf-item {
   float: left;
-  width: 25%;
+  width: 30%;
   position: relative;
   text-align: center;
   box-sizing: border-box;
   padding: 10px;
-  margin-bottom: 30px;
-  border: 1px solid transparent; }
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  transition: box-shadow .3s;
+}
 
 .shelf-container .shelf-item:hover {
-  border: 1px solid #eee; }
+  -webkit-box-shadow: 0px 0px 23px 4px rgba(0,0,0,0.18);
+  -moz-box-shadow: 0px 0px 23px 4px rgba(0,0,0,0.18);
+  box-shadow: 0px 0px 23px 4px rgba(0,0,0,0.18);
+}
 
 .shelf-container .shelf-item:hover .shelf-item__buy-btn {
   background-color: #eabf00; }
@@ -177,7 +182,23 @@ a:hover {color: inherit;}
   padding: 15px 0;
   margin-top: 10px;
   cursor: pointer;
-  transition: background-color 0.2s; }
+  transition: background-color 0.2s;
+}
+
+.shelf-container .shelf-item__text {
+  min-height: 230px;
+}
+.shelf-container .shelf-item__title{
+  font-size: 1.5em;
+}
+
+.shelf-container .shelf-item__noHotel{
+  color: darkred;
+}
+
+.shelf-container .shelf-item__noVehicle{
+  color: darkred;
+}
 
 .shelf-item__image{
   display: inline-block;
@@ -190,6 +211,7 @@ a:hover {color: inherit;}
   height: 60px;
   font-size: 1.5em;
   margin-left: 5px;
+  margin-top: 5px;
   color: #9c9b9b;
 }
 
@@ -383,10 +405,11 @@ a:hover {color: inherit;}
   padding: 5%;
   box-shadow: 0px -0.5em 1em rgba(0, 0, 0, 0.3); }
 .float-cart__footer .sub, .float-cart__footer .sub-price {
-  color: #5b5a5e;
   vertical-align: middle;
   display: inline-block; }
 .float-cart__footer .sub {
+  color: white;
+  font-size: 1.5em;
   width: 20%; }
 .float-cart__footer .sub-price {
   width: 80%;
@@ -795,5 +818,96 @@ a:hover {color: inherit;}
     margin-left: 0;
   }
 
+}
+
+/* The container */
+.checkbox__container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox__container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkbox__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox__container:hover input ~ .checkbox__checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox__container input:checked ~ .checkbox__checkmark {
+  background-color: #eabf00;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox__container input:checked ~ .checkbox__checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox__container .checkbox__checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.filters {
+  position: relative;
+  left: 30px;
+  top: 20px;
+  width: 16%;
+  min-height: 300px;
+  float: left;
+  background: #dee4e7;
+  color: black;
+}
+.filters .title{
+  background: #eabf00;
+  color:#1b1a20;
+  position: relative;
+  bottom: 10px;
+  font-size: 1.5em;
+  line-height: 50px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.checkboxes{
+  padding-left: 20px;
 }
 
