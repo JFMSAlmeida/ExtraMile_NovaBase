@@ -1,6 +1,16 @@
 body{
   font-family: 'Varela Round', sans-serif;
+  background-color: white;
+  background-image: url('download.jpeg');
+  background-size: cover;
+  height:575px;
+  background-repeat: no-repeat;
 }
+
+a {
+  color: inherit;
+}
+a:hover {color: inherit;}
 
 .App {
   text-align: center;
@@ -34,6 +44,9 @@ body{
 
 .sliderContainer {
   cursor: pointer;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-top: -26px;
 }
 
 .item img{
@@ -453,21 +466,17 @@ body{
 
 .float-cart__content {
   height: 100%;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  overflow-x: hidden;}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-.wrapper{
-  position: absolute;
-  top: 20%;
-  left: 20%;
 
-}
 .product_list{
-  width: 150%;
+  width: 100%;
 }
 
 .product_list tbody tr:last-child {
@@ -588,12 +597,11 @@ body{
   width: 40%;
   position: relative;
   bottom: 55px;
-  left: 810px;
+  float: right;
 }
 .wrapper .clean-btn:hover {
   background-color: #000;
   color: #ececec;
-  text-decoration: underline;
 }
 
 .wrapper .buy-btn {
@@ -606,7 +614,7 @@ body{
   transition: background-color 0.1s;
   width: 40%;
   position: relative;
-  left: 810px;
+  float: right;
   font-weight: bold;
 }
 .wrapper .buy-btn:hover {
@@ -629,7 +637,6 @@ body{
 .wrapper .back-btn:hover {
   background-color: #000;
   color: #ececec;
-  text-decoration: underline;
 }
 
 
@@ -647,7 +654,6 @@ body{
 .empty-checkout .back-btn2:hover {
   background-color: #000;
   color: #ececec;
-  text-decoration: underline;
 }
 
 
@@ -661,6 +667,13 @@ body{
 }
 
 /*------ FOOTER ------*/
+.container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  padding-bottom: 200px; /* height of your footer */
+  background-color: white;
+  padding-top: 25px;
+}
+
 .footer-distributed{
   background-color: #292c2f;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -669,10 +682,7 @@ body{
   text-align: left;
   font: bold 16px sans-serif;
   padding: 15px 50px;
-  position: relative;
-  bottom: 0px;
-  display: inline-table;
-  margin-top: 50px;
+  bottom: 0;
 }
 
 .footer-distributed .footer-left,

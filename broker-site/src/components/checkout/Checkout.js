@@ -61,7 +61,7 @@ export default class Checkout extends React.Component {
         });
         return (
             <div>
-                {this.state.products.length && <div className="wrapper">
+                {this.state.products.length ? <div className="wrapper">
                     <div className="checkout_header">
                         <h1>
                             <img width="40" height="47" src={require(`../../containers/bag-icon-black.png`)} alt=""/>
@@ -97,22 +97,30 @@ export default class Checkout extends React.Component {
                         </tbody>
                     </table>
                     <div>
-                        <div className="back-btn">
-                            <Link to={{ pathname: '/'}}>Back to Store</Link>
-                        </div>
-                        <div className="buy-btn">
-                            <Link to={{ pathname: '/payment', state:{products : this.state.products}}}>Buy</Link>
-                        </div>
+                        <Link to={{ pathname: '/'}} style={{textDecoration: 'none'}}>
+                            <div className="back-btn">
+                                <span>Back to Store</span>
+                            </div>
+                        </Link>
+                        <Link to={{ pathname: '/payment', state:{products : this.state.products}}} style={{textDecoration: 'none'}}>
+                            <div className="buy-btn">
+                                <span>Buy</span>
+                            </div>
+                        </Link>
                     </div>
-                </div>}
-                {!this.state.products.length && <div align="center" className="empty-checkout">
+                </div>
+                :
+
+                <div align="center" className="empty-checkout">
                     <div className="empty-checkout-text">
                         <h1> Your Shopping Cart is empty </h1>
                         <span> Click here to continue shopping</span>
                     </div>
-                    <div className="back-btn2">
-                        <Link to={{ pathname: '/'}}>Back to Store</Link>
-                    </div>
+                        <Link to={{ pathname: '/'}} style={{textDecoration: 'none'}}>
+                            <div className="back-btn2">
+                                <span>Back to Store</span>
+                            </div>
+                        </Link>
                 </div> }
             </div>
         )
