@@ -26,6 +26,7 @@ public class RestRentingData {
 	private String typeValue;
 	private Integer kilometers;
 	private String adventureId;
+	private String id;
 
 	public RestRentingData() {
 	}
@@ -51,6 +52,7 @@ public class RestRentingData {
 		this.cancellationReference = renting.getCancellationReference();
 		this.price = renting.getPrice();
 		this.adventureId = renting.getAdventureId();
+		this.id = this.plate + ";" + this.rentACarCode;
 	}
 
 	public String getReference() {
@@ -179,5 +181,13 @@ public class RestRentingData {
 
 	public void setType(String type) {
 		this.typeValue = type;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

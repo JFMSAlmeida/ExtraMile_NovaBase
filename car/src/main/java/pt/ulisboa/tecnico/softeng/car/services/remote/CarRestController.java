@@ -67,5 +67,20 @@ public class CarRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
     }
+	
+	@RequestMapping(value = "/rentSelected", method = RequestMethod.POST)
+	public ResponseEntity<String> rentSelected(@RequestBody RestRentingData rentingData) {
+		logger.info("rent license:{}, nif:{}, iban:{}, begin:{}, end:{}, adventureId:{}, id:{}",
+				rentingData.getDrivingLicense(), rentingData.getBuyerNIF(),
+				rentingData.getBuyerIBAN(), rentingData.getBegin(), rentingData.getEnd(), rentingData.getAdventureId(), rentingData.getId());
+		try {
+			return new ResponseEntity<>(RentACarInterface.rentSelected(
+					rentingData.getDrivingLicense(), rentingData.getBuyerNIF(), rentingData.getBuyerIBAN(),
+					rentingData.getBegin(), rentingData.getEnd(), rentingData.getAdventureId(), rentingData.getId()), HttpStatus.OK);
+
+		} catch (CarException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
 
 }

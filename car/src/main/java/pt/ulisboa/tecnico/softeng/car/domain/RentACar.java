@@ -143,4 +143,41 @@ public class RentACar extends RentACar_Base {
 
 	}
 
+	public static String rentSelected(String license, String nif, String iban, LocalDate begin,
+			LocalDate end, String adventureId, String plate, String code) {
+		
+		RentACar rentacar = null;
+
+		
+		for (RentACar aux : FenixFramework.getDomainRoot().getRentACarSet()) {
+			if (aux.getCode().equals(code)) {
+				rentacar = aux;
+			}
+		}
+		
+		if (rentacar == null) {
+			throw new CarException();
+		}
+
+		Vehicle vehicle = rentacar.getVehicleByPlate(rentacar, plate);
+		
+		if (vehicle == null) {
+			throw new CarException();
+		}
+		
+		return vehicle.rent(license, begin, end, nif, iban, adventureId).getReference();
+	}
+	
+	public Vehicle getVehicleByPlate(RentACar rac, String plate) {
+		
+		
+		for (Vehicle aux : getVehicleSet()) {
+			if (aux.getPlate().equals(plate)) {
+				return aux;
+			}
+		}
+		
+		return null;
+	}
+
 }

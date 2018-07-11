@@ -49,7 +49,28 @@ public class RentVehicleState extends RentVehicleState_Base {
 
 	@Override
 	public void process(String id) {
-		// TODO Auto-generated method stub
+		try {
+			String reference = CarInterface.rentSelectedCar(getAdventure().getClient().getDrivingLicense(),
+					getAdventure().getBroker().getNifAsBuyer(), getAdventure().getBroker().getIban(),
+					getAdventure().getBegin(), getAdventure().getEnd(), getAdventure().getID(), id);
+
+			getAdventure().setRentingConfirmation(reference);
+
+			RestRentingData restRentingData = CarInterface.getRentingData(reference);
+
+			getAdventure().incAmountToPay(restRentingData.getPrice());
+		} catch (CarException ce) {
+			getAdventure().setState(State.UNDO);
+			return;
+		} catch (RemoteAccessException rae) {
+			incNumOfRemoteErrors();
+			if (getNumOfRemoteErrors() == MAX_REMOTE_ERRORS) {
+				getAdventure().setState(State.UNDO);
+			}
+			return;
+		}
+
+		getAdventure().setState(State.PROCESS_PAYMENT);
 		
 	}
 

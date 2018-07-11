@@ -76,4 +76,30 @@ public class CarInterface {
 
 	}
 
+	public static String rentSelectedCar(String drivingLicense, String nif, String iban, LocalDate begin,
+			LocalDate end, String adventureId, String id) {
+		
+		logger.info("rentCar drivingLicense:{}, nif:{}, iban:{}, begin:{}, end:{}, adventureId:{}, id:{}",
+				drivingLicense, nif, iban, begin, end, adventureId, id);
+		
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			
+			RestRentingData rentingData = new RestRentingData(drivingLicense, nif, iban, begin,
+					end, adventureId, id);
+			String result = restTemplate.postForObject(ENDPOINT + "/rest/rentacars/rentSelected", rentingData, String.class);
+			return result;
+		} catch (HttpClientErrorException e) {
+			logger.info(
+					"rentCar HttpClientErrorException drivingLicense:{}, nif:{}, iban:{}, begin:{}, end:{}, adventureId:{}, id:{}",
+					drivingLicense, nif, iban, begin, end, adventureId, id);
+			throw new CarException();
+		} catch (Exception e) {
+			logger.info(
+					"rentCar Exception vehicleType:{}, drivingLicense:{}, nif:{}, iban:{}, begin:{}, end:{}, adventureId:{}, id:{}",
+					drivingLicense, nif, iban, begin, end, adventureId, id);
+			throw new RemoteAccessException();
+		}
+	}
+
 }

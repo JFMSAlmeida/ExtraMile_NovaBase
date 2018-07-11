@@ -245,5 +245,39 @@ public class RentACarInterface {
 		return vehicles;
 
 	}
+	
+	@Atomic(mode = Atomic.TxMode.WRITE)
+	public static String rentSelected(String license, String nif, String iban, LocalDate begin,
+			LocalDate end, String adventureId, String id) {
+		
+		Renting renting = getReting4AdventureId(adventureId);
+		if (renting != null) {
+			return renting.getReference();
+		}
+		
+		String[] parsed = id.split(";");
+		
+		String plate = parsed[0];
+		String rentACarCode = parsed[1];
+		
+		
+		return RentACar.rentSelected(license, nif, iban, begin, end, adventureId, plate, rentACarCode);
+		
+	
+	}
 
+	
+	/*@Atomic(mode = Atomic.TxMode.WRITE)
+	public static String rent(String type, String license, String nif, String iban, LocalDate begin, LocalDate end,
+			String adventureId) {
+		Renting renting = getReting4AdventureId(adventureId);
+		if (renting != null) {
+			return renting.getReference();
+		}
+
+		return RentACar.rent(type.equals("CAR") ? Car.class : Motorcycle.class, license, nif, iban, begin, end,
+				adventureId);
+
+	}*/
+	
 }

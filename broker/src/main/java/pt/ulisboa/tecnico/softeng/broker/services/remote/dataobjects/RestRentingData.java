@@ -22,6 +22,7 @@ public class RestRentingData {
 	private String typeValue;
 	private Integer kilometers;
 	private String adventureId;
+	private String id;
 
 	public RestRentingData() {
 	}
@@ -35,6 +36,19 @@ public class RestRentingData {
 		this.begin = begin;
 		this.end = end;
 		this.setAdventureId(adventureId);
+	}
+	
+	public RestRentingData(String drivingLicense, String nif, String iban, LocalDate begin, LocalDate end,
+			String adventureId, String id) {
+		
+		this.typeValue = id.split(";")[1];
+		this.drivingLicense = drivingLicense;
+		this.buyerNIF = nif;
+		this.buyerIBAN = iban;
+		this.begin = begin;
+		this.end = end;
+		this.setAdventureId(adventureId);
+		this.id = id;
 	}
 
 	public String getReference() {
@@ -155,6 +169,14 @@ public class RestRentingData {
 
 	public void setAdventureId(String adventureId) {
 		this.adventureId = adventureId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
