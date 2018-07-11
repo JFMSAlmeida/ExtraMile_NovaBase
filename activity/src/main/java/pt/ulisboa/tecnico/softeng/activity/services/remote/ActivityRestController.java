@@ -5,9 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pt.ulisboa.tecnico.softeng.activity.domain.ActivityOffer;
 import pt.ulisboa.tecnico.softeng.activity.exception.ActivityException;
 import pt.ulisboa.tecnico.softeng.activity.services.local.ActivityInterface;
 import pt.ulisboa.tecnico.softeng.activity.services.remote.dataobjects.RestActivityBookingData;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/rest/providers")
