@@ -234,4 +234,45 @@ public class HotelInterface {
 		return bookings;
 	}
 
+	@Atomic(mode = TxMode.WRITE)
+	public static String reserveSelectedRoom(RestRoomBookingData roomBookingData) {
+		
+		Booking booking = getBooking4AdventureId(roomBookingData.getAdventureId());
+		if (booking != null) {
+			return booking.getReference();
+		}
+
+		Room.Type type = roomBookingData.getRoomType().equals("SINGLE") ? Room.Type.SINGLE : Room.Type.DOUBLE;
+		
+		String hotelCode = roomBookingData.getId().split(";")[0];
+		
+		Hotel hotel = null;
+		
+		for (Hotel aux : FenixFramework.getDomainRoot().getHotelSet()) {
+			if (aux.getCode().equals(hotelCode)) {
+				hotel = aux;
+			}
+		}
+		
+		if (hotel == null) {
+			throw new HotelException();
+		}
+		
+		Room room = hotel.getRoomByNumber(roomBookingData.getId().split(";")[1]);
+
+		
+		if (room != null) {
+			Booking newBooking = room.reserve(type, roomBookingData.getArrival(), roomBookingData.getDeparture(),
+					roomBookingData.getBuyerNif(), roomBookingData.getBuyerIban());
+
+			return newBooking.getReference();
+		}
+		
+		
+		
+		throw new HotelException();
+	}
+
+	
+	
 }

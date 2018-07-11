@@ -10,6 +10,7 @@ class Home extends Component {
         this.handleClickProcess = this.handleClickProcess.bind(this);
         this.handleClickEcho = this.handleClickEcho.bind(this);
         this.test = this.test.bind(this);
+        this.hTest = this.hTest.bind(this);
     }
 
     handleClickProcess() {
@@ -58,6 +59,20 @@ class Home extends Component {
         });
     }
 
+    hTest() {
+        var i1 = "B100";
+        var i2 = "B1001";
+        var i3 = "HT12345;1;SINGLE";
+
+        fetch('http://localhost:8083/rest/brokers/processRoom?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+            .then(response => {
+            return response.text();
+        })
+        .then(body => {
+            console.log(JSON.parse(body));
+        });
+    }
+
     render() {
         return (
             <div className="App">
@@ -66,7 +81,8 @@ class Home extends Component {
                 <button onClick={this.handleClickProcess}>Click Process</button>
                 <button onClick={this.handleClickEcho}>Click Echo</button>
                 <button onClick={this.handleClickShowAdventures}>Show Adventures</button>
-                <button onClick={this.test}>test</button>
+                <button onClick={this.test}>Activity Test</button>
+                <button onClick={this.hTest}>Hotel Test</button>
             </div>
         );
     }

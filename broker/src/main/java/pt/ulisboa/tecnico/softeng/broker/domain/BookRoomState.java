@@ -43,8 +43,29 @@ public class BookRoomState extends BookRoomState_Base {
 
 	@Override
 	public void process(String id) {
-		// TODO Auto-generated method stub
-		
+		try {
+			getAdventure().setRoomConfirmation(HotelInterface.reserveSelectedRoom(new RestRoomBookingData(
+					getAdventure().getBegin(), getAdventure().getEnd(), getAdventure().getBroker().getNifAsBuyer(),
+					getAdventure().getBroker().getIban(), getAdventure().getID(), id)));
+			getAdventure()
+					.incAmountToPay(HotelInterface.getRoomBookingData(getAdventure().getRoomConfirmation()).getPrice());
+		} catch (HotelException he) {
+			getAdventure().setState(State.UNDO);
+			return;
+		} catch (RemoteAccessException rae) {
+			incNumOfRemoteErrors();
+			if (getNumOfRemoteErrors() == MAX_REMOTE_ERRORS) {
+				getAdventure().setState(State.UNDO);
+			}
+			return;
+		}
+
+		if (getAdventure().shouldRentVehicle()) {
+			getAdventure().setState(State.RENT_VEHICLE);
+		} else {
+			getAdventure().setState(State.PROCESS_PAYMENT);
+		}
 	}
+
 
 }

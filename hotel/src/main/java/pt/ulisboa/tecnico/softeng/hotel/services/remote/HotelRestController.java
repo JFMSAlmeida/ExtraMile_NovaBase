@@ -33,6 +33,19 @@ public class HotelRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@RequestMapping(value = "/reserveSelected", method = RequestMethod.POST)
+	public ResponseEntity<String> reserveSelected(@RequestBody RestRoomBookingData roomBookingData) {
+		logger.info("reserve type:{}, arrival:{}, departure:{}, nif:{}, iba:{}, adventureId:{}, id:{}",
+				roomBookingData.getRoomType(), roomBookingData.getArrival(), roomBookingData.getDeparture(),
+				roomBookingData.getBuyerNif(), roomBookingData.getBuyerIban(), roomBookingData.getAdventureId(), roomBookingData.getId());
+		try {
+			return new ResponseEntity<String>(HotelInterface.reserveSelectedRoom(roomBookingData), HttpStatus.OK);
+		} catch (HotelException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 
 	@RequestMapping(value = "/cancel", method = RequestMethod.POST)
 	public ResponseEntity<String> cancel(@RequestParam String reference) {
