@@ -35,7 +35,7 @@ class AdventureFinder extends Component {
 
     render() {
         return (<div>
-                    <h3>AdventureFinder</h3>
+                    <br/>
                     <Shelf
                         adventures = {this.state.adventures}
                         addCart = {this.props.addCart}

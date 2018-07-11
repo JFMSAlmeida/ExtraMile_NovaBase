@@ -20,7 +20,7 @@ const abc = [
         "hotelName": "Paris Hotel",
         "roomNumber": "100",
         "roomType": "SINGLE",
-        "VehicleType": "CAR",
+        "vehicleType": "CAR",
         "rentBegin": [2017,5,1],
         "rentEnd": [2017,5,2],
         "kilometers": 1
@@ -47,7 +47,7 @@ const abc = [
         "activityName": "Apanhar o Pau Cucu",
         "begin": [2017,5,5],
         "end": [2017,5,6],
-        "VehicleType": "CAR",
+        "vehicleType": "CAR",
         "rentBegin": [2017,5,5],
         "rentEnd": [2017,5,6],
         "kilometers": 3

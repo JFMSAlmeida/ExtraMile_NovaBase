@@ -16,7 +16,7 @@ class Cart extends Component{
     componentWillReceiveProps(nextProps) {
         console.log(nextProps.product);
         if (nextProps.product !== this.state.newProduct) {
-            this.state.newProduct = nextProps.product;
+            this.setState({ newProduct : nextProps.product });
             this.addProduct(nextProps.product);
         }
     }
@@ -129,7 +129,7 @@ class Cart extends Component{
                     </div>
 
                     <div className="float-cart__footer">
-                        <div className="sub">SUBTOTAL</div>
+                        <div className="sub">TOTAL</div>
                         <div className="sub-price">
                             <p className="sub-price__val">
                                 {totalPrice} €

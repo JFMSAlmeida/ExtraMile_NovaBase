@@ -26,8 +26,10 @@ class Filter extends Component {
     render() {
         return (
             <div className="filters">
-                <h4 className="title">Filter:</h4>
-                {this.createCheckboxes()}
+                <h4 className="title"><b>Filter:</b></h4>
+                <div className="checkboxes">
+                    {this.createCheckboxes()}
+                </div>
             </div>
         );
     }
