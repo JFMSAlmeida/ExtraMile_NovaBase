@@ -216,4 +216,14 @@ public class BankInterface {
 		}
 		return operations2HashMap(ac.getOperationSet());
 	}
+
+	@Atomic(mode = TxMode.READ)
+	public static AccountData getAccountData2(String iban) {
+		Account account = getAccountByIban(iban);
+		if (account == null) {
+			return null;
+		}
+
+		return new AccountData(account);
+	}
 }
