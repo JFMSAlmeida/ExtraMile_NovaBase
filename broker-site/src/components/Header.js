@@ -20,6 +20,7 @@ class Header extends React.Component {
         this.handleAgeChange = this.handleAgeChange.bind(this);
         this.handleDrivingLicenseChange = this.handleDrivingLicenseChange.bind(this);
         this.handleInfoChange = this.handleInfoChange.bind(this);
+        this.calculateBalance = this.calculateBalance.bind(this);
 
         this.state = {
             auth: false,
@@ -27,7 +28,8 @@ class Header extends React.Component {
             nif: '',
             iban: '',
             age: '',
-            drivinglicense: ''
+            drivinglicense: '',
+            balance: '',
         };
     }
 
@@ -62,7 +64,14 @@ class Header extends React.Component {
                                                     <i className="fa fa-caret-down"></i>
                                                 </button>
                                                 <div className="dropdown-contentLogin">
-                                                    <a href="#"><span className="glyphicon glyphicon-usd"></span>&nbsp; Balance</a>
+                                                    <a><span className="glyphicon glyphicon-usd"></span>&nbsp; {this.state.balance}
+                                                        <a onClick={this.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
+                                                            <span className="glyphicon glyphicon-refresh"></span>
+                                                        </a>
+                                                        {this.state.balance == 'Error' ?
+                                                            <span className="glyphicon glyphicon-question-sign" title="Bank server is down"></span>
+                                                            : null}
+                                                    </a>
                                                     <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
                                                     <a href="" onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
                                                 </div>
@@ -227,6 +236,7 @@ class Header extends React.Component {
                         iban: JSON.parse(body).iban,
                         age: JSON.parse(body).age,
                         drivinglicense: JSON.parse(body).drivinglicense});
+                    this.calculateBalance();
                 }
             }).catch(function(error) {
                 document.getElementById('errorLogin').innerHTML = "Something went wrong. Try again later.";
@@ -241,7 +251,8 @@ class Header extends React.Component {
             nif: '',
             iban: '',
             age: '',
-            drivinglicense: ''
+            drivinglicense: '',
+            balance: 'Undertermined'
         });
         this.props.history.push('/');
     }
@@ -254,6 +265,27 @@ class Header extends React.Component {
             this.state.age
         if (str == "dl")
             this.state.drivinglicense */
+    }
+
+    async calculateBalance() {
+        console.log("handleBalance");
+        this.setState({balance: 'Fetching...'});
+
+        try {
+            await fetch('http://localhost:8082/rest/banks/balance?iban=' + this.state.iban)
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    if (JSON.parse(body).success)
+                        this.setState({balance: JSON.parse(body).balance});
+                    else {
+                        this.setState({balance: "Invalid IBAN"});
+                    }
+                });
+        } catch (e) {
+            this.setState({balance: "Error"});
+        }
     }
 }
 

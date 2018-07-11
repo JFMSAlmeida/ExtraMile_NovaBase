@@ -46,6 +46,7 @@ a:hover {color: inherit;}
   cursor: pointer;
   margin-right: -15px;
   margin-left: -15px;
+  margin-top: -26px;
 }
 
 .item img{
@@ -647,6 +648,7 @@ a:hover {color: inherit;}
   min-height: 100vh; /* will cover the 100% of viewport */
   padding-bottom: 200px; /* height of your footer */
   background-color: white;
+  padding-top: 25px;
 }
 
 .footer-distributed{
