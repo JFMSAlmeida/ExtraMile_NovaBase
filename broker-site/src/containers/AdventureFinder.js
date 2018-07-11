@@ -9,8 +9,8 @@ class AdventureFinder extends Component {
         this.state = {adventures: []};
     }
 
-    componentWillMount() {
-        fetch('http://localhost:8083/rest/brokers/process?param1=B100')
+    async componentWillMount() {
+        await fetch('http://localhost:8083/rest/brokers/process?param1=B100')
             .then(response => {
                 return response.text();
             })
@@ -18,7 +18,7 @@ class AdventureFinder extends Component {
                 console.log(JSON.parse(body));
             });
 
-        fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=111111115')
+        fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=999999999')
             .then(response => {
                 return response.text();
             })

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.web.bind.annotation.*;
 import pt.ulisboa.tecnico.softeng.broker.domain.Client;
 import pt.ulisboa.tecnico.softeng.broker.services.local.BrokerInterface;
@@ -36,12 +37,30 @@ public class BrokerRestController {
 	}
 
 	@CrossOrigin
+	@RequestMapping(value = "/processPayment")
+	public ResponseEntity<Map<String, Object>> processPayment(@RequestParam(value = "param") String[] paramValues) {
+
+        Map<String, Object> json = new HashMap<String, Object>();
+		try {
+			boolean flag = true;
+			for (int i = 1; i < paramValues.length; i++) {
+				flag = flag && BrokerInterface.processAdventure2(paramValues[0], paramValues[i]);
+			}
+			json.put("success", flag);
+			return new ResponseEntity<>(json, HttpStatus.OK);
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+	}
+
+	@CrossOrigin
 	@RequestMapping(value = "/process")
 	public ResponseEntity<Map<String, Object>> process(@RequestParam(value="param1") String brokerCode){
 		try {
 			BrokerInterface.processAdventure2(brokerCode);
 			Map<String, Object> json = new HashMap<String, Object>();
-			json.put("success", false);
+			json.put("success", true);
 			json.put("message", brokerCode);
 			return new ResponseEntity<>(json, HttpStatus.OK);
 

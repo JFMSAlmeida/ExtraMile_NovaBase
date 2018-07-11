@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartProduct from './CartProduct';
+import {Link} from "react-router-dom";
 
 class Cart extends Component{
     constructor(props){
@@ -53,7 +54,7 @@ class Cart extends Component{
         this.openFloatCart();
     }
 
-    removeProduct = (product) => {
+    removeProduct(product) {
         console.log(product);
         const cartProducts = this.state.products;
 
@@ -62,12 +63,12 @@ class Cart extends Component{
             cartProducts.splice(index, 1);
         }
         this.setState({
-            products : cartProducts,
-            newProduct : null
+            products : cartProducts
         });
     }
 
     render() {
+        const totalPrice = this.calculateTotalAmount();
         const products = this.state.products.map(p => {
             return (
                 <CartProduct
@@ -77,6 +78,8 @@ class Cart extends Component{
                 />
             );
         });
+
+
 
         let classes = ['float-cart'];
 
@@ -129,11 +132,11 @@ class Cart extends Component{
                         <div className="sub">SUBTOTAL</div>
                         <div className="sub-price">
                             <p className="sub-price__val">
-                                {this.calculateTotalAmount()} €
+                                {totalPrice} €
                             </p>
                         </div>
-                        <div onClick={() => this.proceedToCheckout()} className="buy-btn">
-                            Checkout
+                        <div className="buy-btn">
+                            <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}}>Checkout</Link>
                         </div>
                     </div>
                 </div>
