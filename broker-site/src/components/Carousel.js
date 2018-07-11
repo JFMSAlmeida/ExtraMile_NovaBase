@@ -1,9 +1,20 @@
 import React from "react";
-import imageOne from './banner-sample.png';
-import imageTwo from './banner-sample.png';
+import imageOne from './adventureFinder.jpg';
+import imageTwo from './adventureBuilder.jpg';
 import imageThree from './banner-sample.png';
+import {withRouter} from "react-router-dom";
 
-export default class Carousel extends React.Component {
+class Carousel extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handlePageChange = this.handlePageChange.bind(this);
+    }
+
+    handlePageChange(e, path) {
+        e.preventDefault();
+        this.props.history.push(path);
+    }
+
     render() {
         return (
             <div className="sliderContainer">
@@ -15,29 +26,28 @@ export default class Carousel extends React.Component {
                     </ol>
 
                     <div className="carousel-inner">
-
                         <div className="item active">
-                            <img className="main-banner" src={imageOne}/>
-                                <div className="carousel-caption">
-                                    <h3>Adventure Finder</h3>
-                                    <p>Procure a sua aventura de sonho!</p>
-                                </div>
+                            <img className="main-banner" src={imageOne} onClick={(e) => this.handlePageChange(e, "/adventurefinder")}/>
+                            <div className="carousel-caption" onClick={(e) => this.handlePageChange(e, "/adventurefinder")}>
+                                <h3>Adventure Finder</h3>
+                                <p>Procure a sua aventura de sonho!</p>
+                            </div>
                         </div>
 
                         <div className="item">
-                            <img className="main-banner" src={imageTwo}/>
-                                <div className="carousel-caption">
-                                    <h3>Adventure Builder</h3>
-                                    <p>Não encontra uma aventura ao seu gosto? Crie a sua própria aventura!</p>
-                                </div>
+                            <img className="main-banner" src={imageTwo} onClick={(e) => this.handlePageChange(e, "/adventurebuilder")}/>
+                            <div className="carousel-caption" onClick={(e) => this.handlePageChange(e, "/adventurebuilder")}>
+                                <h3>Adventure Builder</h3>
+                                <p>Não encontra uma aventura ao seu gosto? Crie a sua própria aventura!</p>
+                            </div>
                         </div>
 
                         <div className="item">
                             <img className="main-banner" src={imageThree}/>
-                                <div className="carousel-caption">
-                                    <h3>New York</h3>
-                                    <p>We love the Big Apple!</p>
-                                </div>
+                            <div className="carousel-caption">
+                                <h3>New York</h3>
+                                <p>We love the Big Apple!</p>
+                            </div>
                         </div>
 
                     </div>
@@ -55,3 +65,5 @@ export default class Carousel extends React.Component {
         );
     }
 }
+
+export default withRouter(Carousel);

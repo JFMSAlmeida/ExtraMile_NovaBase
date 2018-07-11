@@ -2,12 +2,17 @@ import React from 'react'
 import {Route} from 'react-router-dom'
 import AdventureBuilder from "./AdventureBuilder";
 import AdventureFinder from "./AdventureFinder";
+import Options from "./Options";
 import Signup from "./Signup";
 import Home from "./Home";
 import createBrowserHistory from 'history/createBrowserHistory'
 import Header from "../components/Header";
 import Payment from "../components/checkout/Payment";
 import Checkout from "../components/checkout/Checkout";
+import Footer from "../components/Footer";
+import About from "../containers/About";
+import Faq from "../containers/Faq"
+
 const history = createBrowserHistory();
 
 class App extends React.Component {
@@ -42,6 +47,10 @@ class App extends React.Component {
                 <Route path='/signup' component={Signup} history={history}/>
                 <Route path='/checkout' component={Checkout} history={history}/>
                 <Route path='/payment' component={Payment} history={history}/>
+                <Route path='/options' component={Options} history={history}/>
+                <Route path='/about' component={About} history={history}/>
+                <Route path='/faq' component={Faq} history={history}/>
+                <Footer/>
             </div>
         );
     }

@@ -20,7 +20,6 @@ class AdventureFinder extends Component {
 
         fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=999999999')
             .then(response => {
-                /*console.log(response);*/
                 return response.text();
             })
             .then(body => {
