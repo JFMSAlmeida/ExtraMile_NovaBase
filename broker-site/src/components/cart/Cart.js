@@ -54,7 +54,7 @@ class Cart extends Component{
         this.openFloatCart();
     }
 
-    removeProduct = (product) => {
+    removeProduct(product) {
         console.log(product);
         const cartProducts = this.state.products;
 
@@ -63,8 +63,7 @@ class Cart extends Component{
             cartProducts.splice(index, 1);
         }
         this.setState({
-            products : cartProducts,
-            newProduct : null
+            products : cartProducts
         });
     }
 
@@ -137,7 +136,7 @@ class Cart extends Component{
                             </p>
                         </div>
                         <div className="buy-btn">
-                            <Link to={{ pathname: '/checkout', state:{products : this.state.products, total : totalPrice}}}>Checkout</Link>
+                            <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}}>Checkout</Link>
                         </div>
                     </div>
                 </div>

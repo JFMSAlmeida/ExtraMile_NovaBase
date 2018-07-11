@@ -12,21 +12,50 @@ export default class Checkout extends React.Component {
         }
 
         this.cleanCheckout = this.cleanCheckout.bind(this);
+        this.deleteProduct = this.deleteProduct.bind(this);
     }
 
     cleanCheckout(){
+        for(var i = 0; i < this.state.products.length; i++){
+            this.props.location.remove(this.state.products[i]);
+        }
         this.setState({
             products : []
         });
     }
 
+    calculateTotalAmount(){
+        var acumulator = 0;
+        for(var i = 0; i < this.state.products.length; i++){
+            acumulator = acumulator + this.state.products[i].price;
+        }
+        return acumulator;
+    }
+
+    deleteProduct(product){
+        console.log(product);
+        const cartProducts = this.state.products;
+        console.log(cartProducts.length);
+
+        const index = cartProducts.findIndex(p => p.id === product.id);
+        this.props.location.remove(this.state.products[index]);
+
+        this.setState({
+            products : cartProducts
+        });
+
+        console.log(cartProducts.length);
+
+    }
+
     render(){
-        console.log(this.props.location.state.total);
+        const total = this.calculateTotalAmount();
         const productsArray = this.state.products.map(adv => {
             return (
                 <CheckoutProduct
                     product={adv}
                     key={adv.id}
+                    remove = {() => this.deleteProduct(adv)}
                 />
             );
         });
@@ -59,7 +88,7 @@ export default class Checkout extends React.Component {
                                         <tbody>
                                             <tr>
                                                 <td><font size="5">Total:</font></td>
-                                                <td className="totalPrice">{this.props.location.state.total}€</td>
+                                                <td className="totalPrice">{total}€</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -72,11 +101,19 @@ export default class Checkout extends React.Component {
                             <Link to={{ pathname: '/'}}>Back to Store</Link>
                         </div>
                         <div className="buy-btn">
-                            <Link to={{ pathname: '/payment', state:{products : this.state.products, total : totalPrice}}}>Buy</Link>
+                            <Link to={{ pathname: '/payment', state:{products : this.state.products}}}>Buy</Link>
                         </div>
                     </div>
                 </div>}
-                {!this.state.products.length && <div> <h1>Carrinho Vazio</h1></div> }
+                {!this.state.products.length && <div align="center" className="empty-checkout">
+                    <div className="empty-checkout-text">
+                        <h1> Your Shopping Cart is empty </h1>
+                        <span> Click here to continue shopping</span>
+                    </div>
+                    <div className="back-btn2">
+                        <Link to={{ pathname: '/'}}>Back to Store</Link>
+                    </div>
+                </div> }
             </div>
         )
     }

@@ -99,14 +99,18 @@ public class BrokerInterface {
 	}
 
 	@Atomic(mode = TxMode.WRITE)
-	public static void processBulkAdventure(String brokerCode, String id) {
+	public static Boolean processAdventure2(String brokerCode, String id) {
 		Adventure adventure = FenixFramework.getDomainRoot().getBrokerSet().stream()
 				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
 				.filter(a -> a.getID().equals(id)).findFirst().orElse(null);
 
-		while(adventure.getState().getValue() != Adventure.State.PROCESS_PAYMENT){
-			
-		}
+		adventure.process();
+		adventure.process();
+
+		if(adventure.getState().getValue() == Adventure.State.CONFIRMED)
+			return true;
+		else
+			return false;
 	}
 
 	@Atomic(mode = TxMode.WRITE)

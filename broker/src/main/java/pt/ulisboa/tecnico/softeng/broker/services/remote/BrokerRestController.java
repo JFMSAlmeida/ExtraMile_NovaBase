@@ -38,11 +38,20 @@ public class BrokerRestController {
 
 	@CrossOrigin
 	@RequestMapping(value = "/processPayment")
-	public ResponseEntity<Boolean> processPayment(@RequestParam(value="param1") String brokerCode,
-												  @RequestBody ArrayList<Object> data){
-		for(int i = 0; i < data.size(); i++){
-			BrokerInterface.processAdventure(brokerCode, (String) data.get(i));
+	public ResponseEntity<Map<String, Object>> processPayment(@RequestParam(value = "param") String[] paramValues) {
+
+        Map<String, Object> json = new HashMap<String, Object>();
+		try {
+			boolean flag = true;
+			for (int i = 1; i < paramValues.length; i++) {
+				flag = flag && BrokerInterface.processAdventure2(paramValues[0], paramValues[i]);
+			}
+			json.put("success", flag);
+			return new ResponseEntity<>(json, HttpStatus.OK);
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+
 	}
 
 	@CrossOrigin

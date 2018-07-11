@@ -35,13 +35,13 @@ class CartProduct extends Component {
                 />
                 <img className="shelf-item__image" src={require(`../shelf/B1001.jpg`)} alt={product.id}/>
                 <div className="shelf-item__details">
-                    <p className="title">Package {product.id}</p>
+                    <b><p className="title">Package {product.id}</p></b>
                     <p className="desc">
                         {`| ${product.activityName} | ${product.hotelName} | ${product.vehicleType} |`}
                     </p>
                 </div>
                 <div className="shelf-item__price">
-                    <b><p>{product.price} €</p></b>
+                    <p>{product.price} €</p>
                 </div>
             </div>
         );

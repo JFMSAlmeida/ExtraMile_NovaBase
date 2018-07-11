@@ -43,6 +43,7 @@ export default class CheckoutProduct extends React.Component{
                         className="checkout__del"
                         onMouseOver={() => this.handleMouseOver()}
                         onMouseOut={() => this.handleMouseOut()}
+                        onClick={this.props.remove}
                     />
                 </td>
             </tr>
