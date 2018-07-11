@@ -34,14 +34,11 @@ class AdventureFinder extends Component {
     }
 
     render() {
-        console.log(this.props.a);
-        console.log(this.props.addCart);
         return (<div>
                     <h3>AdventureFinder</h3>
                     <Shelf
                         adventures = {this.state.adventures}
                         addCart = {this.props.addCart}
-                        a = {this.props.a}
                     />
                 </div>
                 );

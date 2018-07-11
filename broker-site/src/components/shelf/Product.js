@@ -2,7 +2,6 @@ import React from 'react';
 
 const Product = (props) => {
     const product = props.product;
-    console.log(props.a);
 
     return (
         <div className="shelf-item" data-sku={product.id}>
