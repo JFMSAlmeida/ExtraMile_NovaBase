@@ -1,5 +1,10 @@
 body{
   font-family: 'Varela Round', sans-serif;
+  background-color: white;
+  background-image: url('download.jpeg');
+  background-size: cover;
+  height:575px;
+  background-repeat: no-repeat;
 }
 
 a {
@@ -39,6 +44,8 @@ a:hover {color: inherit;}
 
 .sliderContainer {
   cursor: pointer;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .item img{
@@ -639,6 +646,7 @@ a:hover {color: inherit;}
 .container {
   min-height: 100vh; /* will cover the 100% of viewport */
   padding-bottom: 200px; /* height of your footer */
+  background-color: white;
 }
 
 .footer-distributed{
@@ -649,7 +657,6 @@ a:hover {color: inherit;}
   text-align: left;
   font: bold 16px sans-serif;
   padding: 15px 50px;
-  margin-top: 50px;
   bottom: 0;
 }
 
