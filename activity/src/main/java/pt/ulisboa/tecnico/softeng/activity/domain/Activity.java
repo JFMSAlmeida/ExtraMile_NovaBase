@@ -67,10 +67,9 @@ public class Activity extends Activity_Base {
 			}
 		}
 		
-		System.out.println(result);
 		return result;
 	}
-	
+
 
 	boolean matchAge(int age) {
 		return age >= getMinAge() && age <= getMaxAge();

@@ -64,7 +64,8 @@ public class ActivityOffer extends ActivityOffer_Base {
 			throw new ActivityException();
 		}
 
-		return begin.equals(getBegin()) && end.equals(getEnd());
+		return (begin.equals(getBegin()) && end.equals(getEnd())) ||
+				(begin.isBefore(getBegin()) && end.isAfter(getEnd()));
 	}
 
 	boolean hasVacancy() {
