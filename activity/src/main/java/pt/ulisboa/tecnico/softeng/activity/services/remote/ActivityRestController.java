@@ -58,4 +58,18 @@ public class ActivityRestController {
 		}
 	}
 
+	@CrossOrigin
+	@RequestMapping(value = "/activities", method = RequestMethod.GET)
+	public ResponseEntity<List<Object>> getActivities () {
+
+		try {
+			List<ActivityOffer> offers =  ActivityInterface.getAllOffers();
+
+			return new ResponseEntity<>(ActivityInterface.offersToHashMap(offers), HttpStatus.OK);
+
+		} catch (ActivityException e) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
 }

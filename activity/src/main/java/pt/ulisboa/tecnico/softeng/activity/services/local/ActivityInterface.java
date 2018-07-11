@@ -229,5 +229,49 @@ public class ActivityInterface {
 		
 		throw new ActivityException();
 	}
+
+	@Atomic(mode = TxMode.READ)
+	public static List<ActivityOffer> getAllOffers () {
+		
+		List<ActivityOffer> offers = new ArrayList<>();
+
+		LocalDate begin =  new LocalDate("1980-01-01");
+		LocalDate end = new LocalDate("2050-12-12");
+		int age = 18;
+
+		for (ActivityProvider provider: FenixFramework.getDomainRoot().getActivityProviderSet()) {
+			offers.addAll(provider.findOffer(begin, end, age));
+		}
+		System.out.println("offers: " + offers);
+
+		return offers;
+	}
+
+	@Atomic(mode = TxMode.READ)
+	public static ArrayList<Object> offersToHashMap(List<ActivityOffer> offers) {
+
+		ArrayList<Object> allOffers = new ArrayList<>();
+
+		for (ActivityOffer offer: offers) {
+
+			Map<String, Object> aux = new HashMap<>();
+
+			Activity activity = offer.getActivity();
+			ActivityProvider provider = activity.getActivityProvider();
+			System.out.println("activity: " + activity);
+			System.out.println("provider: " + provider);
+			
+			aux.put("name", activity.getName());
+			aux.put("providerName", provider.getName());
+			aux.put("providerCode", provider.getCode());
+			aux.put("price", offer.getAmount());
+			aux.put("begin", offer.getBegin());
+			aux.put("end", offer.getEnd());
+
+			allOffers.add(aux);
+		}
+
+		return allOffers;
+	}
 	
 }
