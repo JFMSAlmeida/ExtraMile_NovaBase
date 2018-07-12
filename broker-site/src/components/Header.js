@@ -3,6 +3,8 @@ import {Link, withRouter} from 'react-router-dom'
 import avatar from '../components/avatar.png'
 import $ from 'jquery';
 import Cart from './cart/Cart'
+import Signup from './Signup'
+import Login from "./Login";
 
 // The Header creates links that can be used to navigate
 // between routes.
@@ -86,81 +88,20 @@ class Header extends React.Component {
                 </nav>
               </header>
 
-              <div id="signupModal" className="modal fade">
-                  <div className="modal-dialog modal-login">
-                      <div className="modal-content">
-                          <div className="modal-header">
-                              <div className="avatar">
-                                  <img src={avatar} alt="Avatar"></img>
-                              </div>
-                              <h4 className="modal-title">Client Sign Up</h4>
-                              <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          </div>
-                          <form id="signupform" onSubmit={this.handleSignUp}>
-                              <div className="modal-body">
-                                  <div id="errorSignUp" style={{color: 'red', fontSize: 'small'}}></div>
-                                  <div id="successSignUp" style={{color: 'green', fontSize: 'small'}}></div>
-                                  <div className="form-group">
-                                      <input type="text" size="9" className="form-control" name="NIF" placeholder="NIF"
-                                             required="required" onChange={this.handleSignUpNifChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <input type="text" className="form-control" name="IBAN" placeholder="IBAN"
-                                             required="required" onChange={this.handleIBANChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <input type="number" min="1" max="120" className="form-control" name="AGE" placeholder="Age"
-                                             required="required" onChange={this.handleAgeChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <input type="text" className="form-control" name="drivingLicense" placeholder="Driving License"
-                                             required="required" onChange={this.handleDrivingLicenseChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">Sign Up
-                                      </button>
-                                  </div>
-                              </div>
-                          </form>
-                          <div className="modal-footer">
-                              <a data-dismiss="modal" data-toggle="modal" data-target="#loginModal"><Link to={this.props.history}>Already have an account? Login</Link></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <Signup
+                  handleSignUp = {this.handleSignUp}
+                  handleSignUpNifChange = {this.handleSignUpNifChange}
+                  handleIBANChange = {this.handleIBANChange}
+                  handleAgeChange = {this.handleAgeChange}
+                  handleDrivingLicenseChange = {this.handleDrivingLicenseChange}
+                  history = {this.props.history}
+              />
 
-
-              <div id="loginModal" className="modal fade">
-                  <div className="modal-dialog modal-login">
-                      <div className="modal-content">
-                          <div className="modal-header">
-                              <div className="avatar">
-                                  <img src={avatar} alt="Avatar"></img>
-                              </div>
-                            <h4 className="modal-title">Client Login</h4>
-                              <button id="closeLoginModal" type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          </div>
-                          <div id="hideafterlogin">
-                              <form id="loginform" onSubmit={this.handleLogin}>
-                                  <div className="modal-body">
-                                      <div id="errorLogin" style={{ color: 'red', fontSize: 'small'}}></div>
-                                      <div className="form-group">
-                                          <input type="text" className="form-control" name="NIF" placeholder="NIF"
-                                                 required="required" onChange={this.handleLoginNifChange}></input>
-                                      </div>
-                                      <div className="form-group">
-                                          <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">Login
-                                          </button>
-                                      </div>
-                                  </div>
-                              </form>
-                              <div className="modal-footer">
-                                  <a data-dismiss="modal" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}>Not registered? Sign Up</Link></a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <Login
+                  handleLogin = {this.handleLogin}
+                  handleLoginNifChange = {this.handleLoginNifChange}
+                  history = {this.props.history}
+              />
 
           </div>
         );
