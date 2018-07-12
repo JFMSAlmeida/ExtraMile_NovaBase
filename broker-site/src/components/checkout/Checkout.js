@@ -16,8 +16,11 @@ export default class Checkout extends React.Component {
     }
 
     cleanCheckout(){
-        for(var i = 0; i < this.state.products.length; i++){
-            this.props.location.remove(this.state.products[i]);
+        const len = this.state.products.length;
+        for(var i = 0; i < len; i++){
+            console.log(len);
+            console.log(i);
+            this.props.location.remove(this.state.products[0]);
         }
         this.setState({
             products : []
