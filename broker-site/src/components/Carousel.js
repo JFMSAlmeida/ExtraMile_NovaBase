@@ -3,6 +3,7 @@ import imageOne from './adventureFinder.jpg';
 import imageTwo from './adventureBuilder.jpg';
 import imageThree from './banner-sample.png';
 import {withRouter} from "react-router-dom";
+import $ from 'jquery'
 
 class Carousel extends React.Component {
     constructor(props) {
@@ -16,6 +17,30 @@ class Carousel extends React.Component {
     }
 
     render() {
+        $(document).ready(
+            function() {
+
+                SizeTheTopToolbar();
+
+                $(window).resize(function() {
+                    SizeTheTopToolbar();
+                });
+            });
+
+        function SizeTheTopToolbar() {
+            var viewportWidth = $(window).width();
+            var viewportHeight = $(window).height();
+            $('.carousel-caption h3').css('font-size', viewportWidth * .018);
+            $('.carousel-caption p').css('font-size', viewportWidth * .012);
+            $('.carousel').css('height', viewportHeight*0.92);
+            $('.carousel-inner').css('height', viewportHeight*0.92);
+            $('.sliderContainer').css('height', viewportHeight*0.92);
+            $('.main-banner').css('height', viewportHeight*0.92);
+            $('.item').css('height', viewportHeight*0.92);
+            $('.carousel-indicators li').css('width', viewportWidth * 0.01);
+            $('.carousel-indicators li').css('height', viewportWidth * 0.01);
+        }
+
         return (
             <div className="sliderContainer">
                 <div id="myCarousel" className="carousel slide" data-ride="carousel">

@@ -149,7 +149,7 @@ class AdventureBuilder extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 {this.state.alert ? <div id="alert" className="alert alert-info alert-dismissable">
                     <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
                     <span id="alert-icon" className=""></span>

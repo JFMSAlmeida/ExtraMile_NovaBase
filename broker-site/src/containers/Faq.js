@@ -4,7 +4,9 @@ import './App.css';
 class Faq extends Component {
     render() {
         return (
-            <h3>Faq</h3>
+            <div className="container">
+                <h3>Faq</h3>
+            </div>
         );
     }
 }

@@ -12,6 +12,7 @@ import Checkout from "../components/checkout/Checkout";
 import Footer from "../components/Footer";
 import About from "../containers/About";
 import Faq from "../containers/Faq"
+import $ from "jquery";
 
 const history = createBrowserHistory();
 
@@ -35,23 +36,37 @@ class App extends React.Component {
 
     render() {
 
+        $(document).ready(
+            function() {
+
+                SizeTheTopToolbar();
+
+                $(window).resize(function() {
+                    SizeTheTopToolbar();
+                });
+            });
+
+        function SizeTheTopToolbar() {
+            var viewportWidth = $(window).width();
+            var viewportHeight = $(window).height();
+        }
+
         return (
             <div>
                 <Header
                     history={history}
                     product = {this.state.product}
                 />
-                <div className="container">
-                    <Route exact path='/' component={Home} history={history}/>
-                    <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)}/>}/>
-                    <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
-                    <Route path='/signup' component={Signup} history={history}/>
-                    <Route path='/checkout' component={Checkout} history={history}/>
-                    <Route path='/payment' component={Payment} history={history}/>
-                    <Route path='/options' component={Options} history={history}/>
-                    <Route path='/about' component={About} history={history}/>
-                    <Route path='/faq' component={Faq} history={history}/>
-                </div>
+
+                <Route exact path='/' component={Home} history={history}/>
+                <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)}/>}/>
+                <Route path='/adventurebuilder' component={AdventureBuilder} history={history}/>
+                <Route path='/signup' component={Signup} history={history}/>
+                <Route path='/checkout' component={Checkout} history={history}/>
+                <Route path='/payment' component={Payment} history={history}/>
+                <Route path='/options' component={Options} history={history}/>
+                <Route path='/about' component={About} history={history}/>
+                <Route path='/faq' component={Faq} history={history}/>
                 <Footer/>
             </div>
         );

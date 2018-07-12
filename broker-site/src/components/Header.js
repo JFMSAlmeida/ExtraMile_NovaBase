@@ -48,7 +48,7 @@ class Header extends React.Component {
 
         return (
           <div className="headerContainer">
-              <header>
+              <header className="header">
                 <nav className="navbar navbar-inverse">
                   <ul className="nav navbar-nav">
                     <a className="navbar-brand">ExtraMile</a>
@@ -86,7 +86,6 @@ class Header extends React.Component {
                 </nav>
               </header>
 
-              /* SIGN UP MODAL */
               <div id="signupModal" className="modal fade">
                   <div className="modal-dialog modal-login">
                       <div className="modal-content">
@@ -131,7 +130,6 @@ class Header extends React.Component {
               </div>
 
 
-              /* LOGIN MODAL */
               <div id="loginModal" className="modal fade">
                   <div className="modal-dialog modal-login">
                       <div className="modal-content">

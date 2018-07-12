@@ -61,7 +61,7 @@ class AdventureFinder extends Component {
         console.log(this.props.a);
         console.log(this.props.addCart);
         return (
-            <div>
+            <div className="container">
                 {this.state.alert ?
                     <div id="alert" className="alert alert-info alert-dismissable">
                         <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
