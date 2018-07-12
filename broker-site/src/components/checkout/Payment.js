@@ -39,10 +39,12 @@ class Payment extends Component {
     }
 
     render() {
-        return (<div>
-                    {this.state.paymentConfirmation && <h1>Confirmed</h1>}
-                    {!this.state.paymentConfirmation && <h2>Cancelled</h2>}
-                </div>
+        this.props.location.remove();
+        return (
+            <div>
+                {this.state.paymentConfirmation && <h1>Confirmed</h1>}
+                {!this.state.paymentConfirmation && <h2>Cancelled</h2>}
+            </div>
         );
     }
 }

@@ -105,13 +105,14 @@ export default class Checkout extends React.Component {
                                 <span>Back to Store</span>
                             </div>
                         </Link>
-                        <Link to={{ pathname: '/payment', state:{products : this.state.products}}} style={{textDecoration: 'none'}}>
+                        <Link to={{ pathname: '/payment', remove: this.cleanCheckout, state:{products : this.state.products}}} style={{textDecoration: 'none'}}>
                             <div className="buy-btn">
                                 <span>Buy</span>
                             </div>
                         </Link>
                     </div>
                 </div>
+
                 :
 
                 <div align="center" className="empty-checkout">

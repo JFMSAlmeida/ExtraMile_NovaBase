@@ -45,7 +45,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div style={{textAlign: 'center'}}>
                 <Carousel/>
                 <h1>HELLO THIS IS A TEST</h1>
                 <button onClick={this.handleClickProcess}>Click Process</button>

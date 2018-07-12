@@ -12,10 +12,6 @@ a {
 }
 a:hover {color: inherit;}
 
-.App {
-  text-align: center;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -44,8 +40,8 @@ a:hover {color: inherit;}
 
 .sliderContainer {
   cursor: pointer;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -50px;
+  margin-left: -50px;
   margin-top: -26px;
 }
 
@@ -160,7 +156,7 @@ a:hover {color: inherit;}
 
 .shelf-container .shelf-item {
   float: left;
-  width: 30%;
+  width: 33%;
   position: relative;
   text-align: center;
   box-sizing: border-box;
@@ -675,6 +671,8 @@ a:hover {color: inherit;}
   padding-bottom: 200px; /* height of your footer */
   background-color: white;
   padding-top: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .footer-distributed{
@@ -891,17 +889,15 @@ a:hover {color: inherit;}
 
 .filters {
   position: relative;
-  left: 30px;
-  top: 30px;
   width: 16%;
   min-height: 300px;
+  min-width: 200px;
   float: left;
-  background: #dee4e7;
-  color: black;
+  padding-top: 50px;
 }
-.filters .title{
-  background: #eabf00;
-  color:#1b1a20;
+
+.filters .title {
+  color: #1b1a20;
   position: relative;
   bottom: 10px;
   font-size: 1.5em;
@@ -911,25 +907,72 @@ a:hover {color: inherit;}
 }
 
 .checkboxes{
-  padding-left: 15px;
 }
 
 select {
-  width: 18%;
   padding: 12px 16px;
   border: none;
-  border-radius: 4px;
   background-color: #f1f1f1;
 }
 
-.sort{
-  position: relative;
-  left: 585px;
-  top:12px;
+.sort {
+  float: right;
+  margin-right: 15px;
 }
 
 .sort .sort-order{
   position: relative;
   right: 10px;
   font-size: 1.2em;
+}
+
+
+.pz {
+  padding-bottom: 15px;
+}
+.pz li.pz {
+  display: flex;
+}
+.pz label.radio-inline input[type="checkbox"] {
+  display: none;
+}
+.pz label.radio-inline input[type="checkbox"]:checked+div {
+  color: #fff;
+  background-color: #000;
+}
+.pz .radio-inline .clab {
+  cursor: pointer;
+  background: #e7e7e7;
+  padding: 7px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  float: left;
+  min-width: 160px;
+  min-height: 40px;
+  line-height: 40px;
+}
+
+.pz label.radio-inline input[type="checkbox"]:checked+div:before {
+  content: "\e013";
+  margin-right: 5px;
+  font-family: 'Glyphicons Halflings';
+}
+.pz label.radio-inline input[type="radio"] {
+  display: none;
+}
+.pz label.radio-inline input[type="radio"]:checked+div {
+  color: #fff;
+  background-color: #000;
+}
+.pz label.radio-inline input[type="radio"]:checked+div:before {
+  content: "\e013";
+  margin-right: 5px;
+  font-family: 'Glyphicons Halflings';
+}
+
+.home_hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #222222, rgba(0, 0, 0, 0));
 }

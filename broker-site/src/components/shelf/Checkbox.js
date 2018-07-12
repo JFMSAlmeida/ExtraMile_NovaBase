@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 class Checkbox extends Component {
     render(){
         return (
-                <label className="checkbox__container"> With {this.props.label}
+            <div className="pz">
+                <label className="radio-inline">
                     <input
                         type="checkbox"
                         value={this.props.label}
                         onChange={this.props.filterFunction}
                     />
-                    <span className="checkbox__checkmark"/>
+                    <div className="clab">With {this.props.label}</div>
                 </label>
+            </div>
         )
 
     }

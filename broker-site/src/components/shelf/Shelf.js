@@ -78,8 +78,8 @@ class Shelf extends Component {
         super(props);
 
         this.state = {
-            adventures : abc,
-            filteredAdventures : abc
+            adventures : this.props.adventures,
+            filteredAdventures : this.props.adventures
         }
 
         this.selectedFilters = new Set();
@@ -89,12 +89,13 @@ class Shelf extends Component {
 
     }
 
-    /*componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {
         console.log(nextProps.adventures);
         this.setState({
-            adventures : abc
+            adventures : this.props.adventures,
+            filteredAdventures : this.props.adventures
         })
-    }*/
+    }
 
     filterAdventures(label){
         if (this.selectedFilters.has(label)) {
@@ -173,16 +174,18 @@ class Shelf extends Component {
 
         return (
             <React.Fragment>
-                <Filter
-                    availableFilters = {availableFilters}
-                    filterFunction = {label => this.filterAdventures(label)}
-                />
-                <Order
-                    options = {sortBy}
-                    handleOnChange = {this.orderAdventures}
-                />
-                <div className="shelf-container">
-                    {advArray}
+                <div>
+                    {!this.props.loading ? <Filter
+                        availableFilters = {availableFilters}
+                        filterFunction = {label => this.filterAdventures(label)}
+                    /> : null }
+                    {!this.props.loading ? <Order
+                        options = {sortBy}
+                        handleOnChange = {this.orderAdventures}
+                    /> : null }
+                    <div className="shelf-container">
+                        {advArray}
+                    </div>
                 </div>
             </React.Fragment>
         )

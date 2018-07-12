@@ -77,7 +77,7 @@ class AdventureFinder extends Component {
                 <Shelf
                     adventures = {this.state.adventures}
                     addCart = {this.props.addCart}
-                    a = {this.props.a}
+                    loading = {this.state.loading}
                 />
             </div>
             );
