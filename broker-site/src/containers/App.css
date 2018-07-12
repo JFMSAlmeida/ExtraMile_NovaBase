@@ -153,7 +153,10 @@ a:hover {color: inherit;}
 
 .shelf-container {
   width: 80%;
-  float: right; }
+  float: right;
+  position: relative;
+  top: 20px;
+}
 
 .shelf-container .shelf-item {
   float: left;
@@ -889,7 +892,7 @@ a:hover {color: inherit;}
 .filters {
   position: relative;
   left: 30px;
-  top: 20px;
+  top: 30px;
   width: 16%;
   min-height: 300px;
   float: left;
@@ -908,6 +911,25 @@ a:hover {color: inherit;}
 }
 
 .checkboxes{
-  padding-left: 20px;
+  padding-left: 15px;
 }
 
+select {
+  width: 18%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+.sort{
+  position: relative;
+  left: 585px;
+  top:12px;
+}
+
+.sort .sort-order{
+  position: relative;
+  right: 10px;
+  font-size: 1.2em;
+}

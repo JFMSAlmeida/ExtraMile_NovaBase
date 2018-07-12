@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import Product from './Product';
 import Filter from './Filter'
+import Order from './Order'
 
 const availableFilters = [
     'Hotel',
     'Vehicle',
 ];
+
+const sortBy = [
+    { value: '',           label: 'Select'  },
+    { value: 'lowestprice', label: 'Lowest to highest Price' },
+    { value: 'highestprice', label: 'Highest to lowest Price' },
+    { value: 'alphabetical', label: 'Alphabetical'}
+]
 
 const abc = [
     {
@@ -71,12 +79,13 @@ class Shelf extends Component {
 
         this.state = {
             adventures : abc,
-            filteredAdventures : []
+            filteredAdventures : abc
         }
 
         this.selectedFilters = new Set();
 
         this.filterAdventures = this.filterAdventures.bind(this);
+        this.orderAdventures = this.orderAdventures.bind(this);
 
     }
 
@@ -96,25 +105,50 @@ class Shelf extends Component {
         var filteredAdventures = this.state.adventures.slice(0);
 
         this.selectedFilters.forEach(function(value){
-            for(let i = 0; i< filteredAdventures.length; i++) {
-                if (value === "Vehicle") {
-                    if (!filteredAdventures[i].hasVehicle){
-                        const index = filteredAdventures.findIndex(p => p.id === filteredAdventures[i].id);
-                        filteredAdventures.splice(index, 1);
-                    }
+            for(let i = filteredAdventures.length-1; i >= 0; i--) {
+                if (value === "Vehicle")
+                    if (!filteredAdventures[i].hasVehicle)
+                        filteredAdventures.splice(i, 1);
 
-                }
-                if (value === "Hotel") {
-                    if (!filteredAdventures[i].hasRoom){
-                        const index = filteredAdventures.findIndex(p => p.id === filteredAdventures[i].id);
-                        filteredAdventures.splice(index, 1);
-                    }
-                }
+                if (value === "Hotel")
+                    if (!filteredAdventures[i].hasRoom)
+                        filteredAdventures.splice(i, 1);
             }
         }, this);
 
         this.setState({
             filteredAdventures : filteredAdventures
+        });
+    }
+
+    orderAdventures(value){
+        var orderedAdventures =  this.state.filteredAdventures.slice(0);
+        if(value === 'lowestprice'){
+            orderedAdventures.sort(function(a, b) {
+                return a.price - b.price;
+            });
+        }
+
+        if(value === 'highestprice'){
+            orderedAdventures.sort(function(a, b) {
+                return b.price - a.price;
+            });
+        }
+
+        if(value === 'alphabetical'){
+            orderedAdventures.sort(function(a, b) {
+                if (a.activityName < b.activityName) {
+                    return -1;
+                }
+                if (a.activityName > b.activityName) {
+                    return 1;
+                }
+                return 0;
+            });
+
+        }
+        this.setState({
+            filteredAdventures : orderedAdventures
         });
     }
 
@@ -135,19 +169,6 @@ class Shelf extends Component {
                     />
                 );
             });
-        } else {
-            adv = this.state.adventures;
-
-            advArray = adv.map(adv => {
-                return (
-                    <Product
-                        product={adv}
-                        addCart={() => this.props.addCart(adv)}
-                        key={adv.id}
-                    />
-                );
-            });
-
         }
 
         return (
@@ -155,6 +176,10 @@ class Shelf extends Component {
                 <Filter
                     availableFilters = {availableFilters}
                     filterFunction = {label => this.filterAdventures(label)}
+                />
+                <Order
+                    options = {sortBy}
+                    handleOnChange = {this.orderAdventures}
                 />
                 <div className="shelf-container">
                     {advArray}
