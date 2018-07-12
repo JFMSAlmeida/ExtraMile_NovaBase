@@ -178,7 +178,8 @@ public class HotelInterface {
 			Map<String, Object> roomt = new HashMap<>();
 			roomt.put("number", room.getNumber());
 			roomt.put("type", room.getType());
-			roomt.put("hotel", room.getHotel().getName());
+			roomt.put("hotelName", room.getHotel().getName());
+			roomt.put("hotelCode", room.getHotel().getCode());
 
 			if (room.getType() == Room.Type.SINGLE) {
 

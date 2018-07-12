@@ -32,7 +32,7 @@ public class ActivityInterface {
 				.sorted((p1, p2) -> p1.getName().compareTo(p2.getName())).map(p -> new ActivityProviderData(p))
 				.collect(Collectors.toList());
 	}
-
+ 
 	@Atomic(mode = TxMode.WRITE)
 	public static void createProvider(ActivityProviderData provider) {
 		new ActivityProvider(provider.getCode(), provider.getName(), provider.getNif(), provider.getIban());
@@ -271,6 +271,10 @@ public class ActivityInterface {
 			aux.put("price", offer.getAmount());
 			aux.put("begin", offer.getBegin());
 			aux.put("end", offer.getEnd());
+			aux.put("minAge", activity.getMinAge());
+			aux.put("maxAge", activity.getMaxAge());
+			aux.put("capacity", activity.getCapacity());
+			aux.put("activityCode", activity.getCode());
 
 			allOffers.add(aux);
 		}

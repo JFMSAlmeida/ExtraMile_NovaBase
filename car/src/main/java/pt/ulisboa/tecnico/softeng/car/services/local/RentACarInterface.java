@@ -237,7 +237,8 @@ public class RentACarInterface {
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
 			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
-			vehicleInfo.put("RentACar Name", ((Vehicle_Base) v).getRentACar().getName());
+			vehicleInfo.put("rentACarName", ((Vehicle_Base) v).getRentACar().getName());
+			vehicleInfo.put("rentACarCode", ((Vehicle_Base) v).getRentACar().getCode());
 		
 			vehicles.add(vehicleInfo);
 		}
