@@ -104,20 +104,14 @@ class Shelf extends Component {
         var filteredAdventures = this.state.adventures.slice(0);
 
         this.selectedFilters.forEach(function(value){
-            for(let i = 0; i< filteredAdventures.length; i++) {
-                if (value === "Vehicle") {
-                    if (!filteredAdventures[i].hasVehicle){
-                        const index = filteredAdventures.findIndex(p => p.id === filteredAdventures[i].id);
-                        filteredAdventures.splice(index, 1);
-                    }
+            for(let i = filteredAdventures.length-1; i >= 0; i--) {
+                if (value === "Vehicle")
+                    if (!filteredAdventures[i].hasVehicle)
+                        filteredAdventures.splice(i, 1);
 
-                }
-                if (value === "Hotel") {
-                    if (!filteredAdventures[i].hasRoom){
-                        const index = filteredAdventures.findIndex(p => p.id === filteredAdventures[i].id);
-                        filteredAdventures.splice(index, 1);
-                    }
-                }
+                if (value === "Hotel")
+                    if (!filteredAdventures[i].hasRoom)
+                        filteredAdventures.splice(i, 1);
             }
         }, this);
 
