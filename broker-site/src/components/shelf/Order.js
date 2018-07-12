@@ -9,7 +9,8 @@ class Order extends Component {
 
     render() {
         return (
-            <div className="sort"> Order by
+            <div className="sort">
+                <span className="sort-order">Order By:</span>
                 <Selectbox
                     options={this.props.options}
                     handleOnChange={this.handleSort}

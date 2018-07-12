@@ -10,8 +10,8 @@ const availableFilters = [
 
 const sortBy = [
     { value: '',           label: 'Select'  },
-    { value: 'lowestprice', label: 'Lowest to highest' },
-    { value: 'highestprice', label: 'Highest to lowest' },
+    { value: 'lowestprice', label: 'Lowest to highest Price' },
+    { value: 'highestprice', label: 'Highest to lowest Price' },
     { value: 'alphabetical', label: 'Alphabetical'}
 ]
 
@@ -85,6 +85,7 @@ class Shelf extends Component {
         this.selectedFilters = new Set();
 
         this.filterAdventures = this.filterAdventures.bind(this);
+        this.orderAdventures = this.orderAdventures.bind(this);
 
     }
 
