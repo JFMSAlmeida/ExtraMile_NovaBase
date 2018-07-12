@@ -6,7 +6,7 @@ const Product = (props) => {
     return (
         <div className="shelf-item" data-sku={product.id}>
             <div className="shelf-item__main_info">
-                <b><p className="shelf-item__title"> Package {product.id}</p></b>
+                <b><p className="shelf-item__title"> {product.activityName} </p></b>
                 <img className="shelf-item__image" src={require(`./B1001.jpg`)} alt={product.id}/>
                 <div className="shelf-item__price">
                     <div className="val"><b>Price: {product.price}</b><small>€</small></div>

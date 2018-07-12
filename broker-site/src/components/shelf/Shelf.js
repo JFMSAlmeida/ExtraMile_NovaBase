@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import Product from './Product';
 import Filter from './Filter'
+import Order from './Order'
 
 const availableFilters = [
     'Hotel',
     'Vehicle',
 ];
+
+const sortBy = [
+    { value: '',           label: 'Select'  },
+    { value: 'lowestprice', label: 'Lowest to highest' },
+    { value: 'highestprice', label: 'Highest to lowest' },
+    { value: 'alphabetical', label: 'Alphabetical'}
+]
 
 const abc = [
     {
@@ -71,7 +79,7 @@ class Shelf extends Component {
 
         this.state = {
             adventures : abc,
-            filteredAdventures : []
+            filteredAdventures : abc
         }
 
         this.selectedFilters = new Set();
@@ -118,6 +126,37 @@ class Shelf extends Component {
         });
     }
 
+    orderAdventures(value){
+        var orderedAdventures =  this.state.filteredAdventures.slice(0);
+        if(value === 'lowestprice'){
+            orderedAdventures.sort(function(a, b) {
+                return a.price - b.price;
+            });
+        }
+
+        if(value === 'highestprice'){
+            orderedAdventures.sort(function(a, b) {
+                return b.price - a.price;
+            });
+        }
+
+        if(value === 'alphabetical'){
+            orderedAdventures.sort(function(a, b) {
+                if (a.activityName < b.activityName) {
+                    return -1;
+                }
+                if (a.activityName > b.activityName) {
+                    return 1;
+                }
+                return 0;
+            });
+
+        }
+        this.setState({
+            filteredAdventures : orderedAdventures
+        });
+    }
+
 
 
     render(){
@@ -135,19 +174,6 @@ class Shelf extends Component {
                     />
                 );
             });
-        } else {
-            adv = this.state.adventures;
-
-            advArray = adv.map(adv => {
-                return (
-                    <Product
-                        product={adv}
-                        addCart={() => this.props.addCart(adv)}
-                        key={adv.id}
-                    />
-                );
-            });
-
         }
 
         return (
@@ -155,6 +181,10 @@ class Shelf extends Component {
                 <Filter
                     availableFilters = {availableFilters}
                     filterFunction = {label => this.filterAdventures(label)}
+                />
+                <Order
+                    options = {sortBy}
+                    handleOnChange = {this.orderAdventures}
                 />
                 <div className="shelf-container">
                     {advArray}
