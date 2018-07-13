@@ -1,6 +1,8 @@
 import React from 'react'
 import CheckoutProduct from "./CheckoutProduct";
 import {Link} from "react-router-dom";
+import Payment from "./Payment";
+import Payment2 from "./Payment2";
 
 
 export default class Checkout extends React.Component {
@@ -105,11 +107,12 @@ export default class Checkout extends React.Component {
                                 <span>Back to Store</span>
                             </div>
                         </Link>
-                        <Link to={{ pathname: '/payment', remove: this.cleanCheckout, state:{products : this.state.products}}} style={{textDecoration: 'none'}}>
-                            <div className="buy-btn">
-                                <span>Buy</span>
-                            </div>
-                        </Link>
+
+                        <Payment2
+                            remove = {this.cleanCheckout}
+                            products = {this.state.products}
+                        />
+
                     </div>
                 </div>
 
