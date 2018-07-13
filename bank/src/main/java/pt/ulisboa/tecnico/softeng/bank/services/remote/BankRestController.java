@@ -11,6 +11,7 @@ import pt.ulisboa.tecnico.softeng.bank.services.local.BankInterface;
 import pt.ulisboa.tecnico.softeng.bank.services.local.dataobjects.AccountData;
 import pt.ulisboa.tecnico.softeng.bank.services.local.dataobjects.BankOperationData;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,7 +83,17 @@ public class BankRestController {
 		logger.info("getClientTransactions iban:{}", iban);
 
 		try {
-			return new ResponseEntity<>(BankInterface.getTransactions(iban), HttpStatus.OK);
+			Map<String, Object> json = new HashMap<String, Object>();
+
+			ArrayList<Object> array = BankInterface.getTransactions(iban);
+			if (array == null) {
+				json.put("success", false);
+			}
+			else {
+				json.put("success", true);
+				json.put("transactions", array);
+			}
+			return new ResponseEntity<>(json, HttpStatus.OK);
 		} catch (BankException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

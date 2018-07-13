@@ -5,7 +5,7 @@ import AdventureFinder from "./AdventureFinder";
 import Options from "./Options";
 import Home from "./Home";
 import createBrowserHistory from 'history/createBrowserHistory'
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import Payment from "../components/checkout/Payment";
 import Checkout from "../components/checkout/Checkout";
 import Footer from "../components/Footer";

@@ -212,7 +212,7 @@ public class BankInterface {
 	public static ArrayList<Object> getTransactions(String iban) {
 		Account ac = getAccountByIban(iban);
 		if (ac == null) {
-			throw new BankException();
+			return null;
 		}
 		return operations2HashMap(ac.getOperationSet());
 	}
