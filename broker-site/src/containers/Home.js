@@ -52,7 +52,7 @@ class Home extends Component {
         var i2 = "B1001";
         var i3 = "AP1234;AP12341";
 
-        fetch('http://localhost:8083/rest/brokers/processTest?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+        fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
             .then(response => {
             return response.text();
         })
@@ -66,7 +66,7 @@ class Home extends Component {
         var i2 = "B1001";
         var i3 = "HT12345;1;SINGLE";
 
-        fetch('http://localhost:8083/rest/brokers/processRoom?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+        fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
             .then(response => {
             return response.text();
         })
@@ -80,7 +80,7 @@ class Home extends Component {
         var i2 = "B1001";
         var i3 = "12-XX-21;1111111161";
 
-        fetch('http://localhost:8083/rest/brokers/processRoom?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+        fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
             .then(response => {
             return response.text();
         })

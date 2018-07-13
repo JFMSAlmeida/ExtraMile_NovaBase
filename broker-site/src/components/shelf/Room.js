@@ -1,11 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const Room = (props) => {
 
 	const room = props.room;
-	console.log("hey");
 	console.log(room);
 
+	const i3 = room.hotelCode + ";" + room.number + ";" + room.type; 
 
 	return (
 		<div className="shelf-item" data-sku={room.hotelCode}>
@@ -17,7 +18,7 @@ const Room = (props) => {
            		<p> Hotel: {room.hotelName} </p>
            		<p> Number: {room.number} </p>
            	</div>
-           	<p className="shelf-item__buy-btn" /*onClick={props.addCart}*/> Add to adventure </p>
+           	<li><Link to='/adventurebuilder2' className="shelf-item__buy-btn" onClick={props.process.bind(this,i3)} >Add to adventure</Link></li>
 		</div>
 	);
 }

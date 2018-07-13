@@ -3,7 +3,7 @@ import React from 'react';
 const Vehicle = (props) => {
 
 	const vehicle = props.vehicle;
-
+	const i3 = vehicle.plate + ";" + vehicle.rentACarCode;
 
 	return (
 		<div className="shelf-item" data-sku={vehicle.rentACarCode}>
@@ -16,7 +16,7 @@ const Vehicle = (props) => {
            		<p> RentACar: {vehicle.rentACarName} </p>
            		<p> Kilometers: {vehicle.kilometers} </p>
            	</div>
-           	<p className="shelf-item__buy-btn" /*onClick={props.addCart}*/> Add to adventure </p>
+           	<p className="shelf-item__buy-btn" onClick={props.process.bind(this,i3)}> Add to adventure </p>
 		</div>
 	);
 }

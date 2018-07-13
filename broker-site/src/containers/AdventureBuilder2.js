@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import ActivityShelf from '../components/shelf/ActivityShelf';
+import VehicleShelf from '../components/shelf/VehicleShelf';
 import AdventureBuilder1 from './AdventureBuilder1.js';
-import {Route} from 'react-router-dom'
 
-class AdventureBuilder extends Component {
+class AdventureBuilder2 extends Component {
 
     constructor(props){
         super(props);
-        this.state = { activities: []};
+        this.state = {
+                       vehicles: []
+                    }
 
  
 
@@ -35,7 +36,7 @@ class AdventureBuilder extends Component {
 
     componentWillMount() {
 
-        fetch('http://localhost:8081/rest/providers/activities')
+        fetch('http://localhost:8084/rest/rentacars/vehicles')
             .then(response => {
                 return response.text();
             })
@@ -45,20 +46,18 @@ class AdventureBuilder extends Component {
                 const response = JSON.parse(body);
                 console.log(response);
 
-                this.setState({activities: response});
+                this.setState({vehicles: response});
                 console.log(this.state);
             });
-
-       
     }  
 
     render() {
-
+        console.log(this.props.a);
         return (<div>
-                    <h3>AdventureBuilder</h3>
-                    <ActivityShelf
-                        process = {i3 => this.process(i3)}
-                        activities = {this.state.activities}
+                    <h3>Vehicle picker</h3>
+                        <VehicleShelf
+                            process = {i3 => this.process(i3)}
+                            vehicles = {this.state.vehicles}
                     />
 
                 
@@ -68,4 +67,4 @@ class AdventureBuilder extends Component {
 
 }
 
-export default AdventureBuilder;
+export default AdventureBuilder2;

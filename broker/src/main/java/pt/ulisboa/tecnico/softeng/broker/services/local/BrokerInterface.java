@@ -136,25 +136,7 @@ public class BrokerInterface {
 	}
 	
 	@Atomic(mode = TxMode.WRITE)
-	public static void processTest(String brokerCode, String id, String advId) {
-		List<Adventure> list = FenixFramework.getDomainRoot().getBrokerSet().stream()
-				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
-				.collect(Collectors.toList());
-		
-		Adventure advt = null;
-		
-		for (Adventure adv: list) {
-			if (adv.getID().equals(advId)) {
-				advt = adv;
-				break;
-			}
-		}
-
-		advt.process(id);
-	}
-
-	@Atomic(mode = TxMode.WRITE)
-	public static void processRoom(String brokerCode, String id, String advId) {
+	public static void process(String brokerCode, String id, String advId) {
 		List<Adventure> list = FenixFramework.getDomainRoot().getBrokerSet().stream()
 				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
 				.collect(Collectors.toList());

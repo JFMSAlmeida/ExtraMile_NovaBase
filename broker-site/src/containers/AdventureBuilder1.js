@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import ActivityShelf from '../components/shelf/ActivityShelf';
-import AdventureBuilder1 from './AdventureBuilder1.js';
-import {Route} from 'react-router-dom'
+import RoomShelf from '../components/shelf/RoomShelf'
 
-class AdventureBuilder extends Component {
-
+class AdventureBuilder1 extends Component {
     constructor(props){
+        console.log("nope");
         super(props);
-        this.state = { activities: []};
-
- 
+        this.state = { 
+                       rooms: []
+                     };
 
         this.process = this.process.bind(this);
     } 
-
 
      process(i3) {
 
@@ -28,14 +25,14 @@ class AdventureBuilder extends Component {
         .then(body => {
             console.log(JSON.parse(body));
         });
-
-
+        
     }
 
 
     componentWillMount() {
 
-        fetch('http://localhost:8081/rest/providers/activities')
+        
+        fetch('http://localhost:8085/rest/hotels/rooms')
             .then(response => {
                 return response.text();
             })
@@ -45,27 +42,25 @@ class AdventureBuilder extends Component {
                 const response = JSON.parse(body);
                 console.log(response);
 
-                this.setState({activities: response});
+                this.setState({rooms: response});
                 console.log(this.state);
             });
 
-       
-    }  
+        
+    } 
 
     render() {
 
         return (<div>
-                    <h3>AdventureBuilder</h3>
-                    <ActivityShelf
+                    <h3>Room Picker</h3>
+                     <RoomShelf
                         process = {i3 => this.process(i3)}
-                        activities = {this.state.activities}
+                        rooms = {this.state.rooms}
                     />
-
-                
                 </div>
                 );
     }
-
 }
 
-export default AdventureBuilder;
+export default AdventureBuilder1;
+
