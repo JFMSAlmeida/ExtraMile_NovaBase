@@ -78,8 +78,8 @@ class Shelf extends Component {
         super(props);
 
         this.state = {
-            adventures : this.props.adventures,
-            filteredAdventures : this.props.adventures
+            adventures : abc,
+            filteredAdventures : abc
         }
 
         this.selectedFilters = new Set();
