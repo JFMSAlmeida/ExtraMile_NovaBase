@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import avatar from '../components/avatar.png'
+import avatar from './avatar.png'
 import {Link} from 'react-router-dom'
 
 class Login extends Component {

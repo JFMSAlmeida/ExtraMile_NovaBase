@@ -1,8 +1,7 @@
 import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
-import avatar from '../components/avatar.png'
 import $ from 'jquery';
-import Cart from './cart/Cart'
+import Cart from '../cart/Cart'
 import Signup from './Signup'
 import Login from "./Login";
 
