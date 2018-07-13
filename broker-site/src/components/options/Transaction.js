@@ -7,12 +7,12 @@ class Transaction extends Component {
 
         const transactionsArray = transactions.map(transaction => {
             return (
-                <div>
-                    Reference: {transaction.reference} &nbsp;
-                    Type: {transaction.type} &nbsp;
-                    Value: {transaction.value} &nbsp;
-                    Time: {transaction.time}
-                </div>
+                <tr>
+                    <td>{transaction.reference}</td>
+                    <td>{transaction.type}</td>
+                    <td>{transaction.value}</td>
+                    <td>{transaction.time}</td>
+                </tr>
 
             );
         });
@@ -22,9 +22,21 @@ class Transaction extends Component {
             <div>
                 {this.props.couldFetchTransactions ?
                     (transactions.length !== 0) ?
-                        <React.Fragment>
-                            {transactionsArray}
-                        </React.Fragment>
+                        <table className="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Reference</th>
+                                    <th>Type</th>
+                                    <th>Value</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <React.Fragment>
+                                    {transactionsArray}
+                                </React.Fragment>
+                            </tbody>
+                        </table>
                         :
                         <span>
                             No transactions to show.

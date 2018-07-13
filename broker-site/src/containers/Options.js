@@ -221,7 +221,7 @@ class AdventureBuilder extends Component {
                                         <div className="row">
                                             <div className="col-md-12">
                                                 <h4>Transactions</h4>
-                                                <hr></hr>
+                                                <hr className="home_hr"></hr>
                                                 <Transaction
                                                     transactions = {this.state.transactions}
                                                     couldFetchTransactions = {this.state.couldFetchTransactions}/>

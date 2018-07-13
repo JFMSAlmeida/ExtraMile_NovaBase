@@ -11,7 +11,7 @@ class Dashboard extends Component {
                             <div className="row">
                                 <div className="col-md-12">
                                     <h4>Dashboard</h4>
-                                    <hr></hr>
+                                    <hr className="home_hr"></hr>
                                 </div>
                             </div>
                             <div className="row" style={{paddingLeft: "18px"}}>
