@@ -117,7 +117,7 @@ class Shelf extends Component {
             }
         }, this);
 
-        this.setState({filteredAdventures : filteredAdventures});
+        this.setState({filteredAdventures : filteredAdventures}, () => {this.orderAdventures(this.state.value)});
     }
 
     orderAdventures(value){
