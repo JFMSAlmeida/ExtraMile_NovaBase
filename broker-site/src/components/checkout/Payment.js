@@ -63,26 +63,28 @@ class Payment extends Component {
                     {(this.state.paymentSuccess === 1) && <div className="payment-confirmed">
                         <img className="payment-confirmed__img" src={require(`../success.png`)} alt=""/>
                         <h1><b>Your payment was confirmed!</b></h1>
-                        <table className="table">
-                            <tbody>
-                                <tr>
-                                    <td><b>Amount</b></td>
-                                    <td>100€</td>
-                                </tr>
-                                {referencesArray}
-                                <tr>
-                                    <td><b>Date</b></td>
-                                    <td>14/7/2018</td>
-                                </tr>
-                                <tr>
-                                    <td colSpan="2">
-                                    <button type="button" className="btn btn-default btn-sm">
-                                        <span className="glyphicon glyphicon-print"></span> Print
-                                    </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div>
+                            <table className="table">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Amount</b></td>
+                                        <td>100€</td>
+                                    </tr>
+                                    {referencesArray}
+                                    <tr>
+                                        <td><b>Date</b></td>
+                                        <td>14/7/2018</td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan="2">
+                                        <button type="button" className="btn btn-default btn-sm">
+                                            <span className="glyphicon glyphicon-print"></span> Print
+                                        </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>}
                     {(this.state.paymentSuccess === 2) && <div className="payment-cancelled">
                         <img className="payment-confirmed__img" src={require(`../sad_face.jpg`)} alt=""/>
