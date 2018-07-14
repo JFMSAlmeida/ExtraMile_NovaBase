@@ -17,8 +17,6 @@ class CartProduct extends Component {
 
     render(){
         const product = this.props.product;
-        console.log(product);
-        console.log(product.vehicleType);
 
         const classes = ['shelf-item'];
 

@@ -14,7 +14,6 @@ class Cart extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.product);
         if (nextProps.product !== this.state.newProduct) {
             this.setState({ newProduct : nextProps.product });
             this.addProduct(nextProps.product);
@@ -26,7 +25,6 @@ class Cart extends Component{
         for(var i = 0; i < this.state.products.length; i++){
            acumulator = acumulator + this.state.products[i].price;
         }
-        console.log(acumulator);
         return acumulator;
     }
 
@@ -55,7 +53,6 @@ class Cart extends Component{
     }
 
     removeProduct(product) {
-        console.log(product);
         const cartProducts = this.state.products;
 
         const index = cartProducts.findIndex(p => p.id === product.id);

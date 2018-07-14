@@ -16,7 +16,6 @@ export default class CheckoutProduct extends React.Component{
     }
 
     render() {
-        console.log(this.props.product);
 
         const classes = ['cart_line'];
 

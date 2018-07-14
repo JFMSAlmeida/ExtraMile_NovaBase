@@ -637,6 +637,7 @@ a:hover {color: inherit;}
   position: relative;
   float: right;
   font-weight: bold;
+  top: 50px;
 }
 .wrapper .buy-btn:hover {
   background-color: #eabf00;
@@ -654,8 +655,28 @@ a:hover {color: inherit;}
   width: 40%;
   position: relative;
   top: 50px;
+  float: left;
 }
 .wrapper .back-btn:hover {
+  background-color: #000;
+  color: #ececec;
+}
+
+.boda .back-btn2 {
+  color: #ececec;
+  text-transform: uppercase;
+  background-color: #0c0b10;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  width: 40%;
+  position: relative;
+  top: 50px;
+  float: left;
+  left: 320px;
+}
+.boda .back-btn2:hover {
   background-color: #000;
   color: #ececec;
 }
@@ -1083,4 +1104,14 @@ select {
 .trigger-btn {
   display: inline-block;
   margin: 100px auto;
+}
+
+.payment-confirmed .payment-confirmed_list{
+    border: 1px solid #5b5a5e;
+}
+
+.payment-confirmed_list{
+    padding: 55px;
+    border-bottom: 1px solid #ddd;
+
 }
