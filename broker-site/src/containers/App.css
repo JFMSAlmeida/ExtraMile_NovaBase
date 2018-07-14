@@ -637,6 +637,7 @@ a:hover {color: inherit;}
   position: relative;
   float: right;
   font-weight: bold;
+  top: 50px;
 }
 .wrapper .buy-btn:hover {
   background-color: #eabf00;
@@ -654,8 +655,28 @@ a:hover {color: inherit;}
   width: 40%;
   position: relative;
   top: 50px;
+  float: left;
 }
 .wrapper .back-btn:hover {
+  background-color: #000;
+  color: #ececec;
+}
+
+.boda .back-btn2 {
+  color: #ececec;
+  text-transform: uppercase;
+  background-color: #0c0b10;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  width: 40%;
+  position: relative;
+  top: 50px;
+  float: left;
+  left: 320px;
+}
+.boda .back-btn2:hover {
   background-color: #000;
   color: #ececec;
 }
@@ -997,4 +1018,139 @@ select {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #222222, rgba(0, 0, 0, 0));
+}
+
+
+/* --- MODAL CONFIRM --- */
+.modal-confirm {
+  color: #636363;
+  width: 400px;
+}
+.modal-confirm .modal-content {
+  padding: 20px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+}
+.modal-confirm .modal-header {
+  border-bottom: none;
+  position: relative;
+}
+.modal-confirm h4 {
+  text-align: center;
+  font-size: 26px;
+  margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+  position: absolute;
+  top: -5px;
+  right: -2px;
+}
+.modal-confirm .modal-body {
+  color: #999;
+}
+.modal-confirm .modal-footer {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+  color: #999;
+}
+.modal-confirm .icon-box {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border-radius: 50%;
+  z-index: 9;
+  text-align: center;
+  border: 3px solid #000000;
+}
+.modal-confirm .icon-box i {
+  color: #000000;
+  font-size: 46px;
+  display: inline-block;
+  margin-top: 13px;
+}
+.modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #60c7c1;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  min-width: 120px;
+  border: none;
+  min-height: 40px;
+  border-radius: 3px;
+  margin: 0 5px;
+  outline: none !important;
+}
+.modal-confirm .btn-info {
+  background: #c1c1c1;
+}
+.modal-confirm .btn-info:hover, .modal-confirm .btn-info:focus {
+  background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+  background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+  background: #ee3535;
+}
+.trigger-btn {
+  display: inline-block;
+  margin: 100px auto;
+}
+.payment-confirmed{
+  text-align: center;
+}
+
+.payment-cancelled{
+  text-align: center;
+}
+
+.payment-confirmed .payment-confirmed_list{
+    border: 1px solid #5b5a5e;
+}
+
+.payment-confirmed_list{
+    padding: 55px;
+    border-bottom: 1px solid #ddd;
+
+}
+.table_references{
+  padding-top: 5px;
+  margin: 0 auto;
+}
+.table_references th{
+  text-align: center;
+  padding: 8px 8px 8px 8px;
+  background-color: #f2f2f2;
+  font-size: 18px;
+}
+.table_references td{
+  padding: 0px 8px 8px 8px;
+}
+.table_references .table_references_date{
+  border-top:1px solid #ddd;
+}
+.table_references .table_references_date td, .table_references .table_references_total td{
+  border-left:1px solid #ddd;
+  padding: 9px;
+}
+.table_references .table_references_date td:first-child, .table_references .table_references_total td:first-child{
+  background-color: #f2f2f2;
+}
+.table_references .table_references_print td {
+  padding-top: 20px;
+}
+.table_references .table_references_data td{
+  padding: 9px;
+}
+.btn btn-default btn-sm{
+  font-size: 16px;
 }

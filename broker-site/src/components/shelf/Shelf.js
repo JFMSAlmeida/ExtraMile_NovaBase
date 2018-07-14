@@ -78,8 +78,9 @@ class Shelf extends Component {
         super(props);
 
         this.state = {
-            adventures : this.props.adventures,
-            filteredAdventures : this.props.adventures
+            adventures : [],
+            filteredAdventures : [],
+            value : ""
         }
 
         this.selectedFilters = new Set();
@@ -90,7 +91,6 @@ class Shelf extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.adventures);
         this.setState({
             adventures : this.props.adventures,
             filteredAdventures : this.props.adventures
@@ -117,12 +117,12 @@ class Shelf extends Component {
             }
         }, this);
 
-        this.setState({
-            filteredAdventures : filteredAdventures
-        });
+        this.setState({filteredAdventures : filteredAdventures}, () => {this.orderAdventures(this.state.value)});
     }
 
     orderAdventures(value){
+        this.setState({ value : value});
+
         var orderedAdventures =  this.state.filteredAdventures.slice(0);
         if(value === 'lowestprice'){
             orderedAdventures.sort(function(a, b) {

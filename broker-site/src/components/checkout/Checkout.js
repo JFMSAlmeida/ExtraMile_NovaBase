@@ -1,6 +1,8 @@
 import React from 'react'
 import CheckoutProduct from "./CheckoutProduct";
 import {Link} from "react-router-dom";
+import Payment from "./Payment";
+import PaymentModal from "./PaymentModal";
 
 
 export default class Checkout extends React.Component {
@@ -18,8 +20,6 @@ export default class Checkout extends React.Component {
     cleanCheckout(){
         const len = this.state.products.length;
         for(var i = 0; i < len; i++){
-            console.log(len);
-            console.log(i);
             this.props.location.remove(this.state.products[0]);
         }
         this.setState({
@@ -36,9 +36,7 @@ export default class Checkout extends React.Component {
     }
 
     deleteProduct(product){
-        console.log(product);
         const cartProducts = this.state.products;
-        console.log(cartProducts.length);
 
         const index = cartProducts.findIndex(p => p.id === product.id);
         this.props.location.remove(this.state.products[index]);
@@ -46,8 +44,6 @@ export default class Checkout extends React.Component {
         this.setState({
             products : cartProducts
         });
-
-        console.log(cartProducts.length);
 
     }
 
@@ -105,11 +101,13 @@ export default class Checkout extends React.Component {
                                 <span>Back to Store</span>
                             </div>
                         </Link>
-                        <Link to={{ pathname: '/payment', remove: this.cleanCheckout, state:{products : this.state.products}}} style={{textDecoration: 'none'}}>
-                            <div className="buy-btn">
-                                <span>Buy</span>
-                            </div>
-                        </Link>
+
+                        <PaymentModal
+                            remove = {this.cleanCheckout}
+                            products = {this.state.products}
+                            total = {total}
+                        />
+
                     </div>
                 </div>
 

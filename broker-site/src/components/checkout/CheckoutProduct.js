@@ -16,7 +16,6 @@ export default class CheckoutProduct extends React.Component{
     }
 
     render() {
-        console.log(this.props.product);
 
         const classes = ['cart_line'];
 
@@ -32,7 +31,9 @@ export default class CheckoutProduct extends React.Component{
                 </td>
                 <td className="title_td-item">
                     <strong>{this.props.product.id}</strong>
-                    <div className="desc">{`| ${this.props.product.activityName} | ${this.props.product.hotelName} | ${this.props.product.vehicleType} |`}</div>
+                    <div className="desc">
+                        {this.props.product.activityName} {this.props.product.hasRoom && <span>| {this.props.product.hotelName} </span>} {this.props.product.hasVehicle && <span>| {this.props.product.vehicleType} </span>}
+                    </div>
                     <br/>
                 </td>
                 <td className="price_td-item">

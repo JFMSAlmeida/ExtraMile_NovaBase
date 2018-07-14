@@ -6,13 +6,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.StreamingHttpOutputMessage;
 import org.springframework.web.bind.annotation.*;
+import pt.ulisboa.tecnico.softeng.broker.domain.Broker;
 import pt.ulisboa.tecnico.softeng.broker.domain.Client;
 import pt.ulisboa.tecnico.softeng.broker.services.local.BrokerInterface;
 import pt.ulisboa.tecnico.softeng.broker.exception.BrokerException;
+import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.AdventureData;
+import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BrokerData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.ClientData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -34,6 +38,35 @@ public class BrokerRestController {
 		} catch (BrokerException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/showReferences")
+	public ResponseEntity<ArrayList<Object>> showReferences(@RequestParam(value = "param") String[] paramValues) {
+
+		ArrayList<Object> response = new ArrayList<>();
+
+		try {
+			ClientData clientData = BrokerInterface.getClientDataByBrokerCodeAndNif(paramValues[0], paramValues[1]);
+
+
+			for(AdventureData a : clientData.getAdventures()){
+				for(int i = 2; i < paramValues.length; i++){
+					if(a.getId().equals(paramValues[i])){
+						ArrayList<Object> references = new ArrayList<>();
+						references.add(paramValues[i]);
+						references.add(a.getPaymentConfirmation());
+						references.add(a.getAmount());
+						response.add(references);
+					}
+				}
+			}
+			return new ResponseEntity<>(response,HttpStatus.OK);
+
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
 	}
 
 	@CrossOrigin
