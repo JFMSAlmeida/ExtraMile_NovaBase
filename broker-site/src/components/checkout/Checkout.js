@@ -105,6 +105,7 @@ export default class Checkout extends React.Component {
                         <PaymentModal
                             remove = {this.cleanCheckout}
                             products = {this.state.products}
+                            total = {total}
                         />
 
                     </div>

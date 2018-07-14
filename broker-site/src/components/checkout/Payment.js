@@ -11,6 +11,15 @@ class Payment extends Component {
         };
     }
 
+    printDiv() {
+        var prtContent = document.getElementById("printableArea");
+        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write(prtContent.innerHTML);
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+        WinPrint.close();
+    }
 
     async componentDidMount() {
         const size = this.props.location.state.products.length;
@@ -49,7 +58,9 @@ class Payment extends Component {
             var referencesArray = this.state.references.map(adv => {
                 return (
                     <TableReference
-                        vec = {adv}
+                        id = {adv[0]}
+                        reference = {adv[1]}
+                        price = {adv[2]}
                         key={i++}
                     />
                 );
@@ -57,29 +68,52 @@ class Payment extends Component {
 
             this.props.location.remove();
         }
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if(dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if(mm < 10) {
+            mm = '0' + mm;
+        }
 
         return (<div className="container">
                 {(this.state.paymentSuccess !== 0) && <div>
                     {(this.state.paymentSuccess === 1) && <div className="payment-confirmed">
                         <img className="payment-confirmed__img" src={require(`../success.png`)} alt=""/>
                         <h1><b>Your payment was confirmed!</b></h1>
-                        <div>
-                            <table className="table">
+                        <div id="printableArea">
+                            <table className="table_references">
+                                <thead>
+                                    <tr>
+                                        <th>Adventure ID</th>
+                                        <th>Transaction Reference</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><b>Amount</b></td>
-                                        <td>100€</td>
-                                    </tr>
                                     {referencesArray}
-                                    <tr>
-                                        <td><b>Date</b></td>
-                                        <td>14/7/2018</td>
-                                    </tr>
-                                    <tr>
+                                    <tr className="table_references_date">
                                         <td colSpan="2">
-                                        <button type="button" className="btn btn-default btn-sm">
-                                            <span className="glyphicon glyphicon-print"></span> Print
-                                        </button>
+                                            <b>Date</b>
+                                        </td>
+                                        <td>{dd}/{mm}/{yyyy}</td>
+                                    </tr>
+                                    <tr className="table_references_total">
+                                        <td colSpan="2">
+                                            <b>Total Amount</b>
+                                        </td>
+                                        <td> {this.props.location.state.total}€</td>
+                                    </tr>
+                                    <tr className="table_references_print">
+                                        <td colSpan="3">
+                                            <button type="button" className="btn btn-default btn-sm" onClick={this.printDiv}>
+                                                <span className="glyphicon glyphicon-print"></span> Print
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>

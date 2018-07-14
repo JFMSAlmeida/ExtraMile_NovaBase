@@ -53,9 +53,10 @@ public class BrokerRestController {
 			for(AdventureData a : clientData.getAdventures()){
 				for(int i = 2; i < paramValues.length; i++){
 					if(a.getId().equals(paramValues[i])){
-						ArrayList<String> references = new ArrayList<>();
+						ArrayList<Object> references = new ArrayList<>();
 						references.add(paramValues[i]);
 						references.add(a.getPaymentConfirmation());
+						references.add(a.getAmount());
 						response.add(references);
 					}
 				}

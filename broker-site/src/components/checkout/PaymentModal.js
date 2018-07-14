@@ -28,7 +28,7 @@ class Payment extends Component {
 
     render() {
         if (this.state.paymentConfirmation) {
-            return <Redirect to={{pathname: '/payment',remove: this.removeProducts ,state:{products : this.props.products}}} />;
+            return <Redirect to={{pathname: '/payment',remove: this.removeProducts ,state:{products : this.props.products, total: this.props.total}}} />;
         }
         return (
             <div>

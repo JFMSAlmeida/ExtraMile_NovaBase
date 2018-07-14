@@ -1122,3 +1122,35 @@ select {
     border-bottom: 1px solid #ddd;
 
 }
+.table_references{
+  padding-top: 5px;
+  margin: 0 auto;
+}
+.table_references th{
+  text-align: center;
+  padding: 8px 8px 8px 8px;
+  background-color: #f2f2f2;
+  font-size: 18px;
+}
+.table_references td{
+  padding: 0px 8px 8px 8px;
+}
+.table_references .table_references_date{
+  border-top:1px solid #ddd;
+}
+.table_references .table_references_date td, .table_references .table_references_total td{
+  border-left:1px solid #ddd;
+  padding: 9px;
+}
+.table_references .table_references_date td:first-child, .table_references .table_references_total td:first-child{
+  background-color: #f2f2f2;
+}
+.table_references .table_references_print td {
+  padding-top: 20px;
+}
+.table_references .table_references_data td{
+  padding: 9px;
+}
+.btn btn-default btn-sm{
+  font-size: 16px;
+}
