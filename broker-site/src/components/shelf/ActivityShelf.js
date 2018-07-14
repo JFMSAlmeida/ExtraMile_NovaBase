@@ -5,21 +5,19 @@ import Activity from './Activity';
 
 class ActivityShelf extends Component {
 
-	constructor(props) {
-        super(props);
-    }
-
 
 	render() {
 		const act = this.props.activities;
 		console.log(act);
 
-		const actArray = act.map(act => {
+		const actArray = act.map((act, index) => {
 				return(
 					<Activity
 						process = {this.props.process}
 						activity = {act}
-						key = {act.providerCode}
+						key = {index}
+						addCart = {this.props.addCart}
+
 					/>
 				);
 		});

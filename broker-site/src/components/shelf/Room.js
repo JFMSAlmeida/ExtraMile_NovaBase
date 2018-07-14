@@ -8,6 +8,21 @@ const Room = (props) => {
 
 	const i3 = room.hotelCode + ";" + room.number + ";" + room.type; 
 
+	const info = {
+		pathname:'/adventurebuilder2',
+		activityName: props.activity.activityName,
+		begin: props.activity.begin,
+		end: props.activity.end,
+		age: props.activity.age,
+		hasRoom: true,
+		hotelName: room.hotelName,
+		roomNumber: room.number,
+		roomType: room.type,
+		addCart: props.activity.addCart
+	};
+
+	console.log(info);
+
 	return (
 		<div className="shelf-item" data-sku={room.hotelCode}>
 			<div className="shelf-item__main_info">
@@ -18,7 +33,7 @@ const Room = (props) => {
            		<p> Hotel: {room.hotelName} </p>
            		<p> Number: {room.number} </p>
            	</div>
-           	<li><Link to='/adventurebuilder2' className="shelf-item__buy-btn" onClick={props.process.bind(this,i3)} >Add to adventure</Link></li>
+           	<li><Link to={info} className="shelf-item__buy-btn" onClick={props.process.bind(this,i3)} >Add to adventure</Link></li>
 		</div>
 	);
 }

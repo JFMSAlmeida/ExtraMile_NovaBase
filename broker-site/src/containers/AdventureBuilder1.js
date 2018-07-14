@@ -48,14 +48,24 @@ class AdventureBuilder1 extends Component {
 
         
     } 
-
+ 
     render() {
+        const info = {
+            activityName: this.props.location.activityName,
+            begin: this.props.location.begin,
+            end: this.props.location.end,
+            age: this.props.location.age,
+            addCart: this.props.location.addCart
+    
+        };
 
         return (<div>
                     <h3>Room Picker</h3>
                      <RoomShelf
                         process = {i3 => this.process(i3)}
                         rooms = {this.state.rooms}
+                        activity = {info}
+
                     />
                 </div>
                 );

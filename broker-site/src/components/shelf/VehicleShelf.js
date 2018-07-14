@@ -3,21 +3,18 @@ import Vehicle from './Vehicle';
 
 class VehicleShelf extends Component {
 
-	constructor(props) {
-        super(props);
-    }
-
 
 	render() {
 		const vehicle = this.props.vehicles;
 		console.log(vehicle);
 
-		const vehicleArray = vehicle.map(vehicle => {
+		const vehicleArray = vehicle.map((v,index) => {
 			return(
 				<Vehicle
 					process = {this.props.process}
-					vehicle = {vehicle}
-					key = {vehicle.rentACarCode}
+					vehicle = {v}
+					key = {index}
+					room = {this.props.room}
 				/>
 			);
 		});

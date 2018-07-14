@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import VehicleShelf from '../components/shelf/VehicleShelf';
-import AdventureBuilder1 from './AdventureBuilder1.js';
 
 class AdventureBuilder2 extends Component {
 
@@ -52,12 +51,26 @@ class AdventureBuilder2 extends Component {
     }  
 
     render() {
-        console.log(this.props.a);
+
+        const info = {
+            activityName: this.props.location.activityName,
+            begin: this.props.location.begin,
+            end: this.props.location.end,
+            age: this.props.location.age,
+            hasRoom: this.props.location.hasRoom,
+            hotelName: this.props.location.hotelName,
+            roomNumber: this.props.location.roomNumber,
+            roomType: this.props.location.roomType,
+            addCart: this.props.location.addCart
+
+        };
+
         return (<div>
                     <h3>Vehicle picker</h3>
                         <VehicleShelf
                             process = {i3 => this.process(i3)}
                             vehicles = {this.state.vehicles}
+                            room = {info}                     
                     />
 
                 

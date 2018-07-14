@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import ActivityShelf from '../components/shelf/ActivityShelf';
-import AdventureBuilder1 from './AdventureBuilder1.js';
-import {Route} from 'react-router-dom'
 
 class AdventureBuilder extends Component {
 
@@ -59,6 +57,8 @@ class AdventureBuilder extends Component {
                     <ActivityShelf
                         process = {i3 => this.process(i3)}
                         activities = {this.state.activities}
+                        addCart = {this.props.addCart}
+
                     />
 
                 

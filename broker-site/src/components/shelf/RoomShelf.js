@@ -3,21 +3,18 @@ import Room from './Room';
 
 class RoomShelf extends Component {
 
-	constructor(props) {
-        super(props);
-    }
-
 
 	render() {
 		const room = this.props.rooms;
 		console.log(room);
 
-		const roomArray = room.map(room => {
+		const roomArray = room.map((r,index) => {
 			return(
 				<Room
 					process = {this.props.process}
-					room = {room}
-					key = {room.hotelCode}
+					room = {r}
+					key = {index}
+					activity = {this.props.activity}
 				/>
 			);
 		});

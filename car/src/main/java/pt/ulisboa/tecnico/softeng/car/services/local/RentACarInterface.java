@@ -227,13 +227,37 @@ public class RentACarInterface {
 			RentACar rentACar = getRentACar(rentData.getCode());
 
 			freeVehicles.addAll(rentACar.getAllAvailableMotorcycles(arrival, departure));
-			freeVehicles.addAll(rentACar.getAllAvailableCars(arrival, departure));
+			
 		}
 
 		for(Object v: freeVehicles){
 			
 			Map<String, Object> vehicleInfo = new HashMap<>();
 
+			vehicleInfo.put("type", "MOTORCYCLE");
+			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
+			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
+			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
+			vehicleInfo.put("rentACarName", ((Vehicle_Base) v).getRentACar().getName());
+			vehicleInfo.put("rentACarCode", ((Vehicle_Base) v).getRentACar().getCode());
+		
+			vehicles.add(vehicleInfo);
+		}
+
+		freeVehicles.clear();
+
+		for(RentACarData rentData: data){
+			RentACar rentACar = getRentACar(rentData.getCode());
+
+			freeVehicles.addAll(rentACar.getAllAvailableCars(arrival, departure));
+			
+		}
+
+		for(Object v: freeVehicles){
+			
+			Map<String, Object> vehicleInfo = new HashMap<>();
+
+			vehicleInfo.put("type", "CAR");
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
 			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
