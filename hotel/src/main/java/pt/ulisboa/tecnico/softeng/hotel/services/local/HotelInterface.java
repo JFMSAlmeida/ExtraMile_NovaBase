@@ -1,9 +1,6 @@
 package pt.ulisboa.tecnico.softeng.hotel.services.local;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.joda.time.LocalDate;
@@ -156,7 +153,51 @@ public class HotelInterface {
 			}
 		}
 		return availableRooms;
+	} 
+
+	@Atomic(mode = TxMode.READ)
+	public static List<Room> getAllRooms() {
+		List<Room> availableRooms = new ArrayList<>();
+
+		LocalDate arrival =  new LocalDate("1980-01-01");
+		LocalDate departure = new LocalDate("2050-12-12");
+
+		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {
+			availableRooms.addAll(hotel.getAvailableRooms(arrival, departure));
+		}
+
+		return availableRooms;
 	}
+
+	@Atomic(mode = TxMode.READ)
+	public static ArrayList<Object> rooms2HashMap(List<Room> availableRooms) {
+		ArrayList<Object> rooms = new ArrayList<>();
+		
+		for (Room room : availableRooms) {
+
+			Map<String, Object> roomt = new HashMap<>();
+			roomt.put("number", room.getNumber());
+			roomt.put("type", room.getType());
+			roomt.put("hotelName", room.getHotel().getName());
+			roomt.put("hotelCode", room.getHotel().getCode());
+
+			if (room.getType() == Room.Type.SINGLE) {
+
+				roomt.put("price", room.getHotel().getPriceSingle());
+			} else {
+
+				roomt.put("price", room.getHotel().getPriceDouble());
+			}
+
+			rooms.add(roomt);
+		}
+
+		return rooms;
+	}  
+
+
+
+
 
 	private static Hotel getHotelByCode(String code) {
 		return FenixFramework.getDomainRoot().getHotelSet().stream().filter(h -> h.getCode().equals(code)).findFirst()
@@ -194,4 +235,45 @@ public class HotelInterface {
 		return bookings;
 	}
 
+	@Atomic(mode = TxMode.WRITE)
+	public static String reserveSelectedRoom(RestRoomBookingData roomBookingData) {
+		
+		Booking booking = getBooking4AdventureId(roomBookingData.getAdventureId());
+		if (booking != null) {
+			return booking.getReference();
+		}
+
+		Room.Type type = roomBookingData.getRoomType().equals("SINGLE") ? Room.Type.SINGLE : Room.Type.DOUBLE;
+		
+		String hotelCode = roomBookingData.getId().split(";")[0];
+		
+		Hotel hotel = null;
+		
+		for (Hotel aux : FenixFramework.getDomainRoot().getHotelSet()) {
+			if (aux.getCode().equals(hotelCode)) {
+				hotel = aux;
+			}
+		}
+		
+		if (hotel == null) {
+			throw new HotelException();
+		}
+		
+		Room room = hotel.getRoomByNumber(roomBookingData.getId().split(";")[1]);
+
+		
+		if (room != null) {
+			Booking newBooking = room.reserve(type, roomBookingData.getArrival(), roomBookingData.getDeparture(),
+					roomBookingData.getBuyerNif(), roomBookingData.getBuyerIban());
+
+			return newBooking.getReference();
+		}
+		
+		
+		
+		throw new HotelException();
+	}
+
+	
+	
 }

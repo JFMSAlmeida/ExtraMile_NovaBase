@@ -15,6 +15,9 @@ public abstract class AdventureState extends AdventureState_Base {
 	public abstract State getValue();
 
 	public abstract void process();
+	
+	public abstract void process(String id);
+
 
 	public void delete() {
 		setAdventure(null);

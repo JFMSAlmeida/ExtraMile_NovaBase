@@ -1,7 +1,15 @@
 package pt.ulisboa.tecnico.softeng.activity.services.local;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.joda.time.LocalDate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import pt.ist.fenixframework.Atomic;
 import pt.ist.fenixframework.Atomic.TxMode;
@@ -24,7 +32,7 @@ public class ActivityInterface {
 				.sorted((p1, p2) -> p1.getName().compareTo(p2.getName())).map(p -> new ActivityProviderData(p))
 				.collect(Collectors.toList());
 	}
-
+ 
 	@Atomic(mode = TxMode.WRITE)
 	public static void createProvider(ActivityProviderData provider) {
 		new ActivityProvider(provider.getCode(), provider.getName(), provider.getNif(), provider.getIban());
@@ -90,6 +98,7 @@ public class ActivityInterface {
 		if (booking != null) {
 			return booking.getReference();
 		}
+		
 
 		List<ActivityOffer> offers;
 		for (ActivityProvider provider : FenixFramework.getDomainRoot().getActivityProviderSet()) {
@@ -104,6 +113,8 @@ public class ActivityInterface {
 		}
 		throw new ActivityException();
 	}
+	
+
 
 	@Atomic(mode = TxMode.WRITE)
 	public static void reserveActivity(String externalId, RestActivityBookingData bookingData) {
@@ -179,5 +190,96 @@ public class ActivityInterface {
 		return provider.getActivitySet().stream().filter(a -> a.getCode().equals(codeActivity)).findFirst()
 				.orElse(null);
 	}
+	
+	@Atomic(mode = TxMode.WRITE)
+	public static String reserveSelectedActivity(RestActivityBookingData activityBookingData) {
 
+		Booking booking = getBookingByAdventureId(activityBookingData.getAdventureId());
+		if (booking != null) {
+			return booking.getReference();
+			
+		}
+		
+		String[] id = activityBookingData.getId().split(";");
+		
+		String providerCode = id[0];
+		String activityCode = id[1];
+		
+		ActivityProvider provider = null;
+		
+		for (ActivityProvider aux : FenixFramework.getDomainRoot().getActivityProviderSet()) {
+		
+			if (providerCode.equals(aux.getCode())) {
+				provider = aux;
+				break;
+			}
+		}
+		
+		
+		if (provider == null)
+			throw new ActivityException();
+		
+		ActivityOffer offer = provider.findOffer(activityBookingData.getBegin(), activityBookingData.getEnd(),
+				activityBookingData.getAge(), activityCode);
+		
+		
+		if (offer != null) {
+			Booking newBooking = offer.book(provider, offer, activityBookingData.getAge(),
+					activityBookingData.getNif(), activityBookingData.getIban(),
+					activityBookingData.getAdventureId());
+
+			return newBooking.getReference();
+		}
+		
+		throw new ActivityException();
+	}
+
+	@Atomic(mode = TxMode.READ)
+	public static List<ActivityOffer> getAllOffers () {
+		
+		List<ActivityOffer> offers = new ArrayList<>();
+
+		LocalDate begin =  new LocalDate("1980-01-01");
+		LocalDate end = new LocalDate("2050-12-12");
+		int age = 18;
+
+		for (ActivityProvider provider: FenixFramework.getDomainRoot().getActivityProviderSet()) {
+			offers.addAll(provider.findOffer(begin, end, age));
+		}
+		System.out.println("offers: " + offers);
+
+		return offers;
+	}
+
+	@Atomic(mode = TxMode.READ)
+	public static ArrayList<Object> offersToHashMap(List<ActivityOffer> offers) {
+
+		ArrayList<Object> allOffers = new ArrayList<>();
+
+		for (ActivityOffer offer: offers) {
+
+			Map<String, Object> aux = new HashMap<>();
+
+			Activity activity = offer.getActivity();
+			ActivityProvider provider = activity.getActivityProvider();
+			System.out.println("activity: " + activity);
+			System.out.println("provider: " + provider);
+			
+			aux.put("title", activity.getName());
+			aux.put("providerName", provider.getName());
+			aux.put("providerCode", provider.getCode());
+			aux.put("price", offer.getAmount());
+			aux.put("begin", offer.getBegin());
+			aux.put("end", offer.getEnd());
+			aux.put("minAge", activity.getMinAge());
+			aux.put("maxAge", activity.getMaxAge());
+			aux.put("capacity", activity.getCapacity());
+			aux.put("id", activity.getCode());
+
+			allOffers.add(aux);
+		}
+
+		return allOffers;
+	}
+	
 }

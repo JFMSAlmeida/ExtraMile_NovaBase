@@ -44,6 +44,28 @@ public class HotelInterface {
 			throw new RemoteAccessException();
 		}
 	}
+	
+	public static String reserveSelectedRoom(RestRoomBookingData roomBookingData) {
+		logger.info("reserveRoom arrival:{}, departure:{}, nif:{}, iban:{}, adventureId:{}, id:{}",
+				roomBookingData.getArrival(), roomBookingData.getDeparture(), roomBookingData.getBuyerNif(),
+				roomBookingData.getBuyerIban(), roomBookingData.getAdventureId(), roomBookingData.getId());
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			String result = restTemplate.postForObject(ENDPOINT + "/rest/hotels/reserveSelected", roomBookingData,
+					String.class);
+			return result;
+		} catch (HttpClientErrorException e) {
+			logger.info("reserveRoom HttpClientErrorException arrival:{}, departure:{}, adventureId:{}, id:{}",
+					roomBookingData.getArrival(), roomBookingData.getDeparture(), roomBookingData.getBuyerNif(),
+					roomBookingData.getBuyerIban(), roomBookingData.getAdventureId(), roomBookingData.getId());
+			throw new HotelException();
+		} catch (Exception e) {
+			logger.info("reserveRoom Exception arrival:{}, departure:{}, adventureId:{}, id:{}", roomBookingData.getArrival(),
+					roomBookingData.getDeparture(), roomBookingData.getBuyerNif(), roomBookingData.getBuyerIban(),
+					roomBookingData.getAdventureId(), roomBookingData.getId());
+			throw new RemoteAccessException();
+		}
+	}
 
 	public static String cancelBooking(String roomConfirmation) {
 		logger.info("cancelBooking roomConfirmation:{}", roomConfirmation);

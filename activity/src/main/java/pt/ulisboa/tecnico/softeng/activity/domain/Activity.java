@@ -57,6 +57,19 @@ public class Activity extends Activity_Base {
 		}
 		return result;
 	}
+	
+
+	ActivityOffer getOffer(LocalDate begin, LocalDate end, int age) {
+		ActivityOffer result = null;
+		for (ActivityOffer offer : getActivityOfferSet()) {
+			if (matchAge(age) && offer.available(begin, end)) {
+				result = offer;
+			}
+		}
+		
+		return result;
+	}
+
 
 	boolean matchAge(int age) {
 		return age >= getMinAge() && age <= getMaxAge();

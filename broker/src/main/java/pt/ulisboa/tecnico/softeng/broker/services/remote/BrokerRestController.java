@@ -13,11 +13,13 @@ import pt.ulisboa.tecnico.softeng.broker.exception.BrokerException;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.AdventureData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.BrokerData;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.ClientData;
+import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.AdventureData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.joda.time.LocalDate;
 
 @RestController
 @RequestMapping(value = "/rest/brokers")
@@ -39,6 +41,7 @@ public class BrokerRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+
 
 	@CrossOrigin
 	@RequestMapping(value = "/showReferences")
@@ -100,6 +103,46 @@ public class BrokerRestController {
 		} catch (BrokerException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = "/processPart")
+	public ResponseEntity<Map<String, Object>> processPart (@RequestParam(value="param1") String brokerCode,
+			  												@RequestParam(value="param2") String advId,
+			  												@RequestParam(value="param3") String id) {
+		
+		try {
+
+			BrokerInterface.process(brokerCode, id, advId);
+			Map<String, Object> json = new HashMap<String, Object>();
+			json.put("success", true);
+			json.put("brokerCode", brokerCode);
+			json.put("id", id);
+			json.put("advId", advId);
+			return new ResponseEntity<>(json, HttpStatus.OK);
+
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/getAdventurePrice")
+	public ResponseEntity<Map<String,Object>> getAdventurePrice(@RequestParam(value="param1") String brokerCode,
+														   @RequestParam(value="param2") String advId) {
+
+		try {
+			Map<String, Object> json = new HashMap<String, Object>();
+
+			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId));
+
+			return new ResponseEntity<>(json, HttpStatus.OK);
+
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+
 	}
 
 	@CrossOrigin
@@ -173,4 +216,34 @@ public class BrokerRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	@CrossOrigin
+	@RequestMapping (value = "/createAdventure")
+	public ResponseEntity<?> createAdventure (@RequestParam(value="brokerCode") String brokerCode,
+																						@RequestParam(value="clientNif") String clientNif,
+																						@RequestParam(value="begin") String begin,
+																						@RequestParam(value="end") String end,
+																						@RequestParam(value="margin") double margin,
+																						@RequestParam(value="rentVehicle") boolean rentVehicle) {
+		try {
+			
+			LocalDate b = new LocalDate(begin);
+			LocalDate e = new LocalDate(end);
+
+			AdventureData advData = new AdventureData();
+			advData.setMargin(margin);
+			advData.setVehicle(rentVehicle);
+			advData.setBegin(b);
+			advData.setEnd(e);
+
+			BrokerInterface.createAdventure(brokerCode, clientNif, advData);
+			
+			return new ResponseEntity<>(HttpStatus.OK);
+			
+		} catch (BrokerException e) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+
+	}
+
 }

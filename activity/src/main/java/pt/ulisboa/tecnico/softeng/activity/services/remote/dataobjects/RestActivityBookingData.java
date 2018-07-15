@@ -24,6 +24,7 @@ public class RestActivityBookingData {
 	private Double price;
 	private String paymentReference;
 	private String invoiceReference;
+	private String id;
 
 	public RestActivityBookingData() {
 	}
@@ -43,6 +44,7 @@ public class RestActivityBookingData {
 		this.price = booking.getAmount();
 		this.paymentReference = booking.getPaymentReference();
 		this.invoiceReference = booking.getInvoiceReference();
+		this.id = this.code + ";" + booking.getActivityOffer().getActivity().getCode();
 	}
 
 	public String getReference() {
@@ -155,6 +157,14 @@ public class RestActivityBookingData {
 
 	public void setInvoiceReference(String invoiceReference) {
 		this.invoiceReference = invoiceReference;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

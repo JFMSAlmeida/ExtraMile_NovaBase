@@ -25,6 +25,7 @@ public class RestRoomBookingData {
 	private String buyerNif;
 	private String buyerIban;
 	private String adventureId;
+	private String id;
 
 	public RestRoomBookingData() {
 	}
@@ -37,6 +38,19 @@ public class RestRoomBookingData {
 		this.buyerNif = nifAsBuyer;
 		this.buyerIban = iban;
 		this.adventureId = adventureId;
+	}
+	
+	public RestRoomBookingData(LocalDate arrival, LocalDate departure, String nifAsBuyer, String iban,
+			String adventureId, String id) {
+		this.arrival = arrival;
+		this.departure = departure;
+		this.buyerNif = nifAsBuyer;
+		this.buyerIban = iban;
+		this.adventureId = adventureId;
+		
+		this.id = id;
+		
+		this.roomType = id.split(";")[2];
 	}
 
 	public String getReference() {
@@ -157,6 +171,14 @@ public class RestRoomBookingData {
 
 	public void setAdventureId(String adventureId) {
 		this.adventureId = adventureId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

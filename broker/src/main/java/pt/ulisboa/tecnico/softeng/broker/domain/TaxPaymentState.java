@@ -35,4 +35,10 @@ public class TaxPaymentState extends TaxPaymentState_Base {
 		getAdventure().setState(State.CONFIRMED);
 	}
 
+	@Override
+	public void process(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

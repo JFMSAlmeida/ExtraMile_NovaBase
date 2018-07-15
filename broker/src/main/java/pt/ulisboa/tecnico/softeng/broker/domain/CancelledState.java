@@ -64,4 +64,10 @@ public class CancelledState extends CancelledState_Base {
 
 	}
 
+	@Override
+	public void process(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

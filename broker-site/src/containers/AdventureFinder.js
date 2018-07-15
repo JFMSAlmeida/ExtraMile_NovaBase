@@ -11,7 +11,7 @@ class AdventureFinder extends Component {
                     loading: true};
         this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
     }
-
+  
     handleAlertDismiss(e) {
         e.preventDefault();
         this.setState({alert: false});

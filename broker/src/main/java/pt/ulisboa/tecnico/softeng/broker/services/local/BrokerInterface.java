@@ -153,6 +153,24 @@ public class BrokerInterface {
 		}
 
 	}
+	
+	@Atomic(mode = TxMode.WRITE)
+	public static void process(String brokerCode, String id, String advId) {
+		List<Adventure> list = FenixFramework.getDomainRoot().getBrokerSet().stream()
+				.filter(b -> b.getCode().equals(brokerCode)).flatMap(b -> b.getAdventureSet().stream())
+				.collect(Collectors.toList());
+		
+		Adventure advt = null;
+		
+		for (Adventure adv: list) {
+			if (adv.getID().equals(advId)) {
+				advt = adv;
+				break;
+			}
+		}
+
+		advt.process(id);
+	}
 
 	public static ArrayList<Object> adventures2HashMap(List<AdventureData> listAdventures) {
 
@@ -247,6 +265,34 @@ public class BrokerInterface {
 				throw new BrokerException();
 			}
 		}
+	}
+
+	@Atomic(mode = TxMode.READ)
+	public static Object getAdventurePriceById(String brokerCode, String advId) {
+		
+		Broker broker = null;
+		Adventure adventure = null;
+		
+		for (Broker aux : FenixFramework.getDomainRoot().getBrokerSet()) {
+			if (aux.getCode().equals(brokerCode)) {
+				broker = aux;
+				break;
+			}
+		}
+
+
+
+		for (Adventure aux : broker.getAdventureSet()) {
+			if (aux.getID().equals(advId)) {
+				adventure = aux;
+				break;
+			}
+		}
+
+		System.out.println(adventure.getAmount());
+		return adventure.getAmount();
+
+		
 	}
 
 }

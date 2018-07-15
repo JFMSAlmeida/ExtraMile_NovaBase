@@ -25,6 +25,7 @@ public class RestRoomBookingData {
 	private String buyerNif;
 	private String buyerIban;
 	private String adventureId;
+	private String id;
 
 	public RestRoomBookingData() {
 	}
@@ -45,6 +46,7 @@ public class RestRoomBookingData {
 		this.paymentReference = booking.getPaymentReference();
 		this.invoiceReference = booking.getInvoiceReference();
 		this.adventureId = booking.getAdventureId();
+		this.id = this.hotelCode + ";" + this.roomNumber + ";" + this.roomType;
 	}
 
 	public String getReference() {
@@ -125,6 +127,14 @@ public class RestRoomBookingData {
 
 	public void setAdventureId(String adventureId) {
 		this.adventureId = adventureId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

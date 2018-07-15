@@ -35,4 +35,10 @@ public class ProcessPaymentState extends ProcessPaymentState_Base {
 		getAdventure().setState(State.TAX_PAYMENT);
 	}
 
+	@Override
+	public void process(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

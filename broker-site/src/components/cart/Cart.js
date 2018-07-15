@@ -8,7 +8,10 @@ class Cart extends Component{
         this.state= {
             isOpen : false,
             products : [],
-            newProduct : null
+            newProduct : null,
+            activity : false,
+            hotel : false,
+            car : false
         };
         this.removeProduct = this.removeProduct.bind(this);
     }
@@ -37,18 +40,40 @@ class Cart extends Component{
     }
 
     addProduct = (product) => {
-        let productAlreadyInCart = false;
+        if(product.providerCode != null || product.hotelCode != null || product.rentACarCode != null){
 
-        this.state.products.forEach(p => {
-            if (p.id === product.id) {
-                productAlreadyInCart = true;
+            if(product.providerCode != null){
+                if(this.state.activity == false){
+                    this.state.activity = true;
+                    this.state.products.push(product);
+                }
             }
-        });
-
-        if (!productAlreadyInCart) {
-            this.state.products.push(product);
+            else if(product.hotelCode != null){
+                if(this.state.hotel == false){
+                    this.state.hotel = true;
+                    this.state.products.push(product);
+                }
+            }
+            else {
+                if (this.state.car == false) {
+                    this.state.car = true;
+                    this.state.products.push(product);
+                }
+            }
         }
+        else{
+            let productAlreadyInCart = false;
 
+            this.state.products.forEach(p => {
+                if (p.id === product.id) {
+                    productAlreadyInCart = true;
+                }
+            });
+
+            if (!productAlreadyInCart) {
+                this.state.products.push(product);
+            }
+        }
         this.openFloatCart();
     }
 
@@ -66,12 +91,12 @@ class Cart extends Component{
 
     render() {
         const totalPrice = this.calculateTotalAmount();
-        const products = this.state.products.map(p => {
+        const products = this.state.products.map((p, index) => {
             return (
                 <CartProduct
                     product={p}
                     remove = {() => this.removeProduct(p)}
-                    key={p.id}
+                    key={index}
                 />
             );
         });

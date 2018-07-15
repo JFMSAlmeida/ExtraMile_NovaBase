@@ -4,15 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import pt.ulisboa.tecnico.softeng.car.exception.CarException;
 import pt.ulisboa.tecnico.softeng.car.services.local.RentACarInterface;
+import pt.ulisboa.tecnico.softeng.car.services.local.dataobjects.RentACarData;
 import pt.ulisboa.tecnico.softeng.car.services.remote.dataobjects.RestRentingData;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/rest/rentacars")
@@ -50,6 +49,35 @@ public class CarRestController {
 		try {
 			RestRentingData rentingData = RentACarInterface.getRentingData(reference);
 			return new ResponseEntity<RestRentingData>(rentingData, HttpStatus.OK);
+		} catch (CarException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/vehicles", method = RequestMethod.GET)
+    public ResponseEntity<List<Object>> getVehicles() {
+
+		try {
+
+	    	List<RentACarData> aux = RentACarInterface.getRentACars();
+
+	        return new ResponseEntity<>(RentACarInterface.vehicle2HashMap(aux), HttpStatus.OK);
+		} catch (CarException ce) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+    }
+	
+	@RequestMapping(value = "/rentSelected", method = RequestMethod.POST)
+	public ResponseEntity<String> rentSelected(@RequestBody RestRentingData rentingData) {
+		logger.info("rent license:{}, nif:{}, iban:{}, begin:{}, end:{}, adventureId:{}, id:{}",
+				rentingData.getDrivingLicense(), rentingData.getBuyerNIF(),
+				rentingData.getBuyerIBAN(), rentingData.getBegin(), rentingData.getEnd(), rentingData.getAdventureId(), rentingData.getId());
+		try {
+			return new ResponseEntity<>(RentACarInterface.rentSelected(
+					rentingData.getDrivingLicense(), rentingData.getBuyerNIF(), rentingData.getBuyerIBAN(),
+					rentingData.getBegin(), rentingData.getEnd(), rentingData.getAdventureId(), rentingData.getId()), HttpStatus.OK);
+
 		} catch (CarException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

@@ -66,6 +66,21 @@ public class ActivityProvider extends ActivityProvider_Base {
 		}
 		return result;
 	}
+	
+	public ActivityOffer findOffer(LocalDate begin, LocalDate end, int age, String activityCode) {
+		Activity act = null;
+		
+		for (Activity aux : getActivitySet()) {
+			if (aux.getCode().equals(activityCode)) {
+				act = aux;
+				break;
+			}
+		
+		}
+			
+		return act.getOffer(begin, end, age);
+		
+	}
 
 	public Booking getBooking(String reference) {
 		for (Activity activity : getActivitySet()) {
