@@ -13,10 +13,10 @@ class ActivityShelf extends Component {
 		const actArray = act.map((act, index) => {
 				return(
 					<Activity
-						process = {this.props.process}
+						//process = {this.props.process}
 						activity = {act}
 						key = {index}
-						addCart = {this.props.addCart}
+                        addCart={() => this.props.addCart(act)}
 
 					/>
 				);
