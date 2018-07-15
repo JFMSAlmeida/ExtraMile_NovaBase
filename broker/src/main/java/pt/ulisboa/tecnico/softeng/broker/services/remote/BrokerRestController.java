@@ -9,10 +9,12 @@ import pt.ulisboa.tecnico.softeng.broker.domain.Client;
 import pt.ulisboa.tecnico.softeng.broker.services.local.BrokerInterface;
 import pt.ulisboa.tecnico.softeng.broker.exception.BrokerException;
 import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.ClientData;
+import pt.ulisboa.tecnico.softeng.broker.services.local.dataobjects.AdventureData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.joda.time.LocalDate;
 
 @RestController
 @RequestMapping(value = "/rest/brokers")
@@ -166,4 +168,34 @@ public class BrokerRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	@CrossOrigin
+	@RequestMapping (value = "/createAdventure")
+	public ResponseEntity<?> createAdventure (@RequestParam(value="brokerCode") String brokerCode,
+																						@RequestParam(value="clientNif") String clientNif,
+																						@RequestParam(value="begin") String begin,
+																						@RequestParam(value="end") String end,
+																						@RequestParam(value="margin") double margin,
+																						@RequestParam(value="rentVehicle") boolean rentVehicle) {
+		try {
+			
+			LocalDate b = new LocalDate(begin);
+			LocalDate e = new LocalDate(end);
+
+			AdventureData advData = new AdventureData();
+			advData.setMargin(margin);
+			advData.setVehicle(rentVehicle);
+			advData.setBegin(b);
+			advData.setEnd(e);
+
+			BrokerInterface.createAdventure(brokerCode, clientNif, advData);
+			
+			return new ResponseEntity<>(HttpStatus.OK);
+			
+		} catch (BrokerException e) {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+
+	}
+
 }
