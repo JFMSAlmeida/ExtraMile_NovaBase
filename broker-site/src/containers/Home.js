@@ -12,6 +12,7 @@ class Home extends Component {
         this.test = this.test.bind(this);
         this.hTest = this.hTest.bind(this);
         this.vTest = this.vTest.bind(this);
+        this.priceTest = this.priceTest.bind(this);
 
     }
 
@@ -89,6 +90,20 @@ class Home extends Component {
         });
     }
 
+    priceTest() {
+
+        var i1 = "B100";
+        var i2 = "B1001";
+
+        fetch('http://localhost:8083/rest/brokers/getAdventurePrice?param1=' + i1 + '&param2=' + i2 )
+            .then(response => {
+            return response.text();
+        })
+        .then(body => {
+            console.log(JSON.parse(body));
+        });
+    }
+
     render() {
         return (
             <div className="App">
@@ -100,6 +115,7 @@ class Home extends Component {
                 <button onClick={this.test}>Activity Test</button>
                 <button onClick={this.hTest}>Hotel Test</button>
                 <button onClick={this.vTest}>Vehicle Test</button>
+                <button onClick={this.priceTest}>Price Test</button>
             </div>
         );
     }

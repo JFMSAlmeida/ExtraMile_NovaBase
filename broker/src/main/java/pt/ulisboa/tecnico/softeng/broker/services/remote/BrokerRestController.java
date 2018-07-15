@@ -72,6 +72,24 @@ public class BrokerRestController {
 		}
 	}
 
+	@CrossOrigin
+	@RequestMapping(value = "/getAdventurePrice")
+	public ResponseEntity<Map<String,Object>> getAdventurePrice(@RequestParam(value="param1") String brokerCode,
+														   @RequestParam(value="param2") String advId) {
+
+		try {
+			Map<String, Object> json = new HashMap<String, Object>();
+
+			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId));
+
+			return new ResponseEntity<>(json, HttpStatus.OK);
+
+		} catch (BrokerException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+
+
+	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/echo")
@@ -144,4 +162,6 @@ public class BrokerRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	
 }

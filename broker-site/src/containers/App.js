@@ -43,9 +43,9 @@ class App extends React.Component {
                 <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)} a = {10}/>}/>
                 <Route path='/signup' component={Signup} history={history}/>
                 <Route path='/options' component={Options} history={history}/>
-                <Route path='/adventurebuilder1' component={AdventureBuilder1} render={()=><AdventureBuilder1 />}/>
-                <Route path='/adventurebuilder2' component={AdventureBuilder2} render={()=><AdventureBuilder2 />}/>
-                <Route path='/adventurebuilder3' component={AdventureBuilder3} render={()=><AdventureBuilder3 />}/>
+                <Route path='/adventurebuilder1' component={AdventureBuilder1} history={history}/>
+                <Route path='/adventurebuilder2' component={AdventureBuilder2} history={history}/>
+                <Route path='/adventurebuilder3' component={AdventureBuilder3} history={history}/>
 
             </div>
         );
