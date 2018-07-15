@@ -4,15 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import pt.ulisboa.tecnico.softeng.bank.exception.BankException;
 import pt.ulisboa.tecnico.softeng.bank.services.local.BankInterface;
+import pt.ulisboa.tecnico.softeng.bank.services.local.dataobjects.AccountData;
 import pt.ulisboa.tecnico.softeng.bank.services.local.dataobjects.BankOperationData;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/rest/banks")
@@ -47,6 +48,52 @@ public class BankRestController {
 		try {
 			BankOperationData result = BankInterface.getOperationData(reference);
 			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (BankException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/balance", method = RequestMethod.GET)
+	public ResponseEntity<?> getClientBalance(@RequestParam String iban) {
+		logger.info("getClientBalance iban:{}", iban);
+		try {
+			AccountData ad = BankInterface.getAccountData2(iban);
+
+			Map<String, Object> json = new HashMap<String, Object>();
+
+			if (ad == null) {
+				json.put("success", false);
+			}
+
+			else {
+				json.put("success", true);
+				json.put("balance", ad.getBalance());
+			}
+
+			return new ResponseEntity<>(json, HttpStatus.OK);
+		} catch (BankException be) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
+	public ResponseEntity<?> getClientTransactions(@RequestParam String iban) {
+		logger.info("getClientTransactions iban:{}", iban);
+
+		try {
+			Map<String, Object> json = new HashMap<String, Object>();
+
+			ArrayList<Object> array = BankInterface.getTransactions(iban);
+			if (array == null) {
+				json.put("success", false);
+			}
+			else {
+				json.put("success", true);
+				json.put("transactions", array);
+			}
+			return new ResponseEntity<>(json, HttpStatus.OK);
 		} catch (BankException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

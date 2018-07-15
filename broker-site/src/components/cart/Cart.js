@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartProduct from './CartProduct';
+import {Link} from "react-router-dom";
 
 class Cart extends Component{
     constructor(props){
@@ -16,9 +17,8 @@ class Cart extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps.product);
         if (nextProps.product !== this.state.newProduct) {
-            this.state.newProduct = nextProps.product;
+            this.setState({ newProduct : nextProps.product });
             this.addProduct(nextProps.product);
         }
     }
@@ -28,7 +28,6 @@ class Cart extends Component{
         for(var i = 0; i < this.state.products.length; i++){
            acumulator = acumulator + this.state.products[i].price;
         }
-        console.log(acumulator);
         return acumulator;
     }
 
@@ -78,8 +77,7 @@ class Cart extends Component{
         this.openFloatCart();
     }
 
-    removeProduct = (product) => {
-        console.log(product);
+    removeProduct(product) {
         const cartProducts = this.state.products;
 
         const index = cartProducts.findIndex(p => p.id === product.id);
@@ -87,12 +85,12 @@ class Cart extends Component{
             cartProducts.splice(index, 1);
         }
         this.setState({
-            products : cartProducts,
-            newProduct : null
+            products : cartProducts
         });
     }
 
     render() {
+        const totalPrice = this.calculateTotalAmount();
         const products = this.state.products.map((p, index) => {
             return (
                 <CartProduct
@@ -102,6 +100,8 @@ class Cart extends Component{
                 />
             );
         });
+
+
 
         let classes = ['float-cart'];
 
@@ -151,15 +151,17 @@ class Cart extends Component{
                     </div>
 
                     <div className="float-cart__footer">
-                        <div className="sub">SUBTOTAL</div>
+                        <div className="sub">TOTAL</div>
                         <div className="sub-price">
                             <p className="sub-price__val">
-                                {this.calculateTotalAmount()} €
+                                {totalPrice} €
                             </p>
                         </div>
-                        <div onClick={() => this.proceedToCheckout()} className="buy-btn">
-                            Checkout
-                        </div>
+                            <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
+                                <div className="buy-btn">
+                                    <span>Checkout</span>
+                                </div>
+                            </Link>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import avatar from '../components/avatar.png'
+import {Link, withRouter} from 'react-router-dom'
 import $ from 'jquery';
-import Cart from './cart/Cart'
+import Cart from '../cart/Cart'
+import Signup from './Signup'
+import Login from "./Login";
 
 // The Header creates links that can be used to navigate
 // between routes.
-export default class Header extends React.Component {
+class Header extends React.Component {
     constructor(props){
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
@@ -20,6 +21,7 @@ export default class Header extends React.Component {
         this.handleAgeChange = this.handleAgeChange.bind(this);
         this.handleDrivingLicenseChange = this.handleDrivingLicenseChange.bind(this);
         this.handleInfoChange = this.handleInfoChange.bind(this);
+        this.calculateBalance = this.calculateBalance.bind(this);
 
         this.state = {
             auth: false,
@@ -27,7 +29,8 @@ export default class Header extends React.Component {
             nif: '',
             iban: '',
             age: '',
-            drivinglicense: ''
+            drivinglicense: '',
+            balance: '',
         };
     }
 
@@ -46,13 +49,13 @@ export default class Header extends React.Component {
 
         return (
           <div className="headerContainer">
-              <header>
+              <header className="header">
                 <nav className="navbar navbar-inverse">
                   <ul className="nav navbar-nav">
                     <a className="navbar-brand">ExtraMile</a>
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/adventurefinder'>AdventureFinder</Link></li>
-                    <li><Link to='/adventurebuilder'>AdventureBuilder</Link></li>
+                    <li><Link to='/adventurefinder'>Adventure Finder</Link></li>
+                    <li><Link to='/adventurebuilder'>Adventure Builder</Link></li>
                   </ul>
                     <ul className="nav navbar-nav navbar-right">
                         { !this.state.auth ? <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li> : null}
@@ -62,9 +65,16 @@ export default class Header extends React.Component {
                                                     <i className="fa fa-caret-down"></i>
                                                 </button>
                                                 <div className="dropdown-contentLogin">
-                                                    <a href="#"><span className="glyphicon glyphicon-usd"></span>&nbsp; Balance</a>
+                                                    <a><span className="glyphicon glyphicon-usd"></span>&nbsp; {this.state.balance}
+                                                        <a onClick={this.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
+                                                            <span className="glyphicon glyphicon-refresh"></span>
+                                                        </a>
+                                                        {this.state.balance == 'Error' ?
+                                                            <span className="glyphicon glyphicon-question-sign" title="Bank server is down"></span>
+                                                            : null}
+                                                    </a>
                                                     <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
-                                                    <a onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
+                                                    <a href="" onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
                                                 </div>
                                             </div>
                                             : null }
@@ -72,87 +82,25 @@ export default class Header extends React.Component {
                         <Cart
                             product = {this.props.product}
                         />
+                        { !this.state.auth ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> : null }
                     </ul>
                 </nav>
               </header>
 
-              /* SIGN UP MODAL */
-              <div id="signupModal" className="modal fade">
-                  <div className="modal-dialog modal-login">
-                      <div className="modal-content">
-                          <div className="modal-header">
-                              <div className="avatar">
-                                  <img src={avatar} alt="Avatar"></img>
-                              </div>
-                              <h4 className="modal-title">Client Sign Up</h4>
-                              <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          </div>
-                          <form id="signupform" onSubmit={this.handleSignUp}>
-                              <div className="modal-body">
-                                  <div id="errorSignUp" style={{color: 'red', fontSize: 'small'}}></div>
-                                  <div id="successSignUp" style={{color: 'green', fontSize: 'small'}}></div>
-                                  <div className="form-group">
-                                      <input type="text" size="9" className="form-control" name="NIF" placeholder="NIF"
-                                             required="required" onChange={this.handleSignUpNifChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <input type="text" className="form-control" name="IBAN" placeholder="IBAN"
-                                             required="required" onChange={this.handleIBANChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <input type="number" min="1" max="120" className="form-control" name="AGE" placeholder="Age"
-                                             required="required" onChange={this.handleAgeChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <input type="text" className="form-control" name="drivingLicense" placeholder="Driving License"
-                                             required="required" onChange={this.handleDrivingLicenseChange}></input>
-                                  </div>
-                                  <div className="form-group">
-                                      <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">Sign Up
-                                      </button>
-                                  </div>
-                              </div>
-                          </form>
-                          <div className="modal-footer">
-                              <a data-dismiss="modal" data-toggle="modal" data-target="#loginModal"><Link to={this.props.history}>Already have an account? Login</Link></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <Signup
+                  handleSignUp = {this.handleSignUp}
+                  handleSignUpNifChange = {this.handleSignUpNifChange}
+                  handleIBANChange = {this.handleIBANChange}
+                  handleAgeChange = {this.handleAgeChange}
+                  handleDrivingLicenseChange = {this.handleDrivingLicenseChange}
+                  history = {this.props.history}
+              />
 
-
-              /* LOGIN MODAL */
-              <div id="loginModal" className="modal fade">
-                  <div className="modal-dialog modal-login">
-                      <div className="modal-content">
-                          <div className="modal-header">
-                              <div className="avatar">
-                                  <img src={avatar} alt="Avatar"></img>
-                              </div>
-                            <h4 className="modal-title">Client Login</h4>
-                              <button id="closeLoginModal" type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          </div>
-                          <div id="hideafterlogin">
-                              <form id="loginform" onSubmit={this.handleLogin}>
-                                  <div className="modal-body">
-                                      <div id="errorLogin" style={{ color: 'red', fontSize: 'small'}}></div>
-                                      <div className="form-group">
-                                          <input type="text" className="form-control" name="NIF" placeholder="NIF"
-                                                 required="required" onChange={this.handleLoginNifChange}></input>
-                                      </div>
-                                      <div className="form-group">
-                                          <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">Login
-                                          </button>
-                                      </div>
-                                  </div>
-                              </form>
-                              <div className="modal-footer">
-                                  <a data-dismiss="modal" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}>Not registered? Sign Up</Link></a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+              <Login
+                  handleLogin = {this.handleLogin}
+                  handleLoginNifChange = {this.handleLoginNifChange}
+                  history = {this.props.history}
+              />
 
           </div>
         );
@@ -226,6 +174,7 @@ export default class Header extends React.Component {
                         iban: JSON.parse(body).iban,
                         age: JSON.parse(body).age,
                         drivinglicense: JSON.parse(body).drivinglicense});
+                    this.calculateBalance();
                 }
             }).catch(function(error) {
                 document.getElementById('errorLogin').innerHTML = "Something went wrong. Try again later.";
@@ -240,8 +189,10 @@ export default class Header extends React.Component {
             nif: '',
             iban: '',
             age: '',
-            drivinglicense: ''
+            drivinglicense: '',
+            balance: 'Undertermined'
         });
+        this.props.history.push('/');
     }
 
     handleInfoChange(newIban, newAge, newDl) {
@@ -253,4 +204,27 @@ export default class Header extends React.Component {
         if (str == "dl")
             this.state.drivinglicense */
     }
+
+    async calculateBalance() {
+        console.log("handleBalance");
+        this.setState({balance: 'Fetching...'});
+
+        try {
+            await fetch('http://localhost:8082/rest/banks/balance?iban=' + this.state.iban)
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    if (JSON.parse(body).success)
+                        this.setState({balance: JSON.parse(body).balance});
+                    else {
+                        this.setState({balance: "Invalid IBAN"});
+                    }
+                });
+        } catch (e) {
+            this.setState({balance: "Error"});
+        }
+    }
 }
+
+export default withRouter(Header);

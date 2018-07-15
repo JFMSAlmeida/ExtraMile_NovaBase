@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Carousel from "../components/Carousel";
+import Carousel from "../components/home/Carousel";
 
 class Home extends Component {
 
@@ -26,7 +26,7 @@ class Home extends Component {
         });
     }
     handleClickShowAdventures() {
-        fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=111111115')
+        fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=999999999')
             .then(response => {
                 console.log(response);
                 return response.text();

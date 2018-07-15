@@ -157,7 +157,6 @@ class AdventureBuilder extends Component {
                 </div>
                 );
     }*/
-
 }
 
 export default AdventureBuilder;

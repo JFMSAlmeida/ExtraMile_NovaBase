@@ -1,6 +1,6 @@
 package pt.ulisboa.tecnico.softeng.bank.services.local;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import pt.ist.fenixframework.Atomic;
@@ -190,4 +190,40 @@ public class BankInterface {
 		return account;
 	}
 
+	public static ArrayList<Object> operations2HashMap(Set<Operation> list) {
+
+		ArrayList<Object> transactions = new ArrayList<>();
+
+		for (Operation operation: list) {
+
+			Map<String, Object> transaction = new HashMap<>();
+			transaction.put("reference", operation.getReference());
+			transaction.put("type", operation.getType());
+			transaction.put("value", operation.getValue());
+			transaction.put("time", operation.getTime());
+
+			transactions.add(transaction);
+		}
+
+		return transactions;
+	}
+
+	@Atomic(mode = TxMode.READ)
+	public static ArrayList<Object> getTransactions(String iban) {
+		Account ac = getAccountByIban(iban);
+		if (ac == null) {
+			return null;
+		}
+		return operations2HashMap(ac.getOperationSet());
+	}
+
+	@Atomic(mode = TxMode.READ)
+	public static AccountData getAccountData2(String iban) {
+		Account account = getAccountByIban(iban);
+		if (account == null) {
+			return null;
+		}
+
+		return new AccountData(account);
+	}
 }

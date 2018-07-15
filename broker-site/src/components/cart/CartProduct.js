@@ -17,7 +17,6 @@ class CartProduct extends Component {
 
     render(){
         const product = this.props.product;
-        console.log(product);
 
         const classes = ['shelf-item'];
 
@@ -33,17 +32,16 @@ class CartProduct extends Component {
                     onMouseOut={() => this.handleMouseOut()}
                     onClick={this.props.remove}
                 />
+                <img className="shelf-item__image" src={require(`../shelf/B1001.jpg`)} alt={product.id}/>
                 <div className="shelf-item__details">
-                    <p className="title">{product.title}</p>
+                    <b><p className="title">Package {product.id}</p></b>
                     <p className="desc">
-                        Package {product.id} <br />
+                        {product.activityName} {product.hasRoom && <span>| {product.hotelName} </span>} {product.hasVehicle && <span>| {product.vehicleType} </span>}
                     </p>
                 </div>
                 <div className="shelf-item__price">
-                    <b><p>{product.price} €</p></b>
+                    <p>{product.price} €</p>
                 </div>
-
-                <div className="clearfix" />
             </div>
         );
     }
