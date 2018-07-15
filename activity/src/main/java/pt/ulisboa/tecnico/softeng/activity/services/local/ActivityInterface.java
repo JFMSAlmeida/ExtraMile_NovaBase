@@ -265,7 +265,7 @@ public class ActivityInterface {
 			System.out.println("activity: " + activity);
 			System.out.println("provider: " + provider);
 			
-			aux.put("name", activity.getName());
+			aux.put("title", activity.getName());
 			aux.put("providerName", provider.getName());
 			aux.put("providerCode", provider.getCode());
 			aux.put("price", offer.getAmount());
@@ -274,7 +274,7 @@ public class ActivityInterface {
 			aux.put("minAge", activity.getMinAge());
 			aux.put("maxAge", activity.getMaxAge());
 			aux.put("capacity", activity.getCapacity());
-			aux.put("activityCode", activity.getCode());
+			aux.put("id", activity.getCode());
 
 			allOffers.add(aux);
 		}

@@ -6,7 +6,7 @@ import "react-daterange-picker/dist/css/react-calendar.css";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
 const moment = extendMoment(originalMoment);
-
+import ActivityShelf from '../components/shelf/ActivityShelf';
 
 class AdventureBuilder extends Component {
 
@@ -17,8 +17,6 @@ class AdventureBuilder extends Component {
 
         this.state = {
             activities: [],
-            rooms: [],
-            vehicles: [],
             rentVehicle: false,
             value: moment.range(today.clone(), today.clone().add(7, "days"))
         };
@@ -42,31 +40,20 @@ class AdventureBuilder extends Component {
     };
 
 
-    /*process(i1,i2,i3) {
-
-       fetch('http://localhost:8083/rest/brokers/processTest?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
-            .then(response => {
-            return response.text();
-        })
-        .then(body => {
-            console.log(JSON.parse(body));
-        });
-        
-    }*/
-
      process(i3) {
 
         var i1 = "B100";
         var i2 = "B1001";
 
-       fetch('http://localhost:8083/rest/brokers/processTest?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+       fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
             .then(response => {
             return response.text();
         })
         .then(body => {
             console.log(JSON.parse(body));
         });
-        
+
+
     }
 
     createAdventure () {
@@ -151,15 +138,26 @@ class AdventureBuilder extends Component {
                         <button type="submit" onClick={this.handleSubmit}>Submit your adventure</button>
                     </div>
 
-                    <BuilderShelf
+                </div>
+                )
+    }  
+
+    /*render() {
+
+        return (<div>
+                    <h3>AdventureBuilder</h3>
+                    <ActivityShelf
                         process = {i3 => this.process(i3)}
                         activities = {this.state.activities}
-                        rooms = {this.state.rooms}
-                        vehicles = {this.state.vehicles}
+                        addCart = {this.props.addCart}
+
                     />
+
+                
                 </div>
                 );
-    }
+    }*/
+
 }
 
 export default AdventureBuilder;

@@ -54,14 +54,14 @@ public class BrokerRestController {
 	}
 	
 	@CrossOrigin
-	@RequestMapping(value = "/processTest")
-	public ResponseEntity<Map<String, Object>> processTest (@RequestParam(value="param1") String brokerCode,
+	@RequestMapping(value = "/processPart")
+	public ResponseEntity<Map<String, Object>> processPart (@RequestParam(value="param1") String brokerCode,
 			  												@RequestParam(value="param2") String advId,
 			  												@RequestParam(value="param3") String id) {
 		
 		try {
 
-			BrokerInterface.processTest(brokerCode, id, advId);
+			BrokerInterface.process(brokerCode, id, advId);
 			Map<String, Object> json = new HashMap<String, Object>();
 			json.put("success", true);
 			json.put("brokerCode", brokerCode);
@@ -75,27 +75,23 @@ public class BrokerRestController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/processRoom")
-	public ResponseEntity<Map<String, Object>> processRoom (@RequestParam(value="param1") String brokerCode,
-			  												@RequestParam(value="param2") String advId,
-			  												@RequestParam(value="param3") String id) {
-		
-		try {
+	@RequestMapping(value = "/getAdventurePrice")
+	public ResponseEntity<Map<String,Object>> getAdventurePrice(@RequestParam(value="param1") String brokerCode,
+														   @RequestParam(value="param2") String advId) {
 
-			BrokerInterface.processTest(brokerCode, id, advId);
+		try {
 			Map<String, Object> json = new HashMap<String, Object>();
-			json.put("success", true);
-			json.put("brokerCode", brokerCode);
-			json.put("id", id);
-			json.put("advId", advId);
+
+			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId));
+
 			return new ResponseEntity<>(json, HttpStatus.OK);
 
 		} catch (BrokerException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-	}
-	
 
+
+	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/echo")
