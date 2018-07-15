@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import BuilderShelf from '../components/shelf/BuilderShelf'
 import DateRangePicker from "react-daterange-picker";
 import "react-daterange-picker/dist/css/react-calendar.css";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-const moment = extendMoment(originalMoment);
 import ActivityShelf from '../components/shelf/ActivityShelf';
+
+const moment = extendMoment(originalMoment);
+
 
 class AdventureBuilder extends Component {
 
