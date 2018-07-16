@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.joda.time.LocalDate;
-
+ 
 @RestController
 @RequestMapping(value = "/rest/brokers")
 public class BrokerRestController {
@@ -219,7 +219,7 @@ public class BrokerRestController {
 
 	@CrossOrigin
 	@RequestMapping (value = "/createAdventure")
-	public ResponseEntity<?> createAdventure (@RequestParam(value="brokerCode") String brokerCode,
+	public ResponseEntity<Map<String,Object>> createAdventure (@RequestParam(value="brokerCode") String brokerCode,
 																						@RequestParam(value="clientNif") String clientNif,
 																						@RequestParam(value="begin") String begin,
 																						@RequestParam(value="end") String end,
@@ -236,9 +236,17 @@ public class BrokerRestController {
 			advData.setBegin(b);
 			advData.setEnd(e);
 
-			BrokerInterface.createAdventure(brokerCode, clientNif, advData);
+			//CHANGE ADVDATA TO OTHER PAGE
+
+			Map<String, Object> json = new HashMap<String, Object>();
+
 			
-			return new ResponseEntity<>(HttpStatus.OK);
+			AdventureData advdt = BrokerInterface.createAdventure2(brokerCode, clientNif, advData);
+
+			json.put("advId", advdt.getId());
+
+			
+			return new ResponseEntity<>(json ,HttpStatus.OK);
 			
 		} catch (BrokerException e) {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 

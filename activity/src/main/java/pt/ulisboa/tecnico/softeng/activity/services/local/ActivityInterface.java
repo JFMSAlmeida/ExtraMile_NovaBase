@@ -246,7 +246,6 @@ public class ActivityInterface {
 		for (ActivityProvider provider: FenixFramework.getDomainRoot().getActivityProviderSet()) {
 			offers.addAll(provider.findOffer(begin, end, age));
 		}
-		System.out.println("offers: " + offers);
 
 		return offers;
 	}
@@ -262,8 +261,6 @@ public class ActivityInterface {
 
 			Activity activity = offer.getActivity();
 			ActivityProvider provider = activity.getActivityProvider();
-			System.out.println("activity: " + activity);
-			System.out.println("provider: " + provider);
 			
 			aux.put("title", activity.getName());
 			aux.put("providerName", provider.getName());

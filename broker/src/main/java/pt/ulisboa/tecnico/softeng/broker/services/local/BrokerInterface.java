@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import pt.ist.fenixframework.Atomic;
@@ -293,6 +294,19 @@ public class BrokerInterface {
 		return adventure.getAmount();
 
 		
+	}
+
+	@Atomic(mode = TxMode.WRITE)
+	public static AdventureData createAdventure2(String brokerCode, String clientNif, AdventureData adventureData) {
+		Broker broker = getBrokerByCode(brokerCode);
+		Client client = broker.getClientByNIF(clientNif);
+		Adventure adv = new Adventure(broker, adventureData.getBegin(), adventureData.getEnd(), client,
+				adventureData.getMargin() != null ? adventureData.getMargin() : -1, adventureData.getVehicle());
+	
+		AdventureData ad = new AdventureData();
+		ad.setId(adv.getID());
+
+		return ad;
 	}
 
 }

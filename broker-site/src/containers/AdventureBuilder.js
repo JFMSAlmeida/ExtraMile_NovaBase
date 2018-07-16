@@ -17,6 +17,7 @@ class AdventureBuilder extends Component {
         const today = moment();
 
         this.state = {
+            advId: 0,
             rentVehicle: false,
             value: moment.range(today.clone(), today.clone().add(7, "days"))
         };
@@ -50,6 +51,11 @@ class AdventureBuilder extends Component {
         })
         .then(body => {
             console.log(JSON.parse(body));
+            console.log(body);
+            const response = JSON.parse(body);
+             console.log(response);
+            console.log(response.advId);
+            this.setState({advId: response.advId});
         });
     }
 
