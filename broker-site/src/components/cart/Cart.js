@@ -17,8 +17,14 @@ class Cart extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.product !== this.state.newProduct) {
-            this.setState({ newProduct : nextProps.product });
+        console.log("nextProps.product:" + nextProps.product);
+        console.log("this.state.newProduct:" + this.state.newProduct);
+        if(nextProps.product == null){
+            return;
+        }
+        if(nextProps.product !== this.state.newProduct) {
+            console.log("aqui2");
+            this.setState({newProduct: nextProps.product});
             this.addProduct(nextProps.product);
         }
     }
@@ -40,21 +46,26 @@ class Cart extends Component{
     }
 
     addProduct = (product) => {
+        console.log("aqui");
         if(product.providerCode != null || product.hotelCode != null || product.rentACarCode != null){
 
             if(product.providerCode != null){
+                console.log("provider não é null");
                 if(this.state.activity == false){
+                    console.log("não tenho activity logo vou meter a true");
                     this.state.activity = true;
                     this.state.products.push(product);
                 }
             }
             else if(product.hotelCode != null){
+                console.log("hotelcode não é null");
                 if(this.state.hotel == false){
                     this.state.hotel = true;
                     this.state.products.push(product);
                 }
             }
             else {
+                console.log("car não é null");
                 if (this.state.car == false) {
                     this.state.car = true;
                     this.state.products.push(product);
@@ -79,14 +90,42 @@ class Cart extends Component{
 
     removeProduct(product) {
         const cartProducts = this.state.products;
+        var index;
+        if(product.providerCode != null || product.hotelCode != null || product.rentACarCode != null) {
+            console.log("entrei pq sou builder")
+            if (product.providerCode != null){
+                console.log("provider não é null");
+                this.state.activity = false;
+                 index = cartProducts.findIndex(p => p.providerCode === product.providerCode);
+            }
 
-        const index = cartProducts.findIndex(p => p.id === product.id);
-        if (index >= 0) {
-            cartProducts.splice(index, 1);
+            else if(product.hotelCode != null) {
+                console.log("hotelcode não é null");
+                this.state.hotel = false;
+                index = cartProducts.findIndex(p => p.hotelCode === product.hotelCode);
+            }
+            else{
+                console.log("car não é null");
+                this.state.car = false;
+                index = cartProducts.findIndex(p => p.rentACarCode === product.rentACarCode);
+            }
+            if (index >= 0)
+                cartProducts.splice(index, 1);
+        }
+
+        else{
+            console.log("Sou adventure")
+            index = cartProducts.findIndex(p => p.id === product.id);
+            if (index >= 0) {
+                cartProducts.splice(index, 1);
+            }
         }
         this.setState({
-            products : cartProducts
+            products : cartProducts,
+            newProduct : null
         });
+        console.log(this.props.resetProduct);
+        this.props.resetProduct();
     }
 
     render() {
