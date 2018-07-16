@@ -19,7 +19,7 @@ class AdventureBuilder extends Component {
         this.state = {
             advId: 0,
             rentVehicle: false,
-            value: moment.range(today.clone(), today.clone().add(7, "days"))
+            value: moment.range(today.format('L'), today.add(7, "days").format('L'))
         };
     }
 
