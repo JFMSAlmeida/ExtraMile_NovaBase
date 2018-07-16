@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import RoomShelf from '../components/shelf/RoomShelf'
+import ActivityShelf from '../components/shelf/ActivityShelf';
 
 class AdventureBuilder1 extends Component {
     constructor(props){
         super(props);
         this.state = { 
-                       rooms: []
+                       activities: []
                      };
 
         this.process = this.process.bind(this);
     } 
 
-     process(i3) {
+    process(i3) {
 
         var i1 = "B100";
         var i2 = "B1001";
@@ -24,14 +24,15 @@ class AdventureBuilder1 extends Component {
         .then(body => {
             console.log(JSON.parse(body));
         });
-        
+
+
     }
 
 
     componentWillMount() {
 
         
-        fetch('http://localhost:8085/rest/hotels/rooms')
+        fetch('http://localhost:8081/rest/providers/activities')
             .then(response => {
                 return response.text();
             })
@@ -41,30 +42,21 @@ class AdventureBuilder1 extends Component {
                 const response = JSON.parse(body);
                 console.log(response);
 
-                this.setState({rooms: response});
+                this.setState({activities: response});
                 console.log(this.state);
             });
 
         
-    } 
+    }  
  
     render() {
-        const info = {
-            activityName: this.props.location.activityName,
-            begin: this.props.location.begin,
-            end: this.props.location.end,
-            age: this.props.location.age,
-            addCart: this.props.location.addCart
-    
-        };
 
         return (<div>
-                    <h3>Room Picker</h3>
-                     <RoomShelf
+                    <h3>Activity picker</h3>
+                    <ActivityShelf
                         process = {i3 => this.process(i3)}
-                        rooms = {this.state.rooms}
-                        activity = {info}
-
+                        activities = {this.state.activities}
+                        addCart = {this.props.location.addCart}
                     />
                 </div>
                 );

@@ -4,7 +4,7 @@ import DateRangePicker from "react-daterange-picker";
 import "react-daterange-picker/dist/css/react-calendar.css";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-import ActivityShelf from '../components/shelf/ActivityShelf';
+import { Link } from 'react-router-dom'
 
 const moment = extendMoment(originalMoment);
 
@@ -17,12 +17,9 @@ class AdventureBuilder extends Component {
         const today = moment();
 
         this.state = {
-            activities: [],
             rentVehicle: false,
             value: moment.range(today.clone(), today.clone().add(7, "days"))
         };
-
-        this.process = this.process.bind(this);
     }
 
     handleSubmit = (event) => {
@@ -41,21 +38,7 @@ class AdventureBuilder extends Component {
     };
 
 
-     process(i3) {
-
-        var i1 = "B100";
-        var i2 = "B1001";
-
-       fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
-            .then(response => {
-            return response.text();
-        })
-        .then(body => {
-            console.log(JSON.parse(body));
-        });
-
-
-    }
+     
 
     createAdventure () {
 
@@ -70,52 +53,13 @@ class AdventureBuilder extends Component {
         });
     }
 
-    componentWillMount() {
-
-        fetch('http://localhost:8081/rest/providers/activities')
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                console.log(JSON.parse(body));
-
-                const response = JSON.parse(body);
-                console.log(response);
-
-                this.setState({activities: response});
-                console.log(this.state);
-            });
-
-        fetch('http://localhost:8085/rest/hotels/rooms')
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                console.log(JSON.parse(body));
-
-                const response = JSON.parse(body);
-                console.log(response);
-
-                this.setState({rooms: response});
-                console.log(this.state);
-            });
-
-        fetch('http://localhost:8084/rest/rentacars/vehicles')
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                console.log(JSON.parse(body));
-
-                const response = JSON.parse(body);
-                console.log(response);
-
-                this.setState({vehicles: response});
-                console.log(this.state);
-            });
-    }
-
     render() {
+
+        const info = {
+            pathname: '/adventureBuilder0',
+            addCart: this.props.addCart
+        };
+
         return (
                 <div>
                     <h3>AdventureBuilder</h3>
@@ -137,27 +81,12 @@ class AdventureBuilder extends Component {
                         </div>
                         <br/>
                         <button type="submit" onClick={this.handleSubmit}>Submit your adventure</button>
+                        <Link to={info} className="shelf-item__buy-btn" > Start the builder!</Link>
                     </div>
 
                 </div>
                 )
     }  
-
-    /*render() {
-
-        return (<div>
-                    <h3>AdventureBuilder</h3>
-                    <ActivityShelf
-                        process = {i3 => this.process(i3)}
-                        activities = {this.state.activities}
-                        addCart = {this.props.addCart}
-
-                    />
-
-                
-                </div>
-                );
-    }*/
 }
 
 export default AdventureBuilder;

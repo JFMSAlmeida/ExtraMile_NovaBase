@@ -1,6 +1,7 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
 import AdventureBuilder from "./AdventureBuilder";
+import AdventureBuilder0 from "./AdventureBuilder0";
 import AdventureBuilder1 from "./AdventureBuilder1";
 import AdventureBuilder2 from "./AdventureBuilder2";
 import AdventureBuilder3 from "./AdventureBuilder3";
@@ -61,7 +62,8 @@ class App extends React.Component {
                 />
 
                 <Route exact path='/' component={Home} history={history}/>
-                <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)} a = {10}/>}/>
+                <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)}/>}/>
+                <Route path='/adventurebuilder0' component={AdventureBuilder0} history={history}/>
                 <Route path='/adventurebuilder1' component={AdventureBuilder1} history={history}/>
                 <Route path='/adventurebuilder2' component={AdventureBuilder2} history={history}/>
                 <Route path='/adventurebuilder3' component={AdventureBuilder3} history={history}/>
