@@ -35,6 +35,12 @@ class App extends React.Component {
         });
         console.log(product);
     }
+    resetProduct(){
+        console.log("E QUEM NÃO SALTA NÃO É DA MALTA");
+        this.setState({
+            product : null
+        });
+    }
 
 
     render() {
@@ -59,10 +65,11 @@ class App extends React.Component {
                 <Header
                     history={history}
                     product = {this.state.product}
+                    resetProduct = {() => this.resetProduct()}
                 />
 
                 <Route exact path='/' component={Home} history={history}/>
-                <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)}/>}/>
+                <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product) }/>}/>
                 <Route path='/adventurebuilder0' component={AdventureBuilder0} history={history}/>
                 <Route path='/adventurebuilder1' component={AdventureBuilder1} history={history}/>
                 <Route path='/adventurebuilder2' component={AdventureBuilder2} history={history}/>

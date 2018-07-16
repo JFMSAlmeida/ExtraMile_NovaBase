@@ -37,13 +37,9 @@ class AdventureBuilder1 extends Component {
                 return response.text();
             })
             .then(body => {
-                console.log(JSON.parse(body));
-
                 const response = JSON.parse(body);
                 console.log(response);
-
                 this.setState({activities: response});
-                console.log(this.state);
             });
 
         
