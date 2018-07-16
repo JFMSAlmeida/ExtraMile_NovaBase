@@ -13,7 +13,6 @@ class AdventureBuilder extends Component {
         this.handleOk = this.handleOk.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
-        this.checkChanges = this.checkChanges.bind(this);
         this.handleTab = this.handleTab.bind(this);
         this.disableFields = this.disableFields.bind(this);
         this.alert = this.alert.bind(this);
@@ -57,11 +56,6 @@ class AdventureBuilder extends Component {
         this.setState({alert: false});
     }
 
-    checkChanges() {
-        if (document.getElementById('iban').disabled && document.getElementById('age').disabled && document.getElementById('dl').disabled)
-            return false;
-    }
-
     disableFields() {
         document.getElementById('iban').disabled = true;
         document.getElementById('iban-edit').hidden = false;
@@ -94,7 +88,6 @@ class AdventureBuilder extends Component {
 
     handleOk(e) {
         e.preventDefault();
-        //if (this.checkChanges()) {
         this.setState({alert: true});
         var self = this;
         fetch('http://localhost:8083/rest/brokers/updateClientInfo?brokerCode=' + this.state.broker +
@@ -119,6 +112,7 @@ class AdventureBuilder extends Component {
                     this.props.location.state.info.iban = this.state.iban;
                     this.props.location.state.info.age = this.state.age;
                     this.props.location.state.info.drivinglicense = this.state.drivinglicense;
+                    this.props.location.calculateBalance();
                     this.disableFields();
                     this.alert("success");
                 }
@@ -126,7 +120,6 @@ class AdventureBuilder extends Component {
             self.alert("warning");
         });
         this.componentWillMount();
-        //}
     }
 
     handleRemove(e, str) {
@@ -172,7 +165,7 @@ class AdventureBuilder extends Component {
                         this.setState({
                             couldFetchTransactions: false
                         });
-                        // to distinguish from the catch result
+                        // to distinguish from the catch result (length = 1)
                         this.state.transactions = [{reference: null, time: null, value: null, type: null}];
                     }
                 });

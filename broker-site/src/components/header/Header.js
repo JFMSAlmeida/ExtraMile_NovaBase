@@ -12,11 +12,6 @@ class Header extends React.Component {
         super(props);
         this.handleLogout = this.handleLogout.bind(this);
         this.handleInfoChange = this.handleInfoChange.bind(this);
-        this.calculateBalance = this.calculateBalance.bind(this);
-
-        this.state = {
-            balance: ''
-        };
     }
 
     render(){
@@ -59,15 +54,15 @@ class Header extends React.Component {
                             </button>
                             <div className="dropdown-contentLogin">
                                 <a>
-                                    <span className="glyphicon glyphicon-usd"></span>&nbsp; {this.state.balance}
-                                    <a onClick={this.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
+                                    <span className="glyphicon glyphicon-usd"></span>&nbsp; {this.props.getAuthState().balance}
+                                    <a onClick={this.props.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
                                         <span className="glyphicon glyphicon-refresh"></span>
                                     </a>
-                                    {this.state.balance == 'Error' ?
+                                    {this.props.getAuthState.balance == 'Error' ?
                                         <span className="glyphicon glyphicon-question-sign" title="Bank server is down"></span>
                                         : null}
                                 </a>
-                                <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.props.getAuthState()}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
+                                <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, calculateBalance: this.props.calculateBalance, state:{info: this.props.getAuthState()}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
                                 <a href="" onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span>&nbsp; Logout</a>
                             </div>
                         </div>
@@ -90,7 +85,7 @@ class Header extends React.Component {
                   history = {this.props.history}
                   getAuthState = {this.props.getAuthState}
                   setAuthState = {this.props.setAuthState}
-                  calculateBalance = {this.calculateBalance}
+                  calculateBalance = {this.props.calculateBalance}
               />
 
           </div>
@@ -106,27 +101,6 @@ class Header extends React.Component {
 
     handleInfoChange(newIban, newAge, newDl) {
         this.props.setAuthState(true, this.props.getAuthState().nif, newIban, newAge, newDl);
-    }
-
-    async calculateBalance() {
-        console.log("handleBalance");
-        this.setState({balance: 'Fetching...'});
-
-        try {
-            await fetch('http://localhost:8082/rest/banks/balance?iban=' + this.props.getAuthState().iban)
-                .then(response => {
-                    return response.text();
-                })
-                .then(body => {
-                    if (JSON.parse(body).success)
-                        this.setState({balance: JSON.parse(body).balance});
-                    else {
-                        this.setState({balance: "Invalid IBAN"});
-                    }
-                });
-        } catch (e) {
-            this.setState({balance: "Error"});
-        }
     }
 }
 

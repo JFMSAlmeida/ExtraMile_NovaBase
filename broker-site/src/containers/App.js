@@ -35,6 +35,7 @@ class App extends React.Component {
         this.addProduct = this.addProduct.bind(this);
         this.setAuthState = this.setAuthState.bind(this);
         this.getAuthState = this.getAuthState.bind(this);
+        this.calculateBalance = this.calculateBalance.bind(this);
     }
 
     addProduct(product){
@@ -58,23 +59,27 @@ class App extends React.Component {
     }
 
 
-    render() {
+    calculateBalance() {
+        console.log("handleBalance");
+        this.setState({balance: 'Fetching...'});
 
-        $(document).ready(
-            function() {
-
-                SizeTheTopToolbar();
-
-                $(window).resize(function() {
-                    SizeTheTopToolbar();
-                });
+        fetch('http://localhost:8082/rest/banks/balance?iban=' + this.getAuthState().iban)
+            .then(response => {
+                return response.text();
+            })
+            .then(body => {
+                if (JSON.parse(body).success)
+                    this.setState({balance: JSON.parse(body).balance});
+                else {
+                    this.setState({balance: "Invalid IBAN"});
+                }
+            })
+            .catch(() => {
+                this.setState({balance: "Error"});
             });
+    }
 
-        function SizeTheTopToolbar() {
-            var viewportWidth = $(window).width();
-            var viewportHeight = $(window).height();
-        }
-
+    render() {
         return (
             <div>
                 <Header
@@ -82,6 +87,7 @@ class App extends React.Component {
                     product = {this.state.product}
                     setAuthState = {this.setAuthState}
                     getAuthState = {this.getAuthState}
+                    calculateBalance = {this.calculateBalance}
                 />
 
                 <Route exact path='/' component={Home} history={history}/>
