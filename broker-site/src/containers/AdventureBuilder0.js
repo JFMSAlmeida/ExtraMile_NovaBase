@@ -2,11 +2,70 @@ import React, { Component } from 'react';
 import './App.css';
 import ActivityShelf from '../components/shelf/ActivityShelf';
 
+
+ const acts = [
+    {
+        "title": "ActivityOne",
+        "providerName": "BAUHD",
+        "providerCode": "B10012",
+        "price": 10,
+        "begin": [2018,7,2],
+        "end": [2018,7,3],
+        "minAge": 19,
+        "maxAge": 30,
+        "capacity": 20,
+        "id": "ABERO1"
+
+    },
+
+    {
+        "title": "ActivityOne",
+        "providerName": "BAUHD",
+        "providerCode": "B10012",
+        "price": 15,
+        "begin": [2018,7,6],
+        "end": [2018,7,9],
+        "minAge": 19,
+        "maxAge": 32,
+        "capacity": 25,
+        "id": "ABERO1"
+    },
+
+    {
+        "title": "ActivityTwo",
+        "providerName": "BAUHD",
+        "providerCode": "B10012",
+        "price": 10,
+        "begin": [2018,7,2],
+        "end": [2018,7,3],
+        "minAge": 19,
+        "maxAge": 30,
+        "capacity": 20,
+        "id": "ABERO2"
+    },
+
+    {
+        "title": "ActivityThree",
+        "providerName": "BAUHD1",
+        "providerCode": "B100122",
+        "price": 10,
+        "begin": [2018,7,8],
+        "end": [2018,7,25],
+        "minAge": 19,
+        "maxAge": 30,
+        "capacity": 20,
+        "id": "ABERO13"
+    }
+
+];
+
 class AdventureBuilder1 extends Component {
+
+
     constructor(props){
         super(props);
         this.state = { 
-                       activities: []
+                       activities: acts
                      };
 
         this.process = this.process.bind(this);
@@ -29,7 +88,7 @@ class AdventureBuilder1 extends Component {
     }
 
 
-    componentWillMount() {
+    /*componentWillMount() {
 
         
         fetch('http://localhost:8081/rest/providers/activities')
@@ -43,7 +102,7 @@ class AdventureBuilder1 extends Component {
             });
 
         
-    }  
+    }  */
  
     render() {
 

@@ -236,8 +236,6 @@ public class BrokerRestController {
 			advData.setBegin(b);
 			advData.setEnd(e);
 
-			//CHANGE ADVDATA TO OTHER PAGE
-
 			Map<String, Object> json = new HashMap<String, Object>();
 
 			

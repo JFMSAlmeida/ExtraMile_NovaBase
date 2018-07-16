@@ -2,11 +2,48 @@ import React, { Component } from 'react';
 import './App.css';
 import RoomShelf from '../components/shelf/RoomShelf'
 
+
+const ros = [
+    {
+        "number": 1,
+        "type": "SINGLE",
+        "hotelName": "NOT PARIS",
+        "hotelCode": "NP1231",
+        "price": 100
+    },
+
+    {
+        "number": 2,
+        "type": "DOUBLE",
+        "hotelName": "NOT PARIS",
+        "hotelCode": "NP1231",
+        "price": 100
+    },
+
+    { 
+        "number": 1,
+        "type": "DOUBLE",
+        "hotelName": "LISBON",
+        "hotelCode": "NP12312",
+        "price": 100
+    },
+
+    {
+        "number": 2,
+        "type": "DOUBLE",
+        "hotelName": "LISBON",
+        "hotelCode": "NP12312",
+        "price": 101
+    }
+
+];
+
+
 class AdventureBuilder1 extends Component {
     constructor(props){
         super(props);
         this.state = { 
-                       rooms: []
+                       rooms: ros
                      };
 
         this.process = this.process.bind(this);
@@ -28,7 +65,7 @@ class AdventureBuilder1 extends Component {
     }
 
 
-    componentWillMount() {
+    /*componentWillMount() {
 
         
         fetch('http://localhost:8085/rest/hotels/rooms')
@@ -46,7 +83,7 @@ class AdventureBuilder1 extends Component {
             });
 
         
-    } 
+    } */
  
     render() {
         const info = {
