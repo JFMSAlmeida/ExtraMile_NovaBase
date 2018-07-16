@@ -22,10 +22,19 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            product:null
+            product: null,
+            auth: false,
+            broker: 'B100',
+            nif: '',
+            iban: '',
+            age: '',
+            drivinglicense: '',
+            balance: '',
         };
 
         this.addProduct = this.addProduct.bind(this);
+        this.setAuthState = this.setAuthState.bind(this);
+        this.getAuthState = this.getAuthState.bind(this);
     }
 
     addProduct(product){
@@ -33,6 +42,19 @@ class App extends React.Component {
             product : product
         });
         console.log(product);
+    }
+
+    setAuthState(auth, nif, iban, age, dl) {
+        this.setState({
+            auth: auth,
+            nif: nif,
+            iban: iban,
+            age: age,
+            drivinglicense: dl},() => { console.log('new state Auth = ', this.state); });
+    }
+
+    getAuthState() {
+        return this.state;
     }
 
 
@@ -58,6 +80,8 @@ class App extends React.Component {
                 <Header
                     history={history}
                     product = {this.state.product}
+                    setAuthState = {this.setAuthState}
+                    getAuthState = {this.getAuthState}
                 />
 
                 <Route exact path='/' component={Home} history={history}/>
