@@ -80,7 +80,7 @@ class Header extends React.Component {
                                             : null }
           
                         <Cart
-                            product = {this.props.product} resetProduct = {this.props.resetProduct}
+                            product = {this.props.product} resetProduct = {this.props.resetProduct} hasCar = {this.state.hasCar} hasRoom = {this.state.hasRoom}
                         />
                         { !this.state.auth ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> : null }
                     </ul>

@@ -57,6 +57,14 @@ class AdventureBuilder extends Component {
             console.log(response.advId);
             this.setState({advId: response.advId});
         });
+
+        var duration = moment.duration(this.state.value.end.diff(this.state.value.start));
+        console.log(duration.as('days'));
+        if (duration.as('days') != 0)
+            this.props.updateSpecs(this.state.rentVehicle, true);
+        else
+            this.props.updateSpecs(this.state.rentVehicle, false);
+
     }
 
     render() {

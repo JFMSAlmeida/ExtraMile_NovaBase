@@ -59,7 +59,7 @@ import ActivityShelf from '../components/shelf/ActivityShelf';
 
 ];
 
-class AdventureBuilder1 extends Component {
+class AdventureBuilder0 extends Component {
 
 
     constructor(props){
@@ -118,5 +118,5 @@ class AdventureBuilder1 extends Component {
     }
 }
 
-export default AdventureBuilder1;
+export default AdventureBuilder0;
 

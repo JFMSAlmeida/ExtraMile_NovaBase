@@ -196,11 +196,11 @@ class Cart extends Component{
                                 {totalPrice} €
                             </p>
                         </div>
-                            <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
-                                <div className="buy-btn">
-                                    <span>Checkout</span>
-                                </div>
-                            </Link>
+                        {this.state.activity && this.props.hasRoom<Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
+                            <div className="buy-btn">
+                                <span>Checkout</span>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
