@@ -234,10 +234,10 @@ public class RentACarInterface {
 			
 			Map<String, Object> vehicleInfo = new HashMap<>();
 
-			vehicleInfo.put("type", "MOTORCYCLE");
+			vehicleInfo.put("vehicleType", "MOTORCYCLE");
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
-			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
+			vehicleInfo.put("vehiclePrice", ((Vehicle_Base) v).getPrice());
 			vehicleInfo.put("rentACarName", ((Vehicle_Base) v).getRentACar().getName());
 			vehicleInfo.put("rentACarCode", ((Vehicle_Base) v).getRentACar().getCode());
 		
@@ -257,10 +257,10 @@ public class RentACarInterface {
 			
 			Map<String, Object> vehicleInfo = new HashMap<>();
 
-			vehicleInfo.put("type", "CAR");
+			vehicleInfo.put("vehicleType", "CAR");
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
-			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
+			vehicleInfo.put("vehiclePrice", ((Vehicle_Base) v).getPrice());
 			vehicleInfo.put("rentACarName", ((Vehicle_Base) v).getRentACar().getName());
 			vehicleInfo.put("rentACarCode", ((Vehicle_Base) v).getRentACar().getCode());
 		

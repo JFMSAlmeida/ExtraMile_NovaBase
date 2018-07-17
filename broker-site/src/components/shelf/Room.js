@@ -26,10 +26,10 @@ const Room = (props) => {
 	return (
 		<div className="shelf-item" data-sku={room.hotelCode}>
 			<div className="shelf-item__main_info">
-				<p className="shelf-item__title"> {room.type} </p>
+				<p className="shelf-item__title"> {room.roomType} </p>
                 <img className="shelf-item__image" src={require(`./B1001.jpg`)} alt={room.hotelCode}/>
 				<div className="shelf-item__price">
-                    <div className="val"><b>Price: {room.price}</b><small>€</small> </div>
+                    <div className="val"><b>Price: {room.roomPrice}</b><small>€</small> </div>
            		</div>
            		<p> Hotel: {room.hotelName} </p>
            		<p> Number: {room.number} </p>

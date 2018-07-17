@@ -265,7 +265,7 @@ public class ActivityInterface {
 			aux.put("title", activity.getName());
 			aux.put("providerName", provider.getName());
 			aux.put("providerCode", provider.getCode());
-			aux.put("price", offer.getAmount());
+			aux.put("activityPrice", offer.getAmount());
 			aux.put("begin", offer.getBegin());
 			aux.put("end", offer.getEnd());
 			aux.put("minAge", activity.getMinAge());

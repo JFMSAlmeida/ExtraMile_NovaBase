@@ -112,8 +112,13 @@ public class BrokerRestController {
 			  												@RequestParam(value="param") String[] id) {
 		
 		try {
-			Map<String, Object> json = new HashMap<String, Object>();
 			int size = id.length;
+			for(int i = 0; i < size; i++) {
+				System.out.println(id[i]);
+			}
+
+			Map<String, Object> json = new HashMap<String, Object>();
+			
 			for(int i = 0; i < size; i++) {
 				BrokerInterface.process(brokerCode, id[i], advId);
 				json.put("success", true);

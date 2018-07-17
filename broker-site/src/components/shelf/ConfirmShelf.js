@@ -24,7 +24,7 @@ class ConfirmShelf extends Component {
     }
 
     async process(advId, id){
-        let link = 'http://localhost:8083/rest/brokers/processPart?param1=B100';
+        let link = 'http://localhost:8083/rest/brokers/processPart?param1=B100&param2=' + advId;
         var size = id.length;
 
         for(let i = 0; i < size; i++) {
@@ -44,7 +44,7 @@ class ConfirmShelf extends Component {
         }
     }
 
-    async addToCart(){
+    addToCart(){
         let adv = this.createPackage();
 
         var id = [];
@@ -57,17 +57,17 @@ class ConfirmShelf extends Component {
 
         if (this.props.hasRoom) {
             var room = this.props.advParts[1];
-            var roomId = room.hotelCode + ";" + room.roomNumber;
+            var roomId = room.hotelCode + ";" + room.number + ";" + room.roomType;
             id.push(roomId)
         }
 
         if (this.props.hasVehicle) {
             var vehicle = this.props.advParts[2];
-            var vehId = vehicle.plate + ";" + vehicle.type;
+            var vehId = vehicle.plate + ";" + vehicle.rentACarCode;
             id.push(vehId);
         }
 
-        await this.process(advId, id);
+        this.process(advId, id);
 
         this.props.addCart(adv);
     }
