@@ -104,7 +104,9 @@ class AdventureBuilder extends Component {
                 if (!JSON.parse(body).success) {
                     //DL invalido
                     this.alert("error");
-                    this.disableFields();
+                    this.handleRemove(e, "iban");
+                    this.handleRemove(e, "age");
+                    this.handleRemove(e, "dl");
                 }
                 else {
                     //Atualizar fields e states
