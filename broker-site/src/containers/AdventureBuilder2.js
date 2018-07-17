@@ -109,30 +109,14 @@ class AdventureBuilder2 extends Component {
     */
 
     render() {
-
-        const info = {
-            activityName: this.props.location.activityName,
-            begin: this.props.location.begin,
-            end: this.props.location.end,
-            age: this.props.location.age,
-            hasRoom: this.props.location.hasRoom,
-            hotelName: this.props.location.hotelName,
-            roomNumber: this.props.location.roomNumber,
-            roomType: this.props.location.roomType,
-            addCart: this.props.location.addCart
-
-        };
-
-        return (<div>
-                    <h3>Vehicle picker</h3>
-                        <VehicleShelf
-                            process = {i3 => this.process(i3)}
-                            vehicles = {this.state.vehicles}
-                            room = {info}                     
-                    />
-
-                
-                </div>
+        console.log("aaaa");
+        console.log(this.props.location.addCart);
+        console.log("bbbb");
+        return (
+                    <div className="container">
+                        <h3>Vehicle picker</h3>
+                            <VehicleShelf vehicles = {this.state.vehicles} addCart={this.props.location.addCart}/>
+                    </div>
                 );
     }
 

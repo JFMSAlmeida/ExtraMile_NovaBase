@@ -75,17 +75,17 @@ class AdventureBuilder extends Component {
     }
 
     alert(str) {
-        if (str == "success") {
+        if (str === "success") {
             document.getElementById("alert-icon").className = "glyphicon glyphicon-ok-sign";
             document.getElementById("alert-text").innerHTML = "&nbsp;Fields updated with success!";
             document.getElementById("alert").setAttribute("class", "alert alert-success");
         }
-        if (str == "warning") {
+        if (str === "warning") {
             document.getElementById("alert").setAttribute("class", "alert alert-warning");
             document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
             document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
-        if (str == "error") {
+        if (str === "error") {
             document.getElementById("alert").setAttribute("class", "alert alert-danger");
             document.getElementById("alert-icon").className = "glyphicon glyphicon-exclamation-sign";
             document.getElementById("alert-text").innerHTML = "&nbsp;Abort: Driving License already in use by other user.";
@@ -131,15 +131,15 @@ class AdventureBuilder extends Component {
 
     handleRemove(e, str) {
         e.preventDefault()
-        if (str == "iban") {
+        if (str === "iban") {
             document.getElementById(str).value = this.props.location.state.info.iban;
             this.state.iban = this.props.location.state.info.iban;
         }
-        if (str == "age") {
+        if (str === "age") {
             document.getElementById(str).value = this.props.location.state.info.age;
             this.state.age = this.props.location.state.info.age;
         }
-        if (str == "dl") {
+        if (str === "dl") {
             document.getElementById(str).value = this.props.location.state.info.drivinglicense;
             this.state.drivinglicense = this.props.location.state.info.drivinglicense;
         }
@@ -196,12 +196,12 @@ class AdventureBuilder extends Component {
                 <div className="row">
                     <div className="col-md-3 ">
                         <div className="list-group">
-                            {this.state.tab == 'dashboard' ? <a className="list-group-item list-group-item-action active" onClick={(e) => this.handleTab(e, 'dashboard')}>Dashboard</a> : <a className="list-group-item list-group-item-action" onClick={(e) => this.handleTab(e, 'dashboard')}>Dashboard</a>}
-                            {this.state.tab == 'transactions' ? <a className="list-group-item list-group-item-action active" onClick={(e) => this.handleTab(e, 'transactions')}>Transactions</a> : <a className="list-group-item list-group-item-action" onClick={(e) => this.handleTab(e, 'transactions')}>Transactions</a>}
+                            {this.state.tab === 'dashboard' ? <a className="list-group-item list-group-item-action active" onClick={(e) => this.handleTab(e, 'dashboard')}>Dashboard</a> : <a className="list-group-item list-group-item-action" onClick={(e) => this.handleTab(e, 'dashboard')}>Dashboard</a>}
+                            {this.state.tab === 'transactions' ? <a className="list-group-item list-group-item-action active" onClick={(e) => this.handleTab(e, 'transactions')}>Transactions</a> : <a className="list-group-item list-group-item-action" onClick={(e) => this.handleTab(e, 'transactions')}>Transactions</a>}
                         </div>
                     </div>
 
-                    {this.state.tab == 'dashboard' ?
+                    {this.state.tab === 'dashboard' ?
                         <Dashboard
                             fieldState = {this.props.location.state.info}
                             handleOk = {this.handleOk}
@@ -213,7 +213,7 @@ class AdventureBuilder extends Component {
                         />
                         :null}
 
-                    {this.state.tab == 'transactions' ?
+                    {this.state.tab === 'transactions' ?
                         <div id="transactions">
                             <div className="col-md-9">
                                 <div className="card">

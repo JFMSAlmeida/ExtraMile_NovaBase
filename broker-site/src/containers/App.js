@@ -23,7 +23,7 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            product:null,
+            product: null,
             hasCar : false,
             hasRoom : false
         };
@@ -51,7 +51,6 @@ class App extends React.Component {
             hasRoom : hasRoom
         })
     }
-
 
     render() {
 
@@ -83,9 +82,9 @@ class App extends React.Component {
                 <Route exact path='/' component={Home} history={history}/>
                 <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)} updateSpecs = {this.updateSpecs} />}/>
                 <Route path='/adventurebuilder0' component={AdventureBuilder0} />
-                <Route path='/adventurebuilder1' render={()=><AdventureBuilder1 addCart = {product => this.addProduct(product) }/>} />
-                <Route path='/adventurebuilder2' render={()=><AdventureBuilder2 addCart = {product => this.addProduct(product) }/>} />
-                <Route path='/adventurebuilder3' render={()=><AdventureBuilder addCart = {product => this.addProduct(product) }/>} />
+                <Route path='/adventurebuilder1' component={AdventureBuilder1} />
+                <Route path='/adventurebuilder2' component={AdventureBuilder2} />
+                <Route path='/adventurebuilder3' component={AdventureBuilder3} />
                 <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)}/>}/>
                 <Route path='/checkout' component={Checkout} history={history}/>
                 <Route path='/payment' component={Payment} history={history}/>

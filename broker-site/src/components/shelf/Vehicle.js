@@ -6,7 +6,7 @@ const Vehicle = (props) => {
 
 	const vehicle = props.vehicle;
 	const i3 = vehicle.plate + ";" + vehicle.rentACarCode;
-
+	console.log("VEHICLE " + props.addCart);
 	/*const info = {
 		pathname:'/adventurebuilder3',
 		activityName: props.room.activityName,

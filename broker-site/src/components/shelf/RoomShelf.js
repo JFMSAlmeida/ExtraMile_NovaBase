@@ -11,10 +11,9 @@ class RoomShelf extends Component {
 		const roomArray = room.map((r,index) => {
 			return(
 				<Room
-					process = {this.props.process}
 					room = {r}
 					key = {index}
-					activity = {this.props.activity}
+                    addCart={() => this.props.addCart(r)}
 				/>
 			);
 		});

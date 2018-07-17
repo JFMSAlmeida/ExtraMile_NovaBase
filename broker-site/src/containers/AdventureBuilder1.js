@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import RoomShelf from '../components/shelf/RoomShelf'
+import {Link} from "react-router-dom";
 
 
 const ros = [
@@ -86,23 +87,22 @@ class AdventureBuilder1 extends Component {
     } */
  
     render() {
-        const info = {
-            activityName: this.props.location.activityName,
-            begin: this.props.location.begin,
-            end: this.props.location.end,
-            age: this.props.location.age,
-            addCart: this.props.location.addCart
-    
-        };
-
-        return (<div>
+        console.log(this.props);
+        console.log(this.props.location);
+        console.log("aaaa");
+        console.log(this.props.location.addCart);
+        console.log("bbbb");
+        return (<div className="container">
                     <h3>Room Picker</h3>
-                     <RoomShelf
-                        process = {i3 => this.process(i3)}
-                        rooms = {this.state.rooms}
-                        activity = {info}
-
-                    />
+                     <RoomShelf rooms = {this.state.rooms} addCart={this.props.location.addCart} />
+                    {
+                        this.props.location.hasVehicle &&
+                        <Link to={{ pathname: '/AdventureBuilder2' , addCart:this.props.location.addCart }} style={{textDecoration: 'none'}}>
+                            <div className="back-btn2">
+                                <span>Vehicle Picker</span>
+                            </div>
+                        </Link>
+                    }
                 </div>
                 );
     }
