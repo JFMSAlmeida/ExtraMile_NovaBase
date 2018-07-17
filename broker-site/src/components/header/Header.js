@@ -78,7 +78,6 @@ class Header extends React.Component {
               <Signup
                   history = {this.props.history}
                   getAuthState = {this.props.getAuthState}
-                  setAuthState = {this.props.setAuthState}
               />
 
               <Login
