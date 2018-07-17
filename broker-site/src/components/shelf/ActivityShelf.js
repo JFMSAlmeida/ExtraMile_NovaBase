@@ -27,6 +27,7 @@ class ActivityShelf extends Component {
                 <div className="shelf-container">
                     {actArray}
                 </div>
+
             </React.Fragment>
         );
 

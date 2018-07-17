@@ -8,12 +8,13 @@ class Cart extends Component{
         this.state= {
             isOpen : false,
             products : [],
-            newProduct : null,
-            activity : false,
-            hotel : false,
-            car : false
+            newProduct : null
         };
+        this.activity = false;
+        this.hotel = false;
+        this.car = false;
         this.removeProduct = this.removeProduct.bind(this);
+        this.addProduct = this.addProduct.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -32,7 +33,7 @@ class Cart extends Component{
     calculateTotalAmount(){
         var acumulator = 0;
         for(var i = 0; i < this.state.products.length; i++){
-           acumulator = acumulator + this.state.products[i].price;
+            acumulator = acumulator + this.state.products[i].price;
         }
         return acumulator;
     }
@@ -51,23 +52,23 @@ class Cart extends Component{
 
             if(product.providerCode != null){
                 console.log("provider não é null");
-                if(this.state.activity == false){
+                if(this.activity === false){
                     console.log("não tenho activity logo vou meter a true");
-                    this.state.activity = true;
+                    this.activity = true;
                     this.state.products.push(product);
                 }
             }
             else if(product.hotelCode != null){
                 console.log("hotelcode não é null");
-                if(this.state.hotel == false){
-                    this.state.hotel = true;
+                if(this.hotel === false){
+                    this.hotel = true;
                     this.state.products.push(product);
                 }
             }
             else {
                 console.log("car não é null");
-                if (this.state.car == false) {
-                    this.state.car = true;
+                if (this.car === false) {
+                    this.car = true;
                     this.state.products.push(product);
                 }
             }
@@ -92,29 +93,28 @@ class Cart extends Component{
         const cartProducts = this.state.products;
         var index;
         if(product.providerCode != null || product.hotelCode != null || product.rentACarCode != null) {
-            console.log("entrei pq sou builder")
-            if (product.providerCode != null){
+            console.log("entrei pq sou builder");
+            if (product.providerCode != null) {
                 console.log("provider não é null");
-                this.state.activity = false;
-                 index = cartProducts.findIndex(p => p.providerCode === product.providerCode);
+                this.activity = false;
+                index = cartProducts.findIndex(p => p.providerCode === product.providerCode);
             }
 
-            else if(product.hotelCode != null) {
+            else if (product.hotelCode != null) {
                 console.log("hotelcode não é null");
-                this.state.hotel = false;
+                this.hotel = false;
                 index = cartProducts.findIndex(p => p.hotelCode === product.hotelCode);
             }
-            else{
+            else {
                 console.log("car não é null");
-                this.state.car = false;
+                this.car = false;
                 index = cartProducts.findIndex(p => p.rentACarCode === product.rentACarCode);
             }
             if (index >= 0)
                 cartProducts.splice(index, 1);
         }
-
         else{
-            console.log("Sou adventure")
+            console.log("Sou adventure");
             index = cartProducts.findIndex(p => p.id === product.id);
             if (index >= 0) {
                 cartProducts.splice(index, 1);
@@ -128,7 +128,22 @@ class Cart extends Component{
         this.props.resetProduct();
     }
 
-    render() {
+    render(){
+        console.log("this.props.hasRoom " + this.props.hasRoom);
+        console.log("this.props.hasVehicle " + this.props.hasCar);
+        console.log("this.activity " + this.activity);
+        console.log("this.hotel "+ this.hotel);
+        console.log("this.car "+ this.car);
+        console.log("CART-FLAG:" + this.props.flag);
+        console.log("RESULT1 " + (this.activity && !this.props.hasRoom && !this.props.hasCar));
+        console.log("RESULT2 " + (this.activity && this.props.hasRoom && !this.props.hasCar && this.hotel));
+        console.log("RESULT3" + (this.activity && !this.props.hasRoom && this.props.hasCar && this.car));
+        console.log("RESULT4 " + (this.activity && this.props.hasRoom && this.props.hasCar && this.hotel && this.car));
+        console.log("FINAL RESULT " + ((this.activity && !this.props.hasRoom && !this.props.hasCar) ||
+            (this.activity && this.props.hasRoom && !this.props.hasCar && this.hotel) ||
+            (this.activity && !this.props.hasRoom && this.props.hasCar && this.car) ||
+            (this.activity && this.props.hasRoom && this.props.hasCar && this.hotel && this.car)))
+
         const totalPrice = this.calculateTotalAmount();
         const products = this.state.products.map((p, index) => {
             return (
@@ -196,11 +211,24 @@ class Cart extends Component{
                                 {totalPrice} €
                             </p>
                         </div>
-                            <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
-                                <div className="buy-btn">
-                                    <span>Checkout</span>
-                                </div>
-                            </Link>
+                        {this.props.flag ?
+                            ((this.activity && !this.props.hasRoom && !this.props.hasCar) ||
+                            (this.activity && this.props.hasRoom && !this.props.hasCar && this.hotel) ||
+                            (this.activity && !this.props.hasRoom && this.props.hasCar && this.car) ||
+                            (this.activity && this.props.hasRoom && this.props.hasCar && this.hotel && this.car))
+                            &&  <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
+                                    <div className="buy-btn">
+                                        <span>CheckoutBUILDER</span>
+                                    </div>
+                                </Link>
+                            :
+                                <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
+                                    <div className="buy-btn">
+                                        <span>CheckoutFINDER</span>
+                                    </div>
+                                </Link>
+                        }
+
                     </div>
                 </div>
             </div>

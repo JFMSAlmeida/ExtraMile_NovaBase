@@ -31,7 +31,12 @@ class Header extends React.Component {
             age: '',
             drivinglicense: '',
             balance: '',
+            advflag: null
         };
+    }
+    updateState(flag){
+        this.setState({advflag : flag})
+        console.log("flag:" + flag);
     }
 
     render(){
@@ -46,7 +51,6 @@ class Header extends React.Component {
             $('#loginform')[0].reset();
             $('#errorLogin').empty();
         });
-
         return (
           <div className="headerContainer">
               <header className="header">
@@ -54,8 +58,8 @@ class Header extends React.Component {
                   <ul className="nav navbar-nav">
                     <a className="navbar-brand">ExtraMile</a>
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/adventurefinder'>Adventure Finder</Link></li>
-                    <li><Link to='/adventurebuilder'>Adventure Builder</Link></li>
+                    <li><Link to='/adventurefinder' onClick={() => this.updateState(0)}>Adventure Finder</Link></li>
+                    <li><Link to='/adventurebuilder' onClick={() => this.updateState(1)}>Adventure Builder</Link></li>
                   </ul>
                     <ul className="nav navbar-nav navbar-right">
                         { !this.state.auth ? <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li> : null}
@@ -69,7 +73,7 @@ class Header extends React.Component {
                                                         <a onClick={this.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
                                                             <span className="glyphicon glyphicon-refresh"></span>
                                                         </a>
-                                                        {this.state.balance == 'Error' ?
+                                                        {this.state.balance === 'Error' ?
                                                             <span className="glyphicon glyphicon-question-sign" title="Bank server is down"></span>
                                                             : null}
                                                     </a>
@@ -80,7 +84,7 @@ class Header extends React.Component {
                                             : null }
           
                         <Cart
-                            product = {this.props.product} resetProduct = {this.props.resetProduct}
+                            product = {this.props.product} resetProduct = {this.props.resetProduct} hasCar = {this.props.hasCar} hasRoom = {this.props.hasRoom} flag={this.state.advflag}
                         />
                         { !this.state.auth ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> : null }
                     </ul>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router';
 
-class Payment extends Component {
+class PaymentModal extends Component {
     constructor(props){
         super(props);
 
@@ -64,4 +64,4 @@ class Payment extends Component {
     }
 }
 
-export default Payment;
+export default PaymentModal;

@@ -11,10 +11,9 @@ class VehicleShelf extends Component {
 		const vehicleArray = vehicle.map((v,index) => {
 			return(
 				<Vehicle
-					process = {this.props.process}
 					vehicle = {v}
 					key = {index}
-					room = {this.props.room}
+					addCart={() => this.props.addCart(v)}
 				/>
 			);
 		});

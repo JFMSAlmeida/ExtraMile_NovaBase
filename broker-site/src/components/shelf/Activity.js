@@ -7,7 +7,7 @@ const Activity = (props) => {
 
 	const activity = props.activity;
 
-	const i3 = activity.providerCode + ";" + activity.activityCode
+	const i3 = activity.providerCode + ";" + activity.activityCode;
 
 	/*const info = {
 		pathname:'/adventurebuilder1',
