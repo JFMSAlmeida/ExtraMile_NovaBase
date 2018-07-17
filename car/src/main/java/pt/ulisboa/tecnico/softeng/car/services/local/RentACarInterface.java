@@ -290,19 +290,5 @@ public class RentACarInterface {
 		
 	
 	}
-
-	
-	/*@Atomic(mode = Atomic.TxMode.WRITE)
-	public static String rent(String type, String license, String nif, String iban, LocalDate begin, LocalDate end,
-			String adventureId) {
-		Renting renting = getReting4AdventureId(adventureId);
-		if (renting != null) {
-			return renting.getReference();
-		}
-
-		return RentACar.rent(type.equals("CAR") ? Car.class : Motorcycle.class, license, nif, iban, begin, end,
-				adventureId);
-
-	}*/
 	
 }
