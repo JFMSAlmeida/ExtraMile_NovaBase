@@ -269,29 +269,19 @@ public class BrokerInterface {
 	}
 
 	@Atomic(mode = TxMode.READ)
-	public static Object getAdventurePriceById(String brokerCode, String advId) {
+	public static Object getAdventurePriceById(String brokerCode, String advId, String clientNif) {
 		
-		Broker broker = null;
-		Adventure adventure = null;
-		
-		for (Broker aux : FenixFramework.getDomainRoot().getBrokerSet()) {
-			if (aux.getCode().equals(brokerCode)) {
-				broker = aux;
-				break;
+		ClientData cd = getClientDataByBrokerCodeAndNif(brokerCode, clientNif);
+		List<AdventureData> ad = cd.getAdventures();
+
+		for(AdventureData aux : ad) {
+			if (aux.getId().equals(advId)) {
+				System.out.println(aux.getAmount());
+				return aux.getAmount();
 			}
 		}
 
-
-
-		for (Adventure aux : broker.getAdventureSet()) {
-			if (aux.getID().equals(advId)) {
-				adventure = aux;
-				break;
-			}
-		}
-
-		System.out.println(adventure.getAmount());
-		return adventure.getAmount();
+		throw new BrokerException();
 
 		
 	}

@@ -134,12 +134,13 @@ public class BrokerRestController {
 	@CrossOrigin
 	@RequestMapping(value = "/getAdventurePrice")
 	public ResponseEntity<Map<String,Object>> getAdventurePrice(@RequestParam(value="param1") String brokerCode,
-														   @RequestParam(value="param2") String advId) {
+														   @RequestParam(value="param2") String advId,
+														   @RequestParam(value="param3") String clientNif) {
 
 		try {
 			Map<String, Object> json = new HashMap<String, Object>();
 
-			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId));
+			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId, clientNif));
 
 			return new ResponseEntity<>(json, HttpStatus.OK);
 
@@ -147,7 +148,7 @@ public class BrokerRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
-
+ 
 	}
 
 	@CrossOrigin

@@ -74,8 +74,10 @@ class AdventureBuilder0 extends Component {
 
     componentWillMount() {
 
-        
-        fetch('http://localhost:8081/rest/providers/activities')
+        var date1 = this.props.begin.format("YYYY-MM-DD");
+        var date2 = this.props.end.format("YYYY-MM-DD");
+
+        fetch('http://localhost:8084/rest/providers/activities?param1=' + date1 + '&param2=' + date2)
             .then(response => {
                 return response.text();
             })

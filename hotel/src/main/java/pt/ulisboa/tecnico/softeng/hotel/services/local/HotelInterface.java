@@ -156,11 +156,11 @@ public class HotelInterface {
 	} 
 
 	@Atomic(mode = TxMode.READ)
-	public static List<Room> getAllRooms() {
+	public static List<Room> getAllRooms(String begin, String end) {
 		List<Room> availableRooms = new ArrayList<>();
 
-		LocalDate arrival =  new LocalDate("1980-01-01");
-		LocalDate departure = new LocalDate("2050-12-12");
+		LocalDate arrival =  new LocalDate(begin);
+		LocalDate departure = new LocalDate(end);
 
 		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {
 			availableRooms.addAll(hotel.getAvailableRooms(arrival, departure));

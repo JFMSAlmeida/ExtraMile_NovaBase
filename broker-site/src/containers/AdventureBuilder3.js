@@ -7,15 +7,11 @@ class AdventureBuilder3 extends Component {
         super(props);
 
         this.state = {
-            adventure: []
+            price: 0
         };
 
     } 
 
-    /*componentWillMount() {
-
-        fetch da aventura, para obter preço, data inicio e de fim
-    }*/
 
     render() {
         let advParts = [];

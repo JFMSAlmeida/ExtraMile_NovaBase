@@ -10,7 +10,7 @@ import pt.ulisboa.tecnico.softeng.car.exception.CarException;
 import pt.ulisboa.tecnico.softeng.car.services.local.RentACarInterface;
 import pt.ulisboa.tecnico.softeng.car.services.local.dataobjects.RentACarData;
 import pt.ulisboa.tecnico.softeng.car.services.remote.dataobjects.RestRentingData;
-
+ 
 import java.util.List;
 
 @RestController
@@ -55,14 +55,15 @@ public class CarRestController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/vehicles", method = RequestMethod.GET)
-    public ResponseEntity<List<Object>> getVehicles() {
+	@RequestMapping(value = "/vehicles")
+    public ResponseEntity<List<Object>> getVehicles(@RequestParam(value="param1") String begin,
+													@RequestParam(value="param2") String end) {
 
 		try {
 
 	    	List<RentACarData> aux = RentACarInterface.getRentACars();
 
-	        return new ResponseEntity<>(RentACarInterface.vehicle2HashMap(aux), HttpStatus.OK);
+	        return new ResponseEntity<>(RentACarInterface.vehicle2HashMap(aux, begin, end), HttpStatus.OK);
 		} catch (CarException ce) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}

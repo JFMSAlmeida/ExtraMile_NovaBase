@@ -7,13 +7,48 @@ class ConfirmShelf extends Component {
     constructor(props){
         super(props);
 
+        this.state = {
+                        price: 0
+                    };
+
         this.createPackage = this.createPackage.bind(this);
-        this.addToCart = this.addToCart.bind(this)
+        this.addToCart = this.addToCart.bind(this);
+        this.getPrice = this.getPrice.bind(this);
     }
+
+
+    async getPrice() {
+
+        var i1 = "B100";
+        var i2 = this.props.advId;
+        var i3 = "999999999";
+
+        console.log(i2);
+        console.log(this.props.advId);
+
+        await fetch('http://localhost:8083/rest/brokers/getAdventurePrice?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+            .then(response => {
+            return response.text();
+        })
+        .then(body => {
+            console.log(JSON.parse(body));
+            console.log(JSON.parse(body).price);
+            this.setState({
+                price: JSON.parse(body).price
+            });
+        });
+
+        let adv = this.createPackage();
+
+        this.props.addCart(adv);
+
+    }
+
+
 
     createPackage() {
         console.log("BODAID: " + this.props.advId);
-        let adv = Object.assign(this.props.advParts[0], {"idBODA": this.props.advId});
+        let adv = Object.assign(this.props.advParts[0], {"id": this.props.advId, "price": this.state.price});
         if (this.props.hasRoom)
             adv = Object.assign(adv, this.props.advParts[1]);
         if (this.props.hasVehicle)
@@ -31,21 +66,20 @@ class ConfirmShelf extends Component {
             link = link + '&param=' + id[i];
         }
 
-        try {
-            await fetch(link)
-                .then(response => {
-                    return response.text();
-                })
-                .then(body => {
-                    console.log(JSON.parse(body));
-                });
-        } catch (e) {
-            console.log("error");
-        }
+
+        await fetch(link)
+            .then(response => {
+                return response.text();
+            })
+            .then(body => {
+                console.log(JSON.parse(body));
+            });
+
+        this.getPrice();
+ 
     }
 
     addToCart(){
-        let adv = this.createPackage();
 
         var id = [];
         var advId = this.props.advId;
@@ -69,7 +103,6 @@ class ConfirmShelf extends Component {
 
         this.process(advId, id);
 
-        this.props.addCart(adv);
     }
 
     render(){

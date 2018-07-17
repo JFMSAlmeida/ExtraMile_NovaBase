@@ -51,11 +51,13 @@ class AdventureBuilder1 extends Component {
 
 
 
-    componentWillMount() {
+    componentWillMount() { 
 
-        
-        fetch('http://localhost:8085/rest/hotels/rooms')
-            .then(response => {
+        var date1 = this.props.begin.format("YYYY-MM-DD");
+        var date2 = this.props.end.format("YYYY-MM-DD");
+
+        fetch('http://localhost:8084/rest/hotels/rooms?param1=' + date1 + '&param2=' + date2)
+        .then(response => {
                 return response.text();
             })
             .then(body => {

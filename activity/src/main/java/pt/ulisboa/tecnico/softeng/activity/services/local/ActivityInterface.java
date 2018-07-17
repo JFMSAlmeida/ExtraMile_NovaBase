@@ -235,16 +235,17 @@ public class ActivityInterface {
 	}
 
 	@Atomic(mode = TxMode.READ)
-	public static List<ActivityOffer> getAllOffers () {
+	public static List<ActivityOffer> getAllOffers (String begin, String end) {
 		
 		List<ActivityOffer> offers = new ArrayList<>();
 
-		LocalDate begin =  new LocalDate("1980-01-01");
-		LocalDate end = new LocalDate("2050-12-12");
+		LocalDate arrival =  new LocalDate(begin);
+		LocalDate departure = new LocalDate(end);
+
 		int age = 18;
 
 		for (ActivityProvider provider: FenixFramework.getDomainRoot().getActivityProviderSet()) {
-			offers.addAll(provider.findOffer(begin, end, age));
+			offers.addAll(provider.findOffer(arrival, departure, age));
 		}
 
 		return offers;

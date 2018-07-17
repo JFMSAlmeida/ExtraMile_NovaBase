@@ -215,13 +215,13 @@ public class RentACarInterface {
 	}
 
 	@Atomic(mode = Atomic.TxMode.READ)
-	public static ArrayList<Object> vehicle2HashMap(List<RentACarData> data) {
+	public static ArrayList<Object> vehicle2HashMap(List<RentACarData> data, String begin, String end) {
 
 		ArrayList<Object> vehicles = new ArrayList<>();
 		ArrayList<Object> freeVehicles = new ArrayList<>();
 		
-		LocalDate arrival =  new LocalDate("1980-01-01");
-		LocalDate departure = new LocalDate("2050-12-12");
+		LocalDate arrival =  new LocalDate(begin);
+		LocalDate departure = new LocalDate(end);
 
 		for(RentACarData rentData: data){
 			RentACar rentACar = getRentACar(rentData.getCode());

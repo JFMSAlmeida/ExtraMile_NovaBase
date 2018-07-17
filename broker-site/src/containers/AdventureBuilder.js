@@ -64,8 +64,8 @@ class AdventureBuilder extends Component {
 
      
 
-    createAdventure () {
-        fetch('http://localhost:8083/rest/brokers/createAdventure?brokerCode=B100&clientNif=999999999&begin=' + 
+    async createAdventure () {
+        await fetch('http://localhost:8083/rest/brokers/createAdventure?brokerCode=B100&clientNif=999999999&begin=' + 
             this.state.value.start.format("YYYY-MM-DD") + '&end=' + this.state.value.end.format("YYYY-MM-DD") +
             '&margin=1&rentVehicle=' + this.state.rentVehicle)
             .then(response => {
@@ -143,10 +143,10 @@ class AdventureBuilder extends Component {
                         :
                         null
                     }
-                    {this.state.tab == 2 ? <AdventureBuilder0 hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab={this.handleTab} /> : null}
-                    {this.state.tab == 3 ? <AdventureBuilder1 hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} /> : null}
-                    {this.state.tab == 4 ? <AdventureBuilder2 updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} /> : null}
-                    {this.state.tab == 5 ? <AdventureBuilder3 advId = {this.state.advId} addCart={this.props.addCart} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab={this.handleTab}/> : null}
+                    {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab={this.handleTab} /> : null}
+                    {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} /> : null}
+                    {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} /> : null}
+                    {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={this.props.addCart} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab={this.handleTab}/> : null}
 
 
                 </div>
