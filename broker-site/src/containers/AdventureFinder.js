@@ -19,7 +19,7 @@ class AdventureFinder extends Component {
 
     async componentWillMount() {
         try {
-            await fetch('http://localhost:8083/rest/brokers/process?param1=B100')
+            await fetch('http://localhost:8083/rest/brokers/process?param1=' + this.props.getAuthState().broker)
                 .then(response => {
                     return response.text();
                 })
@@ -35,7 +35,8 @@ class AdventureFinder extends Component {
         }
 
         try {
-            await fetch('http://localhost:8083/rest/brokers/showAdventures?param1=B100&param2=999999999')
+            await fetch('http://localhost:8083/rest/brokers/showAdventures?param1=' + this.props.getAuthState().broker +
+                '&param2=999999999')
                 .then(response => {
                     return response.text();
                 })

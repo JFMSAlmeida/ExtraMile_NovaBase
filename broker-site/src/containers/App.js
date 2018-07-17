@@ -22,10 +22,20 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            product:null
+            product: null,
+            auth: false,
+            broker: 'B100',
+            nif: '',
+            iban: '',
+            age: '',
+            drivinglicense: '',
+            balance: '',
         };
 
         this.addProduct = this.addProduct.bind(this);
+        this.setAuthState = this.setAuthState.bind(this);
+        this.getAuthState = this.getAuthState.bind(this);
+        this.calculateBalance = this.calculateBalance.bind(this);
     }
 
     addProduct(product){
@@ -35,29 +45,49 @@ class App extends React.Component {
         console.log(product);
     }
 
+    setAuthState(auth, nif, iban, age, dl) {
+        this.setState({
+            auth: auth,
+            nif: nif,
+            iban: iban,
+            age: age,
+            drivinglicense: dl},() => { console.log('new state Auth = ', this.state); });
+    }
+
+    getAuthState() {
+        return this.state;
+    }
+
+
+    calculateBalance() {
+        console.log("handleBalance");
+        this.setState({balance: 'Fetching...'});
+
+        fetch('http://localhost:8082/rest/banks/balance?iban=' + this.getAuthState().iban)
+            .then(response => {
+                return response.text();
+            })
+            .then(body => {
+                if (JSON.parse(body).success)
+                    this.setState({balance: JSON.parse(body).balance});
+                else {
+                    this.setState({balance: "Invalid IBAN"});
+                }
+            })
+            .catch(() => {
+                this.setState({balance: "Error"});
+            });
+    }
 
     render() {
-
-        $(document).ready(
-            function() {
-
-                SizeTheTopToolbar();
-
-                $(window).resize(function() {
-                    SizeTheTopToolbar();
-                });
-            });
-
-        function SizeTheTopToolbar() {
-            var viewportWidth = $(window).width();
-            var viewportHeight = $(window).height();
-        }
-
         return (
             <div>
                 <Header
                     history={history}
                     product = {this.state.product}
+                    setAuthState = {this.setAuthState}
+                    getAuthState = {this.getAuthState}
+                    calculateBalance = {this.calculateBalance}
                 />
 
                 <Route exact path='/' component={Home} history={history}/>

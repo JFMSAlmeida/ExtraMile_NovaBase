@@ -19,15 +19,15 @@ class Carousel extends React.Component {
     render() {
         $(document).ready(
             function() {
-
-                SizeTheTopToolbar();
+                // set slider size equivalent to window size
+                adaptSlider();
 
                 $(window).resize(function() {
-                    SizeTheTopToolbar();
+                    adaptSlider();
                 });
             });
 
-        function SizeTheTopToolbar() {
+        function adaptSlider() {
             var viewportWidth = $(window).width();
             var viewportHeight = $(window).height();
             $('.carousel-caption h3').css('font-size', viewportWidth * .018);
