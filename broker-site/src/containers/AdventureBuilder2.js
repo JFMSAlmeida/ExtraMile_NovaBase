@@ -15,6 +15,7 @@ const vecs = [
     {
         "type": "CAR",
         "plate": "AA-12-XX",
+        "kilometers": 200,
         "price": 100,
         "PRICE": 200,
         "rentACarName": "Motor&Cycles",
