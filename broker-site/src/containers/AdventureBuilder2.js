@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import VehicleShelf from '../components/shelf/VehicleShelf';
-
+/*
 const vecs = [
     {
         "type": "MOTORCYCLE",
@@ -58,7 +58,7 @@ const vecs = [
     }
 
 
-];
+];*/
 
 
 class AdventureBuilder2 extends Component {
@@ -66,31 +66,14 @@ class AdventureBuilder2 extends Component {
     constructor(props){
         super(props);
         this.state = {
-                       vehicles: vecs
+                       vehicles: []
                     }
 
-        this.process = this.process.bind(this);
     } 
 
 
-     process(i3) {
 
-        var i1 = "B100";
-        var i2 = "B1001";
-
-       fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
-            .then(response => {
-            return response.text();
-        })
-        .then(body => {
-            console.log(JSON.parse(body));
-        });
-
-
-    }
-
-
-   /* componentWillMount() {
+   componentWillMount() {
 
         fetch('http://localhost:8084/rest/rentacars/vehicles')
             .then(response => {
@@ -106,16 +89,21 @@ class AdventureBuilder2 extends Component {
                 console.log(this.state);
             });
     }  
-    */
+
 
     render() {
         console.log("aaaa");
-        console.log(this.props.location.addCart);
+        console.log(this.props.updateVehicle);
         console.log("bbbb");
         return (
-                    <div className="container">
+                    <div>
                         <h3>Vehicle picker</h3>
-                            <VehicleShelf vehicles = {this.state.vehicles} addCart={this.props.location.addCart}/>
+                            <VehicleShelf vehicles = {this.state.vehicles} updateVehicle={this.props.updateVehicle}/>
+                        <button onClick={()=> this.props.handleTab(5)}>
+                            <div className="back-btn2">
+                                <span>Confirm</span>
+                            </div>
+                        </button>
                     </div>
                 );
     }

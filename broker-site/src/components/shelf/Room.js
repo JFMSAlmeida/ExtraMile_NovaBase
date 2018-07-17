@@ -34,7 +34,7 @@ const Room = (props) => {
            		<p> Hotel: {room.hotelName} </p>
            		<p> Number: {room.number} </p>
            	</div>
-            <p className="shelf-item__buy-btn" onClick={props.addCart}> Add to cart </p>
+			{!props.noAddCart && <p className="shelf-item__buy-btn" onClick={props.updateRoom}> Add Room </p>}
 		</div>
 	);
 }

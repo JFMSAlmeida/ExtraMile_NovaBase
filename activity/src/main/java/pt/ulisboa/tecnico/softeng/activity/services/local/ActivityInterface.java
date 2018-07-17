@@ -271,7 +271,7 @@ public class ActivityInterface {
 			aux.put("minAge", activity.getMinAge());
 			aux.put("maxAge", activity.getMaxAge());
 			aux.put("capacity", activity.getCapacity());
-			aux.put("id", activity.getCode());
+			aux.put("activityCode", activity.getCode());
 
 			allOffers.add(aux);
 		}

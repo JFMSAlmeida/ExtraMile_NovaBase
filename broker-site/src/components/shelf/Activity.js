@@ -36,7 +36,7 @@ const Activity = (props) => {
                 <p> Begin Date: {activity.begin[2]}/{activity.begin[1]}/{activity.begin[0]}</p>
                 <p> End Date: {activity.end[2]}/{activity.end[1]}/{activity.end[0]}</p>
            	</div>
-            <p className="shelf-item__buy-btn" onClick={props.addCart}> Add to cart </p>
+            {!props.noAddCart && <p className="shelf-item__buy-btn" onClick={props.updateActivity}> Add Activity </p>}
 			
 		</div>
 	);

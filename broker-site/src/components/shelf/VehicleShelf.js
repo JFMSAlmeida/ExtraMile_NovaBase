@@ -13,7 +13,7 @@ class VehicleShelf extends Component {
 				<Vehicle
 					vehicle = {v}
 					key = {index}
-					addCart={() => this.props.addCart(v)}
+					updateVehicle={() => this.props.updateVehicle(v)}
 				/>
 			);
 		});

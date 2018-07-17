@@ -109,16 +109,16 @@ public class BrokerRestController {
 	@RequestMapping(value = "/processPart")
 	public ResponseEntity<Map<String, Object>> processPart (@RequestParam(value="param1") String brokerCode,
 			  												@RequestParam(value="param2") String advId,
-			  												@RequestParam(value="param3") String id) {
+			  												@RequestParam(value="param") String[] id) {
 		
 		try {
-
-			BrokerInterface.process(brokerCode, id, advId);
 			Map<String, Object> json = new HashMap<String, Object>();
-			json.put("success", true);
-			json.put("brokerCode", brokerCode);
-			json.put("id", id);
-			json.put("advId", advId);
+			int size = id.length;
+			for(int i = 0; i < size; i++) {
+				BrokerInterface.process(brokerCode, id[i], advId);
+				json.put("success", true);
+			}
+
 			return new ResponseEntity<>(json, HttpStatus.OK);
 
 		} catch (BrokerException be) {

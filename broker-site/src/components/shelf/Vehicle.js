@@ -37,7 +37,7 @@ const Vehicle = (props) => {
            		<p> RentACar: {vehicle.rentACarName} </p>
            		<p> Kilometers: {vehicle.kilometers} </p>
            	</div>
-            <p className="shelf-item__buy-btn" onClick={props.addCart}> Add to cart </p>
+			{!props.noAddCart && <p className="shelf-item__buy-btn" onClick={props.updateVehicle}> Add Vehicle </p>}
 		</div>
 	);
 }

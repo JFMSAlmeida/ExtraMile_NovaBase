@@ -34,10 +34,6 @@ class Header extends React.Component {
             advflag: null
         };
     }
-    updateState(flag){
-        this.setState({advflag : flag})
-        console.log("flag:" + flag);
-    }
 
     render(){
         $("#resetModal1").click(function () {
@@ -58,8 +54,8 @@ class Header extends React.Component {
                   <ul className="nav navbar-nav">
                     <a className="navbar-brand">ExtraMile</a>
                     <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/adventurefinder' onClick={() => this.updateState(0)}>Adventure Finder</Link></li>
-                    <li><Link to='/adventurebuilder' onClick={() => this.updateState(1)}>Adventure Builder</Link></li>
+                    <li><Link to='/adventurefinder'>Adventure Finder</Link></li>
+                    <li><Link to='/adventurebuilder'>Adventure Builder</Link></li>
                   </ul>
                     <ul className="nav navbar-nav navbar-right">
                         { !this.state.auth ? <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li> : null}
@@ -84,7 +80,7 @@ class Header extends React.Component {
                                             : null }
           
                         <Cart
-                            product = {this.props.product} resetProduct = {this.props.resetProduct} hasCar = {this.props.hasCar} hasRoom = {this.props.hasRoom} flag={this.state.advflag}
+                            product = {this.props.product} resetProduct = {this.props.resetProduct}
                         />
                         { !this.state.auth ? <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> : null }
                     </ul>

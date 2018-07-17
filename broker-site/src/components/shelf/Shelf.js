@@ -15,7 +15,7 @@ const sortBy = [
     { value: 'alphabetical', label: 'Alphabetical'}
 ]
 
-const abc = [
+const abc = [ 
     {
         "id": "B1001",
         "price": 100,

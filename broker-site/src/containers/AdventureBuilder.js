@@ -4,7 +4,10 @@ import DateRangePicker from "react-daterange-picker";
 import "react-daterange-picker/dist/css/react-calendar.css";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-import { Link } from 'react-router-dom'
+import AdventureBuilder0 from "./AdventureBuilder0";
+import AdventureBuilder1 from "./AdventureBuilder1";
+import AdventureBuilder2 from "./AdventureBuilder2";
+import AdventureBuilder3 from "./AdventureBuilder3";
 
 const moment = extendMoment(originalMoment);
 
@@ -17,11 +20,20 @@ class AdventureBuilder extends Component {
         const today = moment();
 
         this.state = {
-            advId: 0,
+            advId: "B0D4",
             rentVehicle: false,
             hasRoom: false,
-            value: moment.range(today.format('L'), today.add(7, "days").format('L'))
+            value: moment.range(today.format('L'), today.add(7, "days").format('L')),
+            activity: null,
+            room: null,
+            vehicle: null,
+            tab: 1,
+            canBuild: false
         };
+        this.updateActivity = this.updateActivity.bind(this);
+        this.updateRoom = this.updateRoom.bind(this);
+        this.updateVehicle = this.updateVehicle.bind(this);
+        this.handleTab = this.handleTab.bind(this);
     }
 
     handleSubmit = (event) => {
@@ -29,15 +41,16 @@ class AdventureBuilder extends Component {
 
         var duration = moment.duration(this.state.value.end.diff(this.state.value.start));
         if (duration.as('days') !== 0) {
-            this.props.updateSpecs(this.state.rentVehicle, true);
             this.setState({hasRoom : true});
         }
         else {
-            this.props.updateSpecs(this.state.rentVehicle, false);
             this.setState({hasRoom: false});
         }
 
         this.createAdventure();
+        this.setState({
+            canBuild : true
+        });
     };
 
     handleChange = () => {
@@ -52,7 +65,6 @@ class AdventureBuilder extends Component {
      
 
     createAdventure () {
-
         fetch('http://localhost:8083/rest/brokers/createAdventure?brokerCode=B100&clientNif=999999999&begin=' + 
             this.state.value.start.format("YYYY-MM-DD") + '&end=' + this.state.value.end.format("YYYY-MM-DD") +
             '&margin=1&rentVehicle=' + this.state.rentVehicle)
@@ -66,44 +78,76 @@ class AdventureBuilder extends Component {
             const response = JSON.parse(body);
              console.log(response);
             console.log(response.advId);
-            this.setState({advId: response.advId});
+            this.setState({
+                advId: response.advId,
+                canBuild : true
+            });
         });
 
     }
+    updateActivity(activity){
+        this.setState({
+            activity: activity
+        });
+    }
+    updateRoom(room){
+        this.setState({
+            room: room
+        });
+    }
+    updateVehicle(vehicle){
+        this.setState({
+            vehicle: vehicle
+        });
+    }
+
+    handleTab(tab) {
+        this.setState({tab: tab});
+    }
 
     render() {
-
-        const info = {
-            pathname: '/adventureBuilder0',
-            addCart: this.props.addCart,
-            hasRoom: this.state.hasRoom,
-            hasVehicle: this.state.rentVehicle
-
-        };
-
         return (
-                <div>
+                <div className="container">
                     <h3>AdventureBuilder</h3>
-                    <div>
-                        <div>
-                            Do you want to rent a vehicle?
-                            <input
-                                type="checkbox"
-                                checked={this.state.rentVehicle}
-                                onChange={this.handleChange} />
+                    <div className="row">
+                        <div className="btn-group btn-breadcrumb">
+                            {this.state.tab == 1 ? <a className="btn btn-default active">Adventure Specs</a> : <a onClick={() => this.handleTab(1)} className="btn btn-default">Adventure Specs</a>}
+                            {this.state.tab == 2 ? <a className="btn btn-default active">Activity Picker</a> : <a onClick={() => this.handleTab(2)} className="btn btn-default">Activity Picker</a>}
+                            {this.state.tab == 3 ? <a className="btn btn-default active">Hotel Picker</a> : <a onClick={() => this.handleTab(3)} className="btn btn-default">Hotel Picker</a>}
+                            {this.state.tab == 4 ? <a className="btn btn-default active">Vehicle Picker</a> : <a onClick={() => this.handleTab(4)} className="btn btn-default">Vehicle Picker</a>}
+                            {this.state.tab == 5 ? <a className="btn btn-default active">Confirm</a> : <a onClick={() => this.handleTab(5)} className="btn btn-default">Confirm</a>}
                         </div>
-                        <br/>
-                        <div>
-                            <p>Choose your adventure begin and end dates:</p>
-                            <DateRangePicker
-                                value={this.state.value}
-                                onSelect={this.onSelect}
-                                singleDateRange={true} />
-                        </div>
-                        <br/>
-                        <button type="submit" onClick={this.handleSubmit}>Submit your adventure</button>
-                        <Link to={info} className="shelf-item__buy-btn" > Start the builder!</Link>
                     </div>
+
+                    {this.state.tab == 1 ?
+                        <div>
+                            <div>
+                                Do you want to rent a vehicle?
+                                <input
+                                    type="checkbox"
+                                    checked={this.state.rentVehicle}
+                                    onChange={this.handleChange} />
+                            </div>
+                            <br/>
+                            <div>
+                                <p>Choose your adventure begin and end dates:</p>
+                                <DateRangePicker
+                                    value={this.state.value}
+                                    onSelect={this.onSelect}
+                                    singleDateRange={true} />
+                            </div>
+                            <br/>
+                            <button type="submit" onClick={this.handleSubmit}>Submit your adventure</button>
+                            {this.state.canBuild && <button onClick={() => this.handleTab(2)}> Start the builder!</button>}
+                        </div>
+                        :
+                        null
+                    }
+                    {this.state.tab == 2 ? <AdventureBuilder0 hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab={this.handleTab} /> : null}
+                    {this.state.tab == 3 ? <AdventureBuilder1 hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} /> : null}
+                    {this.state.tab == 4 ? <AdventureBuilder2 updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} /> : null}
+                    {this.state.tab == 5 ? <AdventureBuilder3 advId = {this.state.advId} addCart={this.props.addCart} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab={this.handleTab}/> : null}
+
 
                 </div>
                 )

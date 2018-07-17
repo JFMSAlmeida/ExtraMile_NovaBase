@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import ActivityShelf from '../components/shelf/ActivityShelf';
-import {Link} from "react-router-dom";
+import {button} from "react-router-dom";
 
-
+/*
  const acts = [
     {
         "title": "ActivityOne",
@@ -58,7 +58,7 @@ import {Link} from "react-router-dom";
         "id": "ABERO13"
     }
 
-];
+];*/
 
 class AdventureBuilder0 extends Component {
 
@@ -66,30 +66,13 @@ class AdventureBuilder0 extends Component {
     constructor(props){
         super(props);
         this.state = { 
-                       activities: acts
+                       activities: []
                      };
 
-        this.process = this.process.bind(this);
     } 
 
-    process(i3) {
 
-        var i1 = "B100";
-        var i2 = "B1001";
-
-       fetch('http://localhost:8083/rest/brokers/processPart?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
-            .then(response => {
-            return response.text();
-        })
-        .then(body => {
-            console.log(JSON.parse(body));
-        });
-
-
-    }
-
-
-    /*componentWillMount() {
+    componentWillMount() {
 
         
         fetch('http://localhost:8081/rest/providers/activities')
@@ -103,33 +86,38 @@ class AdventureBuilder0 extends Component {
             });
 
         
-    }  */
+    }
  
     render() {
-        console.log(this.props.location.hasRoom);
-        console.log(this.props.location.hasVehicle);
-        console.log("aaaa");
-        console.log(this.props.location.addCart);
-        console.log("bbbb");
-        return (<div className="container">
+        console.log(this.props.hasRoom);
+        console.log(this.props.hasVehicle);
+        return (<div>
                     <h3>Activity picker</h3>
                     <ActivityShelf
                         activities = {this.state.activities}
-                        addCart = {this.props.location.addCart}
+                        updateActivity = {this.props.updateActivity}
                     />
-                    {this.props.location.hasRoom &&
-                        <Link to={{ pathname: '/AdventureBuilder1', hasVehicle: this.props.location.hasVehicle , addCart:this.props.location.addCart}} style={{textDecoration: 'none'}}>
+
+                    {this.props.hasRoom &&
+                        <button onClick={()=> this.props.handleTab(3)}>
                             <div className="back-btn2">
                                 <span>Room Picker</span>
                             </div>
-                        </Link>
+                        </button>
                     }
-                    {!this.props.location.hasRoom && this.props.location.hasVehicle &&
-                        <Link to={{ pathname: '/AdventureBuilder2', addCart:this.props.location.addCart}} style={{textDecoration: 'none'}}>
+                    {!this.props.hasRoom && this.props.hasVehicle &&
+                        <button onClick={()=> this.props.handleTab(4)}>
                             <div className="back-btn2">
                                 <span>Vehicle Picker</span>
                             </div>
-                        </Link>
+                        </button>
+                    }
+                    {!this.props.hasRoom && !this.props.hasVehicle &&
+                    <button onClick={()=> this.props.handleTab(5)}>
+                        <div className="back-btn2">
+                            <span>Confirm</span>
+                        </div>
+                    </button>
                     }
                 </div>
             );

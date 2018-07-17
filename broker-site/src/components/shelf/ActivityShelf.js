@@ -16,7 +16,7 @@ class ActivityShelf extends Component {
 						//process = {this.props.process}
 						activity = {act}
 						key = {index}
-                        addCart={() => this.props.addCart(act)}
+                        updateActivity={() => this.props.updateActivity(act)}
 
 					/>
 				);

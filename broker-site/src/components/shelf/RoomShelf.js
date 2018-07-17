@@ -13,7 +13,7 @@ class RoomShelf extends Component {
 				<Room
 					room = {r}
 					key = {index}
-                    addCart={() => this.props.addCart(r)}
+                    updateRoom={() => this.props.updateRoom(r)}
 				/>
 			);
 		});
