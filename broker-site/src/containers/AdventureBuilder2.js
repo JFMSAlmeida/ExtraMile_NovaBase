@@ -90,30 +90,41 @@ class AdventureBuilder2 extends Component {
 
         this.orderVehicles = this.orderVehicles.bind(this);
         this.filterVehicles = this.filterVehicles.bind(this);
-    } 
+        this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+    }
 
+    handleAlertDismiss(e) {
+        e.preventDefault();
+        this.setState({alert: false});
+    }
 
+    async componentWillMount() {
+        try {
+            this.props.changeLoading(true);
+            var date1 = this.props.begin.format("YYYY-MM-DD");
+            var date2 = this.props.end.format("YYYY-MM-DD");
 
-    componentWillMount() {
+            await fetch('http://localhost:8084/rest/rentacars/vehicles?param1=' + date1 + '&param2=' + date2)
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    console.log(JSON.parse(body));
 
-       this.props.changeLoading(true);
-        var date1 = this.props.begin.format("YYYY-MM-DD");
-        var date2 = this.props.end.format("YYYY-MM-DD");
+                    const response = JSON.parse(body);
+                    console.log(response);
 
-        fetch('http://localhost:8084/rest/rentacars/vehicles?param1=' + date1 + '&param2=' + date2)
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                console.log(JSON.parse(body));
-
-                const response = JSON.parse(body);
-                console.log(response);
-
-                this.setState({vehicles: response, filteredVehicles : response});
-                console.log(this.state);
-                this.props.changeLoading(false);
-            });
+                    this.setState({vehicles: response, filteredVehicles: response});
+                    console.log(this.state);
+                    this.props.changeLoading(false);
+                });
+        } catch (e) {
+            this.props.changeLoading(false);
+            this.setState({alert: true});
+            document.getElementById("alert").setAttribute("class", "alert alert-warning");
+            document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
+            document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
+        }
     }
 
     filterVehicles(label){
@@ -198,20 +209,28 @@ class AdventureBuilder2 extends Component {
         return (
                     <div>
                         <h3>Vehicle picker</h3>
-                        <Filter
-                            availableFilters = {availableFilters}
-                            filterFunction = {label => this.filterVehicles(label)}
-                        />
-                        <Order
-                            options = {sortBy}
-                            handleOnChange = {this.orderVehicles}
-                        />
-                        <VehicleShelf vehicles = {toShowVehicles} updateVehicle={this.props.updateVehicle}/>
-                        <button onClick={()=> this.props.handleTab(5)}>
-                            <div className="back-btn2">
-                                <span>Confirm</span>
-                            </div>
-                        </button>
+                        {this.state.alert ?
+                        <div id="alert" className="alert alert-info alert-dismissable">
+                            <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                            <span id="alert-icon" className=""></span>
+                            <div id="alert-text" style={{display: "inline"}}></div>
+                        </div> :
+                            <div>
+                                <Filter
+                                    availableFilters = {availableFilters}
+                                    filterFunction = {label => this.filterVehicles(label)}
+                                />
+                                <Order
+                                    options = {sortBy}
+                                    handleOnChange = {this.orderVehicles}
+                                />
+                                <VehicleShelf vehicles = {toShowVehicles} updateVehicle={this.props.updateVehicle}/>
+                                <button onClick={()=> this.props.handleTab(5)}>
+                                    <div className="back-btn2">
+                                        <span>Confirm</span>
+                                    </div>
+                                </button>
+                            </div>}
                     </div>
                 );
     }
