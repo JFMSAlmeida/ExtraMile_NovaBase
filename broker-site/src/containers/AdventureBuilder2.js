@@ -197,7 +197,6 @@ class AdventureBuilder2 extends Component {
 
         return (
                     <div>
-                        <h3>Vehicle picker</h3>
                         <Filter
                             availableFilters = {availableFilters}
                             filterFunction = {label => this.filterVehicles(label)}

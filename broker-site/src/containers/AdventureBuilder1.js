@@ -171,7 +171,6 @@ class AdventureBuilder1 extends Component {
         }
 
         return (<div>
-                    <h3>Room Picker</h3>
                     <Filter
                         availableFilters = {availableFilters}
                         filterFunction = {label => this.filterRooms(label)}

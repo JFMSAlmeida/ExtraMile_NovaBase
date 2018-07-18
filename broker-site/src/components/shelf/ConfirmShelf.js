@@ -112,8 +112,11 @@ class ConfirmShelf extends Component {
         if(this.props.hasRoom)
             advPartsArray.push(<Room noAddCart={1} room = {this.props.advParts[1]} key = {this.props.advParts[1].number} />);
 
-        if(this.props.hasVehicle)
+        if(this.props.hasRoom && this.props.hasVehicle)
             advPartsArray.push(<Vehicle noAddCart={1} vehicle = {this.props.advParts[2]} key = {this.props.advParts[2].plate} />);
+
+        if(!this.props.hasRoom && this.props.hasVehicle)
+            advPartsArray.push(<Vehicle noAddCart={1} vehicle = {this.props.advParts[1]} key = {this.props.advParts[1].plate} />);
 
         return (
             <React.Fragment>

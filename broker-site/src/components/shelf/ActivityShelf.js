@@ -5,7 +5,6 @@ import Activity from './Activity';
 
 class ActivityShelf extends Component {
 
-
 	render() {
 		const act = this.props.activities;
 		console.log(act);
@@ -23,12 +22,18 @@ class ActivityShelf extends Component {
 		});
 
         return (
-            <React.Fragment>
-                <div className="shelf-container">
-                    {actArray}
-                </div>
-
-            </React.Fragment>
+        	<div>
+				{act.length === 0 ?
+					<div>
+						No activities available in this period.
+					</div>
+					:
+					<React.Fragment>
+						<div className="shelf-container">
+							{actArray}
+						</div>
+					</React.Fragment>}
+            </div>
         );
 
 

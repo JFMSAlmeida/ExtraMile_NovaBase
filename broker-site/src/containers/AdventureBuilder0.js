@@ -140,7 +140,6 @@ class AdventureBuilder0 extends Component {
         }
 
         return (<div>
-                    <h3>Activity picker</h3>
                     <Order
                         options = {sortBy}
                         handleOnChange = {this.orderActivities}
