@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Room = (props) => {
 
 	const room = props.room;
-	console.log(room);
+	//console.log(room);
 
 	const i3 = room.hotelCode + ";" + room.number + ";" + room.type; 
 

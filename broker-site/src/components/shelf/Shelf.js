@@ -4,8 +4,8 @@ import Filter from './Filter'
 import Order from './Order'
 
 const availableFilters = [
-    'Hotel',
-    'Vehicle',
+    'With Hotel',
+    'With Vehicle',
 ];
 
 const sortBy = [
@@ -107,11 +107,11 @@ class Shelf extends Component {
 
         this.selectedFilters.forEach(function(value){
             for(let i = filteredAdventures.length-1; i >= 0; i--) {
-                if (value === "Vehicle")
+                if (value === "With Vehicle")
                     if (!filteredAdventures[i].hasVehicle)
                         filteredAdventures.splice(i, 1);
 
-                if (value === "Hotel")
+                if (value === "With Hotel")
                     if (!filteredAdventures[i].hasRoom)
                         filteredAdventures.splice(i, 1);
             }

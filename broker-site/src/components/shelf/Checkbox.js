@@ -10,7 +10,7 @@ class Checkbox extends Component {
                         value={this.props.label}
                         onChange={this.props.filterFunction}
                     />
-                    <div className="clab">With {this.props.label}</div>
+                    <div className="clab">{this.props.label}</div>
                 </label>
             </div>
         )

@@ -2,28 +2,36 @@ import React, { Component } from 'react';
 import './App.css';
 import ActivityShelf from '../components/shelf/ActivityShelf';
 import {button} from "react-router-dom";
+import Filter from '../components/shelf/Filter'
+import Order from "../components/shelf/Order";
 
-/*
+const sortBy = [
+    { value: '',           label: 'Select'  },
+    { value: 'lowestprice', label: 'Lowest to highest Price' },
+    { value: 'highestprice', label: 'Highest to lowest Price' },
+    { value: 'alphabetical', label: 'Alphabetical'}
+]
+
  const acts = [
     {
         "title": "ActivityOne",
         "providerName": "BAUHD",
         "providerCode": "B10012",
-        "price": 10,
+        "activityPrice": 10,
         "begin": [2018,7,2],
         "end": [2018,7,3],
         "minAge": 19,
         "maxAge": 30,
         "capacity": 20,
-        "id": "ABERO1"
+        "id": "ABERO1",
 
     },
 
     {
-        "title": "ActivityOne",
+        "title": "ActivityTwo",
         "providerName": "BAUHD",
         "providerCode": "B10012",
-        "price": 15,
+        "activityPrice": 15,
         "begin": [2018,7,6],
         "end": [2018,7,9],
         "minAge": 19,
@@ -33,10 +41,10 @@ import {button} from "react-router-dom";
     },
 
     {
-        "title": "ActivityTwo",
+        "title": "ActivityThree",
         "providerName": "BAUHD",
         "providerCode": "B10012",
-        "price": 10,
+        "activityPrice": 20,
         "begin": [2018,7,2],
         "end": [2018,7,3],
         "minAge": 19,
@@ -46,10 +54,10 @@ import {button} from "react-router-dom";
     },
 
     {
-        "title": "ActivityThree",
+        "title": "ActivityFour",
         "providerName": "BAUHD1",
         "providerCode": "B100122",
-        "price": 10,
+        "activityPrice": 25,
         "begin": [2018,7,8],
         "end": [2018,7,25],
         "minAge": 19,
@@ -58,7 +66,7 @@ import {button} from "react-router-dom";
         "id": "ABERO13"
     }
 
-];*/
+];
 
 class AdventureBuilder0 extends Component {
 
@@ -66,10 +74,45 @@ class AdventureBuilder0 extends Component {
     constructor(props){
         super(props);
         this.state = { 
-                       activities: []
-                     };
+            activities: [],
+            filteredActivities : []
+        };
+        this.orderActivities = this.orderActivities.bind(this);
 
-    } 
+    }
+
+    orderActivities(value){
+        this.setState({ value : value});
+
+        var orderedActivities =  this.state.activities.slice(0);
+        if(value === 'lowestprice'){
+            orderedActivities.sort(function(a, b) {
+                return a.activityPrice - b.activityPrice;
+            });
+        }
+
+        if(value === 'highestprice'){
+            orderedActivities.sort(function(a, b) {
+                return b.activityPrice - a.activityPrice;
+            });
+        }
+
+        if(value === 'alphabetical'){
+            orderedActivities.sort(function(a, b) {
+                if (a.title < b.title) {
+                    return -1;
+                }
+                if (a.title > b.title) {
+                    return 1;
+                }
+                return 0;
+            });
+
+        }
+        this.setState({
+            filteredActivities : orderedActivities
+        });
+    }
 
 
     async componentWillMount() {
@@ -90,10 +133,20 @@ class AdventureBuilder0 extends Component {
     render() {
         console.log(this.props.hasRoom);
         console.log(this.props.hasVehicle);
+
+        var toShowActivities = this.state.activities;
+        if(this.state.filteredActivities.length > 0){
+            toShowActivities = this.state.filteredActivities;
+        }
+
         return (<div>
                     <h3>Activity picker</h3>
+                    <Order
+                        options = {sortBy}
+                        handleOnChange = {this.orderActivities}
+                    />
                     <ActivityShelf
-                        activities = {this.state.activities}
+                        activities = {toShowActivities}
                         updateActivity = {this.props.updateActivity}
                     />
 
