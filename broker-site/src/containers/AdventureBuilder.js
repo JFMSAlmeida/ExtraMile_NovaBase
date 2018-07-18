@@ -10,6 +10,7 @@ import AdventureBuilder2 from "./AdventureBuilder2";
 import AdventureBuilder3 from "./AdventureBuilder3";
 import loading from './loading.gif';
 import Forward from "./Forward";
+import Backward from "./Backward";
 
 const moment = extendMoment(originalMoment);
 
@@ -30,7 +31,6 @@ class AdventureBuilder extends Component {
             room: null,
             vehicle: null,
             tab: 1,
-            canBuild: false,
             loading: false,
         };
         this.updateActivity = this.updateActivity.bind(this);
@@ -81,7 +81,6 @@ class AdventureBuilder extends Component {
                     return response.text();
                 })
                 .then(body => {
-                    alert("Your custom adventure was successfully submitted");
                     console.log(JSON.parse(body));
                     console.log(body);
                     const response = JSON.parse(body);
@@ -89,11 +88,9 @@ class AdventureBuilder extends Component {
                     console.log(response.advId);
                     this.setState({
                         advId: response.advId,
-                        canBuild: true
                     });
                 });
         } catch (e) {
-            this.setState({loading: false});
             this.setState({alert: true});
             document.getElementById("alert").setAttribute("class", "alert alert-warning");
             document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
@@ -132,28 +129,33 @@ class AdventureBuilder extends Component {
                             <div id="alert-text" style={{display: "inline"}}></div>
                         </div> : null }
                     <h3>AdventureBuilder</h3>
+
                     <div className="row" style={{textAlign: 'center', paddingBottom:"50px"}}>
                         <div className="btn-group btn-breadcrumb">
-                            {this.state.tab == 1 ? <a className="btn btn-default active">Adventure Specs</a> : <a onClick={() => this.handleTab(1)} className="btn btn-default">Adventure Specs</a>}
-                            {this.state.tab == 2 ? <a className="btn btn-default active">Activity Picker</a> : <a onClick={() => this.handleTab(2)} className="btn btn-default">Activity Picker</a>}
+                            {this.state.tab == 1 ? <div className="btn btn-default active">Adventure Specs</div> : <div className="btn btn-default">Adventure Specs</div>}
+                            {this.state.tab == 2 ? <div className="btn btn-default active">Activity Picker</div> : <div className="btn btn-default">Activity Picker</div>}
 
 
                             { this.state.hasRoom ?
-                                this.state.tab == 3 ? <a className="btn btn-default active">Hotel Picker</a> : <a onClick={() => this.handleTab(3)} className="btn btn-default">Hotel Picker</a>
+                                this.state.tab == 3 ? <div className="btn btn-default active">Hotel Picker</div> : <div className="btn btn-default">Hotel Picker</div>
                             :
                             null}
 
                             { this.state.rentVehicle ?
-                                this.state.tab == 4 ? <a className="btn btn-default active">Vehicle Picker</a> : <a onClick={() => this.handleTab(4)} className="btn btn-default">Vehicle Picker</a>
+                                this.state.tab == 4 ? <div className="btn btn-default active">Vehicle Picker</div> : <div className="btn btn-default">Vehicle Picker</div>
                             :
                             null}
 
-                            {this.state.tab == 5 ? <a className="btn btn-default active">Confirm</a> : <a onClick={() => this.handleTab(5)} className="btn btn-default">Confirm</a>}
+                            {this.state.tab == 5 ? <div className="btn btn-default active">Confirm</div> : <div className="btn btn-default">Confirm</div>}
                         </div>
                     </div>
                     <div className="breadcrumb-buttons">
-                        {this.state.tab == 1 ? null :<div className="buy-btn" style={{float: 'left', marginRight: "30px"}}> Back </div>}
+                        <Backward
+                            state = {this.state}
+                            handleTab = {this.handleTab}
+                        />
                         <Forward
+                            handleSubmit = {this.handleSubmit}
                             state = {this.state}
                             handleTab = {this.handleTab}
                         />
@@ -185,7 +187,6 @@ class AdventureBuilder extends Component {
                             </div>
                             <br/>
                             <button type="submit" onClick={this.handleSubmit}>Submit your adventure</button>
-                            {this.state.canBuild && <button onClick={() => this.handleTab(2)}> Start the builder!</button>}
                         </div>
                         :
                         null
