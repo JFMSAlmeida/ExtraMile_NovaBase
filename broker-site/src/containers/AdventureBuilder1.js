@@ -66,29 +66,42 @@ class AdventureBuilder1 extends Component {
         this.selectedFilters = new Set();
         this.orderRooms = this.orderRooms.bind(this);
         this.filterRooms = this.filterRooms.bind(this);
+        this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
     } 
 
 
-    componentWillMount() {
+    async componentWillMount() {
+        try {
+            this.props.changeLoading(true);
+            var date1 = this.props.begin.format("YYYY-MM-DD");
+            var date2 = this.props.end.format("YYYY-MM-DD");
+            await fetch('http://localhost:8085/rest/hotels/rooms?param1=' + date1 + '&param2=' + date2)
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    console.log(JSON.parse(body));
 
-        this.props.changeLoading(true);
-        var date1 = this.props.begin.format("YYYY-MM-DD");
-        var date2 = this.props.end.format("YYYY-MM-DD");
-        fetch('http://localhost:8085/rest/hotels/rooms?param1=' + date1 + '&param2=' + date2)
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                console.log(JSON.parse(body));
+                    const response = JSON.parse(body);
+                    console.log(response);
 
-                const response = JSON.parse(body);
-                console.log(response);
+                    this.setState({rooms: response, filteredRooms: response});
+                    console.log(this.state);
 
-                this.setState({rooms: response, filteredRooms : response});
-                console.log(this.state);
+                    this.props.changeLoading(false);
+                })
+        } catch (e) {
+            this.props.changeLoading(false);
+            this.setState({alert: true});
+            document.getElementById("alert").setAttribute("class", "alert alert-warning");
+            document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
+            document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
+        }
+    }
 
-                this.props.changeLoading(false);
-            });
+    handleAlertDismiss(e) {
+        e.preventDefault();
+        this.setState({alert: false});
     }
 
     filterRooms(label){
@@ -171,29 +184,42 @@ class AdventureBuilder1 extends Component {
         }
 
         return (<div>
-                    <Filter
-                        availableFilters = {availableFilters}
-                        filterFunction = {label => this.filterRooms(label)}
-                    />
-                    <Order
-                        options = {sortBy}
-                        handleOnChange = {this.orderRooms}
-                    />
-                     <RoomShelf rooms = {toShowRooms} updateRoom={this.props.updateRoom} />
-                    {this.props.hasVehicle &&
-                        <button onClick={()=> this.props.handleTab(4)}>
-                            <div className="back-btn2">
-                                <span>Vehicle Picker</span>
-                            </div>
-                        </button>
-                    }
+                    <h3>Room Picker</h3>
+                    {this.state.alert ?
+                         <div id="alert" className="alert alert-info alert-dismissable">
+                             <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                             <span id="alert-icon" className=""></span>
+                            <div id="alert-text" style={{display: "inline"}}></div>
+                         </div>
+                        :
+                        <div>
+                             <div>
+                                <Filter
+                                    availableFilters = {availableFilters}
+                                    filterFunction = {label => this.filterRooms(label)}
+                                />
+                                <Order
+                                    options = {sortBy}
+                                    handleOnChange = {this.orderRooms}
+                                />
+                                <RoomShelf rooms = {toShowRooms} updateRoom={this.props.updateRoom} />
+                             </div>
+                             {this.props.hasVehicle &&
+                                <button onClick={()=> this.props.handleTab(4)}>
+                                    <div className="back-btn2">
+                                        <span>Vehicle Picker</span>
+                                    </div>
+                                </button>
+                             }
 
-                    {!this.props.hasVehicle &&
-                    <button onClick={()=> this.props.handleTab(5)}>
-                        <div className="back-btn2">
-                            <span>Confirm</span>
+                             {!this.props.hasVehicle &&
+                             <button onClick={()=> this.props.handleTab(5)}>
+                                <div className="back-btn2">
+                                    <span>Confirm</span>
+                                </div>
+                             </button>
+                             }
                         </div>
-                    </button>
                     }
 
                 </div>

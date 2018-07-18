@@ -37,15 +37,13 @@ class AdventureBuilder extends Component {
         this.updateRoom = this.updateRoom.bind(this);
         this.updateVehicle = this.updateVehicle.bind(this);
         this.handleTab = this.handleTab.bind(this);
+        this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
     }
 
     handleSubmit = (event) => {
         console.log(this.state.value);
 
         this.createAdventure();
-        this.setState({
-            canBuild : true
-        });
     };
 
     handleChange = () => {
@@ -69,25 +67,38 @@ class AdventureBuilder extends Component {
             });
     };
 
+    handleAlertDismiss(e) {
+        e.preventDefault();
+        this.setState({alert: false});
+    }
+
     async createAdventure () {
-        await fetch('http://localhost:8083/rest/brokers/createAdventure?brokerCode=B100&clientNif=999999999&begin=' + 
-            this.state.value.start.format("YYYY-MM-DD") + '&end=' + this.state.value.end.format("YYYY-MM-DD") +
-            '&margin=1&rentVehicle=' + this.state.rentVehicle)
-            .then(response => {
-            return response.text();
-        })
-        .then(body => {
-            alert("Your custom adventure was successfully submitted");
-            console.log(JSON.parse(body));
-            console.log(body);
-            const response = JSON.parse(body);
-             console.log(response);
-            console.log(response.advId);
-            this.setState({
-                advId: response.advId,
-                canBuild : true
-            });
-        });
+        try {
+            await fetch('http://localhost:8083/rest/brokers/createAdventure?brokerCode=B100&clientNif=999999999&begin=' +
+                this.state.value.start.format("YYYY-MM-DD") + '&end=' + this.state.value.end.format("YYYY-MM-DD") +
+                '&margin=1&rentVehicle=' + this.state.rentVehicle)
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    alert("Your custom adventure was successfully submitted");
+                    console.log(JSON.parse(body));
+                    console.log(body);
+                    const response = JSON.parse(body);
+                    console.log(response);
+                    console.log(response.advId);
+                    this.setState({
+                        advId: response.advId,
+                        canBuild: true
+                    });
+                });
+        } catch (e) {
+            this.setState({loading: false});
+            this.setState({alert: true});
+            document.getElementById("alert").setAttribute("class", "alert alert-warning");
+            document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
+            document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
+        }
 
     }
     updateActivity(activity){
@@ -114,6 +125,12 @@ class AdventureBuilder extends Component {
     render() {
         return (
                 <div className="container">
+                    {this.state.alert ?
+                        <div id="alert" className="alert alert-info alert-dismissable">
+                            <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                            <span id="alert-icon" className=""></span>
+                            <div id="alert-text" style={{display: "inline"}}></div>
+                        </div> : null }
                     <h3>AdventureBuilder</h3>
                     <div className="row" style={{textAlign: 'center', paddingBottom:"50px"}}>
                         <div className="btn-group btn-breadcrumb">

@@ -78,6 +78,7 @@ class AdventureBuilder0 extends Component {
             filteredActivities : []
         };
         this.orderActivities = this.orderActivities.bind(this);
+        this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
 
     }
 
@@ -114,20 +115,31 @@ class AdventureBuilder0 extends Component {
         });
     }
 
+    handleAlertDismiss(e) {
+        e.preventDefault();
+        this.setState({alert: false});
+    }
 
     async componentWillMount() {
-        this.props.changeLoading(true);
-        await fetch('http://localhost:8081/rest/providers/activities?begin=' + this.props.begin.format("YYYY-MM-DD") + '&end=' + this.props.end.format("YYYY-MM-DD"))
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                const response = JSON.parse(body);
-                console.log(response);
-                this.setState({activities: response});
-                this.props.changeLoading(false);
-            })
-            .catch(() => this.props.changeLoading(false));
+        try {
+            this.props.changeLoading(true);
+            await fetch('http://localhost:8081/rest/providers/activities?begin=' + this.props.begin.format("YYYY-MM-DD") + '&end=' + this.props.end.format("YYYY-MM-DD"))
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    const response = JSON.parse(body);
+                    console.log(response);
+                    this.setState({activities: response});
+                    this.props.changeLoading(false);
+                })
+        } catch (e) {
+            this.props.changeLoading(false);
+            this.setState({alert: true});
+            document.getElementById("alert").setAttribute("class", "alert alert-warning");
+            document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
+            document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
+        }
     }
  
     render() {
@@ -140,35 +152,48 @@ class AdventureBuilder0 extends Component {
         }
 
         return (<div>
-                    <Order
-                        options = {sortBy}
-                        handleOnChange = {this.orderActivities}
-                    />
-                    <ActivityShelf
-                        activities = {toShowActivities}
-                        updateActivity = {this.props.updateActivity}
-                    />
-
-                    {this.props.hasRoom &&
-                        <button onClick={()=> this.props.handleTab(3)}>
-                            <div className="back-btn2">
-                                <span>Room Picker</span>
-                            </div>
-                        </button>
-                    }
-                    {!this.props.hasRoom && this.props.hasVehicle &&
-                        <button onClick={()=> this.props.handleTab(4)}>
-                            <div className="back-btn2">
-                                <span>Vehicle Picker</span>
-                            </div>
-                        </button>
-                    }
-                    {!this.props.hasRoom && !this.props.hasVehicle &&
-                    <button onClick={()=> this.props.handleTab(5)}>
-                        <div className="back-btn2">
-                            <span>Confirm</span>
+                    <h3>Activity picker</h3>
+                    {this.state.alert ?
+                        <div id="alert" className="alert alert-info alert-dismissable">
+                            <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                            <span id="alert-icon" className=""></span>
+                            <div id="alert-text" style={{display: "inline"}}></div>
                         </div>
-                    </button>
+                        :
+                        <div>
+                            <div>
+                                <Order
+                                    options = {sortBy}
+                                    handleOnChange = {this.orderActivities}
+                                />
+                                <ActivityShelf
+                                    activities = {toShowActivities}
+                                    updateActivity = {this.props.updateActivity}
+                                />
+                            </div>
+
+                            {this.props.hasRoom &&
+                                <button onClick={()=> this.props.handleTab(3)}>
+                                    <div className="back-btn2">
+                                        <span>Room Picker</span>
+                                    </div>
+                                </button>
+                            }
+                            {!this.props.hasRoom && this.props.hasVehicle &&
+                                <button onClick={()=> this.props.handleTab(4)}>
+                                    <div className="back-btn2">
+                                        <span>Vehicle Picker</span>
+                                    </div>
+                                </button>
+                            }
+                            {!this.props.hasRoom && !this.props.hasVehicle &&
+                            <button onClick={()=> this.props.handleTab(5)}>
+                                <div className="back-btn2">
+                                    <span>Confirm</span>
+                                </div>
+                            </button>
+                            }
+                        </div>
                     }
                 </div>
             );
