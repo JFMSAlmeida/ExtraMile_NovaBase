@@ -204,7 +204,6 @@ class AdventureBuilder2 extends Component {
 
         return (
                     <div>
-                        <h3>Vehicle picker</h3>
                         {this.state.alert ?
                             <div id="alert" className="alert alert-info alert-dismissable">
                                 <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
@@ -222,11 +221,6 @@ class AdventureBuilder2 extends Component {
                                     handleOnChange = {this.orderVehicles}
                                 />
                                 <VehicleShelf vehicles = {toShowVehicles} updateVehicle={this.props.updateVehicle}/>
-                                <button onClick={()=> this.props.handleTab(5)}>
-                                    <div className="back-btn2">
-                                        <span>Confirm</span>
-                                    </div>
-                                </button>
                             </div>
                         }
                     </div>

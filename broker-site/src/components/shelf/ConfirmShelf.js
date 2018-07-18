@@ -122,12 +122,10 @@ class ConfirmShelf extends Component {
             <React.Fragment>
                 <div className="shelf-container">
                     {advPartsArray}
-                </div>
-                <button onClick={()=> this.addToCart()}>
-                    <div className="back-btn2">
-                        <span>Add to Cart</span>
+                    <div className="confirm-buy-btn" onClick={this.props.addCart}>
+                        <span>Add to cart</span>
                     </div>
-                </button>
+                </div>
             </React.Fragment>
         );
 

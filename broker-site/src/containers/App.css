@@ -178,7 +178,7 @@ a:hover {color: inherit;}
 
 .shelf-container .shelf-item {
   float: left;
-  width: 32%;
+  width: 30%;
   position: relative;
   text-align: center;
   box-sizing: border-box;
@@ -186,7 +186,7 @@ a:hover {color: inherit;}
   margin-bottom: 20px;
   border: 1px solid transparent;
   transition: box-shadow .3s;
-  margin-right: 11px;
+  margin-right: 20px;
 }
 
 
@@ -948,12 +948,14 @@ a:hover {color: inherit;}
 }
 
 .filters {
-  position: relative;
+  position: absolute;
   width: 16%;
   min-height: 300px;
   min-width: 200px;
   float: left;
-  padding-top: 50px;
+  top: 320px;
+  left: 370px;
+
 }
 
 .filters .title {
@@ -1205,7 +1207,7 @@ select {
 
 /** The Spacing **/
 .btn-breadcrumb .btn {
-  padding:6px 12px 6px 24px;
+  padding:6px 12px 6p.x 24px;
 }
 .btn-breadcrumb .btn:first-child {
   padding:6px 6px 6px 10px;
@@ -1256,4 +1258,28 @@ select {
 .breadcrumb-buttons .buy-btn:hover {
   background-color: #000;
   color: #ececec;
+}
+
+.shelf-container .confirm-buy-btn {
+  text-transform: uppercase;
+  background-color: #1b1a20;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  width: 25%;
+  position: absolute;
+  top: 550px;
+  right: 70px;
+}
+.shelf-container .confirm-buy-btn:hover {
+  background-color: #eabf00;
+}
+
+.container-crumb {
+  padding-bottom: 0px; 
+  padding-top: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
 }

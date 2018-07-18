@@ -185,7 +185,6 @@ class AdventureBuilder1 extends Component {
         }
 
         return (<div>
-                    <h3>Room Picker</h3>
                     {this.state.alert ?
                          <div id="alert" className="alert alert-info alert-dismissable">
                              <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
@@ -205,21 +204,6 @@ class AdventureBuilder1 extends Component {
                                 />
                                 <RoomShelf rooms = {toShowRooms} updateRoom={this.props.updateRoom} />
                              </div>
-                             {this.props.hasVehicle &&
-                                <button onClick={()=> this.props.handleTab(4)}>
-                                    <div className="back-btn2">
-                                        <span>Vehicle Picker</span>
-                                    </div>
-                                </button>
-                             }
-
-                             {!this.props.hasVehicle &&
-                             <button onClick={()=> this.props.handleTab(5)}>
-                                <div className="back-btn2">
-                                    <span>Confirm</span>
-                                </div>
-                             </button>
-                             }
                         </div>
                     }
 

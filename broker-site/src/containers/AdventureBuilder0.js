@@ -23,7 +23,7 @@ const sortBy = [
         "minAge": 19,
         "maxAge": 30,
         "capacity": 20,
-        "id": "ABERO1",
+        "activityCode": "ABERO1",
 
     },
 
@@ -37,7 +37,7 @@ const sortBy = [
         "minAge": 19,
         "maxAge": 32,
         "capacity": 25,
-        "id": "ABERO1"
+        "activityCode": "ABERO1"
     },
 
     {
@@ -50,7 +50,7 @@ const sortBy = [
         "minAge": 19,
         "maxAge": 30,
         "capacity": 50,
-        "id": "ABERO2"
+        "activityCode": "ABERO2"
     },
 
     {
@@ -63,7 +63,7 @@ const sortBy = [
         "minAge": 19,
         "maxAge": 30,
         "capacity": 20,
-        "id": "ABERO13"
+        "activityCode": "ABERO13"
     }
 
 ];
@@ -151,8 +151,9 @@ class AdventureBuilder0 extends Component {
             toShowActivities = this.state.filteredActivities;
         }
 
+
+
         return (<div>
-                    <h3>Activity picker</h3>
                     {this.state.alert ?
                         <div id="alert" className="alert alert-info alert-dismissable">
                             <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
@@ -172,27 +173,6 @@ class AdventureBuilder0 extends Component {
                                 />
                             </div>
 
-                            {this.props.hasRoom &&
-                                <button onClick={()=> this.props.handleTab(3)}>
-                                    <div className="back-btn2">
-                                        <span>Room Picker</span>
-                                    </div>
-                                </button>
-                            }
-                            {!this.props.hasRoom && this.props.hasVehicle &&
-                                <button onClick={()=> this.props.handleTab(4)}>
-                                    <div className="back-btn2">
-                                        <span>Vehicle Picker</span>
-                                    </div>
-                                </button>
-                            }
-                            {!this.props.hasRoom && !this.props.hasVehicle &&
-                            <button onClick={()=> this.props.handleTab(5)}>
-                                <div className="back-btn2">
-                                    <span>Confirm</span>
-                                </div>
-                            </button>
-                            }
                         </div>
                     }
                 </div>
