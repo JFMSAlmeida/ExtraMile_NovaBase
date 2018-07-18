@@ -76,7 +76,7 @@ class AdventureBuilder2 extends Component {
 
    componentWillMount() {
 
-
+       this.props.changeLoading(true);
         var date1 = this.props.begin.format("YYYY-MM-DD");
         var date2 = this.props.end.format("YYYY-MM-DD");
 
@@ -92,8 +92,9 @@ class AdventureBuilder2 extends Component {
 
                 this.setState({vehicles: response});
                 console.log(this.state);
+                this.props.changeLoading(false);
             });
-    }  
+    }
 
 
     render() {

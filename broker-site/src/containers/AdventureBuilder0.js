@@ -72,12 +72,9 @@ class AdventureBuilder0 extends Component {
     } 
 
 
-    componentWillMount() {
-
-        var date1 = this.props.begin.format("YYYY-MM-DD");
-        var date2 = this.props.end.format("YYYY-MM-DD");
-
-        fetch('http://localhost:8084/rest/providers/activities?param1=' + date1 + '&param2=' + date2)
+    async componentWillMount() {
+        this.props.changeLoading(true);
+        await fetch('http://localhost:8081/rest/providers/activities?begin=' + this.props.begin.format("YYYY-MM-DD") + '&end=' + this.props.end.format("YYYY-MM-DD"))
             .then(response => {
                 return response.text();
             })
@@ -85,9 +82,9 @@ class AdventureBuilder0 extends Component {
                 const response = JSON.parse(body);
                 console.log(response);
                 this.setState({activities: response});
-            });
-
-        
+                this.props.changeLoading(false);
+            })
+            .catch(() => this.props.changeLoading(false));
     }
  
     render() {

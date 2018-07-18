@@ -78,8 +78,8 @@ class Shelf extends Component {
         super(props);
 
         this.state = {
-            adventures : abc,
-            filteredAdventures : abc,
+            adventures : [],
+            filteredAdventures : [],
             value : ""
         }
 
@@ -90,12 +90,12 @@ class Shelf extends Component {
 
     }
 
-    /*componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps() {
         this.setState({
             adventures : this.props.adventures,
             filteredAdventures : this.props.adventures
         })
-    }*/
+    }
 
     filterAdventures(label){
         if (this.selectedFilters.has(label)) {

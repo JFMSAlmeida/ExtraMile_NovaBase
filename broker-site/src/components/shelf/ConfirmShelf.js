@@ -76,11 +76,11 @@ class ConfirmShelf extends Component {
             });
 
         this.getPrice();
- 
+        this.props.changeLoading(false);
     }
 
     addToCart(){
-
+        this.props.changeLoading(true);
         var id = [];
         var advId = this.props.advId;
 
@@ -102,7 +102,6 @@ class ConfirmShelf extends Component {
         }
 
         this.process(advId, id);
-
     }
 
     render(){

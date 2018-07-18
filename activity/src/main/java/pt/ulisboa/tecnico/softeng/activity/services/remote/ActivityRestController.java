@@ -63,8 +63,8 @@ public class ActivityRestController {
 
 	@CrossOrigin
 	@RequestMapping(value = "/activities")
-	public ResponseEntity<List<Object>> getActivities (@RequestParam(value="param1") String begin,
-														@RequestParam(value="param2") String end) {
+	public ResponseEntity<?> getActivities(@RequestParam(value="begin") String begin,
+											@RequestParam(value="end") String end) {
 
 		try {
 			List<ActivityOffer> offers =  ActivityInterface.getAllOffers(begin, end);

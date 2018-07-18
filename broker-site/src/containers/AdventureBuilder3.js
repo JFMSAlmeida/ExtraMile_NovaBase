@@ -26,6 +26,7 @@ class AdventureBuilder3 extends Component {
         return (<div>
                     <h3>Final Look</h3>
                      <ConfirmShelf
+                        changeLoading = {this.props.changeLoading}
                         advParts = {advParts}
                         addCart = {this.props.addCart}
                         hasRoom = {this.props.hasRoom}

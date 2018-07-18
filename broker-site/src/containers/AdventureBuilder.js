@@ -8,6 +8,7 @@ import AdventureBuilder0 from "./AdventureBuilder0";
 import AdventureBuilder1 from "./AdventureBuilder1";
 import AdventureBuilder2 from "./AdventureBuilder2";
 import AdventureBuilder3 from "./AdventureBuilder3";
+import loading from './loading.gif';
 
 const moment = extendMoment(originalMoment);
 
@@ -28,7 +29,8 @@ class AdventureBuilder extends Component {
             room: null,
             vehicle: null,
             tab: 1,
-            canBuild: false
+            canBuild: false,
+            loading: false,
         };
         this.updateActivity = this.updateActivity.bind(this);
         this.updateRoom = this.updateRoom.bind(this);
@@ -55,6 +57,10 @@ class AdventureBuilder extends Component {
 
     handleChange = () => {
         this.setState({ rentVehicle: !this.state.rentVehicle });
+    };
+
+    changeLoading = (arg) => {
+        this.setState({ loading: arg });
     };
 
     onSelect = (value, states) => {
@@ -119,6 +125,11 @@ class AdventureBuilder extends Component {
                         </div>
                     </div>
 
+                    {this.state.loading ?
+                        <div id="loading" style={{textAlign: 'center'}}>
+                            <img src={loading} alt=""></img>
+                        </div> : null}
+
                     {this.state.tab == 1 ?
                         <div>
                             <div>
@@ -143,11 +154,10 @@ class AdventureBuilder extends Component {
                         :
                         null
                     }
-                    {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab={this.handleTab} /> : null}
-                    {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} /> : null}
-                    {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} /> : null}
-                    {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={this.props.addCart} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab={this.handleTab}/> : null}
-
+                    {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
+                    {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
+                    {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
+                    {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={this.props.addCart} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
 
                 </div>
                 )

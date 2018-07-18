@@ -51,13 +51,13 @@ class AdventureBuilder1 extends Component {
 
 
 
-    componentWillMount() { 
+    componentWillMount() {
 
+        this.props.changeLoading(true);
         var date1 = this.props.begin.format("YYYY-MM-DD");
         var date2 = this.props.end.format("YYYY-MM-DD");
-
-        fetch('http://localhost:8084/rest/hotels/rooms?param1=' + date1 + '&param2=' + date2)
-        .then(response => {
+        fetch('http://localhost:8085/rest/hotels/rooms?param1=' + date1 + '&param2=' + date2)
+            .then(response => {
                 return response.text();
             })
             .then(body => {
@@ -68,9 +68,9 @@ class AdventureBuilder1 extends Component {
 
                 this.setState({rooms: response});
                 console.log(this.state);
-            });
 
-        
+                this.props.changeLoading(false);
+            });
     }
  
     render() {

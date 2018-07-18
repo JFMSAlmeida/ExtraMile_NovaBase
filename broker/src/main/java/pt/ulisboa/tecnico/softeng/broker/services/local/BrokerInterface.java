@@ -147,10 +147,11 @@ public class BrokerInterface {
 				.collect(Collectors.toList());
 
 		for (Adventure adv: list){
-			if((adv.getState().getValue() == Adventure.State.CONFIRMED))
+			if(adv.getState().getValue() == Adventure.State.CONFIRMED || adv.getState().getValue() == Adventure.State.UNDO || adv.getState().getValue() == Adventure.State.CANCELLED)
 				continue;
-			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT )
+			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT && adv.getState().getValue() != Adventure.State.UNDO && adv.getState().getValue() != Adventure.State.CANCELLED) {
 				adv.process();
+			}
 		}
 
 	}
