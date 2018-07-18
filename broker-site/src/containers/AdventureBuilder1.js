@@ -194,10 +194,12 @@ class AdventureBuilder1 extends Component {
                         :
                         <div>
                              <div>
-                                <Filter
-                                    availableFilters = {availableFilters}
-                                    filterFunction = {label => this.filterRooms(label)}
-                                />
+                                <div className="filtersBuilder">
+                                    <Filter
+                                        availableFilters = {availableFilters}
+                                        filterFunction = {label => this.filterRooms(label)}
+                                    />
+                                </div>
                                 <Order
                                     options = {sortBy}
                                     handleOnChange = {this.orderRooms}
