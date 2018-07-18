@@ -170,7 +170,7 @@ a:hover {color: inherit;}
 }
 
 .shelf-container {
-  width: 80%;
+  width: 72%; 
   float: right;
   position: relative;
   top: 20px;
@@ -947,18 +947,26 @@ a:hover {color: inherit;}
   transform: rotate(45deg);
 }
 
-.filters {
-  position: absolute;
+
+.filtersBuilder {
+  position: relative;
+  width: 10%;
+  float: left;
+  top: 50px;
+  right: 170px;
+}
+
+
+.filtersFinder {
+  position: relative;
   width: 16%;
   min-height: 300px;
   min-width: 200px;
   float: left;
-  top: 320px;
-  left: 370px;
-
+  padding-top: 50px;
 }
 
-.filters .title {
+.filtersBuilder .title {
   color: #1b1a20;
   position: relative;
   bottom: 10px;
@@ -967,6 +975,17 @@ a:hover {color: inherit;}
   padding-top: 10px;
   padding-left: 20px;
 }
+
+.filtersFinder .title {
+  color: #1b1a20;
+  position: relative;
+  bottom: 10px;
+  font-size: 1.5em;
+  line-height: 50px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
 
 .checkboxes{
 }
@@ -1174,62 +1193,6 @@ select {
   font-size: 16px;
 }
 
-/** BreadCrumb **/
-.btn-breadcrumb .btn:not(:last-child):after {
-  content: " ";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 10px solid white;
-  position: absolute;
-  top: 50%;
-  margin-top: -17px;
-  left: 100%;
-  z-index: 3;
-}
-.btn-breadcrumb .btn:not(:last-child):before {
-  content: " ";
-  display: block;
-  width: 0;
-  height: 0;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 10px solid rgb(173, 173, 173);
-  position: absolute;
-  top: 50%;
-  margin-top: -17px;
-  margin-left: 1px;
-  left: 100%;
-  z-index: 3;
-}
-
-/** The Spacing **/
-.btn-breadcrumb .btn {
-  padding:6px 12px 6px 24px;
-}
-.btn-breadcrumb .btn:first-child {
-  padding:6px 6px 6px 10px;
-}
-.btn-breadcrumb .btn:last-child {
-  padding:6px 18px 6px 24px;
-}
-
-/** Default button **/
-.btn-breadcrumb .btn.btn-default:not(:last-child):after {
-  border-left: 10px solid #fff;
-}
-.btn-breadcrumb .btn.btn-default:not(:last-child):before {
-  border-left: 10px solid #ccc;
-}
-.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
-  border-left: 10px solid #ebebeb;
-}
-.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
-  border-left: 10px solid #adadad;
-}
-
 .breadcrumb-buttons .buy-btn-disabled {
   width: 150px;
   color: #ececec;
@@ -1286,7 +1249,9 @@ select {
 
 .progress_container {
   width: 70%;
-  margin: 100px auto;
+  margin: 0px auto;
+  margin-top: 35px;
+  min-height: 100px;
 }
 .progressbar {
   counter-reset: step;
@@ -1336,4 +1301,14 @@ select {
 }
 .progressbar li.active + li:after {
   background-color: #008036;
+}
+
+.selection {
+  position: relative;
+  width: 16%;
+  min-height: 300px;
+  min-width: 200px;
+  float: left;
+  top: 220px;
+  left: 30px;
 }

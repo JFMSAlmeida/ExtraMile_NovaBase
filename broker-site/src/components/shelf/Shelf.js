@@ -90,12 +90,12 @@ class Shelf extends Component {
 
     }
 
-    componentWillReceiveProps() {
+    /*componentWillReceiveProps() {
         this.setState({
             adventures : this.props.adventures,
             filteredAdventures : this.props.adventures
         })
-    }
+    }*/
 
     filterAdventures(label){
         if (this.selectedFilters.has(label)) {
@@ -173,10 +173,14 @@ class Shelf extends Component {
         return (
             <React.Fragment>
                 <div>
-                    {!this.props.loading ? <Filter
-                        availableFilters = {availableFilters}
-                        filterFunction = {label => this.filterAdventures(label)}
-                    /> : null }
+
+                    {!this.props.loading ? 
+                        <div className="filtersFinder">
+                            <Filter
+                            availableFilters = {availableFilters}
+                            filterFunction = {label => this.filterAdventures(label)}
+                        /> </div> : null } 
+
                     {!this.props.loading ? <Order
                         options = {sortBy}
                         handleOnChange = {this.orderAdventures}

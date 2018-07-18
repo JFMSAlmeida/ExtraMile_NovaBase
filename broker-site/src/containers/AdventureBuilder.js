@@ -245,7 +245,7 @@ class AdventureBuilder extends Component {
                     {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={adv => this.addToCart(adv)} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
 
                     <br/>
-                    <div>
+                    <div className="selection">
                         Your selections:
                         <div>
                             Period: {this.state.value !== '' ? <span>{this.state.value.start.format("YYYY/MM/DD")} - {this.state.value.end.format("YYYY/MM/DD")}</span> : null}
