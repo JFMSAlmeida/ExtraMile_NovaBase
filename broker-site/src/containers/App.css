@@ -170,7 +170,7 @@ a:hover {color: inherit;}
 }
 
 .shelf-container {
-  width: 80%;
+  width: 72%; 
   float: right;
   position: relative;
   top: 20px;
@@ -949,13 +949,11 @@ a:hover {color: inherit;}
 
 
 .filtersBuilder {
-  position: absolute;
-  width: 16%;
-  min-height: 300px;
-  min-width: 200px;
+  position: relative;
+  width: 10%;
   float: left;
-  top: 320px;
-  left: 370px;
+  top: 50px;
+  right: 170px;
 }
 
 
@@ -1307,11 +1305,11 @@ select {
 
 
 .selection {
-  position: absolute;
+  position: relative;
   width: 16%;
   min-height: 300px;
   min-width: 200px;
   float: left;
-  top: 620px;
-  left: 385px;
+  top: 220px;
+  left: 30px;
 }
