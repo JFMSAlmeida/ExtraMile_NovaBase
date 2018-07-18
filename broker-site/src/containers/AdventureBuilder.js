@@ -178,25 +178,25 @@ class AdventureBuilder extends Component {
                         </div> : null }
                     <h3>AdventureBuilder</h3>
 
-                    <div className="row" style={{textAlign: 'center', paddingBottom:"50px"}}>
-                        <div className="btn-group btn-breadcrumb">
-                            {this.state.tab == 1 ? <div className="btn btn-default active">Adventure Specs</div> : <div className="btn btn-default">Adventure Specs</div>}
-                            {this.state.tab == 2 ? <div className="btn btn-default active">Activity Picker</div> : <div className="btn btn-default">Activity Picker</div>}
-
+                    <div className="progress_container">
+                        <ul className="progressbar">
+                            {this.state.tab >= 2 ? <li className="active">Adventure Specs</li> : <li>Adventure Specs</li> }
+                            {this.state.tab >= 3 ? <li className="active">Activity Picker</li> : <li>Activity Picker</li> }
 
                             { this.state.hasRoom ?
-                                this.state.tab == 3 ? <div className="btn btn-default active">Hotel Picker</div> : <div className="btn btn-default">Hotel Picker</div>
-                            :
-                            null}
+                                this.state.tab >= 4 ? <li className="active">Hotel Picker</li> : <li>Hotel Picker</li>
+                                :
+                                null}
 
                             { this.state.rentVehicle ?
-                                this.state.tab == 4 ? <div className="btn btn-default active">Vehicle Picker</div> : <div className="btn btn-default">Vehicle Picker</div>
-                            :
-                            null}
+                                this.state.tab >= 5 ? <li className="active">Vehicle Picker</li> : <li>Vehicle Picker</li>
+                                :
+                                null}
 
-                            {this.state.tab == 5 ? <div className="btn btn-default active">Confirm</div> : <div className="btn btn-default">Confirm</div>}
-                        </div>
+                            {this.state.tab >= 6 ? <li className="active">Confirm</li> : <li>Confirm</li>}
+                        </ul>
                     </div>
+
                     <div className="breadcrumb-buttons">
                         <Backward
                             cleanState = {this.cleanState}
