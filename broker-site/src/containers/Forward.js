@@ -10,6 +10,7 @@ class Forward extends Component {
 
     handleTab() {
         if(this.props.state.tab === 1) {
+            this.props.handleSubmit();
             this.props.handleTab(2);
         }
 
@@ -36,7 +37,7 @@ class Forward extends Component {
 
     render() {
         return (
-            <div onClick={this.handleTab}>
+            <div>
                 {this.props.state.tab === 1 && this.props.state.value === '' ?
                     <div className="buy-btn-disabled" style={{float: 'right'}}> Next </div>
                     :
@@ -52,7 +53,8 @@ class Forward extends Component {
                                 this.props.state.tab === 5 ?
                                     null
                                     :
-                                    <div className="buy-btn" style={{float: 'right'}}> Next </div>
+                                    <div className="buy-btn" style={{float: 'right'}} onClick={this.handleTab}> Next </div>
+
                 }
 
             </div>
