@@ -38,6 +38,23 @@ class AdventureBuilder extends Component {
         this.updateVehicle = this.updateVehicle.bind(this);
         this.handleTab = this.handleTab.bind(this);
         this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+        this.addToCart = this.addToCart.bind(this);
+    }
+
+    addToCart(adv){
+        this.props.addCart(adv);
+        this.setState({
+            advId: "B0D4",
+            rentVehicle: false,
+            hasRoom: false,
+            value: '',
+            activity: null,
+            room: null,
+            vehicle: null,
+            tab: 1,
+            canBuild: false,
+            loading: false
+        });
     }
 
     handleSubmit = (event) => {
@@ -194,7 +211,7 @@ class AdventureBuilder extends Component {
                     {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
                     {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
                     {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
-                    {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={this.props.addCart} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
+                    {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={adv => this.addToCart(adv)} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
 
                     <br/>
                     <div>
