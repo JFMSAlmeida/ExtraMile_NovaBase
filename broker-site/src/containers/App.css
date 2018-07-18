@@ -178,7 +178,7 @@ a:hover {color: inherit;}
 
 .shelf-container .shelf-item {
   float: left;
-  width: 33%;
+  width: 32%;
   position: relative;
   text-align: center;
   box-sizing: border-box;
@@ -186,6 +186,7 @@ a:hover {color: inherit;}
   margin-bottom: 20px;
   border: 1px solid transparent;
   transition: box-shadow .3s;
+  margin-right: 11px;;
 }
 
 .shelf-container .shelf-item:hover {

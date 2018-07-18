@@ -39,10 +39,15 @@ class AdventureBuilder extends Component {
         this.handleTab = this.handleTab.bind(this);
         this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
         this.addToCart = this.addToCart.bind(this);
+        this.cleanState = this.cleanState.bind(this);
     }
 
     addToCart(adv){
         this.props.addCart(adv);
+        this.cleanState();
+    }
+
+    cleanState() {
         this.setState({
             advId: "B0D4",
             rentVehicle: false,
@@ -168,6 +173,7 @@ class AdventureBuilder extends Component {
                     </div>
                     <div className="breadcrumb-buttons">
                         <Backward
+                            cleanState = {this.cleanState}
                             state = {this.state}
                             handleTab = {this.handleTab}
                         />

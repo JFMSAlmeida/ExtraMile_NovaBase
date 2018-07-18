@@ -1,25 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-
-
 
 const Activity = (props) => {
 
 	const activity = props.activity;
-
-	const i3 = activity.providerCode + ";" + activity.activityCode;
-
-	/*const info = {
-		pathname:'/adventurebuilder1',
-		activityName: activity.name,
-		begin: activity.begin,
-		end: activity.end,
-		age: activity.minAge,
-		addCart: props.addCart
-
-	};
-
-	console.log(info);*/
 
 	return (
 		<div className="shelf-item" data-sku={activity.providerCode}>
@@ -43,11 +26,3 @@ const Activity = (props) => {
 }
 
 export default Activity;
-
-/*
-
-
-<Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, state:{info: this.state}}}>
-<span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
-
-*/

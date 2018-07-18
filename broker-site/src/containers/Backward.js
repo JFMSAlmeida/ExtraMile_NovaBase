@@ -10,6 +10,7 @@ class Backward extends Component {
 
     handleTab() {
         if (this.props.state.tab === 2) {
+            this.props.cleanState();
             this.props.handleTab(1);
         }
 

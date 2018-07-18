@@ -12,11 +12,9 @@ class ActivityShelf extends Component {
 		const actArray = act.map((act, index) => {
 				return(
 					<Activity
-						//process = {this.props.process}
 						activity = {act}
 						key = {index}
                         updateActivity={() => this.props.updateActivity(act)}
-
 					/>
 				);
 		});
