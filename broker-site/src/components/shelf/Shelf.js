@@ -78,8 +78,8 @@ class Shelf extends Component {
         super(props);
 
         this.state = {
-            adventures : [],
-            filteredAdventures : [],
+            adventures : abc,
+            filteredAdventures : abc,
             value : ""
         }
 
@@ -152,8 +152,6 @@ class Shelf extends Component {
             filteredAdventures : orderedAdventures
         });
     }
-
-
 
     render(){
         var adv;

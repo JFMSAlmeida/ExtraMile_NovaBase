@@ -16,7 +16,7 @@ const availableFilters = [
     'Motorcycle',
 ];
 
-/*const vecs = [
+const vecs = [
     {
         "type": "MOTORCYCLE",
         "plate": "AA-11-XX",
@@ -73,7 +73,7 @@ const availableFilters = [
     }
 
 
-];*/
+];
 
 
 class AdventureBuilder2 extends Component {
@@ -81,8 +81,8 @@ class AdventureBuilder2 extends Component {
     constructor(props){
         super(props);
         this.state = {
-            vehicles: [],
-            filteredVehicles : [],
+            vehicles: vecs,
+            filteredVehicles : vecs,
             value : "",
             filterFlag : false
         };
@@ -98,7 +98,7 @@ class AdventureBuilder2 extends Component {
         this.setState({alert: false});
     }
 
-    async componentWillMount() {
+    /*async componentWillMount() {
         try {
             this.props.changeLoading(true);
             var date1 = this.props.begin.format("YYYY-MM-DD");
@@ -125,7 +125,7 @@ class AdventureBuilder2 extends Component {
             document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
             document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
-    }
+    }*/
 
     filterVehicles(label){
 
@@ -197,10 +197,6 @@ class AdventureBuilder2 extends Component {
 
 
     render() {
-        console.log("aaaa");
-        console.log(this.props.updateVehicle);
-        console.log("bbbb");
-
         var toShowVehicles = this.state.vehicles;
         if(this.state.filterFlag || (this.state.value !== "")){
             toShowVehicles = this.state.filteredVehicles;
@@ -236,7 +232,6 @@ class AdventureBuilder2 extends Component {
                     </div>
                 );
     }
-
 }
 
 export default AdventureBuilder2;

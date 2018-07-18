@@ -38,21 +38,21 @@ class Forward extends Component {
         return (
             <div onClick={this.handleTab}>
                 {this.props.state.tab === 1 && this.props.state.value === '' ?
-                    <div className="buy-btn-disabled" style={{float: 'right'}}> Forward </div>
+                    <div className="buy-btn-disabled" style={{float: 'right'}}> Next </div>
                     :
                     this.props.state.tab === 2 && this.props.state.activity == null ?
-                        <div className="buy-btn-disabled" style={{float: 'right'}}> Forward </div>
+                        <div className="buy-btn-disabled" style={{float: 'right'}}> Next </div>
                         :
                         this.props.state.tab === 3 && this.props.state.room == null ?
-                            <div className="buy-btn-disabled" style={{float: 'right'}}> Forward </div>
+                            <div className="buy-btn-disabled" style={{float: 'right'}}> Next </div>
                             :
                             this.props.state.tab === 4 && this.props.state.vehicle == null ?
-                                <div className="buy-btn-disabled" style={{float: 'right'}}> Forward </div>
+                                <div className="buy-btn-disabled" style={{float: 'right'}}> Next </div>
                                 :
                                 this.props.state.tab === 5 ?
                                     null
                                     :
-                                    <div className="buy-btn" style={{float: 'right'}}> Forward </div>
+                                    <div className="buy-btn" style={{float: 'right'}}> Next </div>
                 }
 
             </div>

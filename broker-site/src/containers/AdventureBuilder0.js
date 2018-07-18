@@ -49,7 +49,7 @@ const sortBy = [
         "end": [2018,7,3],
         "minAge": 19,
         "maxAge": 30,
-        "capacity": 20,
+        "capacity": 50,
         "id": "ABERO2"
     },
 
@@ -74,8 +74,8 @@ class AdventureBuilder0 extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            activities: [],
-            filteredActivities : []
+            activities: acts,
+            filteredActivities : acts
         };
         this.orderActivities = this.orderActivities.bind(this);
         this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
@@ -120,7 +120,7 @@ class AdventureBuilder0 extends Component {
         this.setState({alert: false});
     }
 
-    async componentWillMount() {
+    /*async componentWillMount() {
         try {
             this.props.changeLoading(true);
             await fetch('http://localhost:8081/rest/providers/activities?begin=' + this.props.begin.format("YYYY-MM-DD") + '&end=' + this.props.end.format("YYYY-MM-DD"))
@@ -141,7 +141,7 @@ class AdventureBuilder0 extends Component {
             document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
     }
- 
+ */
     render() {
         console.log(this.props.hasRoom);
         console.log(this.props.hasVehicle);

@@ -118,18 +118,44 @@ class AdventureBuilder extends Component {
         }
 
     }
+
     updateActivity(activity){
+
+
+        if (this.state.activity != null) {
+            document.getElementById(this.state.activity.providerCode 
+                + this.state.activity.capacity
+                 + this.state.activity.activityCode).className = "shelf-item";
+        }
+
+        document.getElementById(activity.providerCode + 
+            activity.capacity + activity.activityCode).className = "shelf-click";
+
         this.setState({
             activity: activity
         }, () => console.log(this.state.activity)
         );
     }
     updateRoom(room){
+
+        if (this.state.room != null) {
+            document.getElementById(this.state.room.hotelCode 
+                + this.state.room.number).className = "shelf-item";
+        }
+
+        document.getElementById(room.hotelCode + room.number).className = "shelf-click";
+
         this.setState({
             room: room
         });
     }
     updateVehicle(vehicle){
+        if (this.state.vehicle != null) {
+            document.getElementById(this.state.vehicle.plate).className = "shelf-item";
+        }
+
+        document.getElementById(vehicle.plate).className = "shelf-click";
+
         this.setState({
             vehicle: vehicle
         });
@@ -201,8 +227,6 @@ class AdventureBuilder extends Component {
                                     onChange={this.handleChange} />
                             </div>
                             <br/>
-                            <button type="submit" onClick={this.handleSubmit}>Submit your adventure</button>
-                            {this.state.canBuild && <button onClick={() => this.handleTab(2)}> Start the builder!</button>}
                         </div>
                         :
                         null

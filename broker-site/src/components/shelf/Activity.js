@@ -22,7 +22,7 @@ const Activity = (props) => {
 	console.log(info);*/
 
 	return (
-		<div className="shelf-item" data-sku={activity.providerCode}>
+		<div id = {activity.providerCode + activity.capacity + activity.activityCode} className="shelf-item" data-sku={activity.providerCode}>
 			<div className="shelf-item__main_info">
 				<img className="shelf-item__image" src={require(`./B1001.jpg`)} alt={activity.providerCode}/>
 				<div className="shelf-item__price">
