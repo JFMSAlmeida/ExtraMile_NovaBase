@@ -1,27 +1,33 @@
 # ExtraMile_NovaBase
 
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
+Techonologies that need to be installed: 
+* jdk-8
+* mysql-server
+* maven 
+* jmeter
+* reactJS
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
+With mysql-server installed it's necessary to create 6 databases whose names are: advbank, advactivity, advhotel, advtax, advcar and advbroker.
 ## Running the tests
-
-Explain how to run the automated tests for this system
-
+To run the unit tests execute the following command on the main directory: 
+```
+mvn clean install
+```
+If the goal is to execute load and stress tests you need to turn the servers and Jmeter on. You can do that by typing following command on the bin directory:
+```
+./startservers
+```
+On JMeter tool you need to load the tests(.jmx files) from this directory 
+```
+jmeter/tests
+```
+If your wish is to turn them off then use: 
+```
+./shutdownservers
+```
 ## Deployment
-
 Add additional notes about how to deploy this on a live system
 
 ## Built With
@@ -30,8 +36,10 @@ Add additional notes about how to deploy this on a live system
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [SpringBoot](https://spring.io/projects/spring-boot) & [Thymeleaf](https://www.thymeleaf.org/) - Framework and Template engine to develop web servers using the architectural pattern MVC for web applications
 * [Fénix Framework](https://fenix-framework.github.io/) - Transactional and persistent domain model
-* [Apache JMeter](https://fenix-framework.github.io/) - Tool used for basic load, stress and integration testing on Web dynamic applications. 
-
+* [Apache JMeter](https://jmeter.apache.org/) - Tool used for basic load and stress testing on Web dynamic applications
+* [JUnit](https://junit.org/junit5/) - Unit testing framework for the Java programming language integration testing
+* [JMockit](http://jmockit.github.io/) - Library used for integration testing
+ 
 ## Authors
 |   Number   |          Name           |                  Email                  |   GitHub Username  |
 | ---------- | ----------------------- | --------------------------------------- | -------------------|
