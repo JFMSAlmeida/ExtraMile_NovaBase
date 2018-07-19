@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
-import VehicleShelf from '../components/shelf/VehicleShelf';
-import Order from "../components/shelf/Order";
-import Filter from "../components/shelf/Filter";
+import '../../containers/App.css';
+import VehicleShelf from '../shelf/VehicleShelf';
+import Order from "../shelf/Order";
+import Filter from "../shelf/Filter";
 
 const sortBy = [
     { value: '',           label: 'Select'  },

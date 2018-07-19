@@ -4,13 +4,13 @@ import DateRangePicker from "react-daterange-picker";
 import "react-daterange-picker/dist/css/react-calendar.css";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-import AdventureBuilder0 from "./AdventureBuilder0";
-import AdventureBuilder1 from "./AdventureBuilder1";
-import AdventureBuilder2 from "./AdventureBuilder2";
-import AdventureBuilder3 from "./AdventureBuilder3";
+import AdventureBuilder0 from "../components/builder/AdventureBuilder0";
+import AdventureBuilder1 from "../components/builder/AdventureBuilder1";
+import AdventureBuilder2 from "../components/builder/AdventureBuilder2";
+import AdventureBuilder3 from "../components/builder/AdventureBuilder3";
 import loading from './loading.gif';
-import Forward from "./Forward";
-import Backward from "./Backward";
+import Forward from "../components/builder/Forward";
+import Backward from "../components/builder/Backward";
 
 const moment = extendMoment(originalMoment);
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import ConfirmShelf from '../components/shelf/ConfirmShelf'
+import '../../containers/App.css';
+import ConfirmShelf from '../shelf/ConfirmShelf'
 
 class AdventureBuilder3 extends Component {
     constructor(props){

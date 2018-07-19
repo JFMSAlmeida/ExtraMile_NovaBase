@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
-import ActivityShelf from '../components/shelf/ActivityShelf';
+import '../../containers/App.css';
+import ActivityShelf from '../shelf/ActivityShelf';
 import {button} from "react-router-dom";
-import Filter from '../components/shelf/Filter'
-import Order from "../components/shelf/Order";
+import Filter from '../shelf/Filter'
+import Order from "../shelf/Order";
 
 const sortBy = [
     { value: '',           label: 'Select'  },
