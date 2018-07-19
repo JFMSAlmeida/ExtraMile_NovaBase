@@ -8,8 +8,9 @@ class ConfirmShelf extends Component {
         super(props);
 
         this.state = {
-                        price: 0
-                    };
+            price: 0,
+            alert : false
+        };
 
         this.createPackage = this.createPackage.bind(this);
         this.addToCart = this.addToCart.bind(this);
@@ -18,29 +19,37 @@ class ConfirmShelf extends Component {
 
 
     async getPrice() {
+        try {
+            var i1 = "B100";
+            var i2 = this.props.advId;
+            var i3 = "999999999";
 
-        var i1 = "B100";
-        var i2 = this.props.advId;
-        var i3 = "999999999";
+            console.log(i2);
+            console.log(this.props.advId);
 
-        console.log(i2);
-        console.log(this.props.advId);
+            await fetch('http://localhost:8083/rest/brokers/getAdventurePrice?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
+                .then(response => {
+                    return response.text();
+                })
+                .then(body => {
+                    console.log(JSON.parse(body));
+                    console.log(JSON.parse(body).price);
+                    this.setState({
+                        price: JSON.parse(body).price
+                    });
+                });
 
-        await fetch('http://localhost:8083/rest/brokers/getAdventurePrice?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
-            .then(response => {
-            return response.text();
-        })
-        .then(body => {
-            console.log(JSON.parse(body));
-            console.log(JSON.parse(body).price);
-            this.setState({
-                price: JSON.parse(body).price
-            });
-        });
+            let adv = this.createPackage();
 
-        let adv = this.createPackage();
+            this.props.addCart(adv);
 
-        this.props.addCart(adv);
+        } catch (e) {
+            this.props.changeLoading(false);
+            this.setState({alert: true});
+            document.getElementById("alert").setAttribute("class", "alert alert-warning");
+            document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
+            document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
+        }
 
     }
 
@@ -60,24 +69,30 @@ class ConfirmShelf extends Component {
     }
 
     async process(advId, id){
-        let link = 'http://localhost:8083/rest/brokers/processPart?param1=B100&param2=' + advId;
-        var size = id.length;
 
-        for(let i = 0; i < size; i++) {
-            link = link + '&param=' + id[i];
+        try {
+            let link = 'http://localhost:8083/rest/brokers/processPart?param1=B100&param2=' + advId;
+            var size = id.length;
+
+            for(let i = 0; i < size; i++) {
+                link = link + '&param=' + id[i];
+            }
+
+            await fetch(link)
+                .then(response => {
+                    return response.text();
+                });
+            this.getPrice();
+            this.props.changeLoading(false);
+
+        } catch (e) {
+            this.props.changeLoading(false);
+            this.setState({alert: true});
+            document.getElementById("alert").setAttribute("class", "alert alert-warning");
+            document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
+            document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
 
-
-        await fetch(link)
-            .then(response => {
-                return response.text();
-            })
-            .then(body => {
-                console.log(JSON.parse(body));
-            });
-
-        this.getPrice();
-        this.props.changeLoading(false);
     }
 
     addToCart(){
@@ -121,6 +136,12 @@ class ConfirmShelf extends Component {
 
         return (
             <div>
+                {this.state.alert ?
+                    <div id="alert" className="alert alert-info alert-dismissable">
+                        <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                        <span id="alert-icon" className=""></span>
+                        <div id="alert-text" style={{display: "inline"}}></div>
+                    </div> : <div>
                 {this.props.getLoading() ? null :
                     <React.Fragment>
                         <h3 style={{textAlign: 'center'}}>Your Selections:</h3>
@@ -131,7 +152,7 @@ class ConfirmShelf extends Component {
                             </div>
                         </div>
                     </React.Fragment>
-                }
+                } </div>}
             </div>
         );
 
