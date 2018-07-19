@@ -101,7 +101,7 @@ class AdventureBuilder extends Component {
         try {
             await fetch('http://localhost:8083/rest/brokers/createAdventure?brokerCode=B100&clientNif=999999999&begin=' +
                 this.state.value.start.format("YYYY-MM-DD") + '&end=' + this.state.value.end.format("YYYY-MM-DD") +
-                '&margin=1&rentVehicle=' + this.state.rentVehicle)
+                '&margin=0.1&rentVehicle=' + this.state.rentVehicle)
                 .then(response => {
                     return response.text();
                 })
