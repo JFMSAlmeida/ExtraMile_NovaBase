@@ -6,7 +6,6 @@ class VehicleShelf extends Component {
 
 	render() {
 		const vehicle = this.props.vehicles;
-		console.log(vehicle);
 
 		const vehicleArray = vehicle.map((v,index) => {
 			return(

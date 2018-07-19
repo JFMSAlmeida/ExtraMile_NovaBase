@@ -55,8 +55,6 @@ class Payment extends Component {
 
     render() {
         let i = 0;
-        console.log(this.state.paymentSuccess);
-        console.log(this.state.references);
         if(this.state.paymentSuccess){
             var referencesArray = this.state.references.map(adv => {
                 return (

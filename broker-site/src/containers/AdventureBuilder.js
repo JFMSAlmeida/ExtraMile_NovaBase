@@ -63,8 +63,6 @@ class AdventureBuilder extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state.value);
-
         this.createAdventure();
     };
 
@@ -106,11 +104,7 @@ class AdventureBuilder extends Component {
                     return response.text();
                 })
                 .then(body => {
-                    console.log(JSON.parse(body));
-                    console.log(body);
                     const response = JSON.parse(body);
-                    console.log(response);
-                    console.log(response.advId);
                     this.setState({
                         advId: response.advId,
                     });
@@ -139,8 +133,7 @@ class AdventureBuilder extends Component {
 
         this.setState({
             activity: activity
-        }, () => console.log(this.state.activity)
-        );
+        });
     }
     updateRoom(room){
 

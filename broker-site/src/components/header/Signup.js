@@ -34,7 +34,6 @@ class Signup extends Component {
 
     handleSignUp(e, nif, iban, age, dl) {
         e.preventDefault();
-        console.log("handleSignUp");
         fetch('http://localhost:8083/rest/brokers/signup?brokerCode=' + this.props.getAuthState().broker +
             '&nif=' + nif +
             '&iban=' + iban +

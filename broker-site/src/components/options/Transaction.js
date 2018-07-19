@@ -17,7 +17,6 @@ class Transaction extends Component {
             );
         });
 
-        console.log(transactions.length);
         return (
             <div>
                 {this.props.couldFetchTransactions ?

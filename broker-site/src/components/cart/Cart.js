@@ -15,13 +15,10 @@ class Cart extends Component{
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("nextProps.product:" + nextProps.product);
-        console.log("this.state.newProduct:" + this.state.newProduct);
         if(nextProps.product == null){
             return;
         }
         if(nextProps.product !== this.state.newProduct) {
-            console.log("aqui2");
             this.setState({newProduct: nextProps.product});
             this.addProduct(nextProps.product);
         }
@@ -69,7 +66,6 @@ class Cart extends Component{
             newProduct : null
         });
 
-        console.log(this.props.resetProduct);
         this.props.resetProduct();
     }
 

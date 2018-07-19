@@ -7,7 +7,6 @@ class ActivityShelf extends Component {
 
 	render() {
 		const act = this.props.activities;
-		console.log(act);
 
 		const actArray = act.map((act, index) => {
 				return(

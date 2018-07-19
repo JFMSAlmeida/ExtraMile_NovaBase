@@ -80,13 +80,8 @@ class AdventureBuilder1 extends Component {
                     return response.text();
                 })
                 .then(body => {
-                    console.log(JSON.parse(body));
-
                     const response = JSON.parse(body);
-                    console.log(response);
-
                     this.setState({rooms: response, filteredRooms: response});
-                    console.log(this.state);
 
                     this.props.changeLoading(false);
                 })
@@ -132,7 +127,6 @@ class AdventureBuilder1 extends Component {
             }
         }, this);
 
-        console.log(filteredRooms);
         this.setState({filteredRooms : filteredRooms}, () => {this.orderRooms(this.state.value)});
     }
 
@@ -144,7 +138,6 @@ class AdventureBuilder1 extends Component {
         else
             orderedRooms = this.state.rooms.slice(0);
 
-        console.log(orderedRooms);
         if(value === 'lowestprice'){
             orderedRooms.sort(function(a, b) {
                 return a.roomPrice - b.roomPrice;
@@ -172,13 +165,9 @@ class AdventureBuilder1 extends Component {
         this.setState({
             filteredRooms : orderedRooms
         });
-        console.log(orderedRooms);
     }
  
     render() {
-        console.log(this.props);
-        console.log(this.props.hasVehicle);
-
         var toShowRooms = this.state.rooms;
         if(this.state.filterFlag || (this.state.value !== "")){
             toShowRooms = this.state.filteredRooms;
