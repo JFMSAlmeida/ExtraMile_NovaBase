@@ -49,8 +49,9 @@ class App extends React.Component {
     resetProduct() {
         console.log("E QUEM NÃO SALTA NÃO É DA MALTA");
         this.setState({
-            product : null
+            product: null
         });
+    }
 
     setAuthState(auth, nif, iban, age, dl) {
         this.setState({
