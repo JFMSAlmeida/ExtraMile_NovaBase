@@ -21,10 +21,14 @@ class ActivityShelf extends Component {
 
         return (
         	<div>
-				{act.length === 0 ?
-					<div>
-						No activities available in this period.
-					</div>
+				{act.length === 0 && this.props.getLoading() == false ?
+					<div style={{textAlign: 'center'}}>
+                        <br/><br/><br/>
+						<h3>
+							No activities available in this period.
+							Please select another period.
+						</h3>
+                    </div>
 					:
 					<React.Fragment>
 						<div className="shelf-container">

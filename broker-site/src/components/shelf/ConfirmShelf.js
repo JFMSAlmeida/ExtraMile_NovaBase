@@ -48,7 +48,8 @@ class ConfirmShelf extends Component {
 
     createPackage() {
         console.log("BODAID: " + this.props.advId);
-        let adv = Object.assign(this.props.advParts[0], {"id": this.props.advId, "price": this.state.price});
+        let adv = Object.assign(this.props.advParts[0], {"id": this.props.advId, "price": this.state.price, "hasRoom": this.props.hasRoom,
+                "hasVehicle": this.props.hasVehicle});
         if (this.props.hasRoom)
             adv = Object.assign(adv, this.props.advParts[1]);
         if (this.props.hasVehicle)
@@ -120,9 +121,10 @@ class ConfirmShelf extends Component {
 
         return (
             <React.Fragment>
+                <h3 style={{textAlign: 'center'}}>Your Selections:</h3>
                 <div className="shelf-container">
                     {advPartsArray}
-                    <div className="confirm-buy-btn" onClick={this.props.addCart}>
+                    <div className="confirm-buy-btn" onClick={() => this.addToCart()}>
                         <span>Add to cart</span>
                     </div>
                 </div>

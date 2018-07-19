@@ -1305,10 +1305,6 @@ select {
 
 .selection {
   position: relative;
-  width: 16%;
-  min-height: 300px;
-  min-width: 200px;
-  float: left;
-  top: 220px;
-  left: 30px;
+  max-width: 200px;
+  margin-top: 250px;
 }

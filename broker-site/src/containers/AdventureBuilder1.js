@@ -57,8 +57,8 @@ class AdventureBuilder1 extends Component {
     constructor(props){
         super(props);
         this.state = { 
-            rooms: ros,
-            filteredRooms : ros,
+            rooms: [],
+            filteredRooms : [],
             value : "",
             filterFlag : false
         };
@@ -70,7 +70,7 @@ class AdventureBuilder1 extends Component {
     } 
 
 
-    /*async componentWillMount() {
+    async componentWillMount() {
         try {
             this.props.changeLoading(true);
             var date1 = this.props.begin.format("YYYY-MM-DD");
@@ -98,7 +98,7 @@ class AdventureBuilder1 extends Component {
             document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
     }
-    */
+
 
     handleAlertDismiss(e) {
         e.preventDefault();

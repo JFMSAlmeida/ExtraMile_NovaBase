@@ -7,11 +7,11 @@ const Activity = (props) => {
 	return (
 		<div id = {activity.providerCode + activity.capacity + activity.activityCode} className="shelf-item" data-sku={activity.providerCode}>
 			<div className="shelf-item__main_info">
+            	<b><p className="shelf-item__title"> {activity.activityName} </p></b>
 				<img className="shelf-item__image" src={require(`./B1001.jpg`)} alt={activity.providerCode}/>
 				<div className="shelf-item__price">
                     <div className="val"><b>Price: {activity.activityPrice}€</b></div>
            		</div>
-                <p> Activity Name: {activity.title} </p>
            		<p> Provider: {activity.providerName} </p>
            		<p> Minimum Age: {activity.minAge} </p>
            		<p> Maximum Age: {activity.maxAge} </p>

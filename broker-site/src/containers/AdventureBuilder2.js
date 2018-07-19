@@ -81,8 +81,8 @@ class AdventureBuilder2 extends Component {
     constructor(props){
         super(props);
         this.state = {
-            vehicles: vecs,
-            filteredVehicles : vecs,
+            vehicles: [],
+            filteredVehicles : [],
             value : "",
             filterFlag : false
         };
@@ -98,7 +98,7 @@ class AdventureBuilder2 extends Component {
         this.setState({alert: false});
     }
 
-    /*async componentWillMount() {
+    async componentWillMount() {
         try {
             this.props.changeLoading(true);
             var date1 = this.props.begin.format("YYYY-MM-DD");
@@ -125,7 +125,7 @@ class AdventureBuilder2 extends Component {
             document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
             document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
-    }*/
+    }
 
     filterVehicles(label){
 

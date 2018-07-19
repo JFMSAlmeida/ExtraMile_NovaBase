@@ -263,7 +263,7 @@ public class ActivityInterface {
 			Activity activity = offer.getActivity();
 			ActivityProvider provider = activity.getActivityProvider();
 			
-			aux.put("title", activity.getName());
+			aux.put("activityName", activity.getName());
 			aux.put("providerName", provider.getName());
 			aux.put("providerCode", provider.getCode());
 			aux.put("activityPrice", offer.getAmount());

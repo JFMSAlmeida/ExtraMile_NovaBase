@@ -40,7 +40,7 @@ class CartProduct extends Component {
                     </p>
                 </div>
                 <div className="shelf-item__price">
-                    <p>{product.price} €</p>
+                    <p>{product.price}€</p>
                 </div>
             </div>
         );

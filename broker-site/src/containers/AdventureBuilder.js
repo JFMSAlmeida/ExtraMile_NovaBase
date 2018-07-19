@@ -75,6 +75,9 @@ class AdventureBuilder extends Component {
     changeLoading = (arg) => {
         this.setState({ loading: arg });
     };
+    getLoading = () => {
+        return this.state.loading;
+    };
 
     onSelect = (value, states) => {
         this.setState({ value, states },
@@ -239,30 +242,47 @@ class AdventureBuilder extends Component {
                         :
                         null
                     }
-                    {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
+                    {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
                     {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
                     {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
                     {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={adv => this.addToCart(adv)} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
 
                     <br/>
-                    <div className="selection">
-                        Your selections:
-                        <div>
-                            Period: {this.state.value !== '' ? <span>{this.state.value.start.format("YYYY/MM/DD")} - {this.state.value.end.format("YYYY/MM/DD")}</span> : null}
+                    {this.state.tab != 1 && this.state.tab != 5 ?
+                        <div className="selection">
+                            Your selections:
+                            <div>
+                                Period: {this.state.value !== '' ?
+                                <span>{this.state.value.start.format("YYYY/MM/DD")} - {this.state.value.end.format("YYYY/MM/DD")}</span> : null}
+                            </div>
+                            <div>
+                                Vehicle: {this.state.rentVehicle ? "Yes" : "No"}
+                            </div>
+                            {this.state.activity != null ?
+                                <div>
+                                    Activity: {this.state.activity.activityCode}
+                                </div>
+                                :
+                                null
+                            }
+                            {this.state.hasRoom && this.state.room != null ?
+                                <div>
+                                    HotelRoom: {this.state.room.number}
+                                </div>
+                                :
+                                null
+                            }
+                            {this.state.rentVehicle && this.state.vehicle != null ?
+                                <div>
+                                    Vehicle: {this.state.vehicle.plate}
+                                </div>
+                                :
+                                null
+                            }
                         </div>
-                        <div>
-                            Vehicle: {this.state.rentVehicle ? "Yes" : "No"}
-                        </div>
-                        <div>
-                            Activity: {this.state.activity == null ? null : this.state.activity.activityCode}
-                        </div>
-                        <div>
-                            HotelRoom: {this.state.room == null ? null : this.state.room.number}
-                        </div>
-                        <div>
-                            Vehicle: {this.state.vehicle == null ? null : this.state.vehicle.plate}
-                        </div>
-                    </div>
+                        :
+                        null
+                    }
                 </div>
                 )
     }  
