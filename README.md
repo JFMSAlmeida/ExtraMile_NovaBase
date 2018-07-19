@@ -35,7 +35,7 @@ To begin the adventure you just need to:
 
 1) Boot up the servers with ```./startservers``` command in ```/bin``` directory
 
-2) Populate databases with Jmeter tool using 30Writes.jmx file
+2) Populate databases with Jmeter tool using ```30Writes.jmx``` file
 
 3) Type ```npm start``` in ```/broker-site``` directory
 
