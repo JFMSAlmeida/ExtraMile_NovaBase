@@ -253,7 +253,8 @@ class AdventureBuilder extends Component {
                 <br/>
                 {this.state.tab != 1 && this.state.tab != 5 ?
                     <div className="selection">
-                        Your selections:
+                        <hr className="home_hr"/>
+                        <b>Your selections:</b>
                         <div>
                             Period: {this.state.value !== '' ?
                             <span>{this.state.value.start.format("YYYY/MM/DD")} - {this.state.value.end.format("YYYY/MM/DD")}</span> : null}
@@ -282,6 +283,7 @@ class AdventureBuilder extends Component {
                             :
                             null
                         }
+                        <hr className="home_hr"/>
                     </div>
                     :
                     null
