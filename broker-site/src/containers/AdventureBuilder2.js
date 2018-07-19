@@ -206,7 +206,6 @@ class AdventureBuilder2 extends Component {
                     <div>
                         {this.state.alert ?
                             <div id="alert" className="alert alert-info alert-dismissable">
-                                <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
                                 <span id="alert-icon" className=""></span>
                                 <div id="alert-text" style={{display: "inline"}}></div>
                             </div>
