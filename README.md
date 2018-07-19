@@ -10,9 +10,10 @@ Technologies that need to be installed:
 * npm 
 
 With mysql-server installed it's necessary to create 6 databases whose names are: advbank, advactivity, advhotel, advtax, advcar and advbroker.
-After reactJS is installed it's required to install the dependencies used on front-end. You can do that by execute the command in the  ```/broker-site``` directory:
+After the package manager npm  is installed it's required to install the dependencies used on front-end. You can do that by execute the commands in the  ```/broker-site``` directory:
 ```
 npm install
+npm i @fortawesome/react-fontawesome
 ```
 ## Running the tests
 To run the unit tests execute the following command on the main directory: 
@@ -32,7 +33,13 @@ If your wish is to turn them off then use:
 ./shutdownservers
 ```
 ## Deployment
+To begin the adventure you just need to:
 
+1) Boot up the servers with ```./startservers``` command in ```/bin``` directory
+
+2) Populate databases with Jmeter tool using 30Writes.jmx file
+
+3) Type ```npm start``` in ```/broker-site``` directory
 
 ## Built With
 
@@ -56,4 +63,4 @@ If your wish is to turn them off then use:
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Some of our code was inspired from this source: https://github.com/jeffersonRibeiro/react-shopping-cart
