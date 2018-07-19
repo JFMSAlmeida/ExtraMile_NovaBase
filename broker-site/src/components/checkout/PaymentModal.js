@@ -27,7 +27,7 @@ class PaymentModal extends Component {
 
     render() {
         if (this.state.paymentConfirmation) {
-            return <Redirect to={{pathname: '/payment',remove: this.removeProducts , money : this.props.money ,state:{products : this.props.products, total: this.props.total}}} />;
+            return <Redirect to={{pathname: '/payment', remove: this.removeProducts, calculateBalance : this.props.calculateBalance, state:{products : this.props.products, total: this.props.total}}} />;
         }
         return (
             <div>

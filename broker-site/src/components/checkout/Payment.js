@@ -42,7 +42,7 @@ class Payment extends Component {
                 references : response2,
                 paymentSuccess : 1
             });
-            this.props.location.money("ABELHAAAAAAAAAAAAAAAAAAAA");
+            this.props.location.calculateBalance();
         }
         else {
             this.setState({
