@@ -120,15 +120,19 @@ class ConfirmShelf extends Component {
             advPartsArray.push(<Vehicle noAddCart={1} vehicle = {this.props.advParts[1]} key = {this.props.advParts[1].plate} />);
 
         return (
-            <React.Fragment>
-                <h3 style={{textAlign: 'center'}}>Your Selections:</h3>
-                <div className="shelf-container">
-                    {advPartsArray}
-                    <div className="confirm-buy-btn" onClick={() => this.addToCart()}>
-                        <span>Add to cart</span>
-                    </div>
-                </div>
-            </React.Fragment>
+            <div>
+                {this.props.getLoading() ? null :
+                    <React.Fragment>
+                        <h3 style={{textAlign: 'center'}}>Your Selections:</h3>
+                        <div className="shelf-container">
+                            {advPartsArray}
+                            <div className="confirm-buy-btn" onClick={() => this.addToCart()}>
+                                <span>Add to cart</span>
+                            </div>
+                        </div>
+                    </React.Fragment>
+                }
+            </div>
         );
 
 
