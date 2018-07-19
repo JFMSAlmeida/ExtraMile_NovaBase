@@ -1333,3 +1333,8 @@ select {
   position: relative;
   left: 118px;
 }
+
+.material-icons{
+  position: relative;
+  right: 15px;
+}

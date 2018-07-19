@@ -214,11 +214,6 @@ class AdventureBuilder extends Component {
                     </div>
 
 
-                    {this.state.loading ?
-                        <div id="loading" style={{textAlign: 'center'}}>
-                            <img src={loading} alt=""></img>
-                        </div> : null}
-
                     {this.state.tab == 1 ?
                         <div className="builder-text-info" style={{textAlign: 'center'}}>
                             <div>
@@ -246,6 +241,12 @@ class AdventureBuilder extends Component {
                         :
                         null
                     }
+
+                    {this.state.loading ?
+                        <div id="loading" style={{textAlign: 'center'}}>
+                            <img src={loading} alt=""></img>
+                        </div> : null}
+
                     {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
                     {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
                     {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}

@@ -37,7 +37,7 @@ class PaymentModal extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <div className="icon-box">
-                                    <i className="material-icons">&#x2754;</i>
+                                    <img width="100px" className="material-icons" src={require(`../questionmark.png`)} alt="" />
                                 </div>
                                 <h4 className="modal-title">Are you sure?</h4>
                                 <button type="button" className="close" data-dismiss="modal"
