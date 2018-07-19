@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import pt.ist.fenixframework.Atomic;
@@ -146,10 +147,11 @@ public class BrokerInterface {
 				.collect(Collectors.toList());
 
 		for (Adventure adv: list){
-			if((adv.getState().getValue() == Adventure.State.CONFIRMED))
+			if(adv.getState().getValue() == Adventure.State.CONFIRMED || adv.getState().getValue() == Adventure.State.UNDO || adv.getState().getValue() == Adventure.State.CANCELLED)
 				continue;
-			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT )
+			while(adv.getState().getValue() != Adventure.State.PROCESS_PAYMENT && adv.getState().getValue() != Adventure.State.UNDO && adv.getState().getValue() != Adventure.State.CANCELLED) {
 				adv.process();
+			}
 		}
 
 	}
@@ -268,31 +270,34 @@ public class BrokerInterface {
 	}
 
 	@Atomic(mode = TxMode.READ)
-	public static Object getAdventurePriceById(String brokerCode, String advId) {
+	public static Object getAdventurePriceById(String brokerCode, String advId, String clientNif) {
 		
-		Broker broker = null;
-		Adventure adventure = null;
-		
-		for (Broker aux : FenixFramework.getDomainRoot().getBrokerSet()) {
-			if (aux.getCode().equals(brokerCode)) {
-				broker = aux;
-				break;
+		ClientData cd = getClientDataByBrokerCodeAndNif(brokerCode, clientNif);
+		List<AdventureData> ad = cd.getAdventures();
+
+		for(AdventureData aux : ad) {
+			if (aux.getId().equals(advId)) {
+				System.out.println(aux.getAmount());
+				return aux.getAmount();
 			}
 		}
 
-
-
-		for (Adventure aux : broker.getAdventureSet()) {
-			if (aux.getID().equals(advId)) {
-				adventure = aux;
-				break;
-			}
-		}
-
-		System.out.println(adventure.getAmount());
-		return adventure.getAmount();
+		throw new BrokerException();
 
 		
+	}
+
+	@Atomic(mode = TxMode.WRITE)
+	public static AdventureData createAdventure2(String brokerCode, String clientNif, AdventureData adventureData) {
+		Broker broker = getBrokerByCode(brokerCode);
+		Client client = broker.getClientByNIF(clientNif);
+		Adventure adv = new Adventure(broker, adventureData.getBegin(), adventureData.getEnd(), client,
+				adventureData.getMargin() != null ? adventureData.getMargin() : -1, adventureData.getVehicle());
+	
+		AdventureData ad = new AdventureData();
+		ad.setId(adv.getID());
+
+		return ad;
 	}
 
 }

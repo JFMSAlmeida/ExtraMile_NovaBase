@@ -11,21 +11,32 @@ class RoomShelf extends Component {
 		const roomArray = room.map((r,index) => {
 			return(
 				<Room
-					process = {this.props.process}
 					room = {r}
 					key = {index}
-					activity = {this.props.activity}
+                    updateRoom={() => this.props.updateRoom(r)}
 				/>
 			);
 		});
 
 
         return (
-            <React.Fragment>
-                <div className="shelf-container">
-                    {roomArray}
-                </div>
-            </React.Fragment>
+            <div>
+                {room.length === 0 && this.props.getLoading() == false ?
+                    <div style={{textAlign: 'center'}}>
+                        <br/><br/><br/>
+                        <h3>
+                            No Rooms available in this period.
+                            Please select another period.
+                        </h3>
+                    </div>
+                    :
+                    <React.Fragment>
+						<div className="shelf-container">
+							{roomArray}
+						</div>
+                    </React.Fragment>
+                }
+            </div>
         );
 
 

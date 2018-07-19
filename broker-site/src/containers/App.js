@@ -1,6 +1,7 @@
 import React from 'react'
 import {Route} from 'react-router-dom'
 import AdventureBuilder from "./AdventureBuilder";
+import AdventureBuilder0 from "./AdventureBuilder0";
 import AdventureBuilder1 from "./AdventureBuilder1";
 import AdventureBuilder2 from "./AdventureBuilder2";
 import AdventureBuilder3 from "./AdventureBuilder3";
@@ -45,6 +46,12 @@ class App extends React.Component {
         console.log(product);
     }
 
+    resetProduct() {
+        console.log("E QUEM NÃO SALTA NÃO É DA MALTA");
+        this.setState({
+            product : null
+        });
+
     setAuthState(auth, nif, iban, age, dl) {
         this.setState({
             auth: auth,
@@ -85,16 +92,18 @@ class App extends React.Component {
                 <Header
                     history={history}
                     product = {this.state.product}
+                    resetProduct = {() => this.resetProduct()}
                     setAuthState = {this.setAuthState}
                     getAuthState = {this.getAuthState}
                     calculateBalance = {this.calculateBalance}
                 />
 
                 <Route exact path='/' component={Home} history={history}/>
-                <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)} a = {10}/>}/>
-                <Route path='/adventurebuilder1' component={AdventureBuilder1} history={history}/>
-                <Route path='/adventurebuilder2' component={AdventureBuilder2} history={history}/>
-                <Route path='/adventurebuilder3' component={AdventureBuilder3} history={history}/>
+                <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)} />}/>
+                <Route path='/adventurebuilder0' component={AdventureBuilder0} />
+                <Route path='/adventurebuilder1' component={AdventureBuilder1} />
+                <Route path='/adventurebuilder2' component={AdventureBuilder2} />
+                <Route path='/adventurebuilder3' component={AdventureBuilder3} />
                 <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)}/>}/>
                 <Route path='/checkout' component={Checkout} history={history}/>
                 <Route path='/payment' component={Payment} history={history}/>

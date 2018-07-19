@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.joda.time.LocalDate;
-
+ 
 @RestController
 @RequestMapping(value = "/rest/brokers")
 public class BrokerRestController {
@@ -109,16 +109,21 @@ public class BrokerRestController {
 	@RequestMapping(value = "/processPart")
 	public ResponseEntity<Map<String, Object>> processPart (@RequestParam(value="param1") String brokerCode,
 			  												@RequestParam(value="param2") String advId,
-			  												@RequestParam(value="param3") String id) {
+			  												@RequestParam(value="param") String[] id) {
 		
 		try {
+			int size = id.length;
+			for(int i = 0; i < size; i++) {
+				System.out.println(id[i]);
+			}
 
-			BrokerInterface.process(brokerCode, id, advId);
 			Map<String, Object> json = new HashMap<String, Object>();
-			json.put("success", true);
-			json.put("brokerCode", brokerCode);
-			json.put("id", id);
-			json.put("advId", advId);
+			
+			for(int i = 0; i < size; i++) {
+				BrokerInterface.process(brokerCode, id[i], advId);
+				json.put("success", true);
+			}
+
 			return new ResponseEntity<>(json, HttpStatus.OK);
 
 		} catch (BrokerException be) {
@@ -129,12 +134,13 @@ public class BrokerRestController {
 	@CrossOrigin
 	@RequestMapping(value = "/getAdventurePrice")
 	public ResponseEntity<Map<String,Object>> getAdventurePrice(@RequestParam(value="param1") String brokerCode,
-														   @RequestParam(value="param2") String advId) {
+														   @RequestParam(value="param2") String advId,
+														   @RequestParam(value="param3") String clientNif) {
 
 		try {
 			Map<String, Object> json = new HashMap<String, Object>();
 
-			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId));
+			json.put("price", BrokerInterface.getAdventurePriceById(brokerCode, advId, clientNif));
 
 			return new ResponseEntity<>(json, HttpStatus.OK);
 
@@ -142,7 +148,7 @@ public class BrokerRestController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
-
+ 
 	}
 
 	@CrossOrigin
@@ -219,7 +225,7 @@ public class BrokerRestController {
 
 	@CrossOrigin
 	@RequestMapping (value = "/createAdventure")
-	public ResponseEntity<?> createAdventure (@RequestParam(value="brokerCode") String brokerCode,
+	public ResponseEntity<Map<String,Object>> createAdventure (@RequestParam(value="brokerCode") String brokerCode,
 																						@RequestParam(value="clientNif") String clientNif,
 																						@RequestParam(value="begin") String begin,
 																						@RequestParam(value="end") String end,
@@ -236,9 +242,15 @@ public class BrokerRestController {
 			advData.setBegin(b);
 			advData.setEnd(e);
 
-			BrokerInterface.createAdventure(brokerCode, clientNif, advData);
+			Map<String, Object> json = new HashMap<String, Object>();
+
 			
-			return new ResponseEntity<>(HttpStatus.OK);
+			AdventureData advdt = BrokerInterface.createAdventure2(brokerCode, clientNif, advData);
+
+			json.put("advId", advdt.getId());
+
+			
+			return new ResponseEntity<>(json ,HttpStatus.OK);
 			
 		} catch (BrokerException e) {
 				return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 

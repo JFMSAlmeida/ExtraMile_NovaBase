@@ -235,18 +235,18 @@ public class ActivityInterface {
 	}
 
 	@Atomic(mode = TxMode.READ)
-	public static List<ActivityOffer> getAllOffers () {
+	public static List<ActivityOffer> getAllOffers (String begin, String end) {
 		
 		List<ActivityOffer> offers = new ArrayList<>();
 
-		LocalDate begin =  new LocalDate("1980-01-01");
-		LocalDate end = new LocalDate("2050-12-12");
+		LocalDate arrival =  new LocalDate(begin);
+		LocalDate departure = new LocalDate(end);
+
 		int age = 18;
 
 		for (ActivityProvider provider: FenixFramework.getDomainRoot().getActivityProviderSet()) {
-			offers.addAll(provider.findOffer(begin, end, age));
+			offers.addAll(provider.findOffer(arrival, departure, age));
 		}
-		System.out.println("offers: " + offers);
 
 		return offers;
 	}
@@ -262,19 +262,17 @@ public class ActivityInterface {
 
 			Activity activity = offer.getActivity();
 			ActivityProvider provider = activity.getActivityProvider();
-			System.out.println("activity: " + activity);
-			System.out.println("provider: " + provider);
 			
-			aux.put("title", activity.getName());
+			aux.put("activityName", activity.getName());
 			aux.put("providerName", provider.getName());
 			aux.put("providerCode", provider.getCode());
-			aux.put("price", offer.getAmount());
+			aux.put("activityPrice", offer.getAmount());
 			aux.put("begin", offer.getBegin());
 			aux.put("end", offer.getEnd());
 			aux.put("minAge", activity.getMinAge());
 			aux.put("maxAge", activity.getMaxAge());
 			aux.put("capacity", activity.getCapacity());
-			aux.put("id", activity.getCode());
+			aux.put("activityCode", activity.getCode());
 
 			allOffers.add(aux);
 		}

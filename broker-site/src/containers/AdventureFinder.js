@@ -58,7 +58,6 @@ class AdventureFinder extends Component {
     }
 
     render() {
-        console.log(this.props.a);
         console.log(this.props.addCart);
         return (
             <div className="container">
@@ -71,7 +70,7 @@ class AdventureFinder extends Component {
 
                 <h3>AdventureFinder</h3>
                 {this.state.loading ? <div id="loading" style={{textAlign: 'center'}}>
-                    <img src={loading}></img>
+                    <img src={loading} alt=""></img>
                 </div> : null }
 
                 <Shelf

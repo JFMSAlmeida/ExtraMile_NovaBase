@@ -14,7 +14,7 @@ import pt.ulisboa.tecnico.softeng.hotel.exception.HotelException;
 import pt.ulisboa.tecnico.softeng.hotel.services.local.HotelInterface;
 import pt.ulisboa.tecnico.softeng.hotel.services.remote.dataobjects.RestRoomBookingData;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.List;
 
 @RestController
@@ -68,11 +68,12 @@ public class HotelRestController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/rooms", method = RequestMethod.GET)
-    public ResponseEntity<List<Object>> getRooms() {
+	@RequestMapping(value = "/rooms")
+    public ResponseEntity<List<Object>> getRooms(@RequestParam(value="param1") String begin,
+														@RequestParam(value="param2") String end) {
 
 	    try {
-	    	List<Room> teste123 = HotelInterface.getAllRooms();
+	    	List<Room> teste123 = HotelInterface.getAllRooms(begin, end);
 
 	        return new ResponseEntity<>(HotelInterface.rooms2HashMap(teste123), HttpStatus.OK);
 

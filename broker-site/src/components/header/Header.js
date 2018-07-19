@@ -28,7 +28,6 @@ class Header extends React.Component {
             $('#loginform')[0].reset();
             $('#errorLogin').empty();
         });
-
         return (
           <div className="headerContainer">
               <header className="header">
@@ -39,7 +38,7 @@ class Header extends React.Component {
                     <li><Link to='/adventurefinder'>Adventure Finder</Link></li>
                     <li><Link to='/adventurebuilder'>Adventure Builder</Link></li>
                   </ul>
-
+          
                     { !this.props.getAuthState().auth ?
                         <ul className="nav navbar-nav navbar-right">
                             <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li>
@@ -72,6 +71,7 @@ class Header extends React.Component {
                     <Cart
                         product = {this.props.product}
                     />
+
                 </nav>
               </header>
 

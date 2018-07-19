@@ -9,16 +9,20 @@ class Cart extends Component{
             isOpen : false,
             products : [],
             newProduct : null,
-            activity : false,
-            hotel : false,
-            car : false
         };
         this.removeProduct = this.removeProduct.bind(this);
+        this.addProduct = this.addProduct.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.product !== this.state.newProduct) {
-            this.setState({ newProduct : nextProps.product });
+        console.log("nextProps.product:" + nextProps.product);
+        console.log("this.state.newProduct:" + this.state.newProduct);
+        if(nextProps.product == null){
+            return;
+        }
+        if(nextProps.product !== this.state.newProduct) {
+            console.log("aqui2");
+            this.setState({newProduct: nextProps.product});
             this.addProduct(nextProps.product);
         }
     }
@@ -26,7 +30,7 @@ class Cart extends Component{
     calculateTotalAmount(){
         var acumulator = 0;
         for(var i = 0; i < this.state.products.length; i++){
-           acumulator = acumulator + this.state.products[i].price;
+            acumulator = acumulator + this.state.products[i].price;
         }
         return acumulator;
     }
@@ -40,56 +44,36 @@ class Cart extends Component{
     }
 
     addProduct = (product) => {
-        if(product.providerCode != null || product.hotelCode != null || product.rentACarCode != null){
+        let productAlreadyInCart = false;
 
-            if(product.providerCode != null){
-                if(this.state.activity == false){
-                    this.state.activity = true;
-                    this.state.products.push(product);
-                }
+        this.state.products.forEach(p => {
+            if (p.id === product.id) {
+                productAlreadyInCart = true;
             }
-            else if(product.hotelCode != null){
-                if(this.state.hotel == false){
-                    this.state.hotel = true;
-                    this.state.products.push(product);
-                }
-            }
-            else {
-                if (this.state.car == false) {
-                    this.state.car = true;
-                    this.state.products.push(product);
-                }
-            }
-        }
-        else{
-            let productAlreadyInCart = false;
+        });
 
-            this.state.products.forEach(p => {
-                if (p.id === product.id) {
-                    productAlreadyInCart = true;
-                }
-            });
-
-            if (!productAlreadyInCart) {
-                this.state.products.push(product);
-            }
+        if (!productAlreadyInCart) {
+            this.state.products.push(product);
         }
         this.openFloatCart();
     }
 
     removeProduct(product) {
         const cartProducts = this.state.products;
-
         const index = cartProducts.findIndex(p => p.id === product.id);
-        if (index >= 0) {
+        if (index >= 0)
             cartProducts.splice(index, 1);
-        }
+
         this.setState({
-            products : cartProducts
+            products : cartProducts,
+            newProduct : null
         });
+
+        console.log(this.props.resetProduct);
+        this.props.resetProduct();
     }
 
-    render() {
+    render(){
         const totalPrice = this.calculateTotalAmount();
         const products = this.state.products.map((p, index) => {
             return (
@@ -100,8 +84,6 @@ class Cart extends Component{
                 />
             );
         });
-
-
 
         let classes = ['float-cart'];
 
@@ -157,11 +139,11 @@ class Cart extends Component{
                                 {totalPrice} €
                             </p>
                         </div>
-                            <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
-                                <div className="buy-btn">
-                                    <span>Checkout</span>
-                                </div>
-                            </Link>
+                        <Link to={{ pathname: '/checkout', remove : this.removeProduct, total : totalPrice, state:{products : this.state.products}}} onClick={() => this.closeFloatCart()} style={{textDecoration: 'none'}}>
+                            <div className="buy-btn">
+                                <span>Checkout</span>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -156,11 +156,11 @@ public class HotelInterface {
 	} 
 
 	@Atomic(mode = TxMode.READ)
-	public static List<Room> getAllRooms() {
+	public static List<Room> getAllRooms(String begin, String end) {
 		List<Room> availableRooms = new ArrayList<>();
 
-		LocalDate arrival =  new LocalDate("1980-01-01");
-		LocalDate departure = new LocalDate("2050-12-12");
+		LocalDate arrival =  new LocalDate(begin);
+		LocalDate departure = new LocalDate(end);
 
 		for (Hotel hotel : FenixFramework.getDomainRoot().getHotelSet()) {
 			availableRooms.addAll(hotel.getAvailableRooms(arrival, departure));
@@ -177,16 +177,16 @@ public class HotelInterface {
 
 			Map<String, Object> roomt = new HashMap<>();
 			roomt.put("number", room.getNumber());
-			roomt.put("type", room.getType());
+			roomt.put("roomType", room.getType());
 			roomt.put("hotelName", room.getHotel().getName());
 			roomt.put("hotelCode", room.getHotel().getCode());
 
 			if (room.getType() == Room.Type.SINGLE) {
 
-				roomt.put("price", room.getHotel().getPriceSingle());
+				roomt.put("roomPrice", room.getHotel().getPriceSingle());
 			} else {
 
-				roomt.put("price", room.getHotel().getPriceDouble());
+				roomt.put("roomPrice", room.getHotel().getPriceDouble());
 			}
 
 			rooms.add(roomt);

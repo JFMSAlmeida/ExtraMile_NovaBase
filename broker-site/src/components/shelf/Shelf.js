@@ -4,8 +4,8 @@ import Filter from './Filter'
 import Order from './Order'
 
 const availableFilters = [
-    'Hotel',
-    'Vehicle',
+    'With Hotel',
+    'With Vehicle',
 ];
 
 const sortBy = [
@@ -15,7 +15,7 @@ const sortBy = [
     { value: 'alphabetical', label: 'Alphabetical'}
 ]
 
-const abc = [
+const abc = [ 
     {
         "id": "B1001",
         "price": 100,
@@ -78,8 +78,8 @@ class Shelf extends Component {
         super(props);
 
         this.state = {
-            adventures : [],
-            filteredAdventures : [],
+            adventures : this.props.adventures,
+            filteredAdventures : this.props.adventures,
             value : ""
         }
 
@@ -90,7 +90,7 @@ class Shelf extends Component {
 
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps() {
         this.setState({
             adventures : this.props.adventures,
             filteredAdventures : this.props.adventures
@@ -107,11 +107,11 @@ class Shelf extends Component {
 
         this.selectedFilters.forEach(function(value){
             for(let i = filteredAdventures.length-1; i >= 0; i--) {
-                if (value === "Vehicle")
+                if (value === "With Vehicle")
                     if (!filteredAdventures[i].hasVehicle)
                         filteredAdventures.splice(i, 1);
 
-                if (value === "Hotel")
+                if (value === "With Hotel")
                     if (!filteredAdventures[i].hasRoom)
                         filteredAdventures.splice(i, 1);
             }
@@ -153,8 +153,6 @@ class Shelf extends Component {
         });
     }
 
-
-
     render(){
         var adv;
         var advArray;
@@ -175,10 +173,14 @@ class Shelf extends Component {
         return (
             <React.Fragment>
                 <div>
-                    {!this.props.loading ? <Filter
-                        availableFilters = {availableFilters}
-                        filterFunction = {label => this.filterAdventures(label)}
-                    /> : null }
+
+                    {!this.props.loading ? 
+                        <div className="filtersFinder">
+                            <Filter
+                            availableFilters = {availableFilters}
+                            filterFunction = {label => this.filterAdventures(label)}
+                        /> </div> : null } 
+
                     {!this.props.loading ? <Order
                         options = {sortBy}
                         handleOnChange = {this.orderAdventures}

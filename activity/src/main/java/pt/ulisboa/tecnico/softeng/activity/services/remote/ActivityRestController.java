@@ -38,7 +38,7 @@ public class ActivityRestController {
 			return new ResponseEntity<String>(ActivityInterface.reserveSelectedActivity(activityBookingData), HttpStatus.OK);
 		} catch (ActivityException be) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
+		} 
 	}
 
 	@RequestMapping(value = "/cancel", method = RequestMethod.POST)
@@ -62,11 +62,12 @@ public class ActivityRestController {
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/activities", method = RequestMethod.GET)
-	public ResponseEntity<List<Object>> getActivities () {
+	@RequestMapping(value = "/activities")
+	public ResponseEntity<?> getActivities(@RequestParam(value="begin") String begin,
+											@RequestParam(value="end") String end) {
 
 		try {
-			List<ActivityOffer> offers =  ActivityInterface.getAllOffers();
+			List<ActivityOffer> offers =  ActivityInterface.getAllOffers(begin, end);
 
 			return new ResponseEntity<>(ActivityInterface.offersToHashMap(offers), HttpStatus.OK);
 

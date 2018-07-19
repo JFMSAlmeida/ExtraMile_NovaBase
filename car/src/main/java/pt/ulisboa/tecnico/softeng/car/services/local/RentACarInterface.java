@@ -215,13 +215,13 @@ public class RentACarInterface {
 	}
 
 	@Atomic(mode = Atomic.TxMode.READ)
-	public static ArrayList<Object> vehicle2HashMap(List<RentACarData> data) {
+	public static ArrayList<Object> vehicle2HashMap(List<RentACarData> data, String begin, String end) {
 
 		ArrayList<Object> vehicles = new ArrayList<>();
 		ArrayList<Object> freeVehicles = new ArrayList<>();
 		
-		LocalDate arrival =  new LocalDate("1980-01-01");
-		LocalDate departure = new LocalDate("2050-12-12");
+		LocalDate arrival =  new LocalDate(begin);
+		LocalDate departure = new LocalDate(end);
 
 		for(RentACarData rentData: data){
 			RentACar rentACar = getRentACar(rentData.getCode());
@@ -234,10 +234,10 @@ public class RentACarInterface {
 			
 			Map<String, Object> vehicleInfo = new HashMap<>();
 
-			vehicleInfo.put("type", "MOTORCYCLE");
+			vehicleInfo.put("vehicleType", "MOTORCYCLE");
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
-			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
+			vehicleInfo.put("vehiclePrice", ((Vehicle_Base) v).getPrice());
 			vehicleInfo.put("rentACarName", ((Vehicle_Base) v).getRentACar().getName());
 			vehicleInfo.put("rentACarCode", ((Vehicle_Base) v).getRentACar().getCode());
 		
@@ -257,10 +257,10 @@ public class RentACarInterface {
 			
 			Map<String, Object> vehicleInfo = new HashMap<>();
 
-			vehicleInfo.put("type", "CAR");
+			vehicleInfo.put("vehicleType", "CAR");
 			vehicleInfo.put("plate",((Vehicle_Base) v).getPlate());
 			vehicleInfo.put("kilometers", ((Vehicle_Base) v).getKilometers());
-			vehicleInfo.put("price", ((Vehicle_Base) v).getPrice());
+			vehicleInfo.put("vehiclePrice", ((Vehicle_Base) v).getPrice());
 			vehicleInfo.put("rentACarName", ((Vehicle_Base) v).getRentACar().getName());
 			vehicleInfo.put("rentACarCode", ((Vehicle_Base) v).getRentACar().getCode());
 		
@@ -290,19 +290,5 @@ public class RentACarInterface {
 		
 	
 	}
-
-	
-	/*@Atomic(mode = Atomic.TxMode.WRITE)
-	public static String rent(String type, String license, String nif, String iban, LocalDate begin, LocalDate end,
-			String adventureId) {
-		Renting renting = getReting4AdventureId(adventureId);
-		if (renting != null) {
-			return renting.getReference();
-		}
-
-		return RentACar.rent(type.equals("CAR") ? Car.class : Motorcycle.class, license, nif, iban, begin, end,
-				adventureId);
-
-	}*/
 	
 }
