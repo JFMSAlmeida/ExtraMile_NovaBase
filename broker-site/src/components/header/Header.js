@@ -80,12 +80,10 @@ class Header extends React.Component {
               </header>
 
               <Signup
-                  history = {this.props.history}
                   getAuthState = {this.props.getAuthState}
               />
 
               <Login
-                  history = {this.props.history}
                   getAuthState = {this.props.getAuthState}
                   setAuthState = {this.props.setAuthState}
                   calculateBalance = {this.props.calculateBalance}

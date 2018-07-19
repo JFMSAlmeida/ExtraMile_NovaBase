@@ -92,9 +92,9 @@ class App extends React.Component {
                 <Route exact path='/' component={Home} history={history}/>
                 <Route path='/adventurebuilder' render={()=><AdventureBuilder addCart = {product => this.addProduct(product)} />}/>
                 <Route path='/adventurefinder' render={()=><AdventureFinder addCart = {product => this.addProduct(product)}/>}/>
-                <Route path='/checkout' component={Checkout} history={history}/>
-                <Route path='/payment' component={Payment} history={history}/>
-                <Route path='/options' component={Options} history={history}/>
+                <Route path='/checkout' component={Checkout}/>
+                <Route path='/payment' component={Payment}/>
+                <Route path='/options' component={Options}/>
                 <Footer/>
             </div>
         );
