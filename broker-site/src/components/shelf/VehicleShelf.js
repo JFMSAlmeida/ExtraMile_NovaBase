@@ -21,11 +21,23 @@ class VehicleShelf extends Component {
 
 
         return (
-            <React.Fragment>
-                <div className="shelf-container">
-                    {vehicleArray}
-                </div>
-            </React.Fragment>
+            <div>
+                {vehicle.length === 0 && this.props.getLoading() == false ?
+                    <div style={{textAlign: 'center'}}>
+                        <br/><br/><br/>
+                        <h3>
+                            No Vehicles available in this period.
+                            Please select another period.
+                        </h3>
+                    </div>
+					:
+					<React.Fragment>
+						<div className="shelf-container">
+							{vehicleArray}
+						</div>
+					</React.Fragment>}
+			</div>
+
         );
 
 

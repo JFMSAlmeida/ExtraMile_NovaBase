@@ -36,7 +36,7 @@ class Backward extends Component {
 
     render() {
         return (
-            <div onClick={this.handleTab}>
+            <div className="breadcrumb-backward" onClick={this.handleTab}>
                 {this.props.state.tab == 1 ? null : <div className="buy-btn" style={{float: 'left'}}> Back </div>}
             </div>
         );

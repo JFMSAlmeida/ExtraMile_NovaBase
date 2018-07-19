@@ -1308,3 +1308,28 @@ select {
   max-width: 200px;
   margin-top: 250px;
 }
+
+.builder-text-info .pz{
+  position: relative;
+  right: 10px;
+}
+
+.builder-text-info .builder-text{
+  position: relative;
+  left: 75px;
+}
+
+.breadcrumb-buttons .breadcrumb-backward{
+  position: relative;
+  bottom: 82px;
+}
+
+.breadcrumb-buttons .breadcrumb-forward{
+  position: relative;
+  bottom: 82px;
+}
+
+.selectbox-advbuilder .sort {
+  position: relative;
+  left: 118px;
+}

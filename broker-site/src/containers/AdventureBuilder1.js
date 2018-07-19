@@ -200,11 +200,17 @@ class AdventureBuilder1 extends Component {
                                         filterFunction = {label => this.filterRooms(label)}
                                     />
                                 </div>
-                                <Order
-                                    options = {sortBy}
-                                    handleOnChange = {this.orderRooms}
+                                 <div className="selectbox-advbuilder">
+                                    <Order
+                                        options = {sortBy}
+                                        handleOnChange = {this.orderRooms}
+                                    />
+                                 </div>
+                                <RoomShelf
+                                    rooms = {toShowRooms}
+                                    updateRoom={this.props.updateRoom}
+                                    getLoading = {this.props.getLoading}
                                 />
-                                <RoomShelf rooms = {toShowRooms} updateRoom={this.props.updateRoom} />
                              </div>
                         </div>
                     }

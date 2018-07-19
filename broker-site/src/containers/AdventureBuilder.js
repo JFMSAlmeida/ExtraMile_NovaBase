@@ -179,7 +179,7 @@ class AdventureBuilder extends Component {
                             <span id="alert-icon" className=""></span>
                             <div id="alert-text" style={{display: "inline"}}></div>
                         </div> : null }
-                    <h3>AdventureBuilder</h3>
+                    <h3 style={{textAlign: 'center'}} >AdventureBuilder : Personalize your own adventure! <br/> Choose the date you prefer and tell us if you want to rent a vehicle.</h3>
 
                     <div className="progress_container">
                         <ul className="progressbar">
@@ -220,31 +220,35 @@ class AdventureBuilder extends Component {
                         </div> : null}
 
                     {this.state.tab == 1 ?
-                        <div style={{textAlign: 'center'}}>
+                        <div className="builder-text-info" style={{textAlign: 'center'}}>
                             <div>
                                 <br/>
-                                <p>Choose your adventure begin and end dates:</p>
+                                <p className="builder-text">Choose your adventure begin and end dates:</p>
                                 <DateRangePicker
                                     value={this.state.value}
                                     onSelect={this.onSelect}
                                     singleDateRange={true} />
                             </div>
                             <br/>
-                            <div>
-                                Do you want to rent a vehicle?
-                                <input
-                                    type="checkbox"
-                                    checked={this.state.rentVehicle}
-                                    onChange={this.handleChange} />
+                            <div className="pz">
+                                <label className="radio-inline">
+                                    <input
+                                        type="checkbox"
+                                        checked={this.state.rentVehicle}
+                                        onChange={this.handleChange}
+                                    />
+                                    <div className="clab">Do you want to rent a vehicle?</div>
+                                </label>
                             </div>
+
                             <br/>
                         </div>
                         :
                         null
                     }
                     {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
-                    {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
-                    {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
+                    {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
+                    {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
                     {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={adv => this.addToCart(adv)} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} /> : null}
 
                     <br/>

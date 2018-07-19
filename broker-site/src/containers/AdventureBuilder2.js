@@ -218,11 +218,17 @@ class AdventureBuilder2 extends Component {
                                         filterFunction = {label => this.filterVehicles(label)}
                                     />
                                 </div>
-                                <Order
-                                    options = {sortBy}
-                                    handleOnChange = {this.orderVehicles}
+                                <div className="selectbox-advbuilder">
+                                    <Order
+                                        options = {sortBy}
+                                        handleOnChange = {this.orderVehicles}
+                                    />
+                                </div>
+                                <VehicleShelf
+                                    vehicles = {toShowVehicles}
+                                    updateVehicle={this.props.updateVehicle}
+                                    getLoading = {this.props.getLoading}
                                 />
-                                <VehicleShelf vehicles = {toShowVehicles} updateVehicle={this.props.updateVehicle}/>
                             </div>
                         }
                     </div>

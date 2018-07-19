@@ -163,10 +163,12 @@ class AdventureBuilder0 extends Component {
                         :
                         <div>
                             <div>
-                                <Order
-                                    options = {sortBy}
-                                    handleOnChange = {this.orderActivities}
-                                />
+                                <div className="selectbox-advbuilder">
+                                    <Order
+                                        options = {sortBy}
+                                        handleOnChange = {this.orderActivities}
+                                    />
+                                </div>
                                 <ActivityShelf
                                     getLoading = {this.props.getLoading}
                                     activities = {toShowActivities}

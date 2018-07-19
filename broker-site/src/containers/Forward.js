@@ -37,7 +37,7 @@ class Forward extends Component {
 
     render() {
         return (
-            <div>
+            <div className="breadcrumb-forward">
                 {this.props.state.tab === 1 && this.props.state.value === '' ?
                     <div className="buy-btn-disabled" style={{float: 'right'}}> Next </div>
                     :
