@@ -49,7 +49,7 @@ class ConfirmShelf extends Component {
 
     createPackage() {
         let adv = Object.assign(this.props.advParts[0], {"id": this.props.advId, "price": this.state.price, "hasRoom": this.props.hasRoom,
-                "hasVehicle": this.props.hasVehicle});
+            "hasVehicle": this.props.hasVehicle});
         if (this.props.hasRoom)
             adv = Object.assign(adv, this.props.advParts[1]);
         if (this.props.hasVehicle)
@@ -111,7 +111,23 @@ class ConfirmShelf extends Component {
     }
 
     render(){
-		let advPartsArray = [];
+        let advPartsArray = [];
+
+        advPartsArray.push(
+            <div className="shelf-item">
+                <div className="shelf-item__main_info">
+                    <b><p className="shelf-item__title"> Period: </p></b>
+                    <p> <span className="glyphicon glyphicon-calendar" style={{fontSize: '25px'}}></span> <b>Begin Date:</b></p>
+                    <p>{this.props.begin}</p>
+
+                    <br/>
+
+                    <p> <span className="glyphicon glyphicon-calendar" style={{fontSize: '25px'}}></span> <b>End Date:</b></p>
+                    <p> {this.props.end}</p>
+                </div>
+            </div>
+        );
+
         advPartsArray.push(<Activity noAddCart={1} activity = {this.props.advParts[0]} key = {this.props.advParts[0].id} />);
 
         if(this.props.hasRoom)
@@ -131,25 +147,22 @@ class ConfirmShelf extends Component {
                         <span id="alert-icon" className=""></span>
                         <div id="alert-text" style={{display: "inline"}}></div>
                     </div> : <div>
-                {this.props.getLoading() ? null :
-                    <React.Fragment>
-                        <h3 style={{textAlign: 'center'}}>Your Selections:</h3>
-                        <div className="shelf-container-confirm-shelf">
-                            <h3>From: {this.props.begin}</h3>
-                            <h3>To: {this.props.end}</h3>
-                            {advPartsArray}
-                            <div className="confirm-buy-btn" onClick={() => this.addToCart()}>
-                                <span>Add to cart</span>
+                        {this.props.getLoading() ? null :
+                            <div>
+                                <h3 style={{textAlign: 'center', marginRight: '130px'}}>Your Selections:</h3>
+                                <React.Fragment>
+                                    <div className="shelf-container-confirm-shelf">
+                                        {advPartsArray}
+                                        <div className="confirm-buy-btn" onClick={() => this.addToCart()}>
+                                            <span>Add to cart</span>
+                                        </div>
+                                    </div>
+                                </React.Fragment>
                             </div>
-                        </div>
-                    </React.Fragment>
-                } </div>}
+                        } </div>}
             </div>
         );
-
-
-	}
+    }
 }
-
 
 export default ConfirmShelf;
