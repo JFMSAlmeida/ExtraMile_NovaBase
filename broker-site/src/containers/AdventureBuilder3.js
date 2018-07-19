@@ -25,17 +25,20 @@ class AdventureBuilder3 extends Component {
 
         console.log(advParts);
 
-        return (<div>
-                     <ConfirmShelf
-                        changeLoading = {this.props.changeLoading}
-                        advParts = {advParts}
-                        addCart = {this.props.addCart}
-                        hasRoom = {this.props.hasRoom}
-                        hasVehicle = {this.props.hasVehicle}
-                        advId = {this.props.advId}
-                     />
-                </div>
-                );
+        return (
+            <div>
+                {this.props.getLoading() ? null :
+                    <ConfirmShelf
+                        changeLoading={this.props.changeLoading}
+                        advParts={advParts}
+                        addCart={this.props.addCart}
+                        hasRoom={this.props.hasRoom}
+                        hasVehicle={this.props.hasVehicle}
+                        advId={this.props.advId}
+                    />
+                }
+            </div>
+        );
     }
 }
 

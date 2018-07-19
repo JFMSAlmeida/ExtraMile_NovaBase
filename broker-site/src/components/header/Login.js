@@ -75,7 +75,7 @@ class Login extends Component {
                                 </div>
                             </form>
                             <div className="modal-footer">
-                                <a data-dismiss="modal" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}>Not registered? Sign Up</Link></a>
+                                <a data-dismiss="modal" data-toggle="modal" data-target="#signupModal"><a style={{cursor: 'pointer'}}>>Not registered? Sign Up</a></a>
                             </div>
                         </div>
                     </div>
