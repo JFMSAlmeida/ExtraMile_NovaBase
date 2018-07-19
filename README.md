@@ -2,24 +2,28 @@
 
 ## Getting Started
 ### Prerequisites
-Techonologies that need to be installed: 
+Technologies that need to be installed: 
 * jdk-8
 * mysql-server
 * maven 
 * jmeter
-* reactJS
+* npm 
 
 With mysql-server installed it's necessary to create 6 databases whose names are: advbank, advactivity, advhotel, advtax, advcar and advbroker.
+After reactJS is installed it's required to install the dependencies used on front-end. You can do that by execute the command in the  ```/broker-site``` directory:
+```
+npm install
+```
 ## Running the tests
 To run the unit tests execute the following command on the main directory: 
 ```
 mvn clean install
 ```
-If the goal is to execute load and stress tests you need to turn the servers and Jmeter on. You can do that by typing following command on the bin directory:
+If the goal is to execute load and stress tests you need to turn the servers and Jmeter on. You can do that by typing the following command on the ```/bin``` directory:
 ```
 ./startservers
 ```
-On JMeter tool you need to load the tests(.jmx files) from this directory 
+On JMeter tool you need to load the tests(.jmx files) from this directory ```jmeter/tests```
 ```
 jmeter/tests
 ```
@@ -28,7 +32,7 @@ If your wish is to turn them off then use:
 ./shutdownservers
 ```
 ## Deployment
-Add additional notes about how to deploy this on a live system
+
 
 ## Built With
 
