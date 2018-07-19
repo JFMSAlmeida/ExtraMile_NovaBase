@@ -192,27 +192,28 @@ class AdventureBuilder1 extends Component {
                             <div id="alert-text" style={{display: "inline"}}></div>
                          </div>
                         :
-                        <div>
-                             <div>
-                                <div className="filtersBuilder">
-                                    <Filter
-                                        availableFilters = {availableFilters}
-                                        filterFunction = {label => this.filterRooms(label)}
-                                    />
-                                </div>
-                                 <div className="selectbox-advbuilder">
-                                    <Order
-                                        options = {sortBy}
-                                        handleOnChange = {this.orderRooms}
+                        this.props.getLoading() ? null :
+                            <div>
+                                 <div>
+                                    <div className="filtersBuilder">
+                                        <Filter
+                                            availableFilters = {availableFilters}
+                                            filterFunction = {label => this.filterRooms(label)}
+                                        />
+                                    </div>
+                                     <div className="selectbox-advbuilder">
+                                        <Order
+                                            options = {sortBy}
+                                            handleOnChange = {this.orderRooms}
+                                        />
+                                     </div>
+                                    <RoomShelf
+                                        rooms = {toShowRooms}
+                                        updateRoom={this.props.updateRoom}
+                                        getLoading = {this.props.getLoading}
                                     />
                                  </div>
-                                <RoomShelf
-                                    rooms = {toShowRooms}
-                                    updateRoom={this.props.updateRoom}
-                                    getLoading = {this.props.getLoading}
-                                />
-                             </div>
-                        </div>
+                            </div>
                     }
 
                 </div>

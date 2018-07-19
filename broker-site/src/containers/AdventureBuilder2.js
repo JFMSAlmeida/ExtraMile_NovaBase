@@ -211,25 +211,26 @@ class AdventureBuilder2 extends Component {
                                 <div id="alert-text" style={{display: "inline"}}></div>
                             </div>
                             :
-                            <div>
-                                <div className="filtersBuilder">
-                                    <Filter
-                                        availableFilters = {availableFilters}
-                                        filterFunction = {label => this.filterVehicles(label)}
+                            this.props.getLoading() ? null :
+                                <div>
+                                    <div className="filtersBuilder">
+                                        <Filter
+                                            availableFilters = {availableFilters}
+                                            filterFunction = {label => this.filterVehicles(label)}
+                                        />
+                                    </div>
+                                    <div className="selectbox-advbuilder">
+                                        <Order
+                                            options = {sortBy}
+                                            handleOnChange = {this.orderVehicles}
+                                        />
+                                    </div>
+                                    <VehicleShelf
+                                        vehicles = {toShowVehicles}
+                                        updateVehicle={this.props.updateVehicle}
+                                        getLoading = {this.props.getLoading}
                                     />
                                 </div>
-                                <div className="selectbox-advbuilder">
-                                    <Order
-                                        options = {sortBy}
-                                        handleOnChange = {this.orderVehicles}
-                                    />
-                                </div>
-                                <VehicleShelf
-                                    vehicles = {toShowVehicles}
-                                    updateVehicle={this.props.updateVehicle}
-                                    getLoading = {this.props.getLoading}
-                                />
-                            </div>
                         }
                     </div>
                 );

@@ -41,8 +41,8 @@ class Header extends React.Component {
           
                     { !this.props.getAuthState().auth ?
                         <ul className="nav navbar-nav navbar-right">
-                            <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Sign Up</Link></li>
-                            <li id="resetModal2" data-toggle="modal" data-target="#loginModal"><Link to={this.props.history}><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+                            <li id="resetModal1" data-toggle="modal" data-target="#signupModal"><a style={{cursor: 'pointer'}}><span className="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+                            <li id="resetModal2" data-toggle="modal" data-target="#loginModal"><a style={{cursor: 'pointer'}}><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
                             <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         </ul>
                         :
@@ -69,6 +69,7 @@ class Header extends React.Component {
                     }
 
                     <Cart
+                        resetProduct = {() => this.props.resetProduct()}
                         product = {this.props.product}
                     />
 

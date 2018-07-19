@@ -154,30 +154,29 @@ class AdventureBuilder0 extends Component {
 
 
         return (<div>
-                    {this.state.alert ?
-                        <div id="alert" className="alert alert-info alert-dismissable">
-                            <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
-                            <span id="alert-icon" className=""></span>
-                            <div id="alert-text" style={{display: "inline"}}></div>
-                        </div>
-                        :
+                {this.state.alert ?
+                    <div id="alert" className="alert alert-info alert-dismissable">
+                        <a className="panel-close close" onClick={this.handleAlertDismiss}>×</a>
+                        <span id="alert-icon" className=""></span>
+                        <div id="alert-text" style={{display: "inline"}}></div>
+                    </div>
+                    :
+                    this.props.getLoading() ? null :
                         <div>
                             <div>
                                 <div className="selectbox-advbuilder">
                                     <Order
-                                        options = {sortBy}
-                                        handleOnChange = {this.orderActivities}
+                                        options={sortBy}
+                                        handleOnChange={this.orderActivities}
                                     />
                                 </div>
                                 <ActivityShelf
-                                    getLoading = {this.props.getLoading}
-                                    activities = {toShowActivities}
-                                    updateActivity = {this.props.updateActivity}
+                                    activities={toShowActivities}
+                                    updateActivity={this.props.updateActivity}
                                 />
                             </div>
-
                         </div>
-                    }
+                }
                 </div>
             );
     }

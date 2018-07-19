@@ -21,7 +21,7 @@ class ActivityShelf extends Component {
 
         return (
         	<div>
-				{act.length === 0 && this.props.getLoading() == false ?
+				{act.length === 0 ?
 					<div style={{textAlign: 'center'}}>
                         <br/><br/><br/>
 						<h3>
