@@ -180,7 +180,7 @@ class AdventureBuilder extends Component {
                         <span id="alert-icon" className=""></span>
                         <div id="alert-text" style={{display: "inline"}}></div>
                     </div> : null }
-                {this.state.tab === 1 ? <h3 style={{textAlign: 'center'}}> AdventureBuilder : Personalize your own adventure! <br/> First you'll have to choose the date you prefer and tell us if you want to rent a vehicle.</h3> : null}
+                {this.state.tab === 1 ? <h3 style={{textAlign: 'center'}}> AdventureBuilder : Personalize your own adventure! <br/> First you will have to choose the date you prefer and tell us if you want to rent a vehicle.</h3> : null}
                 {this.state.tab === 2 ? <h3 style={{textAlign: 'center'}}> AdventureBuilder : Personalize your own adventure! <br/> Among all our options, choose the activity that suits you the most!</h3> : null}
                 {this.state.tab === 3 ? <h3 style={{textAlign: 'center'}}> AdventureBuilder : Personalize your own adventure! <br/> View to the city? To the sea? Choose the best room among all our hotels!</h3> : null}
                 {this.state.tab === 4 ? <h3 style={{textAlign: 'center'}}> AdventureBuilder : Personalize your own adventure! <br/> From AA-AA-AA to ZZ-ZZ-ZZ! You just have to choose!</h3> : null}
