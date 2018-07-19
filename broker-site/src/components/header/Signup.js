@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import avatar from './avatar.png'
-import {Link} from 'react-router-dom'
 
 class Signup extends Component {
     constructor(props){

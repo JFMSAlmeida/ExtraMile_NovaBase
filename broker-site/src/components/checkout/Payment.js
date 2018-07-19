@@ -86,7 +86,7 @@ class Payment extends Component {
         return (<div className="container">
                 {this.state.paymentSuccess === 0 ?
                     <div style={{textAlign: 'center'}}>
-                        <img src={loading}></img>
+                        <img src={loading} alt=""></img>
                     </div>
                     :
                     null
@@ -130,7 +130,7 @@ class Payment extends Component {
                         </div>
                     </div>}
                     {(this.state.paymentSuccess === 2) && <div className="payment-cancelled">
-                        <img className="payment-confirmed__img" src={sadFace} style={{width: '200px'}}/>
+                        <img className="payment-confirmed__img" src={sadFace} alt="" style={{width: '200px'}}/>
                         <h1><b>Ups, something went wrong!</b></h1>
                         <br/>
                         <span style={{fontSize: '20px'}}>Your transation was cancelled. <br/> Please try again later.</span>

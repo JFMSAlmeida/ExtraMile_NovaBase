@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../../containers/App.css';
 import ActivityShelf from '../shelf/ActivityShelf';
-import {button} from "react-router-dom";
-import Filter from '../shelf/Filter'
 import Order from "../shelf/Order";
 
 const sortBy = [
@@ -11,62 +9,6 @@ const sortBy = [
     { value: 'highestprice', label: 'Highest to lowest Price' },
     { value: 'alphabetical', label: 'Alphabetical'}
 ]
-
- const acts = [
-    {
-        "title": "ActivityOne",
-        "providerName": "BAUHD",
-        "providerCode": "B10012",
-        "activityPrice": 10,
-        "begin": [2018,7,2],
-        "end": [2018,7,3],
-        "minAge": 19,
-        "maxAge": 30,
-        "capacity": 20,
-        "activityCode": "ABERO1",
-
-    },
-
-    {
-        "title": "ActivityTwo",
-        "providerName": "BAUHD",
-        "providerCode": "B10012",
-        "activityPrice": 15,
-        "begin": [2018,7,6],
-        "end": [2018,7,9],
-        "minAge": 19,
-        "maxAge": 32,
-        "capacity": 25,
-        "activityCode": "ABERO1"
-    },
-
-    {
-        "title": "ActivityThree",
-        "providerName": "BAUHD",
-        "providerCode": "B10012",
-        "activityPrice": 20,
-        "begin": [2018,7,2],
-        "end": [2018,7,3],
-        "minAge": 19,
-        "maxAge": 30,
-        "capacity": 50,
-        "activityCode": "ABERO2"
-    },
-
-    {
-        "title": "ActivityFour",
-        "providerName": "BAUHD1",
-        "providerCode": "B100122",
-        "activityPrice": 25,
-        "begin": [2018,7,8],
-        "end": [2018,7,25],
-        "minAge": 19,
-        "maxAge": 30,
-        "capacity": 20,
-        "activityCode": "ABERO13"
-    }
-
-];
 
 class AdventureBuilder0 extends Component {
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '../../containers/App.css';
 import RoomShelf from '../shelf/RoomShelf'
-import {button} from "react-router-dom";
 import Order from "../shelf/Order";
 import Filter from "../shelf/Filter";
 
@@ -16,42 +15,6 @@ const availableFilters = [
     'Single',
     'Double',
 ];
-
-const ros = [
-    {
-        "number": 1,
-        "type": "SINGLE",
-        "hotelName": "NOT PARIS",
-        "hotelCode": "NP1231",
-        "price": 100
-    },
-
-    {
-        "number": 2,
-        "type": "DOUBLE",
-        "hotelName": "NOT PARIS",
-        "hotelCode": "NP1231",
-        "price": 100
-    },
-
-    { 
-        "number": 1,
-        "type": "DOUBLE",
-        "hotelName": "LISBON",
-        "hotelCode": "NP12312",
-        "price": 100
-    },
-
-    {
-        "number": 2,
-        "type": "DOUBLE",
-        "hotelName": "LISBON",
-        "hotelCode": "NP12312",
-        "price": 101
-    }
-
-];
-
 
 class AdventureBuilder1 extends Component {
     constructor(props){

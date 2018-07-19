@@ -20,10 +20,8 @@ class AdventureBuilder extends Component {
     constructor(props){
         super(props);
 
-        const today = moment();
-
         this.state = {
-            advId: "B0D4",
+            advId: null,
             rentVehicle: false,
             hasRoom: false,
             value: '',
@@ -49,7 +47,7 @@ class AdventureBuilder extends Component {
 
     cleanState() {
         this.setState({
-            advId: "B0D4",
+            advId: null,
             rentVehicle: false,
             hasRoom: false,
             value: '',

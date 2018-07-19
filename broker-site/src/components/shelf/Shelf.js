@@ -15,63 +15,6 @@ const sortBy = [
     { value: 'alphabetical', label: 'Alphabetical'}
 ]
 
-const abc = [ 
-    {
-        "id": "B1001",
-        "price": 100,
-        "age": 30,
-        "hasRoom": true,
-        "hasVehicle": true,
-        "activityName": "Bush Walking",
-        "begin": [2017,5,1],
-        "end": [2017,5,2],
-        "hotelName": "Paris Hotel",
-        "roomNumber": "100",
-        "roomType": "SINGLE",
-        "vehicleType": "CAR",
-        "rentBegin": [2017,5,1],
-        "rentEnd": [2017,5,2],
-        "kilometers": 1
-    },
-    {
-        "id": "B1002",
-        "price": 200,
-        "age": 30,
-        "hasRoom": true,
-        "hasVehicle": false,
-        "activityName": "Ir às gajas, BOAS",
-        "begin": [2017,5,3],
-        "end": [2017,5,4],
-        "hotelName": "One Night Stand",
-        "roomNumber": "69",
-        "roomType": "DOUBLE"
-    },
-    {
-        "id": "B1003",
-        "price": 300,
-        "age": 30,
-        "hasRoom": false,
-        "hasVehicle": true,
-        "activityName": "Apanhar o Pau Cucu",
-        "begin": [2017,5,5],
-        "end": [2017,5,6],
-        "vehicleType": "CAR",
-        "rentBegin": [2017,5,5],
-        "rentEnd": [2017,5,6],
-        "kilometers": 3
-    },
-    {
-        "id": "B1004",
-        "price": 400,
-        "age": 30,
-        "hasRoom": false,
-        "hasVehicle": false,
-        "activityName": "Brincar às Barbies",
-        "begin": [2017,5,7],
-        "end": [2017,5,8],
-    }
-];
-
 class Shelf extends Component {
 
     constructor(props){

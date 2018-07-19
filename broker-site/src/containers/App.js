@@ -9,7 +9,6 @@ import Header from "../components/header/Header";
 import Payment from "../components/checkout/Payment";
 import Checkout from "../components/checkout/Checkout";
 import Footer from "../components/Footer";
-import $ from "jquery";
 
 const history = createBrowserHistory();
 
