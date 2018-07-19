@@ -66,6 +66,10 @@ class App extends React.Component {
         return this.state;
     }
 
+    money(amount){
+        console.log(amount);
+    }
+
 
     calculateBalance() {
         console.log("handleBalance");
@@ -97,6 +101,7 @@ class App extends React.Component {
                     setAuthState = {this.setAuthState}
                     getAuthState = {this.getAuthState}
                     calculateBalance = {this.calculateBalance}
+                    money = {(a) => this.money(a)}
                 />
 
                 <Route exact path='/' component={Home} history={history}/>

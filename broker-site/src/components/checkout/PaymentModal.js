@@ -4,7 +4,6 @@ import { Redirect } from 'react-router';
 class PaymentModal extends Component {
     constructor(props){
         super(props);
-
         this.state = {
             paymentConfirmation : false,
         };
@@ -28,7 +27,7 @@ class PaymentModal extends Component {
 
     render() {
         if (this.state.paymentConfirmation) {
-            return <Redirect to={{pathname: '/payment',remove: this.removeProducts ,state:{products : this.props.products, total: this.props.total}}} />;
+            return <Redirect to={{pathname: '/payment',remove: this.removeProducts , money : this.props.money ,state:{products : this.props.products, total: this.props.total}}} />;
         }
         return (
             <div>

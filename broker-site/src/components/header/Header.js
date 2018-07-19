@@ -71,6 +71,7 @@ class Header extends React.Component {
                     <Cart
                         resetProduct = {() => this.props.resetProduct()}
                         product = {this.props.product}
+                        money = {this.props.money}
                     />
 
                 </nav>
