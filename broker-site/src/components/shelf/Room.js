@@ -11,7 +11,7 @@ const Room = (props) => {
 				<b><p className="shelf-item__title"> {room.roomType} </p></b>
                 <img className="shelf-item__image" src={require(`./B1001.jpg`)} alt={room.hotelCode}/>
 				<div className="shelf-item__price">
-                    <div className="val"><b>Price: {room.roomPrice}</b><small>€</small> </div>
+                    <div className="val"><b>Price: {room.roomPrice}</b><small>€/Night</small> </div>
            		</div>
            		<p> Hotel: {room.hotelName} </p>
            		<p> Number: {room.number} </p>

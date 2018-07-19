@@ -12,7 +12,7 @@ const Vehicle = (props) => {
             	<b><p className="shelf-item__title"> {vehicle.vehicleType}: {vehicle.plate} </p></b>
                 <img className="shelf-item__image" src={require(`./B1001.jpg`)} alt={vehicle.rentACarCode}/>
 				<div className="shelf-item__price">
-                    <div className="val"><b>Price: {vehicle.vehiclePrice}</b><small>€</small>
+                    <div className="val"><b>Price: {vehicle.vehiclePrice}</b><small>€/Day</small>
                     </div>
            		</div>
            		<p> RentACar: {vehicle.rentACarName} </p>
