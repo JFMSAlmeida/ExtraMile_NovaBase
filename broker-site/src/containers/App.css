@@ -1436,9 +1436,9 @@ select {
   cursor: pointer;
   transition: background-color 0.1s;
   width: 25%;
-  position: relative;
-  float: right;
-  margin-right: 8px;
+  position: absolute;
+  top: 580px;
+  right: 8px;
 }
 .shelf-container-confirm-shelf .confirm-buy-btn:hover {
   background-color: #eabf00;
