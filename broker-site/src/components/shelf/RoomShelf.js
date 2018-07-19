@@ -25,7 +25,6 @@ class RoomShelf extends Component {
                         <br/><br/><br/>
                         <h3>
                             No Rooms available in this period.
-                            Please select another period.
                         </h3>
                     </div>
                     :

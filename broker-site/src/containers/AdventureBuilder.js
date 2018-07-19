@@ -248,7 +248,7 @@ class AdventureBuilder extends Component {
                 {this.state.tab == 2 ? <AdventureBuilder0 begin = {this.state.value.start} end = {this.state.value.end} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} updateActivity = {this.updateActivity} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
                 {this.state.tab == 3 ? <AdventureBuilder1 begin = {this.state.value.start} end = {this.state.value.end} hasVehicle = {this.state.rentVehicle} updateRoom = {this.updateRoom} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
                 {this.state.tab == 4 ? <AdventureBuilder2 begin = {this.state.value.start} end = {this.state.value.end} updateVehicle = {this.updateVehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
-                {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start} end = {this.state.value.end} advId = {this.state.advId} addCart={adv => this.addToCart(adv)} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
+                {this.state.tab == 5 ? <AdventureBuilder3 begin = {this.state.value.start.format("YYYY/MM/DD")} end = {this.state.value.end.format("YYYY/MM/DD")} advId = {this.state.advId} addCart={adv => this.addToCart(adv)} hasRoom = {this.state.hasRoom} hasVehicle = {this.state.rentVehicle} activity = {this.state.activity} room = {this.state.room} vehicle = {this.state.vehicle} handleTab = {this.handleTab} changeLoading = {this.changeLoading} getLoading = {this.getLoading} /> : null}
 
                 <br/>
                 {this.state.tab != 1 && this.state.tab != 5 ?
@@ -263,21 +263,21 @@ class AdventureBuilder extends Component {
                         </div>
                         {this.state.activity != null ?
                             <div>
-                                Activity: {this.state.activity.activityCode}
+                                Activity: {this.state.activity.activityName}
                             </div>
                             :
                             null
                         }
                         {this.state.hasRoom && this.state.room != null ?
                             <div>
-                                HotelRoom: {this.state.room.number}
+                                HotelRoom: {this.state.room.roomType}
                             </div>
                             :
                             null
                         }
                         {this.state.rentVehicle && this.state.vehicle != null ?
                             <div>
-                                Vehicle: {this.state.vehicle.plate}
+                                Vehicle: {this.state.vehicle.vehicleType}
                             </div>
                             :
                             null

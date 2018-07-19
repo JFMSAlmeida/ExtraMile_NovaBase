@@ -26,6 +26,8 @@ class AdventureBuilder3 extends Component {
         return (
             <div>
                 <ConfirmShelf
+                    begin = {this.props.begin}
+                    end = {this.props.end}
                     getLoading = {this.props.getLoading}
                     changeLoading={this.props.changeLoading}
                     advParts={advParts}

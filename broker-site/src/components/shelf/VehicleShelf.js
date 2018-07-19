@@ -25,8 +25,7 @@ class VehicleShelf extends Component {
                     <div style={{textAlign: 'center'}}>
                         <br/><br/><br/>
                         <h3>
-                            No Vehicles available in this period.
-                            Please select another period.
+                            No Vehicles available.
                         </h3>
                     </div>
 					:

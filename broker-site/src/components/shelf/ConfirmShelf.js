@@ -134,7 +134,9 @@ class ConfirmShelf extends Component {
                 {this.props.getLoading() ? null :
                     <React.Fragment>
                         <h3 style={{textAlign: 'center'}}>Your Selections:</h3>
-                        <div className="shelf-container">
+                        <div className="shelf-container-confirm-shelf">
+                            <h3>From: {this.props.begin}</h3>
+                            <h3>To: {this.props.end}</h3>
                             {advPartsArray}
                             <div className="confirm-buy-btn" onClick={() => this.addToCart()}>
                                 <span>Add to cart</span>
