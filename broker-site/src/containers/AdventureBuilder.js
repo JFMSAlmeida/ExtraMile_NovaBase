@@ -130,11 +130,12 @@ class AdventureBuilder extends Component {
         if (this.state.activity != null) {
             document.getElementById(this.state.activity.providerCode 
                 + this.state.activity.capacity
-                 + this.state.activity.activityCode).className = "shelf-item";
+                 + this.state.activity.activityCode + this.state.activity.begin 
+                 + this.state.activity.end).className = "shelf-item";
         }
 
         document.getElementById(activity.providerCode + 
-            activity.capacity + activity.activityCode).className = "shelf-click";
+            activity.capacity + activity.activityCode + activity.begin + activity.end).className = "shelf-click";
 
         this.setState({
             activity: activity
