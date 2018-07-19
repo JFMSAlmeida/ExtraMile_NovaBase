@@ -1,7 +1,6 @@
 import React from "react";
 import imageOne from './adventureFinder.jpg';
 import imageTwo from './adventureBuilder.jpg';
-import imageThree from './banner-sample.png';
 import {withRouter} from "react-router-dom";
 import $ from 'jquery'
 

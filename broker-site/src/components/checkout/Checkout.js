@@ -2,6 +2,7 @@ import React from 'react'
 import CheckoutProduct from "./CheckoutProduct";
 import {Link} from "react-router-dom";
 import PaymentModal from "./PaymentModal";
+import bagIconBlack from './bag-icon-black.png'
 
 
 export default class Checkout extends React.Component {
@@ -62,7 +63,7 @@ export default class Checkout extends React.Component {
                 {this.state.products.length ? <div className="wrapper">
                     <div className="checkout_header">
                         <h1>
-                            <img width="40" height="47" src={require(`../../containers/bag-icon-black.png`)} alt=""/>
+                            <img width="40" height="47" src={bagIconBlack} alt=""/>
                             <span className="checkout_header-text">Shopping Cart</span>
                         </h1>
                         <div className="clean-btn" onClick={() => this.cleanCheckout()}>

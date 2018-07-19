@@ -679,7 +679,7 @@ a:hover {color: inherit;}
   color: #ececec;
 }
 
-.boda .back-btn2 {
+.finalPaymentButton .back-btn2 {
   color: #ececec;
   text-transform: uppercase;
   background-color: #0c0b10;
@@ -693,7 +693,7 @@ a:hover {color: inherit;}
   float: left;
   left: 320px;
 }
-.boda .back-btn2:hover {
+.finalPaymentButton .back-btn2:hover {
   background-color: #000;
   color: #ececec;
 }

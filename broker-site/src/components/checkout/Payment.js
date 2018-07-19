@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {Link} from "react-router-dom";
 import TableReference from './TableReference'
+import sadFace from './sad_face.jpg'
+import sucessImg from './success.png'
 
 class Payment extends Component {
     constructor(props) {
@@ -84,7 +86,7 @@ class Payment extends Component {
         return (<div className="container">
                 {(this.state.paymentSuccess !== 0) && <div>
                     {(this.state.paymentSuccess === 1) && <div className="payment-confirmed">
-                        <img className="payment-confirmed__img" src={require(`../success.png`)} alt=""/>
+                        <img className="payment-confirmed__img" src={sucessImg} alt=""/>
                         <h1><b>Your payment was confirmed!</b></h1>
                         <div id="printableArea">
                             <table className="table_references">
@@ -121,10 +123,12 @@ class Payment extends Component {
                         </div>
                     </div>}
                     {(this.state.paymentSuccess === 2) && <div className="payment-cancelled">
-                        <img className="payment-confirmed__img" src={require(`../sad_face.jpg`)} alt=""/>
-                        <span><b>Ups, something went wrong!<br/> Your transation was cancelled. <br/> Please try again later.</b></span>
+                        <img className="payment-confirmed__img" src={sadFace} style={{width: '200px'}}/>
+                        <h1><b>Ups, something went wrong!</b></h1>
+                        <br/>
+                        <span style={{fontSize: '20px'}}>Your transation was cancelled. <br/> Please try again later.</span>
                     </div>}
-                    <div className="boda">
+                    <div className="finalPaymentButton">
                         <Link to={{ pathname: '/'}} style={{textDecoration: 'none'}}>
                             <div className="back-btn2">
                                 <span>Back to Store</span>

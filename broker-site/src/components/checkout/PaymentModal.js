@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router';
+import questionMark from './questionmark.png'
 
 class PaymentModal extends Component {
     constructor(props){
@@ -37,7 +38,7 @@ class PaymentModal extends Component {
                         <div className="modal-content">
                             <div className="modal-header">
                                 <div className="icon-box">
-                                    <img width="100px" className="material-icons" src={require(`../questionmark.png`)} alt="" />
+                                    <img width="100px" className="material-icons" src={questionMark} alt="" />
                                 </div>
                                 <h4 className="modal-title">Are you sure?</h4>
                                 <button type="button" className="close" data-dismiss="modal"
