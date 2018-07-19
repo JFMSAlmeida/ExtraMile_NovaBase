@@ -1,5 +1,4 @@
 # ExtraMile_NovaBase
-One Paragraph of project description goes here
 
 ## Getting Started
 
@@ -29,8 +28,9 @@ Add additional notes about how to deploy this on a live system
 
 * [ReactJS](https://reactjs.org/) - JavaScript library for building user interfaces
 * [Maven](https://maven.apache.org/) - Dependency Management
-* [SpringBoot](https://spring.io/projects/spring-boot) & [Thymeleaf](https://www.thymeleaf.org/) - O Spring-boot permite desenvolver servidores web com grande simplicidade, utilizando o Spring MVC (model-view-controller para aplicações web) e o Thymeleaf.
+* [SpringBoot](https://spring.io/projects/spring-boot) & [Thymeleaf](https://www.thymeleaf.org/) - Framework and Template engine to develop web servers using the architectural pattern MVC for web applications
 * [Fénix Framework](https://fenix-framework.github.io/) - Transactional and persistent domain model
+* [Apache JMeter](https://fenix-framework.github.io/) - Tool used for basic load, stress and integration testing on Web dynamic applications. 
 
 ## Authors
 |   Number   |          Name           |                  Email                  |   GitHub Username  |
@@ -45,5 +45,3 @@ Add additional notes about how to deploy this on a live system
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
-* etc
