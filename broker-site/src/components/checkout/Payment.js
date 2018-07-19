@@ -3,13 +3,14 @@ import {Link} from "react-router-dom";
 import TableReference from './TableReference'
 import sadFace from './sad_face.jpg'
 import sucessImg from './success.png'
+import loading from '../../containers/loading.gif'
 
 class Payment extends Component {
     constructor(props) {
         super(props);
         this.state = {
             paymentSuccess: 0,
-            references : []
+            references : [],
         };
     }
 
@@ -83,6 +84,13 @@ class Payment extends Component {
         }
 
         return (<div className="container">
+                {this.state.paymentSuccess === 0 ?
+                    <div style={{textAlign: 'center'}}>
+                        <img src={loading}></img>
+                    </div>
+                    :
+                    null
+                }
                 {(this.state.paymentSuccess !== 0) && <div>
                     {(this.state.paymentSuccess === 1) && <div className="payment-confirmed">
                         <img className="payment-confirmed__img" src={sucessImg} alt=""/>
