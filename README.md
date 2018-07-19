@@ -25,9 +25,7 @@ If the goal is to execute load and stress tests you need to turn the servers and
 ./startservers
 ```
 On JMeter tool you need to load the tests(.jmx files) from this directory ```jmeter/tests```
-```
-jmeter/tests
-```
+
 If your wish is to turn them off then use: 
 ```
 ./shutdownservers
