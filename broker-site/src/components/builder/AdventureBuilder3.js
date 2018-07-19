@@ -23,8 +23,6 @@ class AdventureBuilder3 extends Component {
         if(this.props.hasVehicle)
             advParts.push(this.props.vehicle);
 
-        console.log(advParts);
-
         return (
             <div>
                 <ConfirmShelf

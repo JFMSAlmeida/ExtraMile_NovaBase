@@ -20,7 +20,6 @@ class Login extends Component {
 
     handleLogin(e, nif) {
         e.preventDefault();
-        console.log("handleLogin2");
         fetch('http://localhost:8083/rest/brokers/login?brokerCode=' + this.props.getAuthState().broker +
             '&nif=' + nif)
 
@@ -33,7 +32,6 @@ class Login extends Component {
             return response.text();
         })
             .then(body => {
-                console.log(JSON.parse(body));
                 if (!JSON.parse(body).success) {
                     document.getElementById('errorLogin').innerHTML = "NIF inserted isn't registered";
                 }

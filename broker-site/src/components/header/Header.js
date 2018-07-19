@@ -96,7 +96,6 @@ class Header extends React.Component {
     }
 
     handleLogout(e) {
-        console.log("logout");
         e.preventDefault();
         this.props.setAuthState(false, '', '', '', '');
         this.props.history.push('/');

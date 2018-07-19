@@ -24,16 +24,11 @@ class ConfirmShelf extends Component {
             var i2 = this.props.advId;
             var i3 = "999999999";
 
-            console.log(i2);
-            console.log(this.props.advId);
-
             await fetch('http://localhost:8083/rest/brokers/getAdventurePrice?param1=' + i1 + '&param2=' + i2 + '&param3=' + i3)
                 .then(response => {
                     return response.text();
                 })
                 .then(body => {
-                    console.log(JSON.parse(body));
-                    console.log(JSON.parse(body).price);
                     this.setState({
                         price: JSON.parse(body).price
                     });
@@ -50,13 +45,9 @@ class ConfirmShelf extends Component {
             document.getElementById("alert-icon").className = "glyphicon glyphicon-warning-sign";
             document.getElementById("alert-text").innerHTML = "&nbsp;Something went wrong... Try again later.";
         }
-
     }
 
-
-
     createPackage() {
-        console.log("BODAID: " + this.props.advId);
         let adv = Object.assign(this.props.advParts[0], {"id": this.props.advId, "price": this.state.price, "hasRoom": this.props.hasRoom,
                 "hasVehicle": this.props.hasVehicle});
         if (this.props.hasRoom)
@@ -64,7 +55,6 @@ class ConfirmShelf extends Component {
         if (this.props.hasVehicle)
             adv = Object.assign(adv, this.props.advParts[2]);
 
-        console.log(adv);
         return adv;
     }
 
@@ -121,7 +111,6 @@ class ConfirmShelf extends Component {
     }
 
     render(){
-		console.log(this.props.advParts);
 		let advPartsArray = [];
         advPartsArray.push(<Activity noAddCart={1} activity = {this.props.advParts[0]} key = {this.props.advParts[0].id} />);
 

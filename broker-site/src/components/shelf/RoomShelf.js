@@ -6,7 +6,6 @@ class RoomShelf extends Component {
 
 	render() {
 		const room = this.props.rooms;
-		console.log(room);
 
 		const roomArray = room.map((r,index) => {
 			return(

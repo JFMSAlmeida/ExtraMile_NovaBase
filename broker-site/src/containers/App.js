@@ -37,11 +37,9 @@ class App extends React.Component {
         this.setState({
             product : product
         });
-        console.log(product);
     }
 
     resetProduct() {
-        console.log("E QUEM NÃO SALTA NÃO É DA MALTA");
         this.setState({
             product: null
         });
@@ -53,7 +51,7 @@ class App extends React.Component {
             nif: nif,
             iban: iban,
             age: age,
-            drivinglicense: dl},() => { console.log('new state Auth = ', this.state); });
+            drivinglicense: dl});
     }
 
     getAuthState() {
@@ -61,7 +59,6 @@ class App extends React.Component {
     }
 
     calculateBalance() {
-        console.log("handleBalance");
         this.setState({balance: 'Fetching...'});
 
         fetch('http://localhost:8082/rest/banks/balance?iban=' + this.getAuthState().iban)

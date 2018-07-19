@@ -23,9 +23,6 @@ class AdventureFinder extends Component {
                 .then(response => {
                     return response.text();
                 })
-                .then(body => {
-                    console.log(JSON.parse(body));
-                });
         } catch (e) {
             this.setState({loading: false});
             this.setState({alert: true});
@@ -40,11 +37,7 @@ class AdventureFinder extends Component {
                     return response.text();
                 })
                 .then(body => {
-                    console.log(JSON.parse(body));
-
                     const response = JSON.parse(body);
-                    console.log(response);
-
                     this.setState({adventures: response});
                     this.setState({loading: false});
                 });
@@ -58,7 +51,6 @@ class AdventureFinder extends Component {
     }
 
     render() {
-        console.log(this.props.addCart);
         return (
             <div className="container">
                 {this.state.alert ?

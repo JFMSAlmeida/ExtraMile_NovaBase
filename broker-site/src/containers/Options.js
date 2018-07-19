@@ -32,8 +32,6 @@ class AdventureBuilder extends Component {
 
     handleEdit(e, str) {
         e.preventDefault();
-        console.log(this.props.location.state.info);
-        console.log(str);
         document.getElementById(str).disabled = false;
         document.getElementById(str+'-edit').hidden = true;
         document.getElementById(str+'-remove').hidden = false;
@@ -100,7 +98,6 @@ class AdventureBuilder extends Component {
                 return response.text();
             })
             .then(body => {
-                console.log(JSON.parse(body));
                 if (!JSON.parse(body).success) {
                     //DL invalido
                     this.alert("error");
@@ -155,7 +152,6 @@ class AdventureBuilder extends Component {
                     return response.text();
                 })
                 .then(body => {
-                    console.log((JSON).parse(body).transactions);
                     if ((JSON).parse(body).success) {
                         this.state.transactions = JSON.parse(body).transactions;
                         this.setState({

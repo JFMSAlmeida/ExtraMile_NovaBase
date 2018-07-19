@@ -109,13 +109,8 @@ class AdventureBuilder2 extends Component {
                     return response.text();
                 })
                 .then(body => {
-                    console.log(JSON.parse(body));
-
                     const response = JSON.parse(body);
-                    console.log(response);
-
                     this.setState({vehicles: response, filteredVehicles: response});
-                    console.log(this.state);
                     this.props.changeLoading(false);
                 });
         } catch (e) {

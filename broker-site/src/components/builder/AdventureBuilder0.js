@@ -129,7 +129,6 @@ class AdventureBuilder0 extends Component {
                 })
                 .then(body => {
                     const response = JSON.parse(body);
-                    console.log(response);
                     this.setState({activities: response});
                     this.props.changeLoading(false);
                 })
@@ -143,9 +142,6 @@ class AdventureBuilder0 extends Component {
     }
 
     render() {
-        console.log(this.props.hasRoom);
-        console.log(this.props.hasVehicle);
-
         var toShowActivities = this.state.activities;
         if(this.state.filteredActivities.length > 0){
             toShowActivities = this.state.filteredActivities;
