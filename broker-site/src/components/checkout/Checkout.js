@@ -106,6 +106,7 @@ export default class Checkout extends React.Component {
                             remove = {this.cleanCheckout}
                             products = {this.state.products}
                             total = {total}
+                            calculateBalance = {this.props.location.calculateBalance}
                         />
 
                     </div>

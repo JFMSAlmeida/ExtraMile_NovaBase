@@ -53,12 +53,14 @@ class Header extends React.Component {
                             </button>
                             <div className="dropdown-contentLogin">
                                 <a>
-                                    <span className="glyphicon glyphicon-usd"></span>&nbsp; {this.props.getAuthState().balance}
-                                    <a onClick={this.props.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
-                                        <span className="glyphicon glyphicon-refresh"></span>
-                                    </a>
-                                    {this.props.getAuthState.balance == 'Error' ?
-                                        <span className="glyphicon glyphicon-question-sign" title="Bank server is down"></span>
+                                    <span className="glyphicon glyphicon-euro"></span>&nbsp; {this.props.getAuthState().balance}
+                                    {this.props.getAuthState().balance == 'Error' ?
+                                        <div style={{display: 'inline'}}>
+                                            <a onClick={this.props.calculateBalance} style={{display: 'inline', cursor: 'pointer'}}>
+                                                <span className="glyphicon glyphicon-refresh"></span>
+                                            </a>
+                                            <span className="glyphicon glyphicon-question-sign" title="Bank server is down"></span>
+                                        </div>
                                         : null}
                                 </a>
                                 <Link to={{pathname:'/options', handleInfoChange: this.handleInfoChange, calculateBalance: this.props.calculateBalance, state:{info: this.props.getAuthState()}}}><span className="glyphicon glyphicon-cog"></span>&nbsp; Preferences</Link>
@@ -71,6 +73,7 @@ class Header extends React.Component {
                     <Cart
                         resetProduct = {() => this.props.resetProduct()}
                         product = {this.props.product}
+                        calculateBalance = {this.props.calculateBalance}
                     />
 
                 </nav>

@@ -60,7 +60,6 @@ class App extends React.Component {
         return this.state;
     }
 
-
     calculateBalance() {
         console.log("handleBalance");
         this.setState({balance: 'Fetching...'});

@@ -5,7 +5,6 @@ import questionMark from './questionmark.png'
 class PaymentModal extends Component {
     constructor(props){
         super(props);
-
         this.state = {
             paymentConfirmation : false,
         };
@@ -29,7 +28,7 @@ class PaymentModal extends Component {
 
     render() {
         if (this.state.paymentConfirmation) {
-            return <Redirect to={{pathname: '/payment',remove: this.removeProducts ,state:{products : this.props.products, total: this.props.total}}} />;
+            return <Redirect to={{pathname: '/payment', remove: this.removeProducts, calculateBalance : this.props.calculateBalance, state:{products : this.props.products, total: this.props.total}}} />;
         }
         return (
             <div>
